@@ -1,11 +1,9 @@
 ---
 name: knowledge-base-builder
 description: >-
-  Design, build, extend or audit agent-ready knowledge bases, organizational memory,
-  project brains, RAG retrieval and MCP search over code, documents, tickets or notes.
-  Use for "build a knowledge base", "make this repo searchable for agents",
-  "company brain", "semantic search", "hybrid retrieval", "source-grounded answers",
-  "ingestion pipeline" and knowledge-base quality reviews.
+  Build or audit agent-ready knowledge bases over code and documents. Use for
+  knowledge bases, project brains, hybrid retrieval, RAG, MCP search tools and
+  source-grounded answers.
 ---
 
 # Build an agent-ready knowledge base
