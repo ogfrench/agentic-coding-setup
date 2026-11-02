@@ -28,7 +28,6 @@
 - 21st (plugin): 21st.dev UI skills and MCP. Pinned upstream.
 - actions-cost (skill): Estimate a change's GitHub Actions runner-minutes before merging it; on demand and cached over a prebuilt matrix.
 - best-practices (skill): The curated practices, one topic file per concern, generated from kb/practices.
-- caveman (plugin): Terse output mode. Pinned upstream.
 - cheap-reviewer (agent): Read-only correctness and safety review of one commit or the working diff, on a mid-size model.
 - claude-md-management (plugin): Audit CLAUDE.md quality, capture session learnings, and keep project memory current.
 - code-review (plugin): Pull request review with several specialized agents and confidence scoring to filter false positives.
@@ -46,7 +45,6 @@
 - model-delegation (skill): Decide when to use the main agent, an on-demand skill or tool, or a measured subagent.
 - netlify-cost (skill): Estimate a Netlify site's builds, credits, edge runs and bandwidth before changing its config; ignore script, complete gate.
 - playwright (plugin): Browser automation MCP server by Microsoft: navigate, click, fill forms, take screenshots, run end-to-end flows.
-- ponytail (plugin): Minimal-solution mode. Pinned upstream.
 - serena (plugin): Semantic code analysis MCP server: symbol-level navigation and refactoring via language servers.
 - session-continuity (skill): Keep long work alive across compactions: durable state, standalone check-ins, work checked against the plan, open points raised.
 - superpowers (plugin): Brainstorming, subagent-driven development with built-in review, systematic debugging, red/green TDD, and skill authoring.

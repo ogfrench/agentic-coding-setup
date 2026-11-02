@@ -1,6 +1,8 @@
 # Third-party plugin pin review, 2026-11-02
 
-**Decision: retain all three existing pins. Do not auto-update or install upstream HEAD.** This is a source and manifest review, **not** an end-to-end compatibility certification. The follow-up runtime checks in issue #30 remain required before upgrading.
+**Historical decision, superseded for Caveman and Ponytail:** the user-scope third-party integrations have now been replaced by opt-in first-party Markdown skills. The technical findings remain here as an audit trail. **21st stays pinned and installed.**
+
+**Decision at review time: retain all three existing pins. Do not auto-update or install upstream HEAD.** This is a source and manifest review, **not** an end-to-end compatibility certification. The follow-up runtime checks in issue #30 remain required before upgrading.
 
 ## Scope and inspected evidence
 

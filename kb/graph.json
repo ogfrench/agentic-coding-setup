@@ -992,17 +992,6 @@
       "last_reviewed": "2026-10-11"
     },
     {
-      "id": "caveman",
-      "type": "tool",
-      "kind": "plugin",
-      "summary": "Terse output mode. Pinned upstream.",
-      "use_when": "When you want short answers and fewer output tokens.",
-      "where": "caveman@ogfrench",
-      "state": "installed",
-      "tokens": 55,
-      "last_reviewed": "2026-10-11"
-    },
-    {
       "id": "cheap-reviewer",
       "type": "tool",
       "kind": "agent",
@@ -1187,17 +1176,6 @@
       "where": "playwright@claude-plugins-official",
       "state": "installed",
       "tokens": 84,
-      "last_reviewed": "2026-10-11"
-    },
-    {
-      "id": "ponytail",
-      "type": "tool",
-      "kind": "plugin",
-      "summary": "Minimal-solution mode. Pinned upstream.",
-      "use_when": "When a task should get the smallest change that works.",
-      "where": "ponytail@ogfrench",
-      "state": "installed",
-      "tokens": 57,
       "last_reviewed": "2026-10-11"
     },
     {

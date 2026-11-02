@@ -22,6 +22,14 @@ if [[ ! -f "$SRC/user/plugins.txt" ]]; then
 fi
 
 failed=()
+# Retire third-party personal plugins so their legacy hooks stop loading.
+# Detect before uninstalling to keep new-machine setup idempotent.
+for p in caveman@ogfrench ponytail@ogfrench; do
+  if claude plugin list 2>/dev/null | grep -Fq "$p"; then
+    claude plugin uninstall "$p" --scope user >/dev/null 2>&1 || failed+=("uninstall $p")
+  fi
+done
+
 # A fresh machine (every cloud session) knows no marketplace, not even the official one.
 for m in ogfrench=ogfrench/claude-code-setup claude-plugins-official=anthropics/claude-plugins-official; do
   claude plugin marketplace add "${m#*=}" >/dev/null 2>&1 \
@@ -41,7 +49,8 @@ if git -C "$SRC" rev-parse --git-dir >/dev/null 2>&1 && [[ -d "$SRC/.githooks" ]
 fi
 
 mkdir -p "$CONFIG/skills"
-for s in "$SRC"/plugins/*/skills/*/; do
+for s in "$SRC"/plugins/*/skills/*/ "$SRC"/user/skills/*/; do
+  [[ -f "$s/SKILL.md" ]] || continue
   name="$(basename "$s")"
   rm -rf "${CONFIG:?}/skills/$name"
   cp -r "$s" "$CONFIG/skills/$name"

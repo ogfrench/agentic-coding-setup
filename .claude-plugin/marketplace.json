@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ogfrench",
-  "description": "ogfrench's Claude Code setup: own skills plus pinned third-party plugins.",
+  "description": "ogfrench's Claude Code setup: own skills and one pinned third-party UI plugin.",
   "owner": {
     "name": "ogfrench",
     "url": "https://github.com/ogfrench"
@@ -17,26 +17,6 @@
       "name": "agent-workflow",
       "description": "How work is run: best-practices, learning-loop, model-delegation, visual-loop, token-efficiency, actions-cost, netlify-cost, session-continuity, knowledge-base-builder, and the cheap-reviewer subagent.",
       "source": "./plugins/agent-workflow",
-      "category": "productivity"
-    },
-    {
-      "name": "caveman",
-      "description": "Terse output mode. Pinned upstream: JuliusBrussee/caveman.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/JuliusBrussee/caveman.git",
-        "sha": "25d22f864ad68cc447a4cb93aefde918aa4aec9f"
-      },
-      "category": "productivity"
-    },
-    {
-      "name": "ponytail",
-      "description": "Minimal-solution mode. Pinned upstream: DietrichGebert/ponytail.",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/DietrichGebert/ponytail.git",
-        "sha": "687c1b339872289d70f65c5eaabce850b1663867"
-      },
       "category": "productivity"
     },
     {
