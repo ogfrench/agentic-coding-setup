@@ -59,6 +59,9 @@ for live actions. Subagents require an evaluation advantage, not just a cheaper 
 Nothing in this review automatically uninstalls a plugin or rewrites project copies;
 the sync and installation steps remain explicit.
 
+
+**Agent-ready knowledge bases.** The `knowledge-base-builder` skill documents source-native ingestion, source metadata, scoped retrieval, hybrid ranking, MCP contracts, freshness, privacy and evaluation. Use it to add knowledge retrieval to a repo without replacing its own sources. See [`SKILL.md`](plugins/agent-workflow/skills/knowledge-base-builder/SKILL.md) and its detailed references. It does not automatically index other repositories or activate a remote service.
+
 ## Adding things
 
 **A skill.** Create `plugins/frog-writing/skills/<name>/SKILL.md` (or `plugins/agent-workflow/skills/` for how work is run) with `name` and `description` in its frontmatter, and add a node for it in `kb/tools/` (`node --test` fails without one). If it belongs to a different theme, start a new plugin in `plugins/<plugin>/` and add an entry to `.claude-plugin/marketplace.json` with `"source": "./plugins/<plugin>"`.

@@ -41,6 +41,7 @@
 - github (plugin): Official GitHub MCP server: issues, pull requests, code search, repository management.
 - humanizer (skill): Rewrite prose at length to remove signs of AI writing. Vendored, MIT.
 - issue-management (skill): Triage and restructure GitHub issue backlogs with one owner per outcome, clear stages and testable acceptance.
+- knowledge-base-builder (skill): Design and verify agent-ready knowledge bases with source-native ingestion, hybrid retrieval, MCP and evidence checks.
 - learning-loop (skill): Capture a lesson, curate it into a practice, promote it, harvest inboxes, retire it.
 - model-delegation (skill): Decide when to use the main agent, an on-demand skill or tool, or a measured subagent.
 - netlify-cost (skill): Estimate a Netlify site's builds, credits, edge runs and bandwidth before changing its config; ignore script, complete gate.
