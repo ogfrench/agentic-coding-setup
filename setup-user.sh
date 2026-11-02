@@ -29,6 +29,14 @@ for m in ogfrench=ogfrench/claude-code-setup claude-plugins-official=anthropics/
     || failed+=("marketplace ${m%%=*}")
 done
 
+# Retire third-party personal plugins so their legacy hooks stop loading.
+# Detect before uninstalling to keep new-machine setup idempotent.
+for p in caveman@ogfrench ponytail@ogfrench; do
+  if claude plugin list 2>/dev/null | grep -Fq "$p"; then
+    claude plugin uninstall "$p" --scope user >/dev/null 2>&1 || failed+=("uninstall $p")
+  fi
+done
+
 while read -r p; do
   p="${p%$'\r'}"
   [[ -z "$p" || "$p" == \#* ]] && continue
@@ -41,7 +49,8 @@ if git -C "$SRC" rev-parse --git-dir >/dev/null 2>&1 && [[ -d "$SRC/.githooks" ]
 fi
 
 mkdir -p "$CONFIG/skills"
-for s in "$SRC"/plugins/*/skills/*/; do
+for s in "$SRC"/plugins/*/skills/*/ "$SRC"/user/skills/*/; do
+  [[ -f "$s/SKILL.md" ]] || continue
   name="$(basename "$s")"
   rm -rf "${CONFIG:?}/skills/$name"
   cp -r "$s" "$CONFIG/skills/$name"

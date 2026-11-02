@@ -18,7 +18,7 @@ The setup script remains the explicit path for this repository's pinned plugins.
 Check the current [skill loading rules](https://code.claude.com/docs/en/skills) before assuming
 that repository, plugin and account skills are equivalent.
 
-**Each repo, for anyone: `sync-to-repos.sh`.** It commits the skills into each repo's `.claude/skills/` and merges `project/settings.json`, so teammates' local sessions and non-project cloud sessions that load repository skills get them. Cloud project threads use account-synced skills instead. Repos only enable team-useful plugins. Personal modes such as caveman and ponytail stay in `user/plugins.txt`, so nobody else is switched into them.
+**Each repo, for anyone: `sync-to-repos.sh`.** It commits the skills into each repo's `.claude/skills/` and merges `project/settings.json`, so teammates' local sessions and non-project cloud sessions that load repository skills get them. Cloud project threads use account-synced skills instead. Repos only enable team-useful plugins. Personal response modes live as opt-in Markdown skills under `user/skills/`; they are not pushed to teammates or installed as third-party plugins.
 
 The source of truth is this repo. The copies in each project are overwritten on the next sync, so edit here.
 
@@ -34,7 +34,8 @@ The source of truth is this repo. The copies in each project are overwritten on 
 | `project/settings.json` | Hooks, permissions, enabled plugins, env | merged into `.claude/settings.json` |
 | `project/mcp.json` | MCP servers | merged into `.mcp.json` |
 | `project/retired.json` | Settings keys to take back out | removed from `.claude/settings.json` |
-| `user/plugins.txt` | My plugins, laptop and cloud | not synced; installed by `setup-user.sh` |
+| `user/plugins.txt` | User-scope plugins, including 21st | not synced; installed by `setup-user.sh` |
+| `user/skills/<name>/SKILL.md` | My opt-in, Markdown-only personal modes | `~/.claude/skills/<name>/` (not synced to repos) |
 | `.claude-plugin/marketplace.json` | The `ogfrench` marketplace | registered by the merged settings |
 | `repos.local.txt` | Which repos get all this, and their stacks: `owner/name nextjs,postgres`. Gitignored: a repo's name can name a client | |
 | `public-repos.txt` | My repos that are public, so they may be named here | |
@@ -56,7 +57,7 @@ The [October 2026 research and skill inventory](docs/claude-practices-2026-10.md
 records a source-checked review of our skills and third-party plugins. Default
 to one main agent loop, keep reusable know-how in on-demand skills and use tools
 for live actions. Subagents require an evaluation advantage, not just a cheaper model.
-Nothing in this review automatically uninstalls a plugin or rewrites project copies;
+The historic review does not itself uninstall anything; `setup-user.sh` now removes the retired personal plugins from user scope on its next run. No project copies are rewritten by this review;
 the sync and installation steps remain explicit.
 
 
@@ -233,14 +234,29 @@ a synced file still syncs at once.
 A repo added to the list needs both: a line in `SYNC_REPOS` and the App installed on it.
 `repos.local.txt` stays the list for runs from the laptop.
 
+## Personal response modes
+
+`/caveman` and `/ponytail` are now **original, user-only Markdown skills** in
+[`user/skills/`](user/skills/). `/caveman` requests terse but accurate responses;
+`/ponytail` requests the smallest correct code change. Both require explicit
+invocation. They are not always-on hooks, don't run third-party code or collect
+usage data, and are not copied into project repositories.
+
+Re-run `bash setup-user.sh` from a current checkout on each machine or in the
+cloud setup environment. The script uninstalls the retired user-scope
+`caveman@ogfrench` and `ponytail@ogfrench` plugins, copies the two local
+skills to `~/.claude/skills/` (or `CLAUDE_CONFIG_DIR/skills/`), and continues
+to install **21st** unchanged. If an old plugin was enabled at project or local
+scope separately, uninstall it at that scope too. Restart or reload Claude Code
+for the new session configuration to take effect. Nothing in a GitHub merge
+can change a running local Claude session.
+
 ## Plugins
 
 | Plugin | Source |
 | --- | --- |
 | `frog-writing` | This repo. `frogify` and `deslopify` are mine. `humanizer` is vendored from [blader/humanizer](https://github.com/blader/humanizer) at `9600f2b`, MIT, with its license kept in its folder. |
 | `agent-workflow` | This repo. How work is run: `model-delegation` (which model does which work), `best-practices` (the curated practices), `learning-loop` (capture, curate, promote), `visual-loop` (show design options on the real thing, read every shot, loop until one is picked), `token-efficiency` (fewer turns and tokens for the same work: batching, lean context, background waits, environment facts saved once), `session-continuity` (keep long work alive across compactions: state in durable places, check-ins that stand alone, the work checked against the plan, open points raised), `actions-cost` (estimate GitHub Actions runner-minutes before merging what triggers a workflow), `netlify-cost` (estimate a Netlify site's builds, credits and edge runs before changing its config, and a build-skip script that builds when unsure), `issue-management` (MECE backlog ownership, decision stages, issue writing and consolidation), `knowledge-base-builder` (provenance, retrieval, MCP and evaluation) and the `cheap-reviewer` subagent. |
-| `caveman` | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman), pinned by SHA |
-| `ponytail` | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail), pinned by SHA |
 | `21st` | [21st-dev/claude-code-plugin](https://github.com/21st-dev/claude-code-plugin), pinned by SHA |
 
 The official plugins (superpowers, context7, playwright and the rest) come from `claude-plugins-official`, which Claude Code already knows. `project/settings.json` enables them directly.

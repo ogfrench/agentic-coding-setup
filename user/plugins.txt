@@ -1,8 +1,6 @@
-# Plugins installed at user scope by setup-user.sh, on this laptop and in
-# every cloud session. Personal ones live here and not in project/settings.json,
-# so teammates opening a shared repo are not switched into caveman mode.
-caveman@ogfrench
-ponytail@ogfrench
+# Plugins installed at user scope by setup-user.sh on laptops and cloud sessions.
+# Personal response modes are local Markdown skills in user/skills, not plugins.
+# They are never enabled for teammates through project settings.
 21st@ogfrench
 superpowers@claude-plugins-official
 frontend-design@claude-plugins-official
