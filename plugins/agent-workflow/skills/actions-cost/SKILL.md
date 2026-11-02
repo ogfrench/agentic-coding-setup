@@ -22,7 +22,8 @@ workflows and recent run history, not a generic YAML recipe. Read
 3. Inspect actual job durations and counts: `gh run list`, `gh run view --json jobs`,
    GitHub MCP, or Actions > a run > Usage. Runner-minutes are the **sum of job
    times**, not workflow wall time. For billable private-repo GitHub-hosted jobs,
-   GitHub reports execution minutes rounded up per job; apply current runner rates.
+   Assume each job rounds up to the next minute (the billing overview does not say); confirm
+   on the usage report. Apply current runner rates.
 4. Establish repo owner, public/private status, runner type, plan allowance,
    remaining usage, storage, and budgets. Do not infer a user's personal billing
    settings from a repo. Check current GitHub pricing, not a stale quoted rate.
@@ -96,5 +97,3 @@ saved per merge and per month, remaining required post-merge work, and any
 unverified branch-protection or billing assumptions. When modifying a repo:
 create a branch and PR, preserve its checks, inspect the diff, and do not merge
 without authorization. Keep sensitive repository details out of public skills.
-
-See [reference, YAML patterns and calculator](references/ci-audit.md).
