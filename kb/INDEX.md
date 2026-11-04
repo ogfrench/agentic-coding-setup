@@ -34,6 +34,7 @@
 - code-simplifier (plugin): Agent that simplifies recently modified code for clarity while preserving behavior.
 - commit-commands (plugin): Slash commands for git commit workflows: commit, push, open a PR.
 - context7 (plugin): MCP server for version-specific library documentation and code examples.
+- design-system-adapter (skill): Apply supplied brand tokens and visual rules without inventing proprietary assets.
 - deslopify (skill): Audit copy for AI-writing tells and fix them line by line.
 - frogify (skill): Rewrite copy in frog's voice, marketing or editorial register.
 - frontend-design (plugin): Distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.
@@ -45,9 +46,12 @@
 - model-delegation (skill): Decide when to use the main agent, an on-demand skill or tool, or a measured subagent.
 - netlify-cost (skill): Estimate a Netlify site's builds, credits, edge runs and bandwidth before changing its config; ignore script, complete gate.
 - playwright (plugin): Browser automation MCP server by Microsoft: navigate, click, fill forms, take screenshots, run end-to-end flows.
+- presentation-design (skill): Create and inspect real slide files with purposeful visuals and honest export claims.
+- presentation-story (skill): Build evidence-backed presentation arguments, storylines and action titles.
 - serena (plugin): Semantic code analysis MCP server: symbol-level navigation and refactoring via language servers.
 - session-continuity (skill): Keep long work alive across compactions: durable state, standalone check-ins, work checked against the plan, open points raised.
 - superpowers (plugin): Brainstorming, subagent-driven development with built-in review, systematic debugging, red/green TDD, and skill authoring.
 - token-efficiency (skill): Fewer turns and tokens for the same work. Batch tool calls, keep context lean, wait in the background, save facts once.
 - typescript-lsp (plugin): TypeScript and JavaScript language server for code intelligence.
 - visual-loop (skill): Show design options on the real thing, read every screenshot first, loop until the user picks.
+- visual-restraint (skill): Review rendered work for repetitive decorative patterns and generic presentation copy.

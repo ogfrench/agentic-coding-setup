@@ -1058,6 +1058,17 @@
       "last_reviewed": "2026-10-11"
     },
     {
+      "id": "design-system-adapter",
+      "type": "tool",
+      "kind": "skill",
+      "summary": "Apply supplied brand tokens and visual rules without inventing proprietary assets.",
+      "use_when": "When adapting a page, prototype, chart or deck to an existing design system.",
+      "where": "plugins/presentation-craft/skills/design-system-adapter",
+      "state": "installed",
+      "tokens": 86,
+      "last_reviewed": "2026-11-04"
+    },
+    {
       "id": "deslopify",
       "type": "tool",
       "kind": "skill",
@@ -1179,6 +1190,39 @@
       "last_reviewed": "2026-10-11"
     },
     {
+      "id": "presentation-craft",
+      "type": "tool",
+      "kind": "plugin",
+      "summary": "Optional bundle of brand-neutral presentation and visual design skills.",
+      "use_when": "When installing the presentation-craft marketplace plugin instead of copying the same skills at user scope.",
+      "where": "presentation-craft@ogfrench",
+      "state": "candidate",
+      "tokens": 83,
+      "last_reviewed": "2026-11-04"
+    },
+    {
+      "id": "presentation-design",
+      "type": "tool",
+      "kind": "skill",
+      "summary": "Create and inspect real slide files with purposeful visuals and honest export claims.",
+      "use_when": "When building or revising HTML or PowerPoint presentations from briefs and sources.",
+      "where": "plugins/presentation-craft/skills/presentation-design",
+      "state": "installed",
+      "tokens": 87,
+      "last_reviewed": "2026-11-04"
+    },
+    {
+      "id": "presentation-story",
+      "type": "tool",
+      "kind": "skill",
+      "summary": "Build evidence-backed presentation arguments, storylines and action titles.",
+      "use_when": "When planning or challenging a pitch, research presentation, keynote or workshop narrative.",
+      "where": "plugins/presentation-craft/skills/presentation-story",
+      "state": "installed",
+      "tokens": 86,
+      "last_reviewed": "2026-11-04"
+    },
+    {
       "id": "serena",
       "type": "tool",
       "kind": "plugin",
@@ -1243,6 +1287,17 @@
       "state": "installed",
       "tokens": 93,
       "last_reviewed": "2026-10-12"
+    },
+    {
+      "id": "visual-restraint",
+      "type": "tool",
+      "kind": "skill",
+      "summary": "Review rendered work for repetitive decorative patterns and generic presentation copy.",
+      "use_when": "When auditing slides or interfaces for overdesign, visual slop and formulaic copy.",
+      "where": "plugins/presentation-craft/skills/visual-restraint",
+      "state": "installed",
+      "tokens": 86,
+      "last_reviewed": "2026-11-04"
     },
     {
       "id": "2026-10-11-a-magnitude-is-not-a-switch",

@@ -20,6 +20,12 @@
       "category": "productivity"
     },
     {
+      "name": "presentation-craft",
+      "description": "Brand-neutral presentation storytelling, deck creation, design-system application and visual restraint.",
+      "source": "./plugins/presentation-craft",
+      "category": "design"
+    },
+    {
       "name": "21st",
       "description": "21st.dev UI skills and MCP. Pinned upstream: 21st-dev/claude-code-plugin.",
       "source": {
