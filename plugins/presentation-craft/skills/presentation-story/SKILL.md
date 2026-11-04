@@ -22,6 +22,10 @@ Give each part a reason to exist. Use examples, comparisons, visual explanations
 
 **Action titles are a strong default for executive, analytical and persuasive decks.** Prefer concise, specific headlines that convey a slide's point and create a useful thread through the deck. Other forms are valid for covers, questions, section breaks, quotations, data displays and visual reveals. Do not manufacture certainty or turn every heading into a full sentence merely to satisfy the technique.
 
+## Optional craft references
+
+Use `references/action-titles.md` when a claim-led headline needs shaping or evidence alignment, `references/narrative-craft.md` for consequential story structure or audience trade-offs, and `references/evidence-editorial.md` for data-heavy claims and careful editorial distinctions. Read only what the task needs. These are worked examples, not prerequisites, review forms or mandatory deliverables.
+
 ## Exercise editorial judgment
 
 - Anchor consequential figures and assertions in supplied or verifiable sources. Separate facts, interpretations, hypotheses and proposals. Never invent statistics, references, quotes or client knowledge.
