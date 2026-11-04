@@ -23,6 +23,8 @@ Maintain coherent typography, color, spacing and hierarchy. Keep meaningful bran
 
 Use visual-restraint or design-system-adapter when their expertise materially helps; neither is an automatic gate for ordinary slide work. The visual-restraint checklist is a reference for judgment, not a set of bans.
 
+When choosing between a chart, diagram, image, table or original composition, draw on the worked examples in `references/visual-reasoning.md` where helpful. It is guidance for judgment, not a required layout-selection protocol.
+
 ## Build, inspect and hand over
 
 Create the requested real files rather than describing hypothetical slides. Inspect rendered slides at presentation size when a renderer is available, including the most information-dense and most unusual compositions. Check readability, clipping, chart labels, contrast and the full sequence; repair material problems. Inspect exported files as well as editable source when possible.
