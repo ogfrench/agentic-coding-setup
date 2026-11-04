@@ -13,7 +13,7 @@ Design for the message, audience and delivery context. Use an existing brand sys
 
 Preserve supplied content, imagery, accepted decisions and the requested degree of change. Choose an appropriate medium and aspect ratio, using 16:9 only as a fallback. Respect confidentiality, licensing and the actual tools available.
 
-**Use action titles as a strong default** when an insight-led headline improves an executive, analytical or persuasive slide. Make the point concise and defensible; use labels, questions or visual-led slides where they communicate better. Do not turn this into a universal sentence pattern.
+**Use action titles as a strong default** when an insight-led headline improves an executive, analytical or persuasive slide. An action title states the supported finding, implication or recommendation, not necessarily an imperative: for example, "Service channels" names a topic, whereas "Online was used by 65 of 120 respondents" states a finding only if the data supports it. Make the point concise and defensible; use labels, questions or visual-led slides where they communicate better. Do not turn this into a universal sentence pattern.
 
 ## Make visual choices
 
