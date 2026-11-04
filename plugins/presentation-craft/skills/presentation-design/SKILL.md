@@ -13,7 +13,7 @@ Design for the message, audience and delivery context. Use an existing brand sys
 
 Preserve supplied content, imagery, accepted decisions and the requested degree of change. Choose an appropriate medium and aspect ratio, using 16:9 only as a fallback. Respect confidentiality, licensing and the actual tools available.
 
-**Use action titles as a strong default** when an insight-led headline improves an executive, analytical or persuasive slide. Make the point concise and defensible; use labels, questions or visual-led slides where they communicate better. Do not turn this into a universal sentence pattern.
+**Use action titles as a strong default** when an insight-led headline improves an executive, analytical or persuasive slide. An action title states the supported finding, implication or recommendation, not necessarily an imperative: for example, "Service channels" names a topic, whereas "Online was used by 65 of 120 respondents" states a finding only if the data supports it. Make the point concise and defensible; use labels, questions or visual-led slides where they communicate better. Do not turn this into a universal sentence pattern.
 
 ## Make visual choices
 
@@ -22,6 +22,8 @@ Use a template or design system as a starting point, then reuse, adapt or invent
 Maintain coherent typography, color, spacing and hierarchy. Keep meaningful brand signatures, even if they resemble a current design trend. Vary rhythm where the material warrants it, not to fill a variety quota. Prefer user-supplied visuals where relevant and do not silently swap them for placeholders.
 
 Use visual-restraint or design-system-adapter when their expertise materially helps; neither is an automatic gate for ordinary slide work. The visual-restraint checklist is a reference for judgment, not a set of bans.
+
+When choosing between a chart, diagram, image, table or original composition, draw on the worked examples in `references/visual-reasoning.md` where helpful. It is guidance for judgment, not a required layout-selection protocol.
 
 ## Build, inspect and hand over
 
