@@ -53,7 +53,7 @@ test("the audit finds stale nodes, old raw learnings and promotion candidates, a
 
   const later = audit(kb0, "2027-03-10");
   assert.equal(later.stalePractices.length, kb0.practices.length, "all verified on one day, all stale 120 days on");
-  assert.equal(later.staleTools.length, kb0.tools.length);
+  assert.equal(later.staleTools.length, kb0.tools.filter((t) => t.state === "installed").length);
 
   const card = path.join(t, "kb/practices/keep-ci-logs.md");
   fs.writeFileSync(card, fs.readFileSync(card, "utf8").replace("source: judgment", "derived_from: [2026-10-11-pin-ci-tool-versions-locally, 2026-10-11-conflicted-pr-runs-no-workflows]"));

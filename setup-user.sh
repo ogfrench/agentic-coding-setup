@@ -25,7 +25,8 @@ failed=()
 # Retire third-party personal plugins so their legacy hooks stop loading.
 # Detect before uninstalling to keep new-machine setup idempotent.
 for p in caveman@ogfrench ponytail@ogfrench; do
-  if claude plugin list 2>/dev/null | grep -Fq "$p"; then
+  # Consume all plugin-list output: grep -q can trigger SIGPIPE under pipefail.
+  if claude plugin list 2>/dev/null | grep -F "$p" >/dev/null; then
     claude plugin uninstall "$p" --scope user >/dev/null 2>&1 || failed+=("uninstall $p")
   fi
 done
