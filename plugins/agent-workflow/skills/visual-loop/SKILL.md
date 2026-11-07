@@ -8,6 +8,8 @@ description: >-
 
 # Visual loop
 
+For a broad or high-stakes review, read `references/inspection-rubric.md` and ground each finding in an actual render or a clearly identified structural limitation. Apply project brand rules first. Keep routine fixes lightweight; don't turn the rubric into a mandatory design ceremony.
+
 **The rule:** nobody picks a design from a description. Render the options on the real
 thing, look at every image yourself first, then show them. Build only what was picked,
 and look again at the build.
