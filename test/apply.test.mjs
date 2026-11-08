@@ -124,6 +124,40 @@ test("a hostile manifest cannot delete outside .claude/<kind>/, and a same-name 
   assert.ok(!managed.includes(".claude/skills/frogify"));
 });
 
+test("a manifest dot entry cannot delete the entire managed skill folder", () => {
+  const src = tmp();
+  write(path.join(src, "plugins/p/skills/ours/SKILL.md"), "ours");
+  write(path.join(src, "project/settings.json"), {});
+  const t = tmp();
+  write(path.join(t, ".claude/skills/mine/SKILL.md"), "not ours");
+  write(path.join(t, ".claude/claude-code-setup.json"), { copied: [".claude/skills/."] });
+  apply(t, src);
+  assert.equal(fs.readFileSync(path.join(t, ".claude/skills/mine/SKILL.md"), "utf8"), "not ours");
+});
+
+test("symlinked target settings never write outside the repository", { skip: process.platform === "win32" }, () => {
+  const src = tmp();
+  write(path.join(src, "project/settings.json"), { enabledPlugins: { example: true } });
+  const outside = tmp();
+  const external = path.join(outside, "settings.json");
+  write(external, { token: "must stay" });
+  const t = tmp();
+  fs.mkdirSync(path.join(t, ".claude"));
+  fs.symlinkSync(external, path.join(t, ".claude/settings.json"));
+  assert.throws(() => apply(t, src), /Refusing symlinked path/);
+  assert.deepEqual(read(external), { token: "must stay" });
+});
+
+test("symlinks inside shared skills are rejected before they reach downstream clones", { skip: process.platform === "win32" }, () => {
+  const src = tmp();
+  write(path.join(src, "project/settings.json"), {});
+  const dir = path.join(src, "plugins/p/skills/example");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.symlinkSync(path.join(tmp(), "external.md"), path.join(dir, "SKILL.md"));
+  const t = tmp();
+  assert.throws(() => apply(t, src), /Refusing symlinked path/);
+});
+
 test("keys in retired.json are removed from the repo, nothing else is", () => {
   const src = tmp();
   write(path.join(src, "plugins/p/skills/s/SKILL.md"), "s");
