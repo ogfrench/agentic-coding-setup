@@ -39,7 +39,7 @@ Use platform switching only for real supported experiences. If a package is stil
 ## Visual coherence without homogenization
 
 - Reuse the existing product's typography, spacing, surfaces, focus states and responsive breakpoints. Align semantic structure, interaction behavior, installation terminology and evidence standards across the family; do not make every page look like a skin of the same template.
-- Keep the primary task, preferred host and one primary action visually clear. Advanced architecture and security details remain accessible without competing with the installation path.
+- Keep one product-owned entry point, the primary task, preferred host and one primary action visually clear. Prefer an existing docs or installation route to a new portal or navigation item. Advanced details remain accessible without competing with the installation path.
 - Cards, tabs and code snippets should work with keyboard, narrow screens and copy actions where available. Match labels between navigation, destination headings and real package names.
 - Make empty, pending, error and unavailable states honest. Never invent ratings, host badges, live URLs, package binaries, test results or successful screenshots.
 - Compare real renders, not Figma-only claims; fix clipping, height imbalance, overflow, hover/focus and contrast issues before calling the visual pass done.
