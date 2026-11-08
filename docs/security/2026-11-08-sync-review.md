@@ -1,6 +1,6 @@
 # Shared Claude Code setup security review | 2026-11-08
 
-**Status:** proposed hardening for a second agent to review. This repository is the upstream source of skills, hooks and MCP configuration synced into frogViz, frogQuiz and frogConvert. A trusted upstream change can affect multiple repositories and Claude sessions; do not merge automatically.
+**Status:** proposed hardening for a second agent to review. This repository is the upstream source of skills, hooks and MCP configuration synced into downstream repositories. A trusted upstream change can affect multiple repositories and Claude sessions; do not merge automatically.
 
 ## Attack and trust boundaries
 
