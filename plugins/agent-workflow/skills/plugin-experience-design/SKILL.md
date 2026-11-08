@@ -15,14 +15,14 @@ Treat a plugin as a **task that works on a particular host**, not merely a ZIP o
 
 1. Read the repo's design tokens, existing plugin/skill/MCP manifests, packaging scripts, installation page, tests, release process and open PRs. Avoid duplicating or replacing the established system.
 2. Write a **capability/host matrix** before changing copy. For each host and edition record: what the user can do, required local/remote dependencies, where data travels, supported OS/architecture, available artifact, verification evidence and outstanding gate. Distinguish task guidance, bundled skills, local MCP, hosted MCP and a real installable package.
-3. Identify the *primary successful task* and preferred supported installation path. Keep secondary platforms available without presenting speculative parity. A downloadable package must work without repository cloning only when its **complete runtime and data dependencies** actually ship with it. A manifest alone is not an installer.
+3. Identify the *primary successful task* and preferred supported installation path. Keep secondary platforms available without presenting speculative parity. Only promise no-clone installation when **all required runtime and data dependencies** ship. A manifest alone is not an installer.
 4. Apply the shared experience contract below. Reuse product components, design tokens and language instead of creating a second mini-design-system. When two products share a distribution hub, place unrelated products in a separate, clearly labeled companion area rather than burying one inside the other's package.
 5. Implement the smallest coherent change. Preserve stable skill IDs, MCP tool names, URLs and install paths unless migration is independently approved; test old configurations if changed.
 6. Verify by actual installation and representative tasks, then inspect screenshots of the implemented page at phone and desktop widths. Use the existing visual-loop skill for visual changes. Distinguish verified, untested and blocked items in PR handover.
 
 ## Shared experience contract
 
-A page or install surface should help someone answer these questions in roughly this order. Adapt the layout to the product; not every question needs its own section.
+Use this flexible sequence:
 
 | Question | Design responsibility |
 | --- | --- |
@@ -46,7 +46,7 @@ Use platform switching only for real supported experiences. If a package is stil
 
 ## Evidence and release gates
 
-See [acceptance checklist](references/acceptance.md) when publishing, changing supported clients or claiming a ready-to-install download. The acceptance evidence should be committed or linked in the PR, not asserted from source inspection alone.
+See [acceptance checklist](references/acceptance.md) when publishing, changing supported clients or claiming a ready-to-install download. Link actual evidence in the PR.
 
 Check official host capabilities close to release. Claude Code plugins, Claude chat/Cowork uploads, ChatGPT local/remote integrations and Microsoft Copilot agents have different packaging and authorization models. Never infer portability from a shared name or `SKILL.md` file.
 
