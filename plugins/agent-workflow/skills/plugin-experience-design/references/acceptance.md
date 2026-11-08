@@ -33,6 +33,8 @@ Cases worth running:
 ## Page and copy
 
 - Product promise, primary host, installation, example prompts, limitations, update path and support state agree across landing page, package README and marketplace listing.
+- Use one existing product-owned UI entry point, avoid needless cross-product marketplaces and do not give preview-only choices equal visual weight with working paths.
+- Identify Copilot precisely: Microsoft Copilot Chat, Microsoft 365 Copilot and GitHub Copilot are distinct; a portable Markdown guide and an Excel template are not installed plugins.
 - The one main CTA reaches a **verified** artifact. Preview-only work links to source/status and never impersonates a download.
 - Mobile/desktop real screenshots show no overlaps, clipped code, missing focus indicators or blank unsupported tabs.
 - Conditional steps are labeled by host, not expressed as universal installation instructions.
