@@ -46,6 +46,7 @@
 - model-delegation (skill): Decide when to use the main agent, an on-demand skill or tool, or a measured subagent.
 - netlify-cost (skill): Estimate a Netlify site's builds, credits, edge runs and bandwidth before changing its config; ignore script, complete gate.
 - playwright (plugin): Browser automation MCP server by Microsoft: navigate, click, fill forms, take screenshots, run end-to-end flows.
+- plugin-experience-design (skill): Design and validate coherent cross-platform AI plugin installation, onboarding, capability disclosure and release UX.
 - presentation-design (skill): Create and inspect real slide files with purposeful visuals and honest export claims.
 - presentation-story (skill): Build evidence-backed presentation arguments, storylines and action titles.
 - serena (plugin): Semantic code analysis MCP server: symbol-level navigation and refactoring via language servers.
