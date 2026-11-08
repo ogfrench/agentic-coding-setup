@@ -61,6 +61,8 @@ The historic review does not itself uninstall anything; `setup-user.sh` now remo
 the sync and installation steps remain explicit.
 
 
+**AI plugin experience design.** The [`plugin-experience-design`](plugins/agent-workflow/skills/plugin-experience-design/SKILL.md) skill helps align plugin landing pages, installer packages and cross-host setup without claiming unsupported compatibility. Its [host and release checks](plugins/agent-workflow/skills/plugin-experience-design/references/acceptance.md) require clean-install proof before a download is called ready. It is synced with the other agent-workflow skills; running the setup script also installs it at user scope.
+
 **Agent-ready knowledge bases.** The `knowledge-base-builder` skill documents source-native ingestion, source metadata, scoped retrieval, hybrid ranking, MCP contracts, freshness, privacy and evaluation. Use it to add knowledge retrieval to a repo without replacing its own sources. See [`SKILL.md`](plugins/agent-workflow/skills/knowledge-base-builder/SKILL.md) and its detailed references. It does not automatically index other repositories or activate a remote service.
 
 ## Adding things
