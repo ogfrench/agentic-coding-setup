@@ -95,7 +95,7 @@ sync_one() {
   done <<<"$managed"
 
   if [[ -f "$dir/CHANGELOG.md" ]] && grep -q '^## Unreleased' "$dir/CHANGELOG.md" \
-     && ! grep -q 'ogfrench/agentic-coding-setup' "$dir/CHANGELOG.md"; then
+     && ! grep -Eq 'ogfrench/(claude-code-setup|agentic-coding-setup)' "$dir/CHANGELOG.md"; then
     node -e '
       const fs = require("fs"), f = process.argv[1];
       const day = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" });
