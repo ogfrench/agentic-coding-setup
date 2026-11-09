@@ -1,8 +1,8 @@
 ---
 name: session-continuity
 description: >-
-  Keep long work alive across compactions and new sessions: state in durable
-  places, the work checked against the plan, open points raised.
+  Own multi-step coding work through PR checklists, CI recovery, evidence and
+  handover. Use for autonomous delivery, getting work done and session continuity.
 ---
 
 # Session continuity
@@ -48,6 +48,12 @@ as steps finish, fail, or change; do not defer updates until the end of a sessio
 
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
+
+## Execute, don't just plan
+
+For authorized multi-step work, advance the next checklist item, diagnose
+failures at their source, and verify the final head. Escalate when authority or
+required evidence is missing. See the [delivery loop](references/pr-progress.md#delivery-loop).
 
 ## Record the user's words
 
