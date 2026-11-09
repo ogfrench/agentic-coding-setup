@@ -18,3 +18,5 @@ graders are diagnostic in two-arm runs, not evidence that output improved.
 Reports under `evals/results/` stay local and must not enter this public repo.
 
 Documentation: https://code.claude.com/docs/en/plugin-evals
+
+Delivery Loop cases: `claude plugin eval . --case 'delivery-loop-positive' --runs 1 --no-publish --max-cost-usd 5` and the negative/ambiguous fixtures. Compare task-level outcomes against the same task with the skill disabled; these checked-in prompts are **not** live results.
