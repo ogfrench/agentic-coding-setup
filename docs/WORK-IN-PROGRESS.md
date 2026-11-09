@@ -22,6 +22,8 @@ This is the durable handover for the current cross-platform workflow plugin work
 - [x] Verified private ChatGPT v0.1.1 release manifest and the four skill files match the PR source byte for byte, through the plugin owner file API and GitHub reads. Package remains private; no public release.
 - [x] Completed source-grounded [portable plugin review](portable-workflow-adversarial-review-2026-11-09.md). No high-severity finding in the package surface; authenticated behavior remains untested.
 
+- [x] User-facing [portable plugin README](../portable/ogfrench-workflow/README.md) now has distinct, actionable Claude Code, private ChatGPT and local desktop/Codex installation paths, plus uninstall and limits. [Host contract](portable-workflow-plugin.md) now documents version/source update boundaries, plugin overlap, troubleshooting, rollback and acceptance evidence. No runtime code changed.
+
 ## Pending or blocked
 
 - [ ] Authenticated Claude skill invocation and uninstall in supported real desktop/cloud host, plus Windows/macOS coverage. Do not treat CLI installation as behavioral proof.
@@ -52,3 +54,5 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 
 - 2026-11-09: Added four positive and one negative evaluation case, fixed regex matching, and verified [CI 42588276794](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588276794).
 - 2026-11-09: Added executable/symlink/manifest security checks. [CI 42588593580](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588593580) passed. Private ChatGPT v0.1.1 source parity independently checked. Added [adversarial review](portable-workflow-adversarial-review-2026-11-09.md); behavioral host tests still pending.
+
+- 2026-11-09: Documentation release-readiness audit identified unclear first-install instructions, private plugin versus local marketplace ambiguity and missing upgrade/troubleshooting details. Updated portable README and host contract. CI recheck pending at time of this scratchpad update.
