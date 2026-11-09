@@ -10,7 +10,7 @@ The existing `agent-workflow`, `frog-writing` and `presentation-craft` plugins a
 
 | Capability | Claude Code | ChatGPT / Codex |
 | --- | --- | --- |
-| Four review and setup-audit skills | Packaged, host acceptance pending | Packaged, host acceptance pending |
+| Four review and setup-audit skills | Strict manifest validation and isolated Linux install/list/uninstall passed; live task activation pending | Private v0.1.1 import and source parity passed; controlled task evaluation pending |
 | Read GitHub files, PRs, CI | Only with available/authenticated tools | Only with available/authenticated GitHub app/tools |
 | Inspect local code and render UI | Only when a filesystem/browser is available | Only in supported desktop/Work/Codex environments |
 | Original 3 first-party plugins and third-party plugins | Existing setup remains separate | Not provided |
@@ -33,6 +33,30 @@ Host tests should attempt: (1) a source-grounded PR risk assessment, (2) a real 
 4. Capture live installation and task evidence. Publish only when those checks pass. Do not auto-merge PRs or bypass `agent-workflow` 1.9.0 and sync security reviews.
 
 Rollback: uninstall the companion plugin in the relevant host. No existing setup files or downstream repositories should have been modified by the plugin itself.
+
+## Installation surfaces and update boundaries
+
+Use the [plugin's README](../portable/ogfrench-workflow/README.md) as the end-user entry point. The two installation routes are different:
+
+- **Claude Code:** use a local checkout of the feature branch, add its marketplace and install `ogfrench-workflow@ogfrench`. The isolated Linux CI install/list/uninstall passed. It is an *optional* plugin, not part of `setup-user.sh`, and a GitHub PR does not install it on existing machines.
+- **ChatGPT:** the creator has a private uploaded plugin v0.1.1. People without access cannot discover or install it merely from the GitHub URL. A plugin owner can update it through Plugin Creator, or an eligible workspace administrator can import an archive under workspace policy. Plugin installation does not grant separate app or repository access.
+- **ChatGPT desktop/Work/Codex local marketplace:** the repo's `.agents/plugins/marketplace.json` is a developer preview source read from a checkout in a supported environment. It is not a replacement for the privately uploaded plugin or automatic global installation.
+
+**Versioning:** keep the root portable `plugin.json` and `.claude-plugin/plugin.json` versions aligned. When updating the private ChatGPT release, verify its manifest and four skill files against the exact GitHub commit, record the new plugin release/version in the PR, and re-run the same tests. Do not claim that a GitHub merge, local marketplace edit, or updated ZIP changes an already installed private release automatically.
+
+**Skill overlap:** `adversarial-review` intersects with the existing agent-workflow's `best-practices` and code review patterns; `implementation-proof` intersects with `visual-loop`; the new release skill overlaps operational handover guidance. This is intentional portability, **not** evidence of improved routing. Test false positive activations and compare output quality with the existing plugins before installing both by default.
+
+## Troubleshooting and rollback
+
+If Claude Code cannot locate the companion, verify the checkout is on the correct branch, `claude plugin list` shows the namespaced plugin, and the `ogfrench` marketplace points to that checkout. Review effective user, project and managed settings; settings precedence and project trust can affect marketplace discovery. Do not overwrite a user's marketplace configuration to force a match. For a broken or unexpected installation, uninstall `ogfrench-workflow@ogfrench` at the same scope.
+
+If ChatGPT cannot find it, verify the correct account/workspace, access to the *private* plugin, and whether it is installed. For a local marketplace, verify the repo workspace path and restart the supported desktop app. Neither a local marketplace file nor a successful archive import proves it is installed on every ChatGPT surface. Disable or uninstall the companion through Plugins where available, and use the existing Claude setup unchanged.
+
+A rollback never means deleting `.claude/claude-code-setup.json` or rewriting downstream repositories. Removing this optional plugin should leave hooks, project settings, MCP configuration and existing plugin installations untouched.
+
+## Evidence required for final release
+
+Record the exact version and head SHA, successful Linux CI run, actual CLI/host platform and version, interactive skill invocations, with/without plugin task outcomes, false activation cases, permissions and uninstall output. Windows and macOS must be verified independently or explicitly excluded from the supported set. Store account-specific and private evaluation logs outside the public repository. Never infer a pass from evaluation fixture presence.
 
 ## Behavioral verification
 
