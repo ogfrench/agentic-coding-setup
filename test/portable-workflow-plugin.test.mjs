@@ -44,3 +44,29 @@ test("local ChatGPT marketplace targets the exact portable plugin", () => {
   assert.equal(item.policy.installation, "AVAILABLE");
   assert.equal(item.source.source, "local");
 });
+
+test("portable evaluation fixtures cover all skills and one unrelated request", () => {
+  const cases = readdirSync(resolve(root, "evals"), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  assert.deepEqual(cases.sort(), [
+    "actual-ui-proof", "adversarial-copy", "release-claims", "setup-boundaries", "unrelated-task"
+  ]);
+  const routes = new Map([
+    ["actual-ui-proof", "implementation-proof"],
+    ["adversarial-copy", "adversarial-review"],
+    ["release-claims", "release-handover"],
+    ["setup-boundaries", "setup-audit"]
+  ]);
+  for (const name of cases) {
+    const prompt = read(`evals/${name}/prompt.md`);
+    assert.match(prompt, /^---\nmax_turns: [1-9]/);
+    assert.match(prompt, /allowed_tools: \[Skill\]/);
+    if (routes.has(name)) {
+      assert.match(read(`evals/${name}/graders/quality.md`), /PASS[\s\S]*FAIL/);
+      assert.ok(read(`evals/${name}/graders/skill-used.md`).includes(routes.get(name)));
+    } else {
+      assert.match(read(`evals/${name}/graders/no-skill.md`), /min: 0\nmax: 0/);
+    }
+  }
+});

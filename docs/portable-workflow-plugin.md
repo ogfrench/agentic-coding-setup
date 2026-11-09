@@ -33,3 +33,21 @@ Host tests should attempt: (1) a source-grounded PR risk assessment, (2) a real 
 4. Capture live installation and task evidence. Publish only when those checks pass. Do not auto-merge PRs or bypass `agent-workflow` 1.9.0 and sync security reviews.
 
 Rollback: uninstall the companion plugin in the relevant host. No existing setup files or downstream repositories should have been modified by the plugin itself.
+
+## Behavioral verification
+
+The portable package includes five evaluation cases under `portable/ogfrench-workflow/evals/`: one per skill plus one unrelated task that should not trigger any of them. The cases have explicit skill-routing and task-quality graders. They are not automatically executed in CI because they require authenticated model usage and create cost.
+
+The Linux CI clean-config smoke test adds the local marketplace, installs `ogfrench-workflow@ogfrench`, verifies it appears in the plugin list, and uninstalls it. This establishes installation mechanics, not successful real task invocation or Windows/macOS compatibility.
+
+On an authorized Claude Code host with a checkout of the feature branch:
+
+```sh
+claude plugin marketplace add ./
+claude plugin install ogfrench-workflow@ogfrench --scope user
+claude plugin list
+claude plugin eval portable/ogfrench-workflow --runs 3 --no-publish --max-cost-usd 30
+claude plugin uninstall ogfrench-workflow@ogfrench --scope user
+```
+
+Use a disposable `CLAUDE_CONFIG_DIR` when checking a clean install. Record the CLI version, environment, model, actual invocation, with/without outcomes and any false skill activation. Do not claim task quality or release readiness until those results exist.
