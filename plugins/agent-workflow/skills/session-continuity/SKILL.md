@@ -1,8 +1,8 @@
 ---
 name: session-continuity
 description: >-
-  Keep long work alive across compactions and new sessions: state in durable
-  places, the work checked against the plan, open points raised.
+  Own multi-step coding work through PR checklists, CI recovery, evidence and
+  handover. Use for autonomous delivery, getting work done and session continuity.
 ---
 
 # Session continuity
@@ -48,6 +48,46 @@ as steps finish, fail, or change; do not defer updates until the end of a sessio
 
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
+
+## Execute through completion, within scope
+
+When asked to implement, fix, finish or work autonomously, do the next authorized
+action rather than stopping at a plan or repeatedly asking for already-decided
+details. The PR checklist tracks progress; it does not replace execution.
+
+1. **Establish the actual task.** Read current code, tests, branch, open PRs,
+   repository rules and prior decisions. State the outcome, constraints, relevant
+   risks and concrete completion checks. Reuse an existing PR where it owns the
+   work; do not create a second tracker or orchestrator.
+2. **Work the checklist.** Do a small, coherent batch, inspect the real output,
+   run appropriate regression and user-journey checks, then update the live PR
+   with what passed, failed or remains blocked. Prefer fixing the owning layer
+   to workarounds. Respect changes by parallel agents.
+3. **Treat failures as a diagnostic branch, not a stopping point.** Inspect
+   workflow and job states before changing code. A run with no jobs or logs
+   may be blocked by billing, policy, permissions, concurrency or platform
+   scheduling; a job with logs needs its own root-cause analysis. Fix what
+   evidence identifies, then verify a new run on the relevant head.
+4. **Continue safely.** If one external dependency blocks a task, complete
+   independent authorized work and record the owner and exact next action.
+   Do not spend repeatedly on non-actionable retries, fake a green check,
+   lower verification gates or silently widen scope.
+5. **Finish the agreed outcome.** Re-read the final diff, exact head, live
+   check conclusions and unresolved review threads. Merge, deploy, publish
+   or close issues only within authority and repository gates. Record
+   implementation, tests, host checks and release state separately.
+
+Use the relevant existing skill only when it contributes: `best-practices`
+for learned rules, `product-passport` for real feature journeys,
+`actions-cost` for CI spending and no-run failures, `issue-management`
+for ownership, and `learning-loop` for durable lessons. Do not chain
+skills just to demonstrate that they were used.
+
+**Stop or escalate** when authority is missing for a sensitive action,
+required access or evidence cannot be obtained, an irreversible change
+is unapproved, or the only remaining work depends on an external decision.
+Never promise later progress without a real scheduled automation. Report
+what is completed now, what is blocked, why and who can unblock it.
 
 ## Record the user's words
 
