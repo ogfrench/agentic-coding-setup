@@ -10,13 +10,13 @@ This is the durable handover for the current cross-platform workflow plugin work
 - [x] Superseded rename PR #48 closed without merge. The existing migration on `main` already covers its functionality.
 - [x] Approved reviewed-update policy implemented and merged in PR #50, commit `f9768f5cf976d155ed341c278d19a3917f5ef081`. The shared `ogfrench` marketplace disables `autoUpdate` and the copier migrates only the managed legacy entry. [Full CI pass](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42586502314).
 - [x] Draft PR #47 contains the optional portable workflow plugin, four skills, both platform manifests, explicit Claude validation in CI, and documentation aligned with the rename and security changes. Version in source: `0.1.1`.
-- [x] Private ChatGPT plugin created and updated to `0.1.1`; importer accepted the package. This proves package acceptance, **not** task success in all ChatGPT environments.
+- [x] Private ChatGPT plugin created and updated to `0.1.1`; importer accepted the package. Local ZIP inspected: exactly one v0.1.1 manifest, four skills, one README, and canonical repo URL. This proves package acceptance, **not** task success in all ChatGPT environments.
 - [x] Preserved `.claude/claude-code-setup.json` and `chore/claude-code-setup` downstream PR branch identity for backwards compatibility.
 
 ## Pending or blocked
 
-- [ ] **Integrate PR #47 with latest `main` without losing PR history or reverting security changes.** Branch currently diverged; GitHub reports not mergeable. Re-run exact-head CI after integration.
-- [ ] Verify the new explicit portable Claude validation step in CI on the integrated commit.
+- [x] **Integrated PR #47 with secured `main` without dropping branch history or reverting security changes.** Merge commit `420af45b0b65cc7ebd617192b3d30e90db3de7af` includes `main` `f9768f5cf976d155ed341c278d19a3917f5ef081`; compare result: ahead with zero commits behind.
+- [x] Verified explicit portable Claude validation on integration commit: [check run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) completed successfully. Also passed Node tests, public-tree/commit checks, root and local Claude plugin validation, and empty-repo apply dry run.
 - [ ] Clean-host Claude Code marketplace install, skill invocation, and uninstall test. Do not call this host-verified from static validation alone.
 - [ ] Compare ChatGPT and Claude task outcomes with and without the plugin, including false skill activation and missing tool boundaries.
 - [ ] Check higher-precedence local/managed settings and actual installed `autoUpdate` behavior. Existing downstream copies change only on separately reviewed sync.
@@ -26,9 +26,9 @@ This is the durable handover for the current cross-platform workflow plugin work
 
 ## Next steps
 
-1. Integrate PR #47 against the current protected `main` and verify GitHub checks on the final SHA.
-2. Review the exact diff for duplicated Claude skills, permission or network changes, privacy and source provenance.
-3. Run independent Claude host acceptance and ChatGPT baseline tests.
+1. Independently review the current PR #47 exact diff for duplicate skill routing, privacy, permissions, and source provenance.
+2. Run Claude Code clean-host install, invoke a representative skill, and uninstall; record actual CLI output and host version.
+3. Run ChatGPT routing and task-quality checks against a no-plugin baseline; the private package import alone is not proof of quality.
 4. Record host outcomes and rollback evidence in PR #47, then decide on merge and release separately.
 
 ## Scope guard
@@ -37,4 +37,5 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 
 ## Change log
 
-- 2026-11-09: Scratchpad created after repo rename, merged security/update changes and portable v0.1.1 private import. Branch integration and host checks remain open.
+- 2026-11-09: Scratchpad created after repo rename, merged security/update changes and portable v0.1.1 private import.
+- 2026-11-09: Integrated secured `main` into PR #47 using merge commit `420af45b...`; [CI run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) fully green including the explicit portable Claude plugin validator. Private v0.1.1 ZIP inspected; host acceptance still pending.
