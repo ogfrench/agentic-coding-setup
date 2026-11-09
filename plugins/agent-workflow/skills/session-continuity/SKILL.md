@@ -26,9 +26,33 @@ Put each kind of state in the one place built for it, at the moment it changes:
 | Work in progress | a commit on a pushed branch, not a dirty tree |
 | Where things are | worktree paths, branches, how to run the checks: `CLAUDE.md` or the tracker |
 
-Tick the tracker when a PR merges or a question is answered, not at the end of the day. A
-tracker one step behind is the one the next summary trusts. Before starting work, read the
-open issues; when work closes or changes one, update it in the same step.
+When a PR exists, keep its description authoritative for the current work. An issue tracks
+broader scope and follow-ups, not a competing copy of the PR's status. Update the checklist
+as steps finish, fail, or change; do not defer updates until the end of a session.
+
+## PR-first execution checklist
+
+1. Before substantive repository work, write a short ordered checklist of outcomes and
+   proof, even for a one-file fix. Use the issue or working plan until a PR exists; then put
+   the checklist in the PR description. Replace template placeholders with actual tasks.
+2. Keep one status per task: unchecked means open, blocked, or not proven. Check it only
+   after inspecting the result and recording specific evidence. A commit, CI run, or
+   self-authored description alone does not prove user behavior.
+3. After each meaningful checkpoint, re-read the code, PR head, checks and review threads;
+   update the PR checklist with completed work, failures and next action. If a later change
+   invalidates proof, reopen the box and rerun the affected verification.
+4. At handover, record the exact branch and commit, implemented versus tested versus
+   deployed state, commands and outcomes, open reviews, blockers, risks, decisions,
+   ownership, and the immediate next step. Keep this in the PR, not only in chat.
+5. Before requesting review or merge, reconcile every acceptance item and required gate.
+   Never silently drop or check an incomplete item. Transfer explicitly deferred work to
+   a linked owning issue with approval; keep release-blocking items open.
+
+Follow [PR progress and handover](references/pr-progress.md) for the compact format and
+multi-agent update rules. Respect stricter project and release rules; a checklist is not
+permission to merge or deploy.
+
+
 
 ## Record the user's words
 
