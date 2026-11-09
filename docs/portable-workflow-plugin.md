@@ -17,22 +17,13 @@ The existing `agent-workflow`, `frog-writing` and `presentation-craft` plugins a
 | Claude hooks, SessionStart, agents and commands | Existing setup remains separate | Not portable |
 | Repo sync, personal secrets, MCP server installation | Not performed by this plugin | Not performed by this plugin |
 
-## Install and test
+## Documentation map
 
-For a Claude Code local test, register the repository marketplace and install `ogfrench-workflow@ogfrench` from the matching branch or release. The root marketplace lists it as an optional plugin. Do **not** add it to the existing `setup-user.sh` copy loop: this companion is intentionally outside `plugins/*`.
-
-For a ChatGPT or Codex local test, use `.agents/plugins/marketplace.json` with the repository checkout and restart the supported desktop app. Alternatively, archive the `portable/ogfrench-workflow` directory by itself and import it with Plugin Creator as a private skills-only plugin. The archive must have one plugin root. An uploaded private package is not a public release.
-
-Host tests should attempt: (1) a source-grounded PR risk assessment, (2) a real UI implementation review that refuses fake screenshots, (3) a release handover with live links and explicit unverified steps, and (4) an audit that recognizes missing local tool permissions. Run the same tasks without the plugin and compare result quality, triggering and false activations.
-
-## Before release
-
-1. Run repository `node --test` and verify the manifest/test assertions.
-2. Test clean-install and uninstall on Claude Code and ChatGPT; verify both host surfaces separately.
-3. Review every permission, source, data path and external dependency. The package must remain skills-only with no startup hook, installer, token or bundled data.
-4. Capture live installation and task evidence. Publish only when those checks pass. Do not auto-merge PRs or bypass `agent-workflow` 1.9.0 and sync security reviews.
-
-Rollback: uninstall the companion plugin in the relevant host. No existing setup files or downstream repositories should have been modified by the plugin itself.
+- [Plugin README](../portable/ogfrench-workflow/README.md): choose one installation route and follow its uninstall instructions.
+- [Release acceptance](portable-workflow-acceptance.md): exact test procedure, evidence template and go/no-go decision criteria.
+- [Behavioral evaluation fixtures](../portable/ogfrench-workflow/evals/README.md): repeatable, paid/authenticated task evaluations, **not** automatically-run CI.
+- [Working scratchpad](WORK-IN-PROGRESS.md): completed work, pending host checks and continuation details.
+- [Adversarial review](portable-workflow-adversarial-review-2026-11-09.md): current threat boundaries, findings and residual risk.
 
 ## Installation surfaces and update boundaries
 
@@ -42,9 +33,13 @@ Use the [plugin's README](../portable/ogfrench-workflow/README.md) as the end-us
 - **ChatGPT:** the creator has a private uploaded plugin v0.1.1. People without access cannot discover or install it merely from the GitHub URL. A plugin owner can update it through Plugin Creator, or an eligible workspace administrator can import an archive under workspace policy. Plugin installation does not grant separate app or repository access.
 - **ChatGPT desktop/Work/Codex local marketplace:** the repo's `.agents/plugins/marketplace.json` is a developer preview source read from a checkout in a supported environment. It is not a replacement for the privately uploaded plugin or automatic global installation.
 
-**Versioning:** keep the root portable `plugin.json` and `.claude-plugin/plugin.json` versions aligned. When updating the private ChatGPT release, verify its manifest and four skill files against the exact GitHub commit, record the new plugin release/version in the PR, and re-run the same tests. Do not claim that a GitHub merge, local marketplace edit, or updated ZIP changes an already installed private release automatically.
+**Versioning:** local marketplace installations use an installed cache snapshot; refresh or reinstall and start a new chat after source changes. The private ChatGPT release is updated separately through Plugin Creator and must be verified against the same reviewed commit. Keep the root portable `plugin.json` and `.claude-plugin/plugin.json` versions aligned. When updating the private ChatGPT release, verify its manifest and four skill files against the exact GitHub commit, record the new plugin release/version in the PR, and re-run the same tests. Do not claim that a GitHub merge, local marketplace edit, or updated ZIP changes an already installed private release automatically.
 
 **Skill overlap:** `adversarial-review` intersects with the existing agent-workflow's `best-practices` and code review patterns; `implementation-proof` intersects with `visual-loop`; the new release skill overlaps operational handover guidance. This is intentional portability, **not** evidence of improved routing. Test false positive activations and compare output quality with the existing plugins before installing both by default.
+
+## Installation state and provenance
+
+The local ChatGPT/Codex marketplace makes the plugin discoverable in supported environments, but the installed copy is cached and is not automatically refreshed by a Git checkout. After updating the repository, refresh/reinstall the local plugin, restart the desktop app if needed, and start a new chat. The uploaded private ChatGPT release uses an independent plugin identity and release history. Record the installed source, release and version in [the acceptance record](portable-workflow-acceptance.md), not just the GitHub commit. Source: [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins).
 
 ## Troubleshooting and rollback
 
@@ -56,7 +51,7 @@ A rollback never means deleting `.claude/claude-code-setup.json` or rewriting do
 
 ## Evidence required for final release
 
-Record the exact version and head SHA, successful Linux CI run, actual CLI/host platform and version, interactive skill invocations, with/without plugin task outcomes, false activation cases, permissions and uninstall output. Windows and macOS must be verified independently or explicitly excluded from the supported set. Store account-specific and private evaluation logs outside the public repository. Never infer a pass from evaluation fixture presence.
+Use the [release acceptance record](portable-workflow-acceptance.md) for exact-head provenance, each host result, with/without behavior, platform support, and rollback. Keep private logs outside the public repository. A validated fixture, a successful import and a live test are separate statuses.
 
 ## Behavioral verification
 

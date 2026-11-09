@@ -24,6 +24,8 @@ This is the durable handover for the current cross-platform workflow plugin work
 
 - [x] User-facing [portable plugin README](../portable/ogfrench-workflow/README.md) now has distinct, actionable Claude Code, private ChatGPT and local desktop/Codex installation paths, plus uninstall and limits. [Host contract](portable-workflow-plugin.md) now documents version/source update boundaries, plugin overlap, troubleshooting, rollback and acceptance evidence. No runtime code changed.
 
+- [x] Reconciled installation documentation with current OpenAI plugin guidance. Local marketplace installations use a cache, so checkout changes need an explicit refresh/reinstall and a new-chat check; private uploaded releases have an independent update path. Added [release acceptance record](portable-workflow-acceptance.md) with host-by-host evidence, test outcomes, rollback and explicit PASS/FAIL/BLOCKED/WAIVED decisions. Consolidated repeated host documentation. No code or release behavior changed.
+
 ## Pending or blocked
 
 - [ ] Authenticated Claude skill invocation and uninstall in supported real desktop/cloud host, plus Windows/macOS coverage. Do not treat CLI installation as behavioral proof.
@@ -56,3 +58,5 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 - 2026-11-09: Added executable/symlink/manifest security checks. [CI 42588593580](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588593580) passed. Private ChatGPT v0.1.1 source parity independently checked. Added [adversarial review](portable-workflow-adversarial-review-2026-11-09.md); behavioral host tests still pending.
 
 - 2026-11-09: Documentation release-readiness audit identified unclear first-install instructions, private plugin versus local marketplace ambiguity and missing upgrade/troubleshooting details. Updated portable README and host contract. Documentation change and scratchpad recheck [CI run 42589583291](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42589583291) passed on commit `fe46fffd576ca403355c86bab878df15c9a6794d`.
+
+- 2026-11-09: Documentation improvement pass: separated local marketplace cache refresh from private uploaded plugin updates, added release acceptance template and exact gates, removed duplicated install sections and linked from the root and plugin READMEs. CI for these edits to be recorded after completion.

@@ -10,3 +10,5 @@ claude plugin eval portable/ogfrench-workflow --runs 3 --no-publish --max-cost-u
 ```
 
 Record exact model/CLI version, with/without scores, false activations, tool availability, and total model cost. Keep reports and private prompts out of this public repository. A valid eval fixture is not evidence that the live evaluation passed.
+
+The host pass/fail criteria and required evidence fields are maintained in the [release acceptance record](../../../docs/portable-workflow-acceptance.md). Use a fresh installed plugin and a fresh no-plugin session, and report both arms. A failed or unavailable authenticated run is not a green result.

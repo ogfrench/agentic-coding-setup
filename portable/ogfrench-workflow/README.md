@@ -35,7 +35,9 @@ If you already have access to that private plugin, open **Plugins** in ChatGPT a
 
 For development on a supported ChatGPT desktop/Work or Codex environment, the repository also contains `.agents/plugins/marketplace.json`, a *local* marketplace that points to this directory. Open a checkout of the branch as a workspace, restart the desktop app if needed, select the local marketplace in Plugins, and install the companion there. This is not the same as the private uploaded ChatGPT plugin or a public listing.
 
-To update an owned private ChatGPT package, build/import a new version with Plugin Creator and verify the released files match the GitHub source. Publishing a commit or editing the local marketplace does not automatically update the privately imported release.
+**Local marketplace refresh:** The desktop host installs a copy of the plugin into its cache. Editing `portable/ogfrench-workflow/` does not automatically reload that installed copy. Refresh or reinstall the plugin from the marketplace, restart the desktop app when required, then **start a new chat** and verify behavior against the intended source. See [OpenAI's packaging and local-marketplace guidance](https://developers.openai.com/plugins/build/plugins). The local `ogfrench-local` marketplace is a different distribution from the private uploaded plugin.
+
+**Private uploaded release:** To update an owned ChatGPT plugin, upload the new version to the *same plugin identity* with Plugin Creator, then inspect the release's manifest and four skills against the reviewed GitHub commit. Existing chats may not reload changed content; test in a new chat. A GitHub commit, marketplace refresh or ZIP on disk does not automatically update an uploaded release.
 
 ## Verification, limitations and rollback
 
@@ -44,6 +46,6 @@ To update an owned private ChatGPT package, build/import a new version with Plug
 - **Not included:** Claude hooks, subagents, commands, MCP installation, third-party plugins, account settings, automatic sync, or credentials.
 - **Rollback:** uninstall/disable the optional companion in the relevant host. It does not migrate or replace the existing setup.
 
-For current evidence, test instructions, and release blockers, see the [host contract](../../docs/portable-workflow-plugin.md), [adversarial review](../../docs/portable-workflow-adversarial-review-2026-11-09.md), and [working scratchpad](../../docs/WORK-IN-PROGRESS.md).
+For release criteria and the evidence-record template, see [release acceptance](../../docs/portable-workflow-acceptance.md). For current evidence, test instructions, and blockers, see the [host contract](../../docs/portable-workflow-plugin.md), [adversarial review](../../docs/portable-workflow-adversarial-review-2026-11-09.md), and [working scratchpad](../../docs/WORK-IN-PROGRESS.md).
 
 Official references: [Claude Code settings and precedence](https://code.claude.com/docs/en/settings), [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins), and [ChatGPT plugin installation](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt).
