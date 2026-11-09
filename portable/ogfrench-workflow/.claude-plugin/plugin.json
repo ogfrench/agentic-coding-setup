@@ -1,0 +1,8 @@
+{
+  "name": "ogfrench-workflow",
+  "version": "0.1.1",
+  "description": "Companion workflows for auditing your AI setup, reviewing real implementations, and preparing defensible releases.",
+  "author": {
+    "name": "ogfrench"
+  }
+}

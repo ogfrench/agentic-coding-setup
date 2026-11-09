@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ogfrench-workflow",
+  "version": "0.1.1",
+  "description": "Evidence-led code and design reviews, safe release decisions, and maintenance of a shared AI workflow.",
+  "author": {
+    "name": "ogfrench",
+    "url": "https://github.com/ogfrench"
+  },
+  "repository": "https://github.com/ogfrench/agentic-coding-setup",
+  "keywords": [
+    "code-review",
+    "design-review",
+    "release-readiness",
+    "workflow"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ogfrench Workflow",
+        "shortDescription": "Review implementation evidence and ship deliberately.",
+        "longDescription": "Reusable, tool-agnostic workflows for setup audits, adversarial reviews, real implementation visuals, and release handovers.",
+        "developerName": "ogfrench",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Audit this repository and identify the highest-risk release blockers.",
+          "Review the actual UI implementation and show evidence for design findings.",
+          "Prepare an evidence-based release handover with exact PR and CI links."
+        ]
+      }
+    }
+  }
+}

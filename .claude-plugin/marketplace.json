@@ -26,6 +26,12 @@
       "category": "design"
     },
     {
+      "name": "ogfrench-workflow",
+      "description": "Portable companion for setup auditing, adversarial review, real UI evidence and release handover.",
+      "source": "./portable/ogfrench-workflow",
+      "category": "productivity"
+    },
+    {
       "name": "21st",
       "description": "21st.dev UI skills and MCP. Pinned upstream: 21st-dev/claude-code-plugin.",
       "source": {
