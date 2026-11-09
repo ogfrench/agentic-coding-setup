@@ -19,7 +19,7 @@ Put each kind of state in the one place built for it, at the moment it changes:
 | State | Durable home |
 | --- | --- |
 | The plan for the current step | a plan file, one per step |
-| What is done, what is next, what waits on whom | a tracker issue with checkboxes |
+| What is done, what is next, what waits on whom | the live PR description checklist; an issue or plan file before a PR exists |
 | A decision and its reason | the project's decision log, with the user's words and the date |
 | A rule that keeps holding | the project's `CLAUDE.md` |
 | What changed | the changelog and the commit messages |
