@@ -11,14 +11,14 @@ An optional four-skill companion to [agentic-coding-setup](https://github.com/og
 
 These are instructions executed within the current host's permissions. **They do not grant GitHub, browser, filesystem or MCP access.** The original Claude plugins, personal settings, hooks and repo sync stay separate.
 
-## Claude Code: test this branch
+## Claude Code: install from reviewed source
 
 Isolated **Linux** CI has installed, listed and uninstalled the plugin successfully; authenticated skill execution, macOS and Windows remain unverified.
 
 ```sh
 git clone https://github.com/ogfrench/agentic-coding-setup.git
 cd agentic-coding-setup
-git switch feat/cross-platform-workflow-plugin-2026-11-09
+git switch main
 claude plugin validate portable/ogfrench-workflow --strict
 claude plugin marketplace add ./
 claude plugin install ogfrench-workflow@ogfrench --scope user

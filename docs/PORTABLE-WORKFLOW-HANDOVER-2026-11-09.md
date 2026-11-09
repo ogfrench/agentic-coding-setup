@@ -2,9 +2,9 @@
 
 ## Decision and state
 
-**HOLD for broad release.** The repository rename and shared setup security changes are on protected `main`. The optional cross-platform companion remains in **[draft PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47)**, version **0.1.1**. Static package checks, Linux CLI installation/removal, and private ChatGPT package import have succeeded. Authenticated task-level effectiveness, desktop refresh, Windows and macOS acceptance have **not** been established.
+**Point-in-time source handover. Broad host release remains HOLD.** The repository rename and shared setup security changes are on protected `main`. The optional cross-platform companion remains in **[draft PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47)**, version **0.1.1**. Static package checks, Linux CLI installation/removal, and private ChatGPT package import have succeeded. Authenticated task-level effectiveness, desktop refresh, Windows and macOS acceptance have **not** been established.
 
-This document is a resumption handover, not a release certificate. Recheck the exact PR head and its latest GitHub Actions run before treating any CI claim as current.
+**Status update:** PR #47 later merged as an optional source preview (`22e7ebd1b0121ad567b0bfa45d82618210e8ae2e`). See [the release inventory](releases/2026-11-09.md) for current source state. The historical host gaps below remain open. This document is not a release certificate. Recheck the exact PR head and its latest GitHub Actions run before treating any CI claim as current.
 
 ## Repository and change inventory
 
