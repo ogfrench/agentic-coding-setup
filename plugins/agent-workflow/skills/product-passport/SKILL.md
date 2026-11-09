@@ -32,6 +32,7 @@ The detailed overview and feature templates are in [feature contract](references
 ## Boundaries with other skills
 
 - Use `visual-loop` for actual rendered UI/slide inspection and option comparisons. Product Passport selects the feature journey and records proof; it does not replace visual judgment.
+- Use `architecture-gardener` for structural drift, recurring workaround patterns and justified ownership-boundary repairs. Product Passport remains responsible for feature navigation, real behavioral proof and updating the product map when a repair changes capabilities.
 - Use `plugin-experience-design` for installation, host compatibility, and downloadable plugin acceptance.
 - Use `learning-loop` for reusable lessons, and `best-practices` for existing engineering rules. Keep private project evidence out of this public skill and its examples.
 - Use independent adversarial review where consequential. Existing product release gates, human authorization, and deployed-revision checks remain authoritative.
