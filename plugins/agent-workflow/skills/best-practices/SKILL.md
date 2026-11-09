@@ -1,8 +1,8 @@
 ---
 name: best-practices
 description: >-
-  Read learned engineering practices for testing, data, security, UI, CI and agents.
-  Use for best practices, regressions, races, authorization, CI and delegation.
+  Learned practices for tests, data, security, UI, CI and agents.
+  Use for domain changes or best-practice questions.
 ---
 
 # Best practices

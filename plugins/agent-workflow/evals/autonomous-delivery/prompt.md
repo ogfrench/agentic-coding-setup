@@ -3,4 +3,4 @@ max_turns: 10
 allowed_tools: [Skill]
 ---
 
-A developer has authorized you to finish a set of documentation-only pull requests in a trusted repository. Earlier CI runs reported failure but created zero jobs; the account owner has just adjusted the Actions budget. What should you do to get the PRs safely completed? Separate what you can do now from what requires live evidence.
+A coding-agent session was compacted while a multi-step PR was in progress. The previous summary reports a green test run but the PR has newer commits. The same PR once had a no-job workflow failure. Explain how to recover the actual current PR checklist, evidence and next owner without assuming old CI is still valid. Do not claim to have accessed the repository.

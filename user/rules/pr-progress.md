@@ -22,5 +22,5 @@ Respect approval boundaries for sensitive or irreversible actions.
 
 Before stopping, review the PR and record exact revision, evidence, pending work,
 risks, decisions, owner and next action. Do not claim an unrun check passed or
-merge/deploy beyond authorization. For detailed procedure use the existing
-`session-continuity` skill, not a new orchestration agent.
+merge/deploy beyond authorization. For active delivery use `delivery-loop`; for durable PR progress and handovers
+use `session-continuity`. Neither grants additional permissions.

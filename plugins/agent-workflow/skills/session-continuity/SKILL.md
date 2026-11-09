@@ -1,8 +1,8 @@
 ---
 name: session-continuity
 description: >-
-  Own multi-step coding work through PR checklists, CI recovery, evidence and
-  handover. Use for autonomous delivery, getting work done and session continuity.
+  Preserve PR checklists and evidence through compactions and multi-agent handoffs.
+  Use for session continuity, progress checkpoints and handover.
 ---
 
 # Session continuity
@@ -49,11 +49,10 @@ as steps finish, fail, or change; do not defer updates until the end of a sessio
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
 
-## Execute, don't just plan
+## Coordinate with Delivery Loop
 
-For authorized multi-step work, advance the next checklist item, diagnose
-failures at their source, and verify the final head. Escalate when authority or
-required evidence is missing. See the [delivery loop](references/pr-progress.md#delivery-loop).
+Use `delivery-loop` for active implementation and CI repair. This skill owns
+durable PR progress, review checkpoints and precise handovers.
 
 ## Record the user's words
 
