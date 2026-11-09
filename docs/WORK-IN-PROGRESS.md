@@ -29,6 +29,8 @@ This is the durable handover for the current cross-platform workflow plugin work
 - [x] Completed developer handover at [PORTABLE-WORKFLOW-HANDOVER-2026-11-09.md](PORTABLE-WORKFLOW-HANDOVER-2026-11-09.md) with repo inventory, evidence boundaries, host execution order and rollback.
 - [x] Added optional Codex marketplace registration command and made cached installed-copy refresh a separate acceptance gate. This is documentation, **not** an executed Codex host test.
 
+- [x] Completed [independent-agent handover](PORTABLE-WORKFLOW-HANDOVER-2026-11-09.md), consolidated [host contract](portable-workflow-plugin.md), and verified [acceptance record](portable-workflow-acceptance.md). Local ChatGPT/Codex installed cache versus source updates and private-upload versioning are explained separately. Latest checked branch head before this scratchpad change: `7ed2bf48bf73e938f62d26bd1bac3447c2a82411`, [CI run 42591037138](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42591037138) green. No authenticated model behavioral tests were run.
+
 ## Pending or blocked
 
 - [ ] Authenticated Claude skill invocation and uninstall in supported real desktop/cloud host, plus Windows/macOS coverage. Do not treat CLI installation as behavioral proof.
@@ -63,3 +65,5 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 - 2026-11-09: Documentation release-readiness audit identified unclear first-install instructions, private plugin versus local marketplace ambiguity and missing upgrade/troubleshooting details. Updated portable README and host contract. Documentation change and scratchpad recheck [CI run 42589583291](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42589583291) passed on commit `fe46fffd576ca403355c86bab878df15c9a6794d`.
 
 - 2026-11-09: Documentation improvement pass: separated local marketplace cache refresh from private uploaded plugin updates, added [release acceptance template](portable-workflow-acceptance.md), removed duplicated installation guidance and linked docs from the root and plugin READMEs. [CI run 42590483034](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42590483034) passed on documentation commit `71001da3e1ac369ce13c0e1cde747d99e49c2116`. Live model behavior remains untested.
+
+- 2026-11-09: Final documentation audit and self-contained handover prepared; [CI run 42591037138](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42591037138) passed on branch head `7ed2bf48bf73e938f62d26bd1bac3447c2a82411`. PR #47 remains draft; host acceptance pending.
