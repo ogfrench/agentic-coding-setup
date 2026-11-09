@@ -1,8 +1,8 @@
 ---
 name: best-practices
 description: >-
-  Engineering practices for testing, data, security, UI, Git/CI, and agents.
-  Use before changes in those domains or when asked for best practices.
+  Learned practices for tests, data, security, UI, CI and agents.
+  Use for domain changes or best-practice questions.
 ---
 
 # Best practices
