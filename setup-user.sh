@@ -64,11 +64,12 @@ source_rule="$SRC/user/rules/pr-progress.md"
 if [[ -L "$CONFIG/rules" ]]; then
   failed+=("rules folder $CONFIG/rules is a symlink; refusing to write")
 elif [[ -f "$source_rule" ]]; then
-  mkdir -p "$CONFIG/rules"
-  if [[ -L "$rule" ]]; then
+  if ! mkdir -p "$CONFIG/rules"; then
+    failed+=("cannot create rules folder $CONFIG/rules")
+  elif [[ -L "$rule" ]]; then
     failed+=("rule $rule is a symlink; refusing to overwrite")
-  elif [[ ! -e "$rule" ]] || grep -Fq "<!-- managed: agentic-coding-setup/pr-progress -->" "$rule"; then
-    cp "$source_rule" "$rule"
+  elif [[ ! -e "$rule" ]] || grep -Fxq "<!-- managed: agentic-coding-setup/pr-progress -->" "$rule"; then
+    cp "$source_rule" "$rule" || failed+=("could not install $rule")
   else
     failed+=("rule $rule exists and is not managed by this setup")
   fi
