@@ -1,4 +1,4 @@
-# claude-code-setup
+# agentic-coding-setup
 
 My Claude Code setup, kept in one place and pushed to every repo I own: skills, plugins, hooks, MCP servers and settings. It works in local sessions and in cloud sessions on claude.ai/code.
 
@@ -9,7 +9,7 @@ It is also a living record of what working with Claude has taught me. Lessons ar
 **Me, everywhere: `setup-user.sh`.** It installs every plugin in `user/plugins.txt` and copies the skills into `~/.claude/skills` and the subagents into `~/.claude/agents`, at user scope. Run it once on a laptop. For cloud sessions, paste this as the setup script of the environment on claude.ai/code. It runs before Claude starts, in every repo that uses the environment:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ogfrench/claude-code-setup/main/setup-user.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ogfrench/agentic-coding-setup/main/setup-user.sh | bash
 ```
 
 Cloud sessions do not install plugins solely because a repository's settings enable them.
@@ -133,7 +133,7 @@ Nothing here fixes itself, so a weekly look is the habit. `node scripts/kb-audit
 The upkeep can run unattended as a weekly scheduled task (a fresh session in this repo, with the prompt below). It opens a PR, never pushes `main`, and merges only a PR that is nothing but date bumps with no privacy findings:
 
 ```
-Weekly upkeep of the public repo ogfrench/claude-code-setup. Clone it if it is not in the working
+Weekly upkeep of the public repo ogfrench/agentic-coding-setup. Clone it if it is not in the working
 directory. Pull requests only, never push to main (CONTRIBUTING.md). Write no names of clients,
 people or private repos anywhere, including PR text and your final message; refer to a finding by
 file and line, never by quoting it.
