@@ -1,0 +1,63 @@
+---
+name: delivery-loop
+description: >-
+  Finish multi-step repository work end to end through a live PR checklist,
+  verified changes, CI repair and handover. Use for "get it done" delivery tasks.
+---
+
+# Delivery Loop
+
+Own an **authorized, bounded outcome** through implementation and verifiable handover, not
+just a plan or a status report. Default to one main agent using existing project tools and
+specialist skills. Autonomy means progressing without needless questions **within granted
+permissions**, not inventing access, bypassing controls or declaring an unfinished task done.
+
+## Run the loop
+
+1. **Orient.** Read the user's objective and permissions, current source, tests,
+   instructions, existing PRs/issues and branch state. Identify the real acceptance
+   conditions, non-goals, dependencies and safety gates. Code and observed behavior
+   outrank documentation; neither proves requirements are correct.
+2. **Plan in the PR.** Write a short checklist of outcomes and evidence. Use a durable
+   issue/plan until a draft PR exists, then make the PR description the current tracker.
+   Reuse an existing owning PR rather than creating duplicate branches or trackers.
+   See `session-continuity` for live checkpoints and second-agent handovers.
+3. **Implement deliberately.** Follow the existing stack and paved paths. Read owning
+   code, dependencies and tests before edits; fix root causes and add a targeted
+   regression. Avoid broad refactors, speculative abstractions or unrequested
+   framework changes. Use `best-practices` for relevant topic rules, `product-passport`
+   for features/maps and task proof, `architecture-gardener` only if actually
+   available and structural root causes justify it, and `visual-loop` for
+   user-facing visuals. Do not load all specialists by default.
+4. **Prove the result.** Test changed behavior, negative paths and meaningful real
+   journeys in an isolated environment. Distinguish static inspection, local tests,
+   CI, host acceptance, deployed and production-verified. Investigate failed checks
+   from evidence, fix the cause and rerun at the **new exact head**. Never dilute
+   a gate, self-approve risk, fabricate screenshots or claim a check ran without proof.
+5. **Reconcile and review.** Update the PR checklist after each meaningful change.
+   Reopen items invalidated by later commits. Inspect the final diff, changed scope,
+   CI and review threads; use an independent reviewer when risk warrants it.
+   Update product maps, docs, regressions and the changelog where applicable.
+6. **Finish or hand off truthfully.** Merge, release, deploy or close issues only if
+   authorized and the actual gates pass. Otherwise preserve work in a reviewable
+   branch and put a precise next action, owner, blocker and proof gap in the PR.
+   Recheck live state before reporting completion. Use `learning-loop` to capture
+   repeatable lessons, not to replace unresolved delivery work.
+
+## Recovery and limits
+
+- If blocked, inspect logs and try a materially different diagnosis, not repeated
+  identical retries. Continue independent safe tasks; surface a genuine access,
+  decision or environment blocker with the smallest actionable next step.
+- Prioritize a working deliverable over performative planning. Keep checklists concise
+  and update them; do not spawn agents, issues or PRs merely to signal activity.
+- One agent owns the authoritative PR checklist. Parallel agents may implement
+  isolated work, but their reports require verification before ticking acceptance.
+- This skill does not grant repository access, credentials, production privileges,
+  autonomous background execution or permission to override the user's stop request.
+
+## Final answer contract
+
+State the exact outcome and links; what was changed; which commands, environments and
+revisions were **actually** verified; unresolved risks; whether code was merged,
+installed, deployed or released; and the next step if anything is unfinished.
