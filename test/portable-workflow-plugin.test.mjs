@@ -14,7 +14,11 @@ test("portable and Claude manifests have one stable identity", () => {
   assert.equal(claude.version, portable.version);
   assert.match(portable.$schema, /agent-plugins\.org/);
   assert.ok(portable.description && claude.description);
+  assert.equal(portable.repository, "https://github.com/ogfrench/agentic-coding-setup");
   assert.equal(portable.mcpServers, undefined);
+  assert.equal(portable.hooks, undefined);
+  assert.equal(claude.mcpServers, undefined);
+  assert.equal(claude.hooks, undefined);
   assert.equal(portable.extensions?.["com.openai"]?.hooks, undefined);
 });
 
@@ -73,4 +77,28 @@ test("portable evaluation fixtures cover all skills and one unrelated request", 
       assert.match(read(`evals/${name}/graders/no-skill.md`), /min: 0\nmax: 0/);
     }
   }
+});
+
+test("portable plugin has no undeclared executable files or symlinked content", () => {
+  function walk(dir, prefix = "") {
+    return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+      assert.equal(entry.isSymbolicLink(), false, `${rel} must not be a symlink`);
+      if (entry.isDirectory()) return walk(resolve(dir, entry.name), rel);
+      assert.ok(entry.isFile(), `${rel} must be a regular file`);
+      return [rel];
+    });
+  }
+  const files = walk(root);
+  const allowed = /^(?:plugin\.json|README\.md|\.claude-plugin\/plugin\.json|skills\/[a-z-]+\/SKILL\.md|evals\/README\.md|evals\/[a-z-]+\/(?:prompt\.md|graders\/(?:quality|skill-used|no-skill)\.md))$/;
+  for (const file of files) assert.match(file, allowed, `unexpected packaged content: ${file}`);
+  assert.ok(files.includes("plugin.json") && files.includes(".claude-plugin/plugin.json"));
+});
+
+test("CI verifies the portable plugin, isolated install and removal", () => {
+  const workflow = readFileSync(resolve(root, "../../.github/workflows/check.yml"), "utf8");
+  assert.ok(workflow.includes("plugin validate portable/ogfrench-workflow --strict"));
+  assert.ok(workflow.includes('CLAUDE_CONFIG_DIR="$(mktemp -d)"'));
+  assert.ok(workflow.includes("plugin install ogfrench-workflow@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin uninstall ogfrench-workflow@ogfrench --scope user"));
 });
