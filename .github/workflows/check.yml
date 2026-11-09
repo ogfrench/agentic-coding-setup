@@ -37,6 +37,15 @@ jobs:
           done
       - name: Validate portable Claude workflow plugin
         run: npx -y @anthropic-ai/claude-code@2.1.270 plugin validate portable/ogfrench-workflow --strict
+      - name: Clean-config portable Claude plugin install and uninstall
+        run: |
+          export CLAUDE_CONFIG_DIR="$(mktemp -d)"
+          trap 'rm -rf "$CLAUDE_CONFIG_DIR"' EXIT
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin marketplace add ./
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin install ogfrench-workflow@ogfrench --scope user
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin list | grep -F 'ogfrench-workflow@ogfrench'
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin uninstall ogfrench-workflow@ogfrench --scope user
+          ! npx -y @anthropic-ai/claude-code@2.1.270 plugin list | grep -F 'ogfrench-workflow@ogfrench'
       - name: Dry-run the apply step into an empty repo
         run: |
           t="$(mktemp -d)"
