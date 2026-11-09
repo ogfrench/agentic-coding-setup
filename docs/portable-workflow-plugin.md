@@ -27,7 +27,7 @@ The existing `agent-workflow`, `frog-writing` and `presentation-craft` plugins a
 
 ## Installation surfaces and update boundaries
 
-Use the [plugin's README](../portable/ogfrench-workflow/README.md) as the end-user entry point. The two installation routes are different:
+Use the [plugin's README](../portable/ogfrench-workflow/README.md) as the end-user entry point. The installation and distribution routes have different owners and update behavior:
 
 - **Claude Code:** use a local checkout of the feature branch, add its marketplace and install `ogfrench-workflow@ogfrench`. The isolated Linux CI install/list/uninstall passed. It is an *optional* plugin, not part of `setup-user.sh`, and a GitHub PR does not install it on existing machines.
 - **ChatGPT:** the creator has a private uploaded plugin v0.1.1. People without access cannot discover or install it merely from the GitHub URL. A plugin owner can update it through Plugin Creator, or an eligible workspace administrator can import an archive under workspace policy. Plugin installation does not grant separate app or repository access.
@@ -36,10 +36,6 @@ Use the [plugin's README](../portable/ogfrench-workflow/README.md) as the end-us
 **Versioning:** local marketplace installations use an installed cache snapshot; refresh or reinstall and start a new chat after source changes. The private ChatGPT release is updated separately through Plugin Creator and must be verified against the same reviewed commit. Keep the root portable `plugin.json` and `.claude-plugin/plugin.json` versions aligned. When updating the private ChatGPT release, verify its manifest and four skill files against the exact GitHub commit, record the new plugin release/version in the PR, and re-run the same tests. Do not claim that a GitHub merge, local marketplace edit, or updated ZIP changes an already installed private release automatically.
 
 **Skill overlap:** `adversarial-review` intersects with the existing agent-workflow's `best-practices` and code review patterns; `implementation-proof` intersects with `visual-loop`; the new release skill overlaps operational handover guidance. This is intentional portability, **not** evidence of improved routing. Test false positive activations and compare output quality with the existing plugins before installing both by default.
-
-## Installation state and provenance
-
-The local ChatGPT/Codex marketplace makes the plugin discoverable in supported environments, but the installed copy is cached and is not automatically refreshed by a Git checkout. After updating the repository, refresh/reinstall the local plugin, restart the desktop app if needed, and start a new chat. The uploaded private ChatGPT release uses an independent plugin identity and release history. Record the installed source, release and version in [the acceptance record](portable-workflow-acceptance.md), not just the GitHub commit. Source: [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins).
 
 ## Troubleshooting and rollback
 
