@@ -5,7 +5,7 @@
         "source": "github",
         "repo": "ogfrench/agentic-coding-setup"
       },
-      "autoUpdate": true
+      "autoUpdate": false
     }
   },
   "enabledPlugins": {
