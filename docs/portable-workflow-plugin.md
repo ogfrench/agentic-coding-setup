@@ -1,6 +1,6 @@
 # Portable workflow plugin: host contract and release gate
 
-The source plugin lives at `portable/ogfrench-workflow/`. Its root `plugin.json` is the OpenAI Agent Plugins manifest; `.claude-plugin/plugin.json` is the Claude Code manifest. Both describe version 0.1.0 of the same four-skill *companion*. The existing Claude plugins, scripts, personal skills, settings and local setup stay unchanged.
+The source plugin lives at `portable/ogfrench-workflow/`. Its root `plugin.json` is the OpenAI Agent Plugins manifest; `.claude-plugin/plugin.json` is the Claude Code manifest. Both describe version 0.1.1 of the same four-skill *companion*. The existing Claude plugins, scripts, personal skills, settings and local setup stay unchanged.
 
 ## Why a companion rather than a wholesale port?
 
