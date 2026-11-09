@@ -69,6 +69,8 @@ the sync and installation steps remain explicit.
 
 **Agent-ready knowledge bases.** The `knowledge-base-builder` skill documents source-native ingestion, source metadata, scoped retrieval, hybrid ranking, MCP contracts, freshness, privacy and evaluation. Use it to add knowledge retrieval to a repo without replacing its own sources. See [`SKILL.md`](plugins/agent-workflow/skills/knowledge-base-builder/SKILL.md) and its detailed references. It does not automatically index other repositories or activate a remote service.
 
+**Product Passport.** The [`product-passport`](plugins/agent-workflow/skills/product-passport/SKILL.md) skill maps user-visible features to their architectural owners and real verification journeys. It reuses each product's existing CLI, tests, and rendering tools, records what was actually exercised, and routes durable corrections into code or regression protection. [Feature, evidence, and maintenance contracts](plugins/agent-workflow/skills/product-passport/references/feature-contract.md) are on demand. Keep product-owned maps and private proof in the product repository. See the [implementation scratchpad](docs/product-passport/SCRATCHPAD.md) for the unmerged rollout status.
+
 ## Adding things
 
 **A skill.** Create `plugins/frog-writing/skills/<name>/SKILL.md` (or `plugins/agent-workflow/skills/` for how work is run) with `name` and `description` in its frontmatter, and add a node for it in `kb/tools/` (`node --test` fails without one). If it belongs to a different theme, start a new plugin in `plugins/<plugin>/` and add an entry to `.claude-plugin/marketplace.json` with `"source": "./plugins/<plugin>"`.
