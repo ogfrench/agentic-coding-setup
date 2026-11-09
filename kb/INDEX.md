@@ -27,6 +27,7 @@
 ## Tools
 - 21st (plugin): 21st.dev UI skills and MCP. Pinned upstream.
 - actions-cost (skill): Estimate a change's GitHub Actions runner-minutes before merging it; on demand and cached over a prebuilt matrix.
+- architecture-gardener (skill): Inspect architecture ownership and recurring workarounds; propose minimal repairs and low-noise regressions.
 - best-practices (skill): The curated practices, one topic file per concern, generated from kb/practices.
 - cheap-reviewer (agent): Read-only correctness and safety review of one commit or the working diff, on a mid-size model.
 - claude-md-management (plugin): Audit CLAUDE.md quality, capture session learnings, and keep project memory current.

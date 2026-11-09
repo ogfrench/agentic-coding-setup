@@ -64,6 +64,12 @@ three to seven meaningful outcome/proof items when possible, and expand for risk
 - Before handover, do one fresh read of PR body, exact head, checks and open
   threads. Report current state, not the last remembered green CI result.
 
+## Execution ownership
+
+Use `delivery-loop` to execute scoped changes and diagnose CI. This reference
+owns the single current PR status record and handover, not a second implementation
+procedure.
+
 ## Closing
 
 A PR is review-ready only when its included acceptance work is complete, evidence

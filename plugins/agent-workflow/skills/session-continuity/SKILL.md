@@ -1,8 +1,8 @@
 ---
 name: session-continuity
 description: >-
-  Keep long work alive across compactions and new sessions: state in durable
-  places, the work checked against the plan, open points raised.
+  Preserve PR checklists and evidence through compactions and multi-agent handoffs.
+  Use for session continuity, progress checkpoints and handover.
 ---
 
 # Session continuity
@@ -48,6 +48,11 @@ as steps finish, fail, or change; do not defer updates until the end of a sessio
 
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
+
+## Coordinate with Delivery Loop
+
+Use `delivery-loop` for active implementation and CI repair. This skill owns
+durable PR progress, review checkpoints and precise handovers.
 
 ## Record the user's words
 

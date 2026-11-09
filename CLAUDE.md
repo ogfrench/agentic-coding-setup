@@ -95,6 +95,27 @@ The `session-continuity` skill owns the detailed workflow and checklist format;
 the PR template offers its starting structure. Product maps and verification
 stay updated within the same PR.
 
+## Product maps and passports
+
+A product map is an index of user capabilities, real entry points, implementation owners,
+runtime boundaries and verification paths. It is not a substitute for reading code.
+For work in this repository, keep its own maps current. The shared Product Passport
+skill defines the contract for downstream products, and each product repository
+owns its private map and proof.
+
+**Maintenance is required for product-facing changes.** For a feature addition, change,
+removal, regression fix, API or plugin integration change, data ownership change, or
+release task, inspect affected feature paths in code and the current product map.
+Update the affected map in the same PR after implementing and verifying the change.
+Seed a small map if one is missing; do not invent a complete feature inventory.
+When a change has no product impact, state `map unchanged` with a reason.
+If source cannot be inspected, label claims `not inspected` and report the blocker.
+
+Do not modify source to satisfy an outdated map, claim runtime tests from documentation,
+or copy a private project's name, route, screenshot, code or evidence into this public repo.
+This rule also belongs in each product repo's Claude instructions so it applies during
+ordinary coding tasks, whether or not the skill is selected.
+
 ## Rules for edits
 
 - **Every practice has evidence.** Its `derived_from` names the learnings, or it says

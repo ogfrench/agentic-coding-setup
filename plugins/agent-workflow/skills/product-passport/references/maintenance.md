@@ -14,10 +14,12 @@ Avoid comments that defend short-term solutions or explain away forbidden import
 
 ## Routine
 
-- **On changed features:** inspect map-to-source drift and affected verification paths within the existing PR.
+- **On changed features:** inspect map-to-source drift and affected verification paths within the existing PR. Keep the product-level overview and affected feature entries current in the same PR as the implementation, including removals, changed runtime boundaries and supported-host claims.
 - **After consequential failures:** examine whether the same class of error could recur in another feature.
-- **Periodic read-only audit:** identify stale maps, unreachable checks, duplicated workarounds, and unverifiable claims; create reviewable proposed changes only.
+- **Periodic read-only audit:** identify stale maps, unreachable checks, duplicated workarounds, and unverifiable claims; create reviewable proposed changes only. Documentation-derived seed maps do not become verified merely by aging or by being present in the repository.
 - **Promote reliable checks:** begin advisory; require them in CI only after proving determinism, low false-positive rate, and acceptable cost.
+
+**Completion check:** report `map updated` with paths, `map unchanged` with a product-impact rationale, or `map blocked` with the missing source/tool and a follow-up. This check applies even if the Product Passport skill was not automatically selected. Do not claim tests were run because their commands are listed in a map.
 
 The public shared skill contains no private repository identities, paths, screenshots, secrets, client information, or source excerpts. Store product-specific records in the product repository. Do not centralize private evidence.
 

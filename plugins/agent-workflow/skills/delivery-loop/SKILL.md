@@ -46,6 +46,7 @@ permissions**, not inventing access, bypassing controls or declaring an unfinish
 
 ## Recovery and limits
 
+- A run with zero jobs is not a test failure: inspect Actions billing, policy, permissions and scheduling first. A job that executed and failed requires its own logs and root-cause fix.
 - If blocked, inspect logs and try a materially different diagnosis, not repeated
   identical retries. Continue independent safe tasks; surface a genuine access,
   decision or environment blocker with the smallest actionable next step.

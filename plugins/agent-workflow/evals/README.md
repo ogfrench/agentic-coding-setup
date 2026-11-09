@@ -11,6 +11,10 @@ claude plugin eval . --case 'fold-specialists' --runs 1 --no-publish --max-cost-
 claude plugin eval . --runs 3 --no-publish --max-cost-usd 30
 ```
 
+For Architecture Gardener routing, start with `claude plugin eval . --case 'architecture-gardener-root-cause' --runs 1 --no-publish --max-cost-usd 5`, then run the negative and ambiguous cases. Compare against the skill-disabled baseline before claiming improvement.
+
+For Delivery Loop, run `claude plugin eval . --case 'delivery-loop-positive' --runs 1 --no-publish --max-cost-usd 5`, plus negative and ambiguous cases. Compare actual outcomes against a skill-disabled baseline before claiming behavior improvement.
+
 The first is a cheap smoke test. Repeat the full suite only when the account
 can cover model use and the plugin directory is trusted. Check grader output,
 skipped runs, task-level regressions and with-minus-without deltas. Invocation
@@ -18,5 +22,3 @@ graders are diagnostic in two-arm runs, not evidence that output improved.
 Reports under `evals/results/` stay local and must not enter this public repo.
 
 Documentation: https://code.claude.com/docs/en/plugin-evals
-
-Delivery Loop cases: `claude plugin eval . --case 'delivery-loop-positive' --runs 1 --no-publish --max-cost-usd 5` and the negative/ambiguous fixtures. Compare task-level outcomes against the same task with the skill disabled; these checked-in prompts are **not** live results.
