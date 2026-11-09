@@ -17,8 +17,10 @@ This is the durable handover for the current cross-platform workflow plugin work
 
 - [x] **Integrated PR #47 with secured `main` without dropping branch history or reverting security changes.** Merge commit `420af45b0b65cc7ebd617192b3d30e90db3de7af` includes `main` `f9768f5cf976d155ed341c278d19a3917f5ef081`; compare result: ahead with zero commits behind.
 - [x] Verified explicit portable Claude validation on integration commit: [check run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) completed successfully. Also passed Node tests, public-tree/commit checks, root and local Claude plugin validation, and empty-repo apply dry run.
-- [ ] Clean-host Claude Code marketplace install, skill invocation, and uninstall test. Do not call this host-verified from static validation alone.
+- [x] **Claude CLI install/uninstall smoke on isolated Linux CI config:** [run 42587762393](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587762393), commit `5f08b4c1a35dac04e4b35ff33f6ebb3c4441aa93`: marketplace added locally, portable plugin installed, listed, and uninstalled with no permanent host settings. **This is not authenticated Claude skill invocation**.
+- [ ] Authenticated Claude skill invocation and uninstall in supported real desktop/cloud host, plus Windows/macOS coverage. Do not treat CLI installation as behavioral proof.
 - [ ] Compare ChatGPT and Claude task outcomes with and without the plugin, including false skill activation and missing tool boundaries.
+- [ ] Validate installed package behavior on Windows and macOS, or explicitly document and accept platform limitations.
 - [ ] Check higher-precedence local/managed settings and actual installed `autoUpdate` behavior. Existing downstream copies change only on separately reviewed sync.
 - [ ] Review any downstream GitHub Actions `uses:` paths that reference the pre-rename repository; GitHub does not automatically redirect those references.
 - [ ] Merge #47 only after host acceptance. Do not merge unrelated Dependabot #44 automatically.
@@ -27,7 +29,7 @@ This is the durable handover for the current cross-platform workflow plugin work
 ## Next steps
 
 1. Independently review the current PR #47 exact diff for duplicate skill routing, privacy, permissions, and source provenance.
-2. Run Claude Code clean-host install, invoke a representative skill, and uninstall; record actual CLI output and host version.
+2. Run a representative authenticated Claude skill task with and without the plugin on a real supported host. Installation and uninstallation already passed isolated Linux CI.
 3. Run ChatGPT routing and task-quality checks against a no-plugin baseline; the private package import alone is not proof of quality.
 4. Record host outcomes and rollback evidence in PR #47, then decide on merge and release separately.
 
@@ -38,4 +40,6 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 ## Change log
 
 - 2026-11-09: Scratchpad created after repo rename, merged security/update changes and portable v0.1.1 private import.
-- 2026-11-09: Integrated secured `main` into PR #47 using merge commit `420af45b...`; [CI run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) fully green including the explicit portable Claude plugin validator. Private v0.1.1 ZIP inspected; host acceptance still pending.
+- 2026-11-09: Integrated secured `main` into PR #47 using merge commit `420af45b...`; [CI run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) fully green including the explicit portable Claude plugin validator. Private v0.1.1 ZIP inspected; Linux CLI install/uninstall smoke passed on CI; authenticated behavioral host acceptance remains pending.
+
+- 2026-11-09: Added isolated CLI install/list/uninstall test in check.yml. [CI run 42587762393](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587762393) green. No authenticated behavior tested.
