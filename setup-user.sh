@@ -59,10 +59,12 @@ done
 
 # User-level rules load across projects; install only the known shared rule.
 # Never follow a symlink or overwrite a rule not owned by this setup.
-mkdir -p "$CONFIG/rules"
 rule="$CONFIG/rules/pr-progress.md"
 source_rule="$SRC/user/rules/pr-progress.md"
-if [[ -f "$source_rule" ]]; then
+if [[ -L "$CONFIG/rules" ]]; then
+  failed+=("rules folder $CONFIG/rules is a symlink; refusing to write")
+elif [[ -f "$source_rule" ]]; then
+  mkdir -p "$CONFIG/rules"
   if [[ -L "$rule" ]]; then
     failed+=("rule $rule is a symlink; refusing to overwrite")
   elif [[ ! -e "$rule" ]] || grep -Fq "<!-- managed: agentic-coding-setup/pr-progress -->" "$rule"; then
