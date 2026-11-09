@@ -1,10 +1,7 @@
 ---
 name: plugin-experience-design
 description: >-
-  Design, audit and align installable AI plugin experiences across products.
-  Use for plugin landing pages, downloadable packages, marketplace listings,
-  Claude Code/Cowork, ChatGPT or Copilot onboarding, host compatibility,
-  Full/Essentials editions, installation UX and release-readiness reviews.
+  Design and validate AI plugin downloads, installation and onboarding for Claude Code/Cowork, ChatGPT and Copilot. Use for host support, editions and release readiness.
 ---
 
 # Design an AI plugin experience
