@@ -1,7 +1,7 @@
 ---
 name: product-passport
 description: >-
-  Map product features to code owners and verify real behavior. Use for Product Passport, feature maps, cross-layer regressions and release proof.
+  Map and maintain product features from code, verify behavior, and keep each repository's Product Passport current whenever product capabilities change.
 ---
 
 # Product Passport
@@ -11,12 +11,23 @@ Make a product understandable to an agent and its behavior independently checkab
 ## Work with the product's existing architecture
 
 1. Inspect the executable source, tests, build configuration, and actual feature entry points first. Consult repository instructions and feature maps to navigate, but verify every material claim against code and observed behavior. Identify state owners, transport, persistence, runtime processes, and dependencies. Reuse existing product CLI, browser, integration, and artifact tools. Do not introduce a universal runtime or rearrange a codebase into another application's architecture.
-2. Identify which user-observable behaviors could change from the implementation and tests. Check affected feature entries under `docs/product-passport/features/` only as pointers; correct stale entries after validating code, or add an entry only when it helps future navigation. Use the [feature contract](references/feature-contract.md). Never change implementation to satisfy a stale document.
+2. Identify which user-observable behaviors could change from the implementation and tests. Read the repository's `docs/product-passport/README.md` and affected entries under `docs/product-passport/features/` when present, using them only as navigation. Reconcile stale entries against code and observed behavior. When no map exists, create a small code-grounded overview for a substantive feature or release task, rather than a speculative inventory. Use the [feature contract](references/feature-contract.md). Never change implementation to satisfy a stale document.
 3. Choose a proof path proportionate to risk: focused static checks for localized changes, actual task journeys for behavioral changes, and independent/security/host acceptance for high-risk or release-critical changes. See the [verification contract](references/verification-contract.md). Follow stricter product-owned rules.
 4. Change the owning layer through the established paved path. Avoid parallel workarounds, duplicated state, illegal cross-process imports, and unrelated refactors. Do not use code comments to justify temporary exceptions or bad boundaries. Preserve licensing notices, external directives, and unavoidable technical annotations.
 5. Exercise the real product in an isolated environment with meaningful assertions and negative paths. Inspect outputs, screenshots, transitions, file structure, persisted state, or source evidence as the feature requires. Link each result to an exact source revision and runtime. Distinguish passed, failed, blocked, and not run.
 6. Reproduce and correct failures, rerun the affected checks, and record remaining risks. A separate reviewer or independently constructed test is appropriate when the same agent both implemented and verified a high-risk change. Do not manufacture proof or silently convert a waiver into a pass.
-7. Update executable regressions and enforcement first when behavior changes; refresh affected feature-map pointers only after checking the code. Use [maintenance](references/maintenance.md) to turn repeated mistakes into a root-cause fix or an enforceable invariant before adding more prose.
+7. Update executable regressions and enforcement first when behavior changes; refresh the affected product map and feature entries in the same change, after checking code and the proof path. Do not call a task complete with a known stale map. Use [maintenance](references/maintenance.md) to turn repeated mistakes into a root-cause fix or an enforceable invariant before adding more prose.
+
+## Product map is a maintained part of the product
+
+For every substantive product change, regression fix, feature removal, route/API/CLI/plugin contract change, user journey change, persistence boundary change, or release-verification task, inspect map impact before finishing. The repository owns its map, normally at `docs/product-passport/README.md` with focused entries in `docs/product-passport/features/`. Update the affected entries in the **same PR** as the implementation. When the existing map is absent, seed the smallest useful navigation map from inspected executable source and tests. Do not make a comprehensive unverified catalog or add files for purely cosmetic changes.
+
+- Map the product's purpose, actual user journeys, entry points, owning source paths, connected capabilities, data and runtime boundaries, and concrete verification paths. Do not invent feature completeness or runtime evidence from a README. Mark unexamined areas `not inspected`; mark tests `not run` unless executed.
+- When a feature changes, check adjacent journeys and the impact on the ecosystem map if integrations changed. Keep private project identities and evidence in the private product repository, never in the public shared setup.
+- At completion, state **map updated** (paths), **map unchanged** (why the change does not affect product capabilities), or **map blocked** (what could not be inspected). A map edit does not count as execution proof.
+- Before release or handover, reconcile routes, features, supported hosts, installation paths, and limitations with the shipped source and current artifacts. Record exact revisions; distinguish source-ready, tested, deployed, released and host-verified.
+
+The detailed overview and feature templates are in [feature contract](references/feature-contract.md). This rule is mirrored in repository-level Claude instructions for ordinary coding tasks; activating the skill is not a prerequisite to maintaining the map.
 
 ## Boundaries with other skills
 
