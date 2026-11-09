@@ -1,6 +1,6 @@
 # Portable workflow plugin: release acceptance record
 
-This is the decision record for [draft PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47). A green static check, an installed plugin, and an effective behavioral skill are **three different claims**. Record only observed outcomes and link the exact source and evidence. Keep credentials, private repository names and raw confidential prompts out of this public file.
+This is the host-acceptance record for [merged PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47). A green static check, an installed plugin, and an effective behavioral skill are **three different claims**. Record only observed outcomes and link the exact source and evidence. Keep credentials, private repository names and raw confidential prompts out of this public file.
 
 ## Required evidence
 

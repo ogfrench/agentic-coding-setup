@@ -1,6 +1,6 @@
 # Working scratchpad | agentic-coding-setup | 2026-11-09
 
-This is the durable handover for the current cross-platform workflow plugin work. Update **done**, **pending**, and **blocked** after each consequential action. Do not infer a passed host test from CI or a package upload. This note is part of draft PR #47, not a claim that it shipped.
+This is the durable handover for the current cross-platform workflow plugin work. Update **done**, **pending**, and **blocked** after each consequential action. Do not infer a passed host test from CI or a package upload. PR #47 has since merged to main as optional source; this scratchpad is not evidence of hosted model acceptance, distribution, or downstream installation.
 
 ## Done and independently checkable
 
@@ -67,3 +67,5 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 - 2026-11-09: Documentation improvement pass: separated local marketplace cache refresh from private uploaded plugin updates, added [release acceptance template](portable-workflow-acceptance.md), removed duplicated installation guidance and linked docs from the root and plugin READMEs. [CI run 42590483034](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42590483034) passed on documentation commit `71001da3e1ac369ce13c0e1cde747d99e49c2116`. Live model behavior remains untested.
 
 - 2026-11-09: Final documentation audit and self-contained handover prepared; [CI run 42591037138](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42591037138) passed on branch head `7ed2bf48bf73e938f62d26bd1bac3447c2a82411`. PR #47 remains draft; host acceptance pending.
+
+- 2026-11-09: PR #47 merged at `22e7ebd1b0121ad567b0bfa45d82618210e8ae2e`; PR #51 merged at `82045459f3425fd4fc7e7e6244bd9afc46352414`; reviewed action replacement PR #52 merged at `fd92145c3a72651cd89830af6f6a58a944c090a8`. Superseded Dependabot #44 closed. Final release PR bumps agent-workflow 1.10.1 and keeps model, platform and secret-backed sync host gates unverified.

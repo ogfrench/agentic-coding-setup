@@ -19,7 +19,7 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 ## Verification evidence
 
 - [x] GitHub Actions check succeeded on skill-description fix head `fea9135f3955fd58a0f6bb186f9408c3260ad70a` ([run 42588081914](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588081914)). The first run failed due to the existing 1,100-token always-on description budget; shortened overlapping descriptions instead of raising the budget.
-- [x] PR [#51](https://github.com/ogfrench/agentic-coding-setup/pull/51) opened as draft. Not merged.
+- [x] PR [#51](https://github.com/ogfrench/agentic-coding-setup/pull/51) merged at `82045459f3425fd4fc7e7e6244bd9afc46352414`, introducing Product Passport in agent-workflow v1.10.0; the final patch source version is 1.10.1.
 
 ## Verification and outstanding work
 
@@ -47,4 +47,4 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 
 ## Current status
 
-Shared foundation in draft PR #51. Code-first and Product Passport-as-standard convention are recorded in the shared README and skill. Green repository CI is documented for an earlier reviewed SHA; the newest README/scratchpad commit needs its own final-head confirmation. Live routing comparisons, host acceptance and independent review remain outstanding. No merge or release is authorized by this document.
+Shared foundation merged to `main` through PR #51. Source release patch v1.10.1 follows. Independent source review and repository CI passed before merge; authenticated model routing comparisons and product-specific pilot acceptance remain open. No automatic downstream sync is authorized.

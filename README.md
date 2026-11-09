@@ -10,7 +10,11 @@ The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: fa
 
 ## Optional cross-platform companion
 
-The [ogfrench Workflow plugin](portable/ogfrench-workflow/) packages four focused review workflows for Claude Code and ChatGPT/Codex, without installing hooks, MCP servers or third-party dependencies. It is optional and separate from the established personal setup and project sync. See the [host compatibility and release gate](docs/portable-workflow-plugin.md) and [acceptance evidence requirements](docs/portable-workflow-acceptance.md). It has not been host-accepted or published as a release.
+The [ogfrench Workflow plugin](portable/ogfrench-workflow/) packages four focused review workflows for Claude Code and ChatGPT/Codex, without installing hooks, MCP servers or third-party dependencies. It is optional and separate from the established personal setup and project sync. See the [host compatibility and release gate](docs/portable-workflow-plugin.md) and [acceptance evidence requirements](docs/portable-workflow-acceptance.md). Its source has merged, but host acceptance and public distribution remain unverified.
+
+## Source release | 9 November 2026
+
+**agent-workflow v1.10.1** is the final reviewed source package including Product Passport. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
 
 ## Two layers
 
