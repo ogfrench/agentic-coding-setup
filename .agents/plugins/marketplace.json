@@ -1,0 +1,20 @@
+{
+  "name": "ogfrench-local",
+  "interface": {
+    "displayName": "ogfrench Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "ogfrench-workflow",
+      "source": {
+        "source": "local",
+        "path": "./portable/ogfrench-workflow"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
