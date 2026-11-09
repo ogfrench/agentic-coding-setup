@@ -35,6 +35,8 @@ jobs:
           for p in plugins/*/; do
             npx -y @anthropic-ai/claude-code@2.1.270 plugin validate "$p" --strict
           done
+      - name: Validate portable Claude workflow plugin
+        run: npx -y @anthropic-ai/claude-code@2.1.270 plugin validate portable/ogfrench-workflow --strict
       - name: Dry-run the apply step into an empty repo
         run: |
           t="$(mktemp -d)"
