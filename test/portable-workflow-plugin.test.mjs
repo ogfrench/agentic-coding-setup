@@ -64,7 +64,11 @@ test("portable evaluation fixtures cover all skills and one unrelated request", 
     assert.match(prompt, /allowed_tools: \[Skill\]/);
     if (routes.has(name)) {
       assert.match(read(`evals/${name}/graders/quality.md`), /PASS[\s\S]*FAIL/);
-      assert.ok(read(`evals/${name}/graders/skill-used.md`).includes(routes.get(name)));
+      const grader = read(`evals/${name}/graders/skill-used.md`);
+      assert.ok(grader.includes(routes.get(name)));
+      const pattern = grader.match(/^input_match: '(.*)'$/m)?.[1];
+      assert.ok(pattern);
+      assert.match(`{"skill":"ogfrench-workflow:${routes.get(name)}"}`, new RegExp(pattern));
     } else {
       assert.match(read(`evals/${name}/graders/no-skill.md`), /min: 0\nmax: 0/);
     }
