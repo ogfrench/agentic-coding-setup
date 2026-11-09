@@ -95,11 +95,11 @@ sync_one() {
   done <<<"$managed"
 
   if [[ -f "$dir/CHANGELOG.md" ]] && grep -q '^## Unreleased' "$dir/CHANGELOG.md" \
-     && ! grep -q 'ogfrench/claude-code-setup' "$dir/CHANGELOG.md"; then
+     && ! grep -Eq 'ogfrench/(claude-code-setup|agentic-coding-setup)' "$dir/CHANGELOG.md"; then
     node -e '
       const fs = require("fs"), f = process.argv[1];
       const day = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-      const entry = `### Claude Code setup, ${day}\n\n- Added the shared Claude Code skills under \`.claude/skills/\` and pointed \`.claude/settings.json\` at the ogfrench/claude-code-setup plugin marketplace, synced from that repo.\n\n`;
+      const entry = `### Claude Code setup, ${day}\n\n- Added the shared Claude Code skills under \`.claude/skills/\` and pointed \`.claude/settings.json\` at the ogfrench/agentic-coding-setup plugin marketplace, synced from that repo.\n\n`;
       fs.writeFileSync(f, fs.readFileSync(f, "utf8").replace(/^## Unreleased\r?\n\r?\n/m, (m) => m + entry));
     ' "$dir/CHANGELOG.md"
     git -C "$dir" add CHANGELOG.md
@@ -124,7 +124,7 @@ sync_one() {
 
   git -C "$dir" commit -q -m "$SUBJECT
 
-From ogfrench/claude-code-setup. Skills are committed under .claude/
+From ogfrench/agentic-coding-setup. Skills are committed under .claude/
 because cloud sessions load those but never install plugins from
 project settings.${renamed:+
 
@@ -169,7 +169,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
       if grep -qxF -- "$label" <<<"$have"; then flags+=(--label "$label"); fi
     done
   fi
-  local body="Synced from [ogfrench/claude-code-setup](https://github.com/ogfrench/claude-code-setup) by \`sync-to-repos.sh\`.
+  local body="Synced from [ogfrench/agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup) by \`sync-to-repos.sh\`.
 
 - \`.claude/skills/\`: committed copies of the shared skills. Cloud sessions load these, but they never install plugins from project settings.
 - \`.claude/settings.json\`: registers the \`ogfrench\` marketplace and enables the plugins, for local sessions. Keys the repo already had are kept as they were.
@@ -224,7 +224,7 @@ if [[ "${DRY_RUN:-0}" != 1 ]]; then
     exit 1
   fi
   # In the workflow, GH_TOKEN can only reach the target repos; this repo's own token reads CI.
-  ci="$(GH_TOKEN="${GATE_GH_TOKEN:-${GH_TOKEN:-}}" gh run list -R ogfrench/claude-code-setup --workflow check.yml --commit "$head" --json conclusion -q '.[0].conclusion')"
+  ci="$(GH_TOKEN="${GATE_GH_TOKEN:-${GH_TOKEN:-}}" gh run list -R ogfrench/agentic-coding-setup --workflow check.yml --commit "$head" --json conclusion -q '.[0].conclusion')"
   if [[ "$ci" != "success" ]]; then
     echo "Refusing: CI on ${head:0:7} is '${ci:-not run yet}', not success." >&2
     exit 1

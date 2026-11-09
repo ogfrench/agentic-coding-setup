@@ -7,7 +7,7 @@ import { decode, loadRules, scan } from "../scripts/check-public.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SCRIPT = path.join(ROOT, "scripts/check-public.mjs");
-const rulesFor = (repos = ["ogfrench/claude-code-setup"]) => ({ publicRepos: new Set(repos) });
+const rulesFor = (repos = ["ogfrench/agentic-coding-setup"]) => ({ publicRepos: new Set(repos) });
 // Built at runtime: written out, these would trip the check on this very file.
 const join = (...parts) => parts.join("");
 
@@ -31,8 +31,8 @@ test("GitHub's default merge message is not mistaken for a repo", () => {
 test("the check lets through what is meant to be here", () => {
   const rules = rulesFor();
   for (const ok of [
-    "git clone https://github.com/ogfrench/claude-code-setup.git",
-    "From ogfrench/claude-code-setup.",
+    "git clone https://github.com/ogfrench/agentic-coding-setup.git",
+    "From ogfrench/agentic-coding-setup.",
     "Co-Authored-By: Claude <noreply@anthropic.com>",
     "Frenchie <42068679+ogfrench@users.noreply.github.com>",
     "caveman@ogfrench",
