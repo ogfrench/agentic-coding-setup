@@ -10,14 +10,20 @@ This is the durable handover for the current cross-platform workflow plugin work
 - [x] Superseded rename PR #48 closed without merge. The existing migration on `main` already covers its functionality.
 - [x] Approved reviewed-update policy implemented and merged in PR #50, commit `f9768f5cf976d155ed341c278d19a3917f5ef081`. The shared `ogfrench` marketplace disables `autoUpdate` and the copier migrates only the managed legacy entry. [Full CI pass](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42586502314).
 - [x] Draft PR #47 contains the optional portable workflow plugin, four skills, both platform manifests, explicit Claude validation in CI, and documentation aligned with the rename and security changes. Version in source: `0.1.1`.
-- [x] Private ChatGPT plugin created and updated to `0.1.1`; importer accepted the package. Local ZIP inspected: exactly one v0.1.1 manifest, four skills, one README, and canonical repo URL. This proves package acceptance, **not** task success in all ChatGPT environments.
+- [x] Private ChatGPT plugin created and updated to `0.1.1`; importer accepted the package. Private plugin file inventory verified: root v0.1.1 manifest, four skill files, README and generated Codex metadata, with canonical repo URL. This proves package acceptance, **not** task success in all ChatGPT environments.
 - [x] Preserved `.claude/claude-code-setup.json` and `chore/claude-code-setup` downstream PR branch identity for backwards compatibility.
-
-## Pending or blocked
 
 - [x] **Integrated PR #47 with secured `main` without dropping branch history or reverting security changes.** Merge commit `420af45b0b65cc7ebd617192b3d30e90db3de7af` includes `main` `f9768f5cf976d155ed341c278d19a3917f5ef081`; compare result: ahead with zero commits behind.
 - [x] Verified explicit portable Claude validation on integration commit: [check run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) completed successfully. Also passed Node tests, public-tree/commit checks, root and local Claude plugin validation, and empty-repo apply dry run.
 - [x] **Claude CLI install/uninstall smoke on isolated Linux CI config:** [run 42587762393](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587762393), commit `5f08b4c1a35dac04e4b35ff33f6ebb3c4441aa93`: marketplace added locally, portable plugin installed, listed, and uninstalled with no permanent host settings. **This is not authenticated Claude skill invocation**.
+
+- [x] Added four positive and one negative behavioral evaluation fixture under `portable/ogfrench-workflow/evals/`; grader regexes compile and match canonical names. [CI run 42588276794](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588276794) passed. This is structural validation, not model scoring.
+- [x] Added safety regression tests for undeclared executables, symlinks, manifest hooks/MCP declarations and isolated install CI. [CI run 42588593580](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588593580) passed on commit `1a4a05a7c9b587c68298c8004922b3cbec762a67`.
+- [x] Verified private ChatGPT v0.1.1 release manifest and the four skill files match the PR source byte for byte, through the plugin owner file API and GitHub reads. Package remains private; no public release.
+- [x] Completed source-grounded [portable plugin review](portable-workflow-adversarial-review-2026-11-09.md). No high-severity finding in the package surface; authenticated behavior remains untested.
+
+## Pending or blocked
+
 - [ ] Authenticated Claude skill invocation and uninstall in supported real desktop/cloud host, plus Windows/macOS coverage. Do not treat CLI installation as behavioral proof.
 - [ ] Compare ChatGPT and Claude task outcomes with and without the plugin, including false skill activation and missing tool boundaries.
 - [ ] Validate installed package behavior on Windows and macOS, or explicitly document and accept platform limitations.
@@ -28,10 +34,10 @@ This is the durable handover for the current cross-platform workflow plugin work
 
 ## Next steps
 
-1. Independently review the current PR #47 exact diff for duplicate skill routing, privacy, permissions, and source provenance.
-2. Run a representative authenticated Claude skill task with and without the plugin on a real supported host. Installation and uninstallation already passed isolated Linux CI.
-3. Run ChatGPT routing and task-quality checks against a no-plugin baseline; the private package import alone is not proof of quality.
-4. Record host outcomes and rollback evidence in PR #47, then decide on merge and release separately.
+1. Run the authenticated Claude skill evaluations on an authorized host, with and without the plugin, and capture actual scores and environment details. Linux CI has already validated installation/removal.
+2. Run ChatGPT task-level routing and no-plugin baseline evaluations; package import and source parity alone do not measure benefit.
+3. Validate Windows/macOS compatibility or explicitly accept limited support. Confirm local/managed marketplace settings precedence before any downstream sync.
+4. Confirm the final PR head is green, update release evidence, then separately decide whether to merge and distribute the optional companion.
 
 ## Scope guard
 
@@ -43,3 +49,6 @@ This optional companion does **not** install Claude hooks, agents, commands, per
 - 2026-11-09: Integrated secured `main` into PR #47 using merge commit `420af45b...`; [CI run 42587490803](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587490803) fully green including the explicit portable Claude plugin validator. Private v0.1.1 ZIP inspected; Linux CLI install/uninstall smoke passed on CI; authenticated behavioral host acceptance remains pending.
 
 - 2026-11-09: Added isolated CLI install/list/uninstall test in check.yml. [CI run 42587762393](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587762393) green. No authenticated behavior tested.
+
+- 2026-11-09: Added four positive and one negative evaluation case, fixed regex matching, and verified [CI 42588276794](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588276794).
+- 2026-11-09: Added executable/symlink/manifest security checks. [CI 42588593580](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588593580) passed. Private ChatGPT v0.1.1 source parity independently checked. Added [adversarial review](portable-workflow-adversarial-review-2026-11-09.md); behavioral host tests still pending.
