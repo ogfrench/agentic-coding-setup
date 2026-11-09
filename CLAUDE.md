@@ -1,4 +1,4 @@
-# claude-code-setup
+# agentic-coding-setup
 
 My Claude Code setup (skills, plugins, hooks, MCP servers, settings) and a living record of
 what working with Claude has taught me. The README explains the setup and the sync. This
