@@ -1,7 +1,7 @@
 ---
 name: product-passport
 description: >-
-  Map and maintain product features from code, verify behavior, and keep each repository's Product Passport current whenever product capabilities change.
+  Map product features to code owners and verify real behavior. Use for Product Passport, feature maps, cross-layer regressions and release proof.
 ---
 
 # Product Passport
