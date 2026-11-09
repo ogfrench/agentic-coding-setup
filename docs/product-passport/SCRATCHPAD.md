@@ -21,22 +21,22 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 - [x] GitHub Actions check succeeded on skill-description fix head `fea9135f3955fd58a0f6bb186f9408c3260ad70a` ([run 42588081914](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588081914)). The first run failed due to the existing 1,100-token always-on description budget; shortened overlapping descriptions instead of raising the budget.
 - [x] PR [#51](https://github.com/ogfrench/agentic-coding-setup/pull/51) opened as draft. Not merged.
 
-## Not yet verified
+## Verification and outstanding work
 
 - [x] `node --test` completed in exact-head GitHub CI (run 42588081914), including public-content test and generated-index parity.
 - [x] Generated indexes matched canonical nodes in the repository's `node --test` registry parity test; direct `node scripts/build-kb.mjs --check` was not separately invoked.
 - [x] Repository CI check passed, including plugin validation configured in the existing CI workflow. Host-specific runtime remains untested.
 - [ ] Execute actual model routing evaluations, including comparison without the skill.
-- [ ] Obtain full GitHub CI status for the final PR head and correct any failures.
+- [x] A source-first PR head passed GitHub CI at `0cae0d5642acbdfe6bb910e6dcedb258e69af06b` ([run 42589390976](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42589390976)).
+- [ ] Reconfirm CI after the latest README change and this scratchpad update.
 - [ ] Complete independent security/adversarial review.
 
 ## Next steps
 
-1. Review the exact branch diff for confidentiality, unnecessary duplication, and conflicts with existing skills.
-2. Open a draft PR for the shared foundation. Keep it unmerged until the checks above are complete.
-3. Implement the first product-owned pilot separately, exercising an actual feature with native tools and real artifacts.
-4. Compare the pilot's verification effectiveness with existing behavior before copying the approach to other projects.
-5. Follow with per-product PRs and avoid a universal CLI until duplicated runtime logic is demonstrated.
+1. Reconfirm CI at the final head and run positive/negative/ambiguous model routing evaluations, including a baseline without the skill.
+2. Review skill overlap with portable workflow PR #47 and rename/sync PR #48. Do not overwrite those changes.
+3. Inspect product pilots #258 (frogViz), #331 (frogQuiz), #129 (frogConvert), and #89 (CapInsights), including actual executable evidence and limitations.
+4. Decide whether the pilot improves behavior before expanding feature mapping; do not build a universal CLI without demonstrated need.
 
 ## Coordination
 
@@ -47,4 +47,4 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 
 ## Current status
 
-Shared foundation in draft PR #51, with green exact-head repository CI at the cited revision. Live model-routing comparisons, host acceptance and independent review are outstanding. No merge or release is authorized by this document.
+Shared foundation in draft PR #51. Code-first and Product Passport-as-standard convention are recorded in the shared README and skill. Green repository CI is documented for an earlier reviewed SHA; the newest README/scratchpad commit needs its own final-head confirmation. Live routing comparisons, host acceptance and independent review remain outstanding. No merge or release is authorized by this document.
