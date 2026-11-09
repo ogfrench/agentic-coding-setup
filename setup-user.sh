@@ -57,6 +57,24 @@ for s in "$SRC"/plugins/*/skills/*/ "$SRC"/user/skills/*/; do
   cp -r "$s" "$CONFIG/skills/$name"
 done
 
+# User-level rules load across projects; install only the known shared rule.
+# Never follow a symlink or overwrite a rule not owned by this setup.
+rule="$CONFIG/rules/pr-progress.md"
+source_rule="$SRC/user/rules/pr-progress.md"
+if [[ -L "$CONFIG/rules" ]]; then
+  failed+=("rules folder $CONFIG/rules is a symlink; refusing to write")
+elif [[ -f "$source_rule" ]]; then
+  if ! mkdir -p "$CONFIG/rules"; then
+    failed+=("cannot create rules folder $CONFIG/rules")
+  elif [[ -L "$rule" ]]; then
+    failed+=("rule $rule is a symlink; refusing to overwrite")
+  elif [[ ! -e "$rule" ]] || grep -Fxq "<!-- managed: agentic-coding-setup/pr-progress -->" "$rule"; then
+    cp "$source_rule" "$rule" || failed+=("could not install $rule")
+  else
+    failed+=("rule $rule exists and is not managed by this setup")
+  fi
+fi
+
 # Subagents too: they reach a project through the sync, but not a bare laptop or cloud session.
 mkdir -p "$CONFIG/agents"
 for a in "$SRC"/plugins/*/agents/*.md; do
