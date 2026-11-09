@@ -11,6 +11,8 @@ claude plugin eval . --case 'fold-specialists' --runs 1 --no-publish --max-cost-
 claude plugin eval . --runs 3 --no-publish --max-cost-usd 30
 ```
 
+For Architecture Gardener routing, start with `claude plugin eval . --case 'architecture-gardener-root-cause' --runs 1 --no-publish --max-cost-usd 5`, then run the negative and ambiguous cases. Compare against the skill-disabled baseline before claiming improvement.
+
 The first is a cheap smoke test. Repeat the full suite only when the account
 can cover model use and the plugin directory is trusted. Check grader output,
 skipped runs, task-level regressions and with-minus-without deltas. Invocation

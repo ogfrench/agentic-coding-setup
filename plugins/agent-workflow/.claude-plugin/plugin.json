@@ -1,7 +1,7 @@
 {
   "name": "agent-workflow",
-  "version": "1.10.1",
-  "description": "How work is run: best-practices, learning-loop (capture, curate, promote), model-delegation, visual-loop (show design options on the real thing and loop), token-efficiency (fewer turns and tokens for the same work), session-continuity (keep long work alive across compactions), actions-cost (runner-minutes before a merge), netlify-cost (Netlify builds, credits and edge runs before a config change), issue-management (MECE backlogs), knowledge-base-builder (source-grounded retrieval and MCP), plugin-experience-design (AI plugin packaging and onboarding), product-passport (feature maps and evidence-backed runtime verification), and the cheap-reviewer subagent.",
+  "version": "1.11.0",
+  "description": "How work is run: best-practices, learning-loop (capture, curate, promote), model-delegation, visual-loop (show design options on the real thing and loop), token-efficiency (fewer turns and tokens for the same work), session-continuity (keep long work alive across compactions), actions-cost (runner-minutes before a merge), netlify-cost (Netlify builds, credits and edge runs before a config change), issue-management (MECE backlogs), knowledge-base-builder (source-grounded retrieval and MCP), plugin-experience-design (AI plugin packaging and onboarding), product-passport (feature maps and evidence-backed runtime verification), architecture-gardener (structural root causes and low-noise checks), and the cheap-reviewer subagent.",
   "author": {
     "name": "ogfrench"
   }
