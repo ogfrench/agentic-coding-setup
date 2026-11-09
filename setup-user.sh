@@ -57,26 +57,15 @@ for s in "$SRC"/plugins/*/skills/*/ "$SRC"/user/skills/*/; do
   cp -r "$s" "$CONFIG/skills/$name"
 done
 
-# User-level rules load across projects; install only our known rule and
-# preserve an existing unowned file rather than overwriting user instructions.
+# User-level rules load across projects; install only the known shared rule.
+# Never follow a symlink or overwrite a rule not owned by this setup.
 mkdir -p "$CONFIG/rules"
 rule="$CONFIG/rules/pr-progress.md"
 source_rule="$SRC/user/rules/pr-progress.md"
 if [[ -f "$source_rule" ]]; then
-  if [[ ! -e "$rule" ]] || grep -q '^<!-- managed: agentic-coding-setup/pr-progress -->
-mkdir -p "$CONFIG/agents"
-for a in "$SRC"/plugins/*/agents/*.md; do
-  [[ -f "$a" ]] && cp "$a" "$CONFIG/agents/$(basename "$a")"
-done
-
-echo "plugins: $(claude plugin list 2>/dev/null | grep -c '❯') installed"
-echo "skills:  $(ls "$CONFIG/skills" | tr '\n' ' ')"
-echo "agents:  $(ls "$CONFIG/agents" | tr '\n' ' ')"
-if ((${#failed[@]})); then
-  echo "failed:  ${failed[*]}" >&2
-  exit 1
-fi
- "$rule"; then
+  if [[ -L "$rule" ]]; then
+    failed+=("rule $rule is a symlink; refusing to overwrite")
+  elif [[ ! -e "$rule" ]] || grep -Fq "<!-- managed: agentic-coding-setup/pr-progress -->" "$rule"; then
     cp "$source_rule" "$rule"
   else
     failed+=("rule $rule exists and is not managed by this setup")
