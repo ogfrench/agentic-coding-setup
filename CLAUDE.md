@@ -81,6 +81,20 @@ Fold one subagent at a time, keep it if the simpler version regresses, and
 preserve independent reviewers when they catch errors the main loop misses.
 See `docs/claude-practices-2026-10.md` for the dated evidence and audit.
 
+## Checklist-driven PR work
+
+For any repository change, make a short, outcome-based checklist before coding.
+An active PR description is the canonical checklist and progress handover; use an
+issue or plan before the PR exists. Update PR boxes as work is completed and
+evidenced, not at the end of a session. Reconcile the head commit, checks,
+reviews and remaining blockers at each checkpoint and before handoff. Separate
+implemented, locally tested, CI green, host tested, deployed and released.
+Never check an unverified task. Keep failed and blocked items open, document
+owner and next action, and do not merge or deploy without authorization.
+The `session-continuity` skill owns the detailed workflow and checklist format;
+the PR template offers its starting structure. Product maps and verification
+stay updated within the same PR.
+
 ## Product maps and passports
 
 A product map is an index of user capabilities, real entry points, implementation owners,

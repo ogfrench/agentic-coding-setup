@@ -13,6 +13,8 @@ This repository is the source and distribution layer for a Claude Code developme
 | Inspect copy drift | `scripts/check-sync.mjs`, `lib/sync-status.mjs` | Detect out-of-date or modified managed copies | `node scripts/check-sync.mjs <project-dir> --json`; **not run for this map** |
 | Capture and promote practices | `learnings/`, `kb/practices/`, `scripts/build-kb.mjs`, `plugins/agent-workflow/skills/learning-loop/` | Move evidence into on-demand reusable guidance | `node --test`; **not run for this map** |
 | Map features and verify products | `plugins/agent-workflow/skills/product-passport/` | Source-grounded feature ownership, journeys, verification and map upkeep | Test a substantive task in a real target repository; **not run** |
+| Audit structural causes and ownership drift | `plugins/agent-workflow/skills/architecture-gardener/` | Read-only structural findings and scoped repairs | Inspect source and negative paths; no host evaluation claimed |
+| Deliver multi-step repository changes | `plugins/agent-workflow/skills/session-continuity/`, `user/rules/pr-progress.md` | Evidence-backed PR checklists and completion gates | Exact-head source CI; real host routing not yet verified |
 | Visual QA and other working practices | `plugins/agent-workflow/skills/` | Select specialized workflows only when task-relevant | Task-level evaluation; **not run** |
 | Cross-host review companion | `portable/ogfrench-workflow/` | Optional skill-only review workflows | Per-host acceptance; see source release record |
 

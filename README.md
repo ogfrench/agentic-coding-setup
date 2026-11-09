@@ -1,8 +1,19 @@
 # agentic-coding-setup
 
-My Claude Code setup, kept in one place and pushed to every repo I own: skills, plugins, hooks, MCP servers and settings. It works in local sessions and in cloud sessions on claude.ai/code.
+My shared agentic coding workflow: reusable skills, engineering practices, agent instructions, plugins and integrations, with explicit installation paths for different AI coding environments. The established automation is built around Claude Code; an optional, portable workflow plugin also targets ChatGPT and Codex. These integrations are not interchangeable or equally verified.
 
-It is also a living record of what working with Claude has taught me. Lessons are captured as dated learnings, curated into practices that Claude reads in every repo, and promoted into skills, subagents, hooks, commands or plugins when they earn it. See [Learnings and practices](#learnings-and-practices). The repo is public, so nothing in it names a client or comes from a private repo. A check enforces that: see [Public by design](#public-by-design).
+This is also a living record of lessons from building software with coding agents. Learnings become reviewed practices, then skills, subagents, hooks, commands or plugins where that improves real work. The knowledge base and [Product Passport](#current-architecture-review) provide reusable methods, while each repository's code, tests and observed behavior remain the source of truth. See [Learnings and practices](#learnings-and-practices). Public content never includes client information or private-repository material; see [Public by design](#public-by-design).
+
+## Supported surfaces and boundaries
+
+| Environment | What this repository provides | Current boundary |
+| --- | --- | --- |
+| **Claude Code (local and cloud)** | Primary user-level setup (`setup-user.sh`), project sync (`sync-to-repos.sh`), skills, agents, hooks, MCP configuration and reviewed marketplace plugins | Claude-specific `.claude/` files and CLI commands; actual installation is explicit and host-dependent |
+| **ChatGPT** | Optional four-skill [`ogfrench-workflow`](portable/ogfrench-workflow/) plugin, also imported privately | Not the full Claude setup; no automatic project sync or implied access to local files, GitHub or MCP tools |
+| **Codex / compatible ChatGPT desktop environments** | Optional repository-local marketplace definition and the same portable workflow source | Marketplace file checks exist; real host installation and skill behavior still need acceptance testing |
+| **Other coding assistants, including GitHub Copilot** | Public, reusable principles and reference material that can inform future adapters | No tested installer, native integration or feature parity is claimed |
+
+Platform support is intentionally capability-specific. A source package, successfully imported plugin and fully tested host installation are different milestones. Consult the [host contract](docs/portable-workflow-plugin.md) and [acceptance record](docs/portable-workflow-acceptance.md) before distributing anything as supported. Skills are instructions, not tool permissions or credentials.
 
 ## Reviewed marketplace updates
 
@@ -12,17 +23,19 @@ The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: fa
 
 The [ogfrench Workflow plugin](portable/ogfrench-workflow/) packages four focused review workflows for Claude Code and ChatGPT/Codex, without installing hooks, MCP servers or third-party dependencies. It is optional and separate from the established personal setup and project sync. See the [host compatibility and release gate](docs/portable-workflow-plugin.md) and [acceptance evidence requirements](docs/portable-workflow-acceptance.md). Its source has merged, but host acceptance and public distribution remain unverified.
 
-## Source release | 9 November 2026
+## Source status | 9 November 2026
 
-**agent-workflow v1.10.1** is the final reviewed source package including Product Passport. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
+**agent-workflow v1.11.0** is a source candidate including Architecture Gardener; live routing evaluation and downstream distribution remain pending. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
 
 ## Product map and maintenance
 
 The [Product Passport map](docs/product-passport/README.md) describes this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
 
-## Two layers
+## Claude Code installation and repository sync
 
-**Me, everywhere: `setup-user.sh`.** It installs every plugin in `user/plugins.txt` and copies the skills into `~/.claude/skills` and the subagents into `~/.claude/agents`, at user scope. Run it once on a laptop. For cloud sessions, paste this as the setup script of the environment on claude.ai/code. It runs before Claude starts, in every repo that uses the environment:
+The following two layers are **Claude Code-specific**, not universal setup commands for every coding assistant.
+
+**User scope: `setup-user.sh`.** It installs every plugin in `user/plugins.txt` and copies the skills into `~/.claude/skills` and the subagents into `~/.claude/agents`, at user scope. Run it once on a laptop. For cloud sessions, paste this as the setup script of the environment on claude.ai/code. It runs before Claude starts, in every repo that uses the environment:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/ogfrench/agentic-coding-setup/main/setup-user.sh | bash
@@ -34,9 +47,9 @@ The setup script remains the explicit path for this repository's pinned plugins.
 Check the current [skill loading rules](https://code.claude.com/docs/en/skills) before assuming
 that repository, plugin and account skills are equivalent.
 
-**Each repo, for anyone: `sync-to-repos.sh`.** It commits the skills into each repo's `.claude/skills/` and merges `project/settings.json`, so teammates' local sessions and non-project cloud sessions that load repository skills get them. Cloud project threads use account-synced skills instead. Repos only enable team-useful plugins. Personal response modes live as opt-in Markdown skills under `user/skills/`; they are not pushed to teammates or installed as third-party plugins.
+**Project scope: `sync-to-repos.sh`.** It commits the skills into each repo's `.claude/skills/` and merges `project/settings.json`, so teammates' local sessions and non-project cloud sessions that load repository skills get them. Cloud project threads use account-synced skills instead. Repos only enable team-useful plugins. Personal response modes live as opt-in Markdown skills under `user/skills/`; they are not pushed to teammates or installed as third-party plugins.
 
-The source of truth is this repo. The copies in each project are overwritten on the next sync, so edit here.
+For centrally managed agent instructions and practices, this repo is the upstream source. Project code, tests and actual behavior remain authoritative for each product. The managed copies in each project are overwritten on the next Claude Code sync, so edit shared content here.
 
 **Provenance and drift detection.** Each synced project records the central source commit and a SHA-256 fingerprint of its managed skill/agent/command copies in `.claude/claude-code-setup.json`. From a checkout of this repo, run `node scripts/check-sync.mjs /path/to/project` (or add `--json`) to distinguish current, outdated, locally modified, legacy and unverifiable copies. It reads only; it does not update a project. The next deliberate sync overwrites managed copies, while project-owned skills remain untouched. Existing projects acquire these stamps on their next sync. CI in a project can run the checker after checking out this source, but a standard project is not blocked automatically until its manifest is upgraded.
 
@@ -81,7 +94,11 @@ the sync and installation steps remain explicit.
 
 **Agent-ready knowledge bases.** The `knowledge-base-builder` skill documents source-native ingestion, source metadata, scoped retrieval, hybrid ranking, MCP contracts, freshness, privacy and evaluation. Use it to add knowledge retrieval to a repo without replacing its own sources. See [`SKILL.md`](plugins/agent-workflow/skills/knowledge-base-builder/SKILL.md) and its detailed references. It does not automatically index other repositories or activate a remote service.
 
+**Autonomous delivery and PR progress.** The [`session-continuity`](plugins/agent-workflow/skills/session-continuity/SKILL.md) skill owns the execution loop for authorized multi-step work: a live PR checklist, code-first changes, source-appropriate tests, CI root-cause recovery, and evidence-backed handover. The user-level rule in [`user/rules/pr-progress.md`](user/rules/pr-progress.md) makes these expectations visible to Claude Code after explicit installation. The portable ChatGPT/Codex plugin has separate, limited handover guidance, not an automatic global rule. No checklist grants permission to merge, deploy or spend money.
+
 **Product Passport (standard engineering workflow).** For substantive feature, regression, and release-verification work, use the [`product-passport`](plugins/agent-workflow/skills/product-passport/SKILL.md) skill to trace executable source code first, then follow existing tests and real product verification journeys. Feature maps and documentation are derived navigation aids, never the source of truth. It reuses each product's existing CLI, tests, and rendering tools, records what was actually exercised, and routes durable corrections into code or regression protection. [Feature, evidence, and maintenance contracts](plugins/agent-workflow/skills/product-passport/references/feature-contract.md) are on demand. Keep product-owned maps and private proof in the product repository. See the [implementation scratchpad](docs/product-passport/SCRATCHPAD.md) for the unmerged rollout status.
+
+**Architecture Gardener (structural maintenance).** The [`architecture-gardener` skill](plugins/agent-workflow/skills/architecture-gardener/SKILL.md) inspects ownership, process boundaries, architecture drift and recurring workarounds. Its default audit is read-only; repair requires an explicit change request. It uses existing project tools and [evidence criteria](plugins/agent-workflow/skills/architecture-gardener/references/audit-contract.md), not a universal CLI or mandatory folder layout. Use Product Passport for feature behavior and release proof; use Architecture Gardener for structural causes. Source integration does not prove improved agent behavior: routing evaluations and real-host pilots remain required.
 
 ## Adding things
 
