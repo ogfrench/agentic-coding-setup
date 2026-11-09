@@ -4,6 +4,10 @@ My Claude Code setup, kept in one place and pushed to every repo I own: skills, 
 
 It is also a living record of what working with Claude has taught me. Lessons are captured as dated learnings, curated into practices that Claude reads in every repo, and promoted into skills, subagents, hooks, commands or plugins when they earn it. See [Learnings and practices](#learnings-and-practices). The repo is public, so nothing in it names a client or comes from a private repo. A check enforces that: see [Public by design](#public-by-design).
 
+## Reviewed marketplace updates
+
+The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: false`. A reviewed upstream change is deployed through separate downstream sync PRs, not automatic marketplace refresh. The sync migrates only the managed `ogfrench` marketplace entry from earlier installations (including the repository's old name), leaving unrelated marketplace settings and project-owned overrides intact. A deliberate `setup-user.sh` invocation remains a user-triggered installation/update, not a background policy. Verify the effective setting on each actual Claude Code host; user-level and managed settings may have higher precedence.
+
 ## Two layers
 
 **Me, everywhere: `setup-user.sh`.** It installs every plugin in `user/plugins.txt` and copies the skills into `~/.claude/skills` and the subagents into `~/.claude/agents`, at user scope. Run it once on a laptop. For cloud sessions, paste this as the setup script of the environment on claude.ai/code. It runs before Claude starts, in every repo that uses the environment:
