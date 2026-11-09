@@ -1,9 +1,7 @@
 ---
 name: product-passport
 description: >-
-  Map and verify product behavior across feature boundaries. Use when asked for a
-  Product Passport, feature map, verification loop, or evidence-backed proof of
-  a cross-layer change, regression, or release-critical user journey.
+  Map product features to code owners and verify real behavior. Use for Product Passport, feature maps, cross-layer regressions and release proof.
 ---
 
 # Product Passport
