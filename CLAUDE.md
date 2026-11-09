@@ -130,3 +130,7 @@ ordinary coding tasks, whether or not the skill is selected.
 - **Only pull requests, never a push to `main`.** The rules are in `CONTRIBUTING.md`.
 - **Ship as the README says:** `node --test` (which includes the public check),
   `claude plugin validate . --strict`, then open a PR. The sync to other repos is a separate, explicit step.
+
+## Always-shippable default branch
+
+Keep `main` releasable at every merge. This is a delivery requirement, not a claim that every historical revision is already healthy or deployed. Incomplete work stays on a draft PR or isolated branch. Before merging, inspect the final source diff, validate actual user and install/sync paths affected by the change, and require exact-head CI plus relevant negative cases. Track broken or missing host acceptance explicitly rather than implying success from metadata or static tests. Never bypass failing gates, weaken privacy checks, or claim a source merge automatically installed, synchronized, deployed or released a plugin. Reconcile the Product Passport map and PR checklist in the same change; preserve the existing release and permission boundaries.
