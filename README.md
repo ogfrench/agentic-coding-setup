@@ -27,6 +27,10 @@ The [ogfrench Workflow plugin](portable/ogfrench-workflow/) packages four focuse
 
 **agent-workflow v1.11.0** is a source candidate including Architecture Gardener; live routing evaluation and downstream distribution remain pending. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
 
+## Product map and maintenance
+
+The [Product Passport map](docs/product-passport/README.md) describes this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
+
 ## Claude Code installation and repository sync
 
 The following two layers are **Claude Code-specific**, not universal setup commands for every coding assistant.
