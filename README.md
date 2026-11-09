@@ -23,9 +23,9 @@ The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: fa
 
 The [ogfrench Workflow plugin](portable/ogfrench-workflow/) packages four focused review workflows for Claude Code and ChatGPT/Codex, without installing hooks, MCP servers or third-party dependencies. It is optional and separate from the established personal setup and project sync. See the [host compatibility and release gate](docs/portable-workflow-plugin.md) and [acceptance evidence requirements](docs/portable-workflow-acceptance.md). Its source has merged, but host acceptance and public distribution remain unverified.
 
-## Source release | 9 November 2026
+## Source status | 9 November 2026
 
-**agent-workflow v1.10.1** is the final reviewed source package including Product Passport. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
+**agent-workflow v1.11.0** is a source candidate including Architecture Gardener; live routing evaluation and downstream distribution remain pending. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
 
 ## Claude Code installation and repository sync
 
@@ -93,6 +93,8 @@ the sync and installation steps remain explicit.
 **Autonomous delivery and PR progress.** The [`session-continuity`](plugins/agent-workflow/skills/session-continuity/SKILL.md) skill owns the execution loop for authorized multi-step work: a live PR checklist, code-first changes, source-appropriate tests, CI root-cause recovery, and evidence-backed handover. The user-level rule in [`user/rules/pr-progress.md`](user/rules/pr-progress.md) makes these expectations visible to Claude Code after explicit installation. The portable ChatGPT/Codex plugin has separate, limited handover guidance, not an automatic global rule. No checklist grants permission to merge, deploy or spend money.
 
 **Product Passport (standard engineering workflow).** For substantive feature, regression, and release-verification work, use the [`product-passport`](plugins/agent-workflow/skills/product-passport/SKILL.md) skill to trace executable source code first, then follow existing tests and real product verification journeys. Feature maps and documentation are derived navigation aids, never the source of truth. It reuses each product's existing CLI, tests, and rendering tools, records what was actually exercised, and routes durable corrections into code or regression protection. [Feature, evidence, and maintenance contracts](plugins/agent-workflow/skills/product-passport/references/feature-contract.md) are on demand. Keep product-owned maps and private proof in the product repository. See the [implementation scratchpad](docs/product-passport/SCRATCHPAD.md) for the unmerged rollout status.
+
+**Architecture Gardener (structural maintenance).** The [`architecture-gardener` skill](plugins/agent-workflow/skills/architecture-gardener/SKILL.md) inspects ownership, process boundaries, architecture drift and recurring workarounds. Its default audit is read-only; repair requires an explicit change request. It uses existing project tools and [evidence criteria](plugins/agent-workflow/skills/architecture-gardener/references/audit-contract.md), not a universal CLI or mandatory folder layout. Use Product Passport for feature behavior and release proof; use Architecture Gardener for structural causes. Source integration does not prove improved agent behavior: routing evaluations and real-host pilots remain required.
 
 ## Adding things
 

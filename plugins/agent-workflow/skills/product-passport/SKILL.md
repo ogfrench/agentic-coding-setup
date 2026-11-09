@@ -22,6 +22,7 @@ Make a product understandable to an agent and its behavior independently checkab
 
 - Use `visual-loop` for actual rendered UI/slide inspection and option comparisons. Product Passport selects the feature journey and records proof; it does not replace visual judgment.
 - Use `plugin-experience-design` for installation, host compatibility, and downloadable plugin acceptance.
+- Use `architecture-gardener` for structural drift, repeated ownership failures and root-cause architecture repair. Product Passport retains responsibility for feature-level verification.
 - Use `learning-loop` for reusable lessons, and `best-practices` for existing engineering rules. Keep private project evidence out of this public skill and its examples.
 - Use independent adversarial review where consequential. Existing product release gates, human authorization, and deployed-revision checks remain authoritative.
 - Ordinary copy edits, purely local functions, and generic research do not need a new passport or full end-to-end run.
