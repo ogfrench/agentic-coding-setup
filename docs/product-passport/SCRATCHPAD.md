@@ -16,11 +16,16 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 - [x] Add positive, negative, and ambiguous evaluation prompts and quality graders.
 - [x] Align the skill-used invocation grader with the repository's existing regex format.
 
+## Verification evidence
+
+- [x] GitHub Actions check succeeded on skill-description fix head `fea9135f3955fd58a0f6bb186f9408c3260ad70a` ([run 42588081914](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42588081914)). The first run failed due to the existing 1,100-token always-on description budget; shortened overlapping descriptions instead of raising the budget.
+- [x] PR [#51](https://github.com/ogfrench/agentic-coding-setup/pull/51) opened as draft. Not merged.
+
 ## Not yet verified
 
-- [ ] Run `node scripts/check-public.mjs` and `node --test` against the exact branch checkout.
-- [ ] Run `node scripts/build-kb.mjs --check` to confirm all generated assets match canonical source.
-- [ ] Run `claude plugin validate . --strict` and any product-relevant plugin validation.
+- [x] `node --test` completed in exact-head GitHub CI (run 42588081914), including public-content test and generated-index parity.
+- [x] Generated indexes matched canonical nodes in the repository's `node --test` registry parity test; direct `node scripts/build-kb.mjs --check` was not separately invoked.
+- [x] Repository CI check passed, including plugin validation configured in the existing CI workflow. Host-specific runtime remains untested.
 - [ ] Execute actual model routing evaluations, including comparison without the skill.
 - [ ] Obtain full GitHub CI status for the final PR head and correct any failures.
 - [ ] Complete independent security/adversarial review.
@@ -42,4 +47,4 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 
 ## Current status
 
-Shared foundation authored in a dedicated branch. Runtime and full CI acceptance are still pending. No downstream implementation is complete and no merge or release is authorized by this document.
+Shared foundation in draft PR #51, with green exact-head repository CI at the cited revision. Live model-routing comparisons, host acceptance and independent review are outstanding. No merge or release is authorized by this document.
