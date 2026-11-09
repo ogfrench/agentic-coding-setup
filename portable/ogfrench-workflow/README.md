@@ -1,6 +1,6 @@
 # ogfrench Workflow
 
-A small cross-host companion to the existing `claude-code-setup` system.
+A small cross-host companion to the existing `agentic-coding-setup` system.
 
 It supplies four portable skills: setup-audit, adversarial-review, implementation-proof, and release-handover. It does **not** replace the three existing Claude Code plugins (`agent-workflow`, `frog-writing`, `presentation-craft`) or the repository's setup/sync scripts.
 
