@@ -35,7 +35,7 @@ Build a shared on-demand skill and evidence contract first. Reuse existing runti
 
 1. Reconfirm CI at the final head and run positive/negative/ambiguous model routing evaluations, including a baseline without the skill.
 2. Review skill overlap with portable workflow PR #47 and rename/sync PR #48. Do not overwrite those changes.
-3. Inspect product pilots #258 (frogViz), #331 (frogQuiz), #129 (frogConvert), and #89 (CapInsights), including actual executable evidence and limitations.
+3. Inspect product-owned pilot PRs in their respective repositories, including actual executable evidence and limitations. Keep private repository identifiers and cross-repository links out of this public project.
 4. Decide whether the pilot improves behavior before expanding feature mapping; do not build a universal CLI without demonstrated need.
 
 ## Coordination
