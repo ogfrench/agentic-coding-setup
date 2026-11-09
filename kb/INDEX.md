@@ -34,6 +34,7 @@
 - code-simplifier (plugin): Agent that simplifies recently modified code for clarity while preserving behavior.
 - commit-commands (plugin): Slash commands for git commit workflows: commit, push, open a PR.
 - context7 (plugin): MCP server for version-specific library documentation and code examples.
+- delivery-loop (skill): Deliver authorized multi-step repository outcomes with live PR checklists, verification, CI repair and precise handovers.
 - design-system-adapter (skill): Apply supplied brand tokens and visual rules without inventing proprietary assets.
 - deslopify (skill): Audit copy for AI-writing tells and fix them line by line.
 - frogify (skill): Rewrite copy in frog's voice, marketing or editorial register.
