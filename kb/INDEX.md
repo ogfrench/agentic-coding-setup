@@ -49,6 +49,7 @@
 - plugin-experience-design (skill): Design and validate coherent cross-platform AI plugin installation, onboarding, capability disclosure and release UX.
 - presentation-design (skill): Create and inspect real slide files with purposeful visuals and honest export claims.
 - presentation-story (skill): Build evidence-backed presentation arguments, storylines and action titles.
+- product-passport (skill): Map product features, exercise real user journeys, collect proof, and maintain architecture and verification boundaries.
 - serena (plugin): Semantic code analysis MCP server: symbol-level navigation and refactoring via language servers.
 - session-continuity (skill): Keep long work alive across compactions: durable state, standalone check-ins, work checked against the plan, open points raised.
 - superpowers (plugin): Brainstorming, subagent-driven development with built-in review, systematic debugging, red/green TDD, and skill authoring.
