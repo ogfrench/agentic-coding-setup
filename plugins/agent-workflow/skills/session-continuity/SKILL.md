@@ -32,27 +32,22 @@ as steps finish, fail, or change; do not defer updates until the end of a sessio
 
 ## PR-first execution checklist
 
-1. Before substantive repository work, write a short ordered checklist of outcomes and
-   proof, even for a one-file fix. Use the issue or working plan until a PR exists; then put
-   the checklist in the PR description. Replace template placeholders with actual tasks.
-2. Keep one status per task: unchecked means open, blocked, or not proven. Check it only
-   after inspecting the result and recording specific evidence. A commit, CI run, or
-   self-authored description alone does not prove user behavior.
-3. After each meaningful checkpoint, re-read the code, PR head, checks and review threads;
-   update the PR checklist with completed work, failures and next action. If a later change
-   invalidates proof, reopen the box and rerun the affected verification.
-4. At handover, record the exact branch and commit, implemented versus tested versus
-   deployed state, commands and outcomes, open reviews, blockers, risks, decisions,
-   ownership, and the immediate next step. Keep this in the PR, not only in chat.
-5. Before requesting review or merge, reconcile every acceptance item and required gate.
-   Never silently drop or check an incomplete item. Transfer explicitly deferred work to
-   a linked owning issue with approval; keep release-blocking items open.
+1. Before changing a repository, list the outcomes and proof as checkboxes.
+   Use a durable issue or plan until a PR opens; then keep the PR description
+   authoritative. Replace template placeholders with specific tasks.
+2. Check an item only when evidence proves its acceptance criterion. Record
+   the command, result, runtime and revision. Failed, blocked or unrun checks
+   remain open; a commit or CI status alone may not prove actual behavior.
+3. After meaningful steps and context changes, re-read the branch, PR head,
+   checks and review threads; update the checklist. Reopen verification made
+   stale by later edits.
+4. Before handover, record exact head, completed work, testing, deployment,
+   unresolved reviews, risks, decisions, owner and next step in the PR.
+5. Before review or merge, reconcile every required gate; defer only explicitly
+   to a linked owning issue, never silently discard an open release blocker.
 
-Follow [PR progress and handover](references/pr-progress.md) for the compact format and
-multi-agent update rules. Respect stricter project and release rules; a checklist is not
-permission to merge or deploy.
-
-
+See [PR progress and handover](references/pr-progress.md) for examples and
+multi-agent edits. A checklist never grants merge or deploy authority.
 
 ## Record the user's words
 
