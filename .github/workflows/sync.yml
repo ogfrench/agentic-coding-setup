@@ -36,7 +36,7 @@ concurrency:
 
 jobs:
   sync:
-    if: github.repository == 'ogfrench/claude-code-setup' && github.ref == 'refs/heads/main'
+    if: github.repository == 'ogfrench/agentic-coding-setup' && github.ref == 'refs/heads/main'
     # The `if` is in this file, which a branch can edit. What keeps the secrets on main is
     # the environment: its deployment branches are limited to main in the repo settings.
     environment: sync
