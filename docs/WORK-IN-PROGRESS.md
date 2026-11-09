@@ -26,6 +26,9 @@ This is the durable handover for the current cross-platform workflow plugin work
 
 - [x] Reconciled installation documentation with current OpenAI plugin guidance. Local marketplace installations use a cache, so checkout changes need an explicit refresh/reinstall and a new-chat check; private uploaded releases have an independent update path. Added [release acceptance record](portable-workflow-acceptance.md) with host-by-host evidence, test outcomes, rollback and explicit PASS/FAIL/BLOCKED/WAIVED decisions. Consolidated repeated host documentation. No code or release behavior changed.
 
+- [x] Completed developer handover at [PORTABLE-WORKFLOW-HANDOVER-2026-11-09.md](PORTABLE-WORKFLOW-HANDOVER-2026-11-09.md) with repo inventory, evidence boundaries, host execution order and rollback.
+- [x] Added optional Codex marketplace registration command and made cached installed-copy refresh a separate acceptance gate. This is documentation, **not** an executed Codex host test.
+
 ## Pending or blocked
 
 - [ ] Authenticated Claude skill invocation and uninstall in supported real desktop/cloud host, plus Windows/macOS coverage. Do not treat CLI installation as behavioral proof.

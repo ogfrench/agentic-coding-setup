@@ -58,9 +58,10 @@ The repository contains `.agents/plugins/marketplace.json`, a separate **local**
 
 Open this branch in a supported ChatGPT desktop or Codex workspace, restart the desktop app, select the `ogfrench-local` source in the Plugins Directory and install `ogfrench-workflow`. Test it in a new conversation. This local source is not the same as the uploaded personal ChatGPT plugin.
 
-Codex can inspect and refresh tracked marketplaces:
+Codex can register, inspect and refresh this repo's marketplace. Run these commands from the checked-out repository root; registering the source does not install its plugin:
 
 ```sh
+codex plugin marketplace add ./
 codex plugin marketplace list
 codex plugin marketplace upgrade ogfrench-local
 ```

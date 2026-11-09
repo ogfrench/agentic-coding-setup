@@ -11,6 +11,7 @@ This is the decision record for [draft PR #47](https://github.com/ogfrench/agent
 | Claude task behavior | Four positive eval cases and one negative case; actual invocation trace, quality rubric, with/without results and cost | Intended skills activate, unrelated task does not; no material regression against baseline |
 | ChatGPT task behavior | New-chat test with private plugin enabled and a no-plugin baseline; same tasks, tool access and outcome notes | Supported tasks run as documented; unsupported requests do not invent access or fake screenshots |
 | Platform scope | Linux, macOS, Windows results, with host and install method recorded | Each platform advertised as supported has evidence; otherwise mark untested and restrict claims |
+| Local Codex marketplace installed snapshot | Source checkout and marketplace registration, installed plugin cache/version, fresh-session result after refresh | Actual installed content matches reviewed source; marketplace upgrade alone is not proof |
 | Settings and rollback | Effective marketplace/update policy, any permission prompts, uninstall and repeat baseline test | No unexpected auto-update, credential request, or modification to existing setup |
 | Final decision | Reviewer, date, exact SHA and CI URL, remaining risks and explicit approval or waiver | No unresolved critical defect; every waived gate is listed and reflected in user-facing support claims |
 
@@ -22,9 +23,10 @@ The existing five evaluation fixtures under `portable/ogfrench-workflow/evals/` 
 2. On an **authenticated test host**, install `ogfrench-workflow@ogfrench` using the [plugin README](../portable/ogfrench-workflow/README.md). Record `claude --version`, OS, configuration scope and installation output.
 3. Run the four positive cases and the unrelated negative case with and without the plugin. Record outcome quality, actual skill invocation, tool availability, cost and errors. An evaluation that cannot run is **blocked**, not passed.
 4. In ChatGPT, enable the private plugin in a *new chat* and repeat comparable tasks with an unmodified no-plugin baseline. Confirm the installed version, not merely the marketplace source.
-5. Recheck installed/updated behavior on every platform claimed in the README. If Windows/macOS remain untested, do not claim support there.
-6. Uninstall/disable the companion. Check that existing Claude hooks, settings, other plugins and downstream repository copies are unchanged.
-7. Write the decision in the section below and update [the working scratchpad](WORK-IN-PROGRESS.md) plus PR #47. Merge or publish only with sufficient actual evidence.
+5. On a supported Codex/ChatGPT desktop host, add or select the local `ogfrench-local` marketplace, install its plugin, inspect the installed version/skills, then refresh after a reviewed source change. Test in a new conversation and record evidence that the *installed cache* changed. `codex plugin marketplace upgrade` does not alone confirm an installed update.
+6. Recheck installed/updated behavior on every platform claimed in the README. If Windows/macOS remain untested, do not claim support there.
+7. Uninstall/disable the companion. Check that existing Claude hooks, settings, other plugins and downstream repository copies are unchanged.
+8. Write the decision in the section below and update [the working scratchpad](WORK-IN-PROGRESS.md) plus PR #47. Merge or publish only with sufficient actual evidence.
 
 ## Record template
 

@@ -1,87 +1,74 @@
-# Portable workflow plugin: technical handover
+# Handover | ogfrench Workflow cross-platform companion | 2026-11-09
 
-**Date:** 2026-11-09  
-**Repository:** [agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup)  
-**Active work:** [draft PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47), `feat/cross-platform-workflow-plugin-2026-11-09`  
-**Package version:** `ogfrench-workflow` 0.1.1  
-**Release decision:** **HOLD**, not merged or publicly published.
+## Decision and state
 
-This document is for the next independent engineering agent. For changing done/pending status over time use the [working scratchpad](WORK-IN-PROGRESS.md); for exact acceptance data use the [release acceptance record](portable-workflow-acceptance.md). Do not use this handover as evidence that any unrun host evaluation passed.
+**HOLD for broad release.** The repository rename and shared setup security changes are on protected `main`. The optional cross-platform companion remains in **[draft PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47)**, version **0.1.1**. Static package checks, Linux CLI installation/removal, and private ChatGPT package import have succeeded. Authenticated task-level effectiveness, desktop refresh, Windows and macOS acceptance have **not** been established.
 
-## Architectural decisions
+This document is a resumption handover, not a release certificate. Recheck the exact PR head and its latest GitHub Actions run before treating any CI claim as current.
 
-The existing repository remains the source of truth. Claude-specific setup and its existing plugins (`agent-workflow`, `presentation-craft`, `frog-writing`) are *not* replaced. `portable/ogfrench-workflow/` is an **opt-in companion** containing four cross-host skills:
+## Repository and change inventory
 
-| Skill | Purpose |
-| --- | --- |
-| `setup-audit` | Check what a particular AI host can actually load and execute |
-| `adversarial-review` | Critically review implementation/release risks using evidence |
-| `implementation-proof` | Demand rendered evidence from real code rather than fabricated UI proof |
-| `release-handover` | Produce a reproducible status, release gate and rollback handover |
+- Canonical source: [`ogfrench/agentic-coding-setup`](https://github.com/ogfrench/agentic-coding-setup), default `main`, public.
+- Feature branch: `feat/cross-platform-workflow-plugin-2026-11-09`; associated [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47), **draft / unmerged**.
+- Plugin identity: `ogfrench-workflow` v0.1.1. The root portable manifest is `portable/ogfrench-workflow/plugin.json`. Claude Code reads `portable/ogfrench-workflow/.claude-plugin/plugin.json`. The personal ChatGPT plugin was privately imported, not published in the public directory.
+- Four skills: `setup-audit`, `adversarial-review`, `implementation-proof`, `release-handover`; read their individual `SKILL.md` files under `portable/ogfrench-workflow/skills/`.
+- Marketplace sources: `.claude-plugin/marketplace.json` exposes an **optional** Claude plugin; `.agents/plugins/marketplace.json` exposes a repo-local ChatGPT/Codex plugin named `ogfrench-local`.
+- Tests: `test/portable-workflow-plugin.test.mjs` checks manifests, skills, eval fixtures, packaging boundaries, and declared CI gates. `.github/workflows/check.yml` validates the Claude manifest and performs an isolated Linux plugin install/list/uninstall smoke test.
+- Behavioral eval definitions: four positive task cases and one unrelated negative routing case under `portable/ogfrench-workflow/evals/`. The fixture tests do **not** run the model.
 
-The portable `plugin.json` declares identity, version and optional OpenAI display metadata. Its `.claude-plugin/plugin.json` declares the same identity for Claude Code. The Claude marketplace exposes this optional package; the local OpenAI marketplace under `.agents/plugins/marketplace.json` exposes the same directory to supported desktop/Codex clients. Neither marketplace silently installs it.
+## Prior related work, not to undo
 
-No MCP server, runtime hook, credential, local filesystem permission, agent launcher, third-party dependency, or downstream synchronization is part of this companion. Tool access is supplied independently by the active host.
+- [PR #46](https://github.com/ogfrench/agentic-coding-setup/pull/46) merged filesystem-copy hardening against malicious manifests and symlinks.
+- [PR #49](https://github.com/ogfrench/agentic-coding-setup/pull/49) merged the canonical rename migration from `claude-code-setup` to `agentic-coding-setup`.
+- [PR #50](https://github.com/ogfrench/agentic-coding-setup/pull/50) merged the approved reviewed-update policy, setting the shared `ogfrench` marketplace `autoUpdate` to `false` and migrating managed legacy settings on subsequent reviewed sync.
+- Duplicate rename PR #48 was closed without merge. Preserve `.claude/claude-code-setup.json` as the downstream provenance format and `chore/claude-code-setup` as the established sync branch name.
+- Existing Claude plugins `agent-workflow`, `frog-writing`, and `presentation-craft` remain canonical. No forced installation or downstream synchronization is part of PR #47.
 
-## Existing repository dependencies
+## Evidence, with boundaries
 
-- [PR #46](https://github.com/ogfrench/agentic-coding-setup/pull/46), security hardening: merged to `main`.
-- [PR #49](https://github.com/ogfrench/agentic-coding-setup/pull/49), repository rename and canonical setup/sync sources: merged to `main`.
-- [PR #50](https://github.com/ogfrench/agentic-coding-setup/pull/50), disable shared marketplace automatic updates and migrate matching legacy project settings: merged to `main`.
-- [PR #48](https://github.com/ogfrench/agentic-coding-setup/pull/48): duplicate rename work, closed without merge.
-- [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47): this feature, draft.
-- Unrelated open PRs, including dependency updates and new workflows, must be reviewed independently. Do not merge or sync them as part of this release.
+| Claim | Status | Evidence |
+| --- | --- | --- |
+| Repository `main` contains the rename and hardening changes | Verified | Merged PRs #46, #49 and #50 |
+| Static Node, privacy and manifest checks | Passed on prior exact heads | [GitHub check #153](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42589674937); verify the current head again |
+| Optional Claude plugin can install, list and uninstall in isolated Linux CLI | Verified | [CI #140](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42587762393) and subsequent green checks |
+| Personal ChatGPT package v0.1.1 imports and four skills match GitHub source | Verified | Private plugin owner/source inspection; does not imply all ChatGPT hosts installed it |
+| Authenticated Claude task invocation and measured benefit versus no plugin | Not run | Needs real model/host execution |
+| ChatGPT routing, quality and negative-case comparison | Not run | Needs controlled with/without-plugin test |
+| Codex local marketplace cache update and new-chat behavior | Not run | Source registration and installed-copy refresh must be tested separately |
+| Windows and macOS | Not run | No host acceptance evidence |
+| Public distribution / downstream sync / release tag | Not done | No authorization to claim released |
 
-The established downstream manifest `.claude/claude-code-setup.json` and branch `chore/claude-code-setup` stay unchanged to preserve provenance and avoid duplicate downstream PRs.
+Do not substitute static CI for behavioral testing. Do not publish raw private prompts, credentials, private repo names or device paths in this public repository.
 
-## What was actually verified
+## Review findings and remaining risk
 
-- Source/manifest parity: both portable and Claude Code manifest versions are 0.1.1. A private ChatGPT package was accepted, and its released root manifest plus four skills were independently compared with the PR source.
-- Automated tests: Node tests, public-repository content check, root/local/portable Claude plugin validation, and `lib/apply.mjs` dry-run. [CI run #158](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42590675662) succeeded on commit `8534f88e2572201be2a737ce0206a988b6755b88`. Later heads must be checked separately.
-- Isolated Linux CLI smoke: the marketplace is registered, the plugin installs, is listed, and can be uninstalled under a temporary Claude configuration. This confirms package mechanics, **not model skill execution**.
-- Five outcome/routing eval definitions exist under `portable/ogfrench-workflow/evals/`. Their static structure is tested; no authenticated two-arm behavioral results have been recorded.
-- A source-grounded [adversarial review](portable-workflow-adversarial-review-2026-11-09.md) assessed the narrow packaging and skill-instruction trust boundaries.
+The portable companion declares neither startup hooks nor bundled MCP connections. Regression tests reject unexpected executable files and symlinks. The security review is at [`docs/portable-workflow-adversarial-review-2026-11-09.md`](portable-workflow-adversarial-review-2026-11-09.md). Residual risks are **prompt-driven tool misuse** under host-granted permissions, duplicate routing versus existing Claude skills, untested cache refresh/version behavior, settings precedence on individual machines, and unsupported claims about Windows/macOS. There is no measured behavioral win yet.
 
-## What remains unverified
+The ChatGPT personal upload, Claude marketplace install and Codex local marketplace are separate distribution paths. Updating one does not automatically update the others. An installed local Codex plugin is a cached copy, not a live reference to the checkout. The owner-uploaded ChatGPT release must be updated through Plugin Creator and verified independently.
 
-- Authenticated Claude task invocation and four positive/one negative evaluations compared with no plugin.
-- ChatGPT task outcomes, missing-tool behavior and false activations compared with no plugin.
-- Windows/macOS host install, task execution, update and removal, unless the final support claim is explicitly narrowed.
-- Real-host effective update settings and project/managed policy precedence.
-- Any downstream synchronization. This work has made **no** downstream rollout.
-- Final packaging/release approval, public distribution, and post-release rollback on actual hosts.
+## Next agent: execution order
 
-These are open gates, not failures. A green CI job cannot discharge them. Record **BLOCKED** when access is unavailable instead of inferring a pass.
+1. Fetch the live PR #47 head and review its entire diff against `main`, especially `README.md`, both marketplaces, both plugin manifests, tests and the shared update policy. Read [the scratchpad](WORK-IN-PROGRESS.md) and [acceptance record](portable-workflow-acceptance.md). Do not work from the historical SHA in this handover if the branch moved.
+2. Confirm the **exact-head CI** is fully green. Review every step, including public-data checks, strict Claude plugin validation, isolated install/list/uninstall and apply dry-run. Fix failures on PR #47 only.
+3. On an authenticated Claude Code host, record OS, CLI/model versions and plugin scope; install from the reviewed feature/ref, run the four positive and one negative evals *with and without* the plugin, then uninstall. Record actual skill invocations, quality, false activations and model cost. Keep sensitive logs private.
+4. In a new ChatGPT chat, test the privately imported plugin and a no-plugin baseline on the same tasks. Verify it does not invent GitHub access or implementation screenshots. Record actual feature availability and permissions.
+5. On a supported local Codex/ChatGPT desktop host, register the local marketplace with `codex plugin marketplace add ./` from the checkout (or select the automatic repo source), install using the desktop plugin browser, refresh after a reviewed change and verify the installed cached copy. Repeat on claimed operating systems or restrict support claims.
+6. Verify higher-precedence local/managed settings and that `autoUpdate` is effectively disabled for the managed marketplace. Inspect downstream GitHub Actions for any `uses:` reference to the old repository name; GitHub Actions reusable workflow/action references may not follow the normal web redirect.
+7. Fill the [acceptance record](portable-workflow-acceptance.md) with PASS, FAIL, BLOCKED or explicit WAIVED outcomes and links to sanitized evidence; update the scratchpad and PR body. Only then decide whether to mark PR #47 ready, merge, tag or distribute a reviewed package.
 
-## Where to change the implementation
+## Rollback and release boundaries
 
-| Source | Purpose |
-| --- | --- |
-| `portable/ogfrench-workflow/skills/*/SKILL.md` | Portable skill behavior and routing |
-| `portable/ogfrench-workflow/plugin.json` | Root Agent Plugins identity and metadata |
-| `portable/ogfrench-workflow/.claude-plugin/plugin.json` | Native Claude Code identity and version |
-| `.claude-plugin/marketplace.json` | Optional Claude marketplace entry |
-| `.agents/plugins/marketplace.json` | Local OpenAI/Codex marketplace entry |
-| `test/portable-workflow-plugin.test.mjs` | Static package, safety and eval-fixture tests |
-| `.github/workflows/check.yml` | Strict validation, isolated install/uninstall, existing repo CI |
-| `portable/ogfrench-workflow/evals/` | Four positive tasks and one negative routing case |
-| `portable/ogfrench-workflow/README.md` | User-facing install, update, uninstall and limitations |
-| `docs/portable-workflow-plugin.md` | Technical host and release contract |
+For the optional companion, roll back with the relevant host's **disable/uninstall** control. Do not delete the shared `.claude/claude-code-setup.json`, overwrite machine settings, remove existing Claude plugins or run downstream sync to undo an optional install. For Codex cached installs, verify the host is using the intended version after a refresh or uninstall; do not manually edit its cache. For ChatGPT, a private plugin can be updated/disabled independently of this repository.
 
-The local marketplace installs a **cached plugin copy**, not a live view of a repository folder. Refresh/reinstall locally and test in a new session after source changes. The separate private uploaded ChatGPT release must be updated through Plugin Creator and compared against a reviewed Git commit. Do not conflate these update paths.
+There is no default rollout path: merging PR #47 would publish source to the GitHub repository but does **not** distribute the ChatGPT uploaded package, install Claude Code on existing machines, or update downstream repositories. Do not use `MERGE=1 bash sync-to-repos.sh` without a separately reviewed downstream release decision. Dependabot PR #44 and other feature work are out of scope.
 
-## Resume steps
+## Links for resumption
 
-1. Fetch the **current** PR head and `main` before modifying anything. Read [scratchpad](WORK-IN-PROGRESS.md), [host contract](portable-workflow-plugin.md) and [acceptance gates](portable-workflow-acceptance.md). Do not rely solely on the historical SHAs listed above.
-2. Check the exact diff against `main`, verify that existing sync security and reviewed-update policy survive, and review any concurrent branch changes.
-3. Confirm `node --test` and GitHub Actions are green on the current exact head.
-4. On an authorized Claude Code host, install using the [plugin README](../portable/ogfrench-workflow/README.md), run the positive and negative evals, capture with/without results and uninstall. Preserve real logs privately.
-5. Run equivalent ChatGPT private-plugin routing and quality tests in new conversations, including cases where GitHub/files/browser are unavailable.
-6. Run or explicitly waive Windows/macOS tests, without claiming cross-OS compatibility unsupported by evidence.
-7. Fill a copy of the [acceptance record](portable-workflow-acceptance.md) with actual outcomes, residual risks, decision and evidence. Update PR #47 and the working scratchpad. Release only if gates pass or a support limitation is explicitly accepted.
-
-## Rollback and release safety
-
-Uninstall or disable the **optional companion** using the corresponding host surface. Do not modify unrelated Claude plugins, credentials, MCP config, `.claude/claude-code-setup.json`, or downstream sync branches. A rollback of this companion does not roll back repository rename/security changes on `main`.
-
-**No merges, public publish, unattended sync, or user-machine installation were authorized merely by preparing these docs.**
+- [Draft PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47)
+- [Portable plugin README](../portable/ogfrench-workflow/README.md)
+- [Host contract](portable-workflow-plugin.md)
+- [Acceptance evidence template](portable-workflow-acceptance.md)
+- [Security review](portable-workflow-adversarial-review-2026-11-09.md)
+- [Done/pending scratchpad](WORK-IN-PROGRESS.md)
+- [Official Claude plugin installation](https://code.claude.com/docs/en/plugins/install)
+- [Official OpenAI marketplace and cache behavior](https://developers.openai.com/plugins/build/plugins)
