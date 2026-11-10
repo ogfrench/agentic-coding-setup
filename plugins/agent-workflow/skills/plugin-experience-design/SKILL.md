@@ -17,6 +17,14 @@ Treat a plugin as a **task that works on a particular host**, not merely a ZIP o
 5. Implement the smallest coherent change. Preserve stable skill IDs, MCP tool names, URLs and install paths unless migration is independently approved; test old configurations if changed.
 6. Verify by actual installation and representative tasks, then inspect screenshots of the implemented page at phone and desktop widths. Use the existing visual-loop skill for visual changes. Distinguish verified, untested and blocked items in PR handover.
 
+## Portable capability and source discipline
+
+Keep canonical source and domain expertise product-owned. For each host, distinguish (a) what instructions can help with, (b) which files/data are actually accessible, and (c) which real execution tools are connected. An installed plugin or descriptive Markdown is not permission or proof of tool access. When absent tools or unavailable runtime block a requested artifact, continue with useful story, review or planning work and ask for only the missing canonical resource. Never imitate a branded source file from prose or imply a rendered output exists.
+
+Share a small behavioral contract across hosts, not a bundled copy of all templates, reports or implementation code. Route specialist skills selectively; overlapping tools should not be invoked simply because they are installed. Evaluate an unrelated task as a negative routing case.
+
+See [cross-host standards](../../../../docs/host-capability-standards.md) for source ownership, verification states and real-host evaluation boundaries.
+
 ## Shared experience contract
 
 Use this flexible sequence:
