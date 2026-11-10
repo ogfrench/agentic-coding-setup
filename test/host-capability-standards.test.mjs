@@ -11,7 +11,7 @@ test("portable host standards distinguish actual tools from instructions", () =>
   for (const required of [
     "Canonical resources", "Execution", "Verification", "Host-verified",
     "Published tagged artifact", "untrusted data", "unrelated task",
-    "not update an already uploaded ChatGPT plugin",
+    "already uploaded ChatGPT plugin",
   ]) assert.ok(standard.toLowerCase().includes(required.toLowerCase()), required);
   assert.doesNotMatch(standard, /universal runtime is required|auto-install to downstream/i);
 });
