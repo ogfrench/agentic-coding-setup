@@ -1,6 +1,6 @@
 {
   "name": "claude-workflow",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "How work is run: best-practices, learning-loop (capture, curate, promote), model-delegation, visual-loop (show design options on the real thing and loop), token-efficiency (fewer turns and tokens for the same work), session-continuity (durable PR checkpoints and handovers), delivery-loop (authorized end-to-end execution), actions-cost (runner-minutes before a merge), netlify-cost (Netlify builds, credits and edge runs before a config change), issue-management (MECE backlogs), knowledge-base-builder (source-grounded retrieval and MCP), plugin-experience-design (AI plugin packaging and onboarding), product-passport (feature maps and evidence-backed runtime verification), architecture-gardener (structural root causes and low-noise checks), and the cheap-reviewer subagent.",
   "author": {
     "name": "ogfrench"
