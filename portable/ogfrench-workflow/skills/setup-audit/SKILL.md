@@ -9,7 +9,7 @@ Read the current repository configuration and any explicitly connected source be
 
 Identify what is truly shared versus host-specific: skills and reference material are often portable; Claude Code settings, hooks, commands, agents, installed MCP servers and local authentication are not automatically available in ChatGPT.
 
-For ogfrench/claude-code-setup, review the source-of-truth README, plugin manifests, setup-user.sh, project/settings.json, project/mcp.json, sync scripts and applicable PRs. Check version and source pins, cross-repository drift, local overrides, unexpected permissions, unreviewed update behavior and whether the setup leaks client or private repository details.
+For ogfrench/agentic-coding-setup, review the source-of-truth README, plugin manifests, setup-user.sh, project/settings.json, project/mcp.json, sync scripts and applicable PRs. Check version and source pins, cross-repository drift, local overrides, unexpected permissions, unreviewed update behavior and whether the setup leaks client or private repository details.
 
 Distinguish read-only audit from authorized modifications. Never run an installer from an unreviewed URL or silently change local permissions, plugins, settings, repositories or credential scopes. If local filesystem access is unavailable, say which checks could not run instead of claiming the machine is configured.
 
