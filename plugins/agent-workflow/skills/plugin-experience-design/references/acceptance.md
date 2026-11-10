@@ -4,6 +4,10 @@ Choose only checks that apply to the product and host. Record **actual evidence*
 
 ## Capability and packaging
 
+For the same user task, distinguish (1) source/brief accessible, (2) required runtime tool connected, (3) artifact actually produced, (4) result inspected and (5) installed distribution tested. If canonical source is missing, test the honest fallback rather than a purported equivalent. Pair a positive task with a missing-source and unrelated-task negative case; record the exact source SHA, host, tool permissions and observed output.
+
+
+
 - The product promise maps to demonstrably present skill files or MCP tools.
 - Stable names, manifest schema and configuration validate in the intended client.
 - The package includes everything required for its supported mode; a ZIP with missing binaries, assets, models or indexes is not a working install.
