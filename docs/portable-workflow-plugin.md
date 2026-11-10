@@ -1,6 +1,6 @@
 # Portable workflow plugin: host and release contract
 
-**Package source directory:** `portable/ogfrench-workflow/` (retained as an internal path for compatibility). **New plugin identity:** `chatgpt-workflow-lite`, **version 1.11.0**, paired with full `claude-workflow` 1.11.0. Original [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47) merged; the rename is a new source candidate, not proof of installed host acceptance.
+**Package source directory:** `portable/ogfrench-workflow/` (retained as an internal path for compatibility). **New plugin identity:** `chatgpt-workflow-lite`, **version 1.12.0**, paired with full `claude-workflow` 1.12.0. Original [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47) merged; the rename is a new source candidate, not proof of installed host acceptance.
 
 The root `plugin.json` defines the portable Agent Plugins identity and OpenAI metadata. Package naming and version parity with the full Claude variant are asserted in `test/portable-workflow-plugin.test.mjs`; one product does not mean identical host tools. `.claude-plugin/plugin.json` defines the Claude Code identity. Both must use the same name and version. This is an optional **skills-only** companion, not a replacement for full `claude-workflow`, `frog-writing`, `presentation-craft`, `setup-user.sh`, or `sync-to-repos.sh`.
 
@@ -9,7 +9,7 @@ The root `plugin.json` defines the portable Agent Plugins identity and OpenAI me
 | Surface | Verified | Not yet demonstrated |
 | --- | --- | --- |
 | Claude Code, Linux CI | Strict plugin validation and isolated marketplace add, install, list, uninstall | Authenticated model task and quality comparison |
-| ChatGPT private personal plugin | legacy `ogfrench-workflow` v0.1.1 import and exact text parity for manifest and four skills; not yet checked for renamed v1.11.0 | Controlled with/without task outcome and installation for other accounts |
+| ChatGPT private personal plugin | legacy `ogfrench-workflow` v0.1.1 import and exact text parity for manifest and four skills; not yet checked for renamed v1.12.0 | Controlled with/without task outcome and installation for other accounts |
 | ChatGPT desktop / Codex local marketplace | Marketplace file shape and path tested | Real desktop install, cached-copy refresh and live invocation |
 | Windows and macOS | No real host evidence | Install, invoke, upgrade and uninstall |
 | GitHub, local files, browser, MCP | Uses only access independently supplied by the host | No new access is granted by this plugin |
@@ -26,6 +26,12 @@ Use the [plugin README](../portable/ogfrench-workflow/README.md) as the **one us
 - **Rollback:** disable/uninstall only the optional companion. Keep the existing `.claude/claude-code-setup.json` provenance file, the `chore/claude-code-setup` downstream branch naming, hooks and project settings unchanged.
 
 **Version provenance:** for every new privately uploaded release, compare the released root manifest and all four `SKILL.md` files against a specific reviewed GitHub commit. Record the version, release ID, source SHA and outcome in the PR without exposing private account data.
+
+## Cross-host selective routing and resource checks
+
+The [cross-host capability standard](host-capability-standards.md) separates product instructions, actual source resources and authorized execution. Use **selective routing** for the four portable skills: a coding fix, visual proof or release decision may need a specialist, while unrelated questions must not invoke one. Missing repository access, unavailable runtime tools and disconnected external apps require an honest fallback, not a claim of code changes, inspected screenshots or deployment.
+
+A plugin can be implemented and pass static tests while still lacking host-verified execution. The original five fixtures already include an unrelated negative case; add a missing-source task in the recorded host acceptance, not a fabricated static pass. Keep product-specific research and design expertise outside this generic bundle.
 
 ## Overlap with the existing setup
 

@@ -17,6 +17,10 @@ This is the host-acceptance record for [merged PR #47](https://github.com/ogfren
 
 The existing five evaluation fixtures under `portable/ogfrench-workflow/evals/` are **test definitions**, not scores. Static CI checks their structure and the Linux installation mechanism; it does not run authenticated model tasks. When reporting results, preserve both arms, not only the best outcome. See [OpenAI plugin testing guidance](https://developers.openai.com/plugins/deploy/connect-chatgpt) and [Claude Code evaluation instructions](https://code.claude.com/docs/en/plugin-evals).
 
+## Missing-context and cross-host probes
+
+In addition to the five packaged fixtures, record a task that asks for a repository bug fix when the agent has **no repository access**. Success is a truthful statement that no code was edited, plus a focused request for source or a clearly bounded plan. Also record a tool-disconnected task and an unrelated task to catch invented tool use and overbroad skill routing. Preserve the with/without comparison, observed permissions, exact package source and actual user-facing output. No static prompt check alone is a host-verification pass.
+
 ## Repeatable acceptance procedure
 
 1. Check out the precise reviewed PR head and run `node --test`. Confirm the exact-head `check` workflow is green and includes the strict portable Claude validator and isolated plugin installation.

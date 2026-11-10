@@ -25,7 +25,11 @@ The [ChatGPT Workflow Lite plugin](portable/ogfrench-workflow/) packages four fo
 
 ## Source status | 10 November 2026
 
-**claude-workflow v1.11.0** is the full Claude Code source package, including Architecture Gardener and Delivery Loop. **chatgpt-workflow-lite v1.11.0** is the smaller skills-only source package for ChatGPT/Codex, with an optional Claude Code adapter. Both share a version by a test-enforced contract; live routing evaluation and host distribution still require acceptance. The existing privately uploaded `ogfrench-workflow v0.1.1` is a **legacy personal plugin** and will not be renamed or updated by this source change. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
+**claude-workflow v1.12.0** is the full Claude Code source package, including Architecture Gardener and Delivery Loop. **chatgpt-workflow-lite v1.12.0** is the smaller skills-only source package for ChatGPT/Codex, with an optional Claude Code adapter. Both share a version by a test-enforced contract; live routing evaluation and host distribution still require acceptance. The existing privately uploaded `ogfrench-workflow v0.1.1` is a **legacy personal plugin** and will not be renamed or updated by this source change. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
+
+## Cross-host capability standards
+
+The [cross-host capability standard](docs/host-capability-standards.md) keeps instructions, canonical files/data, actual runtime tools and verification separate. Specialist knowledge stays in each product; use selective routing rather than a universal plugin. GitHub source changes do not update downstream repositories or installed ChatGPT plugins. The [source release decision](docs/releases/2026-11-10-cross-host-standards.md) records what remains unverified.
 
 ## Product map and maintenance
 
