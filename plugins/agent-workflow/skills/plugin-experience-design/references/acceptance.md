@@ -55,3 +55,13 @@ Release blockers:
 ```
 
 Never check a box based solely on a passing static test or another host's result.
+
+## Official host references (verify again before each host claim)
+
+These are documentation links, **not evidence of support, successful installation, or file access**. Validate the target host's current feature/permission model against the actual installed package and observed tasks.
+
+- [Claude Code plugins](https://code.claude.com/docs/en/plugins)
+- [Claude skills](https://code.claude.com/docs/en/skills)
+- [Claude skill authoring guidance](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)
+- [Claude plugin evaluations](https://code.claude.com/docs/en/plugin-evals)
+- [Microsoft 365 Copilot extensibility](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/plugins-overview)
