@@ -23,3 +23,7 @@ Track source changes and verified evidence separately. This is a candidate, not 
 
 ## Release blockers
 Exact-head static CI and documented authentic host acceptance/waivers. No GitHub release/tag or private plugin upload and no automatic downstream synchronization.
+
+## Adversarial disposition update | greenfield
+
+Owner confirmed **no existing users**. Do not impose old-user migrations, backward-compatible installed identities, or preservation of legacy plugin behavior as requirements. Keep only product correctness, package identity consistency where currently configured, protected-data boundaries, and current host/CI/release verification. The separately installed private ChatGPT plugin does not auto-update from GitHub; this is a distribution fact, not a backward-compatibility gate. Candidate packages `1.12.0` are source changes until actually installed/released.
