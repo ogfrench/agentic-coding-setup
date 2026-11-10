@@ -1,13 +1,13 @@
 # Cross-host standards source release | 2026-11-10
 
-**Source candidates:** `claude-workflow 1.12.0` and `chatgpt-workflow-lite 1.12.0`, same source repo, different host capabilities.
+**Merged source:** `claude-workflow 1.12.0` and `chatgpt-workflow-lite 1.12.0`, same source repo, different host capabilities. [PR #66](https://github.com/ogfrench/agentic-coding-setup/pull/66) was merged as `7f15f1fbdfcfb0d88b23315251c71e0bdd361f88`.
 
 Changes: a generic cross-host capability/evidence standard; strengthened existing plugin-experience and portable routing boundaries; tests of source/version consistency. No new framework, bundled product assets, shared MCP server, automatic host installation or downstream sync.
 
 ## Release status
 
-- **Documented / implemented:** GitHub PR branch contains the standard, skill guidance and manifest changes.
-- **Automated-tested:** pending exact-head CI. An assertion in source is not evidence it ran.
+- **Documented / implemented:** `main` contains the standards, skill guidance, tests and manifest changes at 1.12.0.
+- **Automated-tested:** passed [PR CI 42873903159](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42873903159) and [merged-main CI 42877971998](https://github.com/ogfrench/agentic-coding-setup/actions/runs/42877971998). This is source/packaging evidence, not authenticated installed-host proof.
 - **Host-verified:** pending authenticated Claude, ChatGPT and local marketplace tests; no with/without routing score claimed.
 - **Released:** not until exact-source review, CI, host acceptance/explicit waiver and separate authorized distribution.
 - **Private installed ChatGPT plugin:** still independently versioned; GitHub version parity does not upgrade the installed `ogfrench-workflow` legacy instance.
