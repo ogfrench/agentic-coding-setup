@@ -27,6 +27,12 @@ Use the [plugin README](../portable/ogfrench-workflow/README.md) as the **one us
 
 **Version provenance:** for every new privately uploaded release, compare the released root manifest and all four `SKILL.md` files against a specific reviewed GitHub commit. Record the version, release ID, source SHA and outcome in the PR without exposing private account data.
 
+## Cross-host selective routing and resource checks
+
+The [cross-host capability standard](host-capability-standards.md) separates product instructions, actual source resources and authorized execution. Use **selective routing** for the four portable skills: a coding fix, visual proof or release decision may need a specialist, while unrelated questions must not invoke one. Missing repository access, unavailable runtime tools and disconnected external apps require an honest fallback, not a claim of code changes, inspected screenshots or deployment.
+
+A plugin can be implemented and pass static tests while still lacking host-verified execution. The original five fixtures already include an unrelated negative case; add a missing-source task in the recorded host acceptance, not a fabricated static pass. Keep product-specific research and design expertise outside this generic bundle.
+
 ## Overlap with the existing setup
 
 The four portable skills deliberately cover some themes already addressed by specialized Claude Code skills: `implementation-proof` versus `visual-loop`, `adversarial-review` versus review/best-practices, and `release-handover` versus operational handover conventions. This is a portability trade-off, not evidence of better task outcomes. Do not auto-install both for every user or downstream repo until skill-routing and with/without evaluations show a benefit.
