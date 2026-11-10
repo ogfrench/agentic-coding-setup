@@ -27,3 +27,13 @@ Exact-head static CI and documented authentic host acceptance/waivers. No GitHub
 ## Adversarial disposition update | greenfield
 
 Owner confirmed **no existing users**. Do not impose old-user migrations, backward-compatible installed identities, or preservation of legacy plugin behavior as requirements. Keep only product correctness, package identity consistency where currently configured, protected-data boundaries, and current host/CI/release verification. The separately installed private ChatGPT plugin does not auto-update from GitHub; this is a distribution fact, not a backward-compatibility gate. Candidate packages `1.12.0` are source changes until actually installed/released.
+
+## Adversarial review: routing and installation (2026-11-10)
+
+**Verdict: source candidate acceptable, host-release claim not established.** Exact-head check `1dce66f83aae707f1887c5ff26665f10eadede96` completed successfully: https://github.com/ogfrench/agentic-coding-setup/actions/runs/42870712262. Earlier budget and exact-text test failures were fixed; the existing `plugin-experience-design` skill remains below its configured context budget.
+
+**High residual risk: new tests assert text and version parity, not real agent behavior.** `test/host-capability-standards.test.mjs` can establish basic source/manifest consistency, but cannot prove that the intended ChatGPT/Claude host selectively invokes skills, abstains when source access is missing, or refreshes installed plugin caches. Run the established positive, negative and unrelated-task fixtures with/without plugin in the actual intended hosts; record source SHA, package identity, installed version and tool traces.
+
+**Greenfield interpretation:** No legacy-user migration or backward-compatible private-plugin rename is required. However, source package `chatgpt-workflow-lite 1.12.0` does not automatically become an installed ChatGPT plugin; distinct publication/installation must occur before claiming availability. The existing legacy personal plugin may remain untouched without being a launch blocker.
+
+**Release gate:** Pair manifest versions `1.12.0` are in reviewed source; no release artifact, installed-host proof or downstream sync was created by this review. Preserve no-private-assets rule, keep product-specific skills outside the generic bundle, and require explicit accepted release SHA/host evidence or documented bounded launch waiver.
