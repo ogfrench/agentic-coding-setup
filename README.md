@@ -1,6 +1,6 @@
 # agentic-coding-setup
 
-My shared agentic coding workflow: reusable skills, engineering practices, agent instructions, plugins and integrations, with explicit installation paths for different AI coding environments. The established automation is built around Claude Code; an optional, portable workflow plugin also targets ChatGPT and Codex. These integrations are not interchangeable or equally verified.
+My shared agentic coding workflow: reusable skills, engineering practices, agent instructions, plugins and integrations, with explicit installation paths for different AI coding environments. The full `claude-workflow` package targets Claude Code; the lighter `chatgpt-workflow-lite` package targets ChatGPT and Codex. Both are part of Agentic, but their capabilities and installation requirements differ. These integrations are not interchangeable or equally verified.
 
 This is also a living record of lessons from building software with coding agents. Learnings become reviewed practices, then skills, subagents, hooks, commands or plugins where that improves real work. The knowledge base and [Product Passport](#current-architecture-review) provide reusable methods, while each repository's code, tests and observed behavior remain the source of truth. See [Learnings and practices](#learnings-and-practices). Public content never includes client information or private-repository material; see [Public by design](#public-by-design).
 
@@ -9,7 +9,7 @@ This is also a living record of lessons from building software with coding agent
 | Environment | What this repository provides | Current boundary |
 | --- | --- | --- |
 | **Claude Code (local and cloud)** | Primary user-level setup (`setup-user.sh`), project sync (`sync-to-repos.sh`), skills, agents, hooks, MCP configuration and reviewed marketplace plugins | Claude-specific `.claude/` files and CLI commands; actual installation is explicit and host-dependent |
-| **ChatGPT** | Optional four-skill [`ogfrench-workflow`](portable/ogfrench-workflow/) plugin, also imported privately | Not the full Claude setup; no automatic project sync or implied access to local files, GitHub or MCP tools |
+| **ChatGPT** | Optional four-skill [`chatgpt-workflow-lite`](portable/ogfrench-workflow/) plugin, also imported privately | Not the full Claude setup; no automatic project sync or implied access to local files, GitHub or MCP tools |
 | **Codex / compatible ChatGPT desktop environments** | Optional repository-local marketplace definition and the same portable workflow source | Marketplace file checks exist; real host installation and skill behavior still need acceptance testing |
 | **Other coding assistants, including GitHub Copilot** | Public, reusable principles and reference material that can inform future adapters | No tested installer, native integration or feature parity is claimed |
 
@@ -21,11 +21,11 @@ The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: fa
 
 ## Optional cross-platform companion
 
-The [ogfrench Workflow plugin](portable/ogfrench-workflow/) packages four focused review workflows for Claude Code and ChatGPT/Codex, without installing hooks, MCP servers or third-party dependencies. It is optional and separate from the established personal setup and project sync. See the [host compatibility and release gate](docs/portable-workflow-plugin.md) and [acceptance evidence requirements](docs/portable-workflow-acceptance.md). Its source has merged, but host acceptance and public distribution remain unverified.
+The [ChatGPT Workflow Lite plugin](portable/ogfrench-workflow/) packages four focused review workflows for Claude Code and ChatGPT/Codex, without installing hooks, MCP servers or third-party dependencies. It is optional and separate from the established personal setup and project sync. See the [host compatibility and release gate](docs/portable-workflow-plugin.md) and [acceptance evidence requirements](docs/portable-workflow-acceptance.md). Its source has merged, but host acceptance and public distribution remain unverified.
 
-## Source status | 9 November 2026
+## Source status | 10 November 2026
 
-**agent-workflow v1.11.0** is a source candidate including Architecture Gardener and Delivery Loop; live routing evaluation and downstream distribution remain pending. The optional **ogfrench-workflow v0.1.1** remains a private preview, not host-certified. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
+**claude-workflow v1.11.0** is the full Claude Code source package, including Architecture Gardener and Delivery Loop. **chatgpt-workflow-lite v1.11.0** is the smaller skills-only source package for ChatGPT/Codex, with an optional Claude Code adapter. Both share a version by a test-enforced contract; live routing evaluation and host distribution still require acceptance. The existing privately uploaded `ogfrench-workflow v0.1.1` is a **legacy personal plugin** and will not be renamed or updated by this source change. See the [release inventory](docs/releases/2026-11-09.md). Source merge does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects.
 
 ## Product map and maintenance
 
