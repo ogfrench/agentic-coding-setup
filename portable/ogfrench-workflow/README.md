@@ -1,6 +1,6 @@
 # ChatGPT Workflow Lite
 
-An optional four-skill companion to [agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup). **v1.11.0 source candidate.** Original portable source merged in PR #47; this rename is not yet a real ChatGPT host-accepted release.
+An optional four-skill companion to [agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup). **v1.12.0 source candidate.** Original portable source merged in PR #47; this rename is not yet a real ChatGPT host-accepted release.
 
 | Skill | Purpose |
 | --- | --- |
@@ -70,7 +70,7 @@ codex plugin marketplace upgrade ogfrench-local
 
 ## Evidence and rollback
 
-**Historical evidence:** v0.1.1 static tests, privacy checks, strict Claude manifest validation, isolated Linux installation/list/uninstallation and exact private ChatGPT source parity. Re-run all required checks for the renamed v1.11.0 candidate; old host evidence does not automatically transfer.
+**Historical evidence:** v0.1.1 static tests, privacy checks, strict Claude manifest validation, isolated Linux installation/list/uninstallation and exact private ChatGPT source parity. Re-run all required checks for the renamed v1.12.0 candidate; old host evidence does not automatically transfer.
 
 **Not passed or not run:** authenticated Claude tasks, measured quality versus no plugin, false-positive skill activation, Windows/macOS acceptance and effective managed-settings precedence.
 
