@@ -25,7 +25,7 @@ claude plugin install chatgpt-workflow-lite@ogfrench --scope user
 claude plugin list
 ```
 
-In Claude Code, invoke `/ogfrench-workflow:adversarial-review` on a real project the host can inspect. Record the result and compare against a no-plugin task before claiming useful behavior.
+In Claude Code, invoke `/chatgpt-workflow-lite:adversarial-review` on a real project the host can inspect. Record the result and compare against a no-plugin task before claiming useful behavior.
 
 After a **reviewed** update to the source, update the marketplace and installed plugin separately:
 
