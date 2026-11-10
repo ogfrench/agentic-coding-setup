@@ -49,6 +49,15 @@ test("local ChatGPT marketplace targets the exact portable plugin", () => {
   assert.equal(item.source.source, "local");
 });
 
+test("the documented Claude install and invocation use the packaged identity", () => {
+  const { name } = JSON.parse(read(".claude-plugin/plugin.json"));
+  const instructions = read("README.md");
+  const acceptance = readFileSync(resolve(root, "../../docs/portable-workflow-acceptance.md"), "utf8");
+  assert.ok(instructions.includes(`claude plugin install ${name}@ogfrench --scope user`));
+  assert.ok(instructions.includes(`/${name}:adversarial-review`));
+  assert.ok(acceptance.includes(`install \`${name}@ogfrench\``));
+});
+
 test("portable evaluation fixtures cover all skills and one unrelated request", () => {
   const cases = readdirSync(resolve(root, "evals"), { withFileTypes: true })
     .filter((entry) => entry.isDirectory())

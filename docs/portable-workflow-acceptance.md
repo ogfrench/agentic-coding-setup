@@ -20,7 +20,7 @@ The existing five evaluation fixtures under `portable/ogfrench-workflow/evals/` 
 ## Repeatable acceptance procedure
 
 1. Check out the precise reviewed PR head and run `node --test`. Confirm the exact-head `check` workflow is green and includes the strict portable Claude validator and isolated plugin installation.
-2. On an **authenticated test host**, install `ogfrench-workflow@ogfrench` using the [plugin README](../portable/ogfrench-workflow/README.md). Record `claude --version`, OS, configuration scope and installation output.
+2. On an **authenticated test host**, install `chatgpt-workflow-lite@ogfrench` using the [plugin README](../portable/ogfrench-workflow/README.md). Record `claude --version`, OS, configuration scope and installation output.
 3. Run the four positive cases and the unrelated negative case with and without the plugin. Record outcome quality, actual skill invocation, tool availability, cost and errors. An evaluation that cannot run is **blocked**, not passed.
 4. In ChatGPT, enable the private plugin in a *new chat* and repeat comparable tasks with an unmodified no-plugin baseline. Confirm the installed version, not merely the marketplace source.
 5. On a supported Codex/ChatGPT desktop host, add or select the local `ogfrench-local` marketplace, install its plugin, inspect the installed version/skills, then refresh after a reviewed source change. Test in a new conversation and record evidence that the *installed cache* changed. `codex plugin marketplace upgrade` does not alone confirm an installed update.
