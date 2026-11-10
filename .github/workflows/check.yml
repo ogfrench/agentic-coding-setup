@@ -42,10 +42,10 @@ jobs:
           export CLAUDE_CONFIG_DIR="$(mktemp -d)"
           trap 'rm -rf "$CLAUDE_CONFIG_DIR"' EXIT
           npx -y @anthropic-ai/claude-code@2.1.270 plugin marketplace add ./
-          npx -y @anthropic-ai/claude-code@2.1.270 plugin install ogfrench-workflow@ogfrench --scope user
-          npx -y @anthropic-ai/claude-code@2.1.270 plugin list | grep -F 'ogfrench-workflow@ogfrench'
-          npx -y @anthropic-ai/claude-code@2.1.270 plugin uninstall ogfrench-workflow@ogfrench --scope user
-          ! npx -y @anthropic-ai/claude-code@2.1.270 plugin list | grep -F 'ogfrench-workflow@ogfrench'
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin install chatgpt-workflow-lite@ogfrench --scope user
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin list | grep -F 'chatgpt-workflow-lite@ogfrench'
+          npx -y @anthropic-ai/claude-code@2.1.270 plugin uninstall chatgpt-workflow-lite@ogfrench --scope user
+          ! npx -y @anthropic-ai/claude-code@2.1.270 plugin list | grep -F 'chatgpt-workflow-lite@ogfrench'
       - name: Dry-run the apply step into an empty repo
         run: |
           t="$(mktemp -d)"
