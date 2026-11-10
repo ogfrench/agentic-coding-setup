@@ -19,10 +19,13 @@ test("portable host standards distinguish actual tools from instructions", () =>
 test("existing experience skill owns the new host boundary without duplicating its route", () => {
   const skill = get("plugins/agent-workflow/skills/plugin-experience-design/SKILL.md");
   const lite = get("docs/portable-workflow-plugin.md");
+  const acceptance = get("plugins/agent-workflow/skills/plugin-experience-design/references/acceptance.md");
   assert.match(skill, /canonical source/i);
   assert.match(skill, /absent tools|unavailable runtime/i);
   assert.match(lite, /selective routing/i);
   assert.match(lite, /host-verified/i);
+  assert.match(acceptance, /https:\/\/code\.claude\.com\/docs\/en\/plugins/);
+  assert.match(acceptance, /https:\/\/learn\.microsoft\.com\/en-us\/microsoft-365\/copilot/);
 });
 
 test("Full and Lite source release versions match and legacy identity stays separate", () => {
