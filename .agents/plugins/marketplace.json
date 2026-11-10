@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "ogfrench-workflow",
+      "name": "chatgpt-workflow-lite",
       "source": {
         "source": "local",
         "path": "./portable/ogfrench-workflow"

@@ -9,7 +9,7 @@ const read = (path) => readFileSync(resolve(root, path), "utf8");
 test("portable and Claude manifests have one stable identity", () => {
   const portable = JSON.parse(read("plugin.json"));
   const claude = JSON.parse(read(".claude-plugin/plugin.json"));
-  assert.equal(portable.name, "ogfrench-workflow");
+  assert.equal(portable.name, "chatgpt-workflow-lite");
   assert.equal(claude.name, portable.name);
   assert.equal(claude.version, portable.version);
   assert.match(portable.$schema, /agent-plugins\.org/);
@@ -43,7 +43,7 @@ test("all portable skills have unique names and clear routing metadata", () => {
 
 test("local ChatGPT marketplace targets the exact portable plugin", () => {
   const marketplace = JSON.parse(readFileSync(resolve(root, "../../.agents/plugins/marketplace.json"), "utf8"));
-  const item = marketplace.plugins.find((p) => p.name === "ogfrench-workflow");
+  const item = marketplace.plugins.find((p) => p.name === "chatgpt-workflow-lite");
   assert.equal(item.source.path, "./portable/ogfrench-workflow");
   assert.equal(item.policy.installation, "AVAILABLE");
   assert.equal(item.source.source, "local");
@@ -72,7 +72,7 @@ test("portable evaluation fixtures cover all skills and one unrelated request", 
       assert.ok(grader.includes(routes.get(name)));
       const pattern = grader.match(/^input_match: '(.*)'$/m)?.[1];
       assert.ok(pattern);
-      assert.match(`{"skill":"ogfrench-workflow:${routes.get(name)}"}`, new RegExp(pattern));
+      assert.match(`{"skill":"chatgpt-workflow-lite:${routes.get(name)}"}`, new RegExp(pattern));
     } else {
       assert.match(read(`evals/${name}/graders/no-skill.md`), /min: 0\nmax: 0/);
     }
@@ -99,6 +99,17 @@ test("CI verifies the portable plugin, isolated install and removal", () => {
   const workflow = readFileSync(resolve(root, "../../.github/workflows/check.yml"), "utf8");
   assert.ok(workflow.includes("plugin validate portable/ogfrench-workflow --strict"));
   assert.ok(workflow.includes('CLAUDE_CONFIG_DIR="$(mktemp -d)"'));
-  assert.ok(workflow.includes("plugin install ogfrench-workflow@ogfrench --scope user"));
-  assert.ok(workflow.includes("plugin uninstall ogfrench-workflow@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin install chatgpt-workflow-lite@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin uninstall chatgpt-workflow-lite@ogfrench --scope user"));
+});
+
+
+test("Claude and ChatGPT Lite variants share one release version and distinct identities", () => {
+  const full = JSON.parse(readFileSync(resolve(root, "../../plugins/agent-workflow/.claude-plugin/plugin.json"), "utf8"));
+  const lite = JSON.parse(read("plugin.json"));
+  const marketplace = JSON.parse(readFileSync(resolve(root, "../../.claude-plugin/marketplace.json"), "utf8"));
+  assert.equal(full.name, "claude-workflow");
+  assert.equal(lite.name, "chatgpt-workflow-lite");
+  assert.equal(full.version, lite.version);
+  assert.deepEqual(marketplace.plugins.filter((p) => ["claude-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name).sort(), ["chatgpt-workflow-lite", "claude-workflow"].sort());
 });

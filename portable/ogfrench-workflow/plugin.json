@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "ogfrench-workflow",
-  "version": "0.1.1",
+  "name": "chatgpt-workflow-lite",
+  "version": "1.11.0",
   "description": "Evidence-led code and design reviews, safe release decisions, and maintenance of a shared AI workflow.",
   "author": {
     "name": "ogfrench",
@@ -17,8 +17,8 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "ogfrench Workflow",
-        "shortDescription": "Review implementation evidence and ship deliberately.",
+        "displayName": "ChatGPT Workflow Lite",
+        "shortDescription": "Portable Agentic skills for ChatGPT and Codex, without Claude-specific hooks.",
         "longDescription": "Reusable, tool-agnostic workflows for setup audits, adversarial reviews, real implementation visuals, and release handovers.",
         "developerName": "ogfrench",
         "category": "Productivity",

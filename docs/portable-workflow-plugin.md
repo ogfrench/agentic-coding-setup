@@ -1,15 +1,15 @@
 # Portable workflow plugin: host and release contract
 
-**Package:** `portable/ogfrench-workflow/`, version **0.1.1**. **Status:** draft [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47), private preview, unmerged.
+**Package source directory:** `portable/ogfrench-workflow/` (retained as an internal path for compatibility). **New plugin identity:** `chatgpt-workflow-lite`, **version 1.11.0**, paired with full `claude-workflow` 1.11.0. Original [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47) merged; the rename is a new source candidate, not proof of installed host acceptance.
 
-The root `plugin.json` defines the portable Agent Plugins identity and OpenAI metadata. `.claude-plugin/plugin.json` defines the Claude Code identity. Both must use the same name and version. This is an optional **skills-only** companion, not a replacement for `agent-workflow`, `frog-writing`, `presentation-craft`, `setup-user.sh`, or `sync-to-repos.sh`.
+The root `plugin.json` defines the portable Agent Plugins identity and OpenAI metadata. Package naming and version parity with the full Claude variant are asserted in `test/portable-workflow-plugin.test.mjs`; one product does not mean identical host tools. `.claude-plugin/plugin.json` defines the Claude Code identity. Both must use the same name and version. This is an optional **skills-only** companion, not a replacement for full `claude-workflow`, `frog-writing`, `presentation-craft`, `setup-user.sh`, or `sync-to-repos.sh`.
 
 ## What actually works
 
 | Surface | Verified | Not yet demonstrated |
 | --- | --- | --- |
 | Claude Code, Linux CI | Strict plugin validation and isolated marketplace add, install, list, uninstall | Authenticated model task and quality comparison |
-| ChatGPT private personal plugin | v0.1.1 import and exact text parity for manifest and four skills | Controlled with/without task outcome and installation for other accounts |
+| ChatGPT private personal plugin | legacy `ogfrench-workflow` v0.1.1 import and exact text parity for manifest and four skills; not yet checked for renamed v1.11.0 | Controlled with/without task outcome and installation for other accounts |
 | ChatGPT desktop / Codex local marketplace | Marketplace file shape and path tested | Real desktop install, cached-copy refresh and live invocation |
 | Windows and macOS | No real host evidence | Install, invoke, upgrade and uninstall |
 | GitHub, local files, browser, MCP | Uses only access independently supplied by the host | No new access is granted by this plugin |
@@ -39,7 +39,7 @@ The [five evaluation fixtures](../portable/ogfrench-workflow/evals/README.md) ex
 
 Release requires: exact-head green CI, supported-host task evidence, no unaccepted high-severity risk, a reproducible rollback, and a documented decision on Windows/macOS coverage. If scope is intentionally narrower, record a named and justified support waiver in the acceptance record and PR.
 
-**Current decision: HOLD.** Isolated Linux installation and private package parity passed, but authenticated Claude/ChatGPT behavioral comparisons and Windows/macOS acceptance have not been recorded. Do not merge, publish or downstream-sync on the basis of static checks alone.
+**Current decision: SOURCE CANDIDATE ONLY.** The original v0.1.1 source merge and static installation tests are historical evidence. The rename/version alignment needs exact-head CI before merge; authenticated Claude/ChatGPT behavior and Windows/macOS acceptance remain unverified. Do not publish or downstream-sync a private installed release on static checks alone.
 
 ## Troubleshooting
 

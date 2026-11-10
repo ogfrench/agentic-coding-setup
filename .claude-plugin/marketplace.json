@@ -14,7 +14,7 @@
       "category": "productivity"
     },
     {
-      "name": "agent-workflow",
+      "name": "claude-workflow",
       "description": "How work is run: best-practices, learning-loop, model-delegation, visual-loop, token-efficiency, actions-cost, netlify-cost, session-continuity, delivery-loop, knowledge-base-builder, plugin-experience-design, product-passport, and the cheap-reviewer subagent.",
       "source": "./plugins/agent-workflow",
       "category": "productivity"
@@ -26,7 +26,7 @@
       "category": "design"
     },
     {
-      "name": "ogfrench-workflow",
+      "name": "chatgpt-workflow-lite",
       "description": "Portable companion for setup auditing, adversarial review, real UI evidence and release handover.",
       "source": "./portable/ogfrench-workflow",
       "category": "productivity"
