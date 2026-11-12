@@ -1,6 +1,6 @@
 # Portable workflow plugin: host and release contract
 
-> **Deprecation notice (2026-11-12):** This document describes the historical four-skill Lite/Claude-compatible package. For new ChatGPT use, install the full [Agentic Workflow edition](agentic-workflow-chatgpt.md). Lite remains intact for existing installations and testing. The full ChatGPT edition is independently versioned and does not install Claude Code runtimes.
+> **Deprecation notice (2026-11-12):** This document describes the historical four-skill Lite/Claude-compatible package. For new ChatGPT use, install the full [Agentic Workflow edition](agentic-workflow-chatgpt.md). Lite remains intact for existing installations and testing. The full ChatGPT edition shares a coordinated CalVer with the full Claude Workflow edition, while this historical Lite package remains independently versioned. Neither portable package installs the Claude Code runtime.
 
 **Package source directory:** `portable/ogfrench-workflow/` (retained as an internal path for compatibility). **New plugin identity:** `chatgpt-workflow-lite`, **version 1.12.0**, paired with full `claude-workflow` 1.12.0. Original [PR #47](https://github.com/ogfrench/agentic-coding-setup/pull/47) merged; the rename is a new source candidate, not proof of installed host acceptance.
 
