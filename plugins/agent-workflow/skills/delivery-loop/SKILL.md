@@ -1,8 +1,8 @@
 ---
 name: delivery-loop
 description: >-
-  Finish multi-step repository work end to end through a live PR checklist,
-  verified changes, CI repair and handover. Use for "get it done" delivery tasks.
+  Finish authorized repository tasks through code, tests, CI and PR review.
+  Use for end-to-end delivery and release handovers.
 ---
 
 # Delivery Loop

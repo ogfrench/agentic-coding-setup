@@ -28,14 +28,17 @@ test("existing experience skill owns the new host boundary without duplicating i
   assert.match(acceptance, /https:\/\/learn\.microsoft\.com\/en-us\/microsoft-365\/copilot/);
 });
 
-test("Full and Lite source release versions match and legacy identity stays separate", () => {
-  const full = JSON.parse(get("plugins/agent-workflow/.claude-plugin/plugin.json"));
+test("full Claude and ChatGPT versions align; legacy Lite stays separate", () => {
+  const claude = JSON.parse(get("plugins/agent-workflow/.claude-plugin/plugin.json"));
+  const chatgpt = JSON.parse(get("portable/agentic-workflow/plugin.json"));
   const lite = JSON.parse(get("portable/ogfrench-workflow/plugin.json"));
   const adapter = JSON.parse(get("portable/ogfrench-workflow/.claude-plugin/plugin.json"));
-  assert.equal(full.version, "1.12.0");
-  assert.equal(full.version, lite.version);
+  assert.equal(claude.version, chatgpt.version);
+  assert.equal(claude.version, "2026.11.1");
+  assert.notEqual(lite.version, claude.version);
   assert.equal(lite.version, adapter.version);
-  assert.equal(full.name, "claude-workflow");
+  assert.equal(claude.name, "claude-workflow");
+  assert.equal(chatgpt.name, "agentic-workflow");
   assert.equal(lite.name, "chatgpt-workflow-lite");
   assert.match(get("docs/releases/2026-11-10-cross-host-standards.md"), /not until exact-source review/i);
 });

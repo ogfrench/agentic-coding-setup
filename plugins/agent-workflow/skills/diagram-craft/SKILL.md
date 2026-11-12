@@ -1,8 +1,8 @@
 ---
 name: diagram-craft
 description: >-
-  Create clear, source-grounded Mermaid and architecture visuals. Use for system maps,
-  technical diagrams, processes, sequences and clean presentation-ready diagrams.
+  Create editable, source-grounded Mermaid and clean diagrams. Use for
+  architecture, components, processes and sequences.
 ---
 
 # Diagram craft
@@ -30,7 +30,7 @@ Create diagrams that communicate **verified relationships**, not decorative boxe
 3. Supply the editable Mermaid code with the render where supported. When an export/render tool is unavailable, provide Mermaid source and state the limitation. Do not pretend a PNG, SVG, screenshot, PDF or visual check exists.
 4. For high-impact architecture diagrams, include relevant source paths and verification status separately from the figure. For an executive visual, omit unnecessary infrastructure detail without dropping material trust boundaries.
 
-See [example patterns](references/examples.md) for concise, reusable starting points. Consult the official [Mermaid syntax reference](https://mermaid.js.org/intro/syntax-reference) and [C4 levels](https://c4model.com/diagrams) when needed, not as a mandatory ceremony.
+See [example patterns](references/examples.md) for concise, reusable starting points and [visual composition](references/visual-composition.md) for professional diagram visuals. Consult the official [Mermaid syntax reference](https://mermaid.js.org/intro/syntax-reference) and [C4 levels](https://c4model.com/diagrams) when needed, not as a mandatory ceremony.
 
 ## Coordination
 
