@@ -28,7 +28,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
             for p in files if re.fullmatch(r"skills/[^/]+/SKILL\.md", p)
         }
         self.assertEqual(skill_names, set(FULL_SKILLS) | set(PORTABLE_SKILLS))
-        self.assertEqual(len(skill_names), 18)
+        self.assertEqual(len(skill_names), 19)
         for name in FULL_SKILLS:
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertIn("## ChatGPT host capability contract", content)
@@ -53,16 +53,27 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("knowledge/README.md", best)
         self.assertIn("knowledge/source-index.jsonl", best)
         manifest = json.loads(files["assets/provenance.json"])
-        self.assertEqual(manifest["skill_count"], 18)
+        self.assertEqual(manifest["skill_count"], 19)
         self.assertEqual(manifest["practice_count"], len(practices))
         for name, checksum in manifest["sha256"].items():
             self.assertEqual(checksum, hashlib.sha256(files[name]).hexdigest())
+
+    def test_plugin_product_map_is_included(self) -> None:
+        files = build_files()
+        doc = "skills/product-passport/references/plugin-product-map.md"
+        self.assertIn(doc, files)
+        product_map = files[doc].decode("utf-8")
+        for term in ("diagram-craft", "claude-workflow", "agentic-workflow", "chatgpt-workflow-lite"):
+            self.assertIn(term, product_map)
 
     def test_manifest_is_standalone_and_lite_identity_distinct(self) -> None:
         files = build_files()
         manifest = json.loads(files["plugin.json"])
         self.assertEqual(manifest["name"], "agentic-workflow")
         self.assertEqual(manifest["version"], VERSION)
+        full = json.loads((ROOT / "plugins/agent-workflow/.claude-plugin/plugin.json").read_text("utf-8"))
+        self.assertEqual(full["version"], VERSION)
+        self.assertRegex(VERSION, r"^20\d{2}\.(?:0?[1-9]|1[0-2])\.[1-9]\d*$")
         self.assertEqual(manifest["$schema"], "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json")
         self.assertEqual(manifest["extensions"]["com.openai"]["interface"]["displayName"], "Agentic Workflow")
         self.assertLessEqual(len(manifest["extensions"]["com.openai"]["interface"]["shortDescription"]), 30)

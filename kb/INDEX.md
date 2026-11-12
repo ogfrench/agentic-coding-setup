@@ -38,6 +38,7 @@
 - delivery-loop (skill): Deliver authorized multi-step repository outcomes with live PR checklists, verification, CI repair and precise handovers.
 - design-system-adapter (skill): Apply supplied brand tokens and visual rules without inventing proprietary assets.
 - deslopify (skill): Audit copy for AI-writing tells and fix them line by line.
+- diagram-craft (skill): Create source-grounded Mermaid, architecture and process diagrams with clean visuals.
 - frogify (skill): Rewrite copy in frog's voice, marketing or editorial register.
 - frontend-design (plugin): Distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.
 - github (plugin): Official GitHub MCP server: issues, pull requests, code search, repository management.

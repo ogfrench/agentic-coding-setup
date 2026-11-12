@@ -1,9 +1,8 @@
 ---
 name: visual-loop
 description: >-
-  Show design options rendered on the real thing, read every screenshot before the
-  user sees it, and loop until they pick. Use for visual changes, and when the user asks
-  for options, says a design looks wrong, or wants to check something.
+  Inspect real rendered UI, compare design options and catch visual defects.
+  Use for screenshots, redesigns and visual reviews.
 ---
 
 # Visual loop
