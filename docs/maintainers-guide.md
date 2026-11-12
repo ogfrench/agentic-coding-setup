@@ -1,6 +1,6 @@
 # Repository engineering and maintainer guide
 
-This guide preserves the detailed setup, knowledge-base, synchronization, and maintenance documentation from the original root README. Start with the [Agentic Workflow product overview](../../README.md). Source-level and host-level acceptance remain distinct.
+This guide preserves the detailed setup, knowledge-base, synchronization, and maintenance documentation from the original root README. Start with the [Agentic Workflow product overview](../README.md). Source-level and host-level acceptance remain distinct.
 
 My shared agentic coding workflow: reusable skills, engineering practices, agent instructions, plugins and integrations, with explicit installation paths for different AI coding environments. The full `claude-workflow` package targets Claude Code; the new **`agentic-workflow`** package targets ChatGPT with all 19 relevant engineering/review skills and the curated practice knowledge. The previous four-skill `chatgpt-workflow-lite` package is **deprecated for ChatGPT**, retained only for existing installations and compatibility. These integrations are not interchangeable or equally verified.
 
