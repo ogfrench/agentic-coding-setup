@@ -1,5 +1,7 @@
 # ChatGPT Workflow Lite
 
+**DEPRECATED for new ChatGPT installations.** Use [Agentic Workflow](../agentic-workflow/README.md) v1.13.0 for the full set of engineering workflows and curated knowledge. This source is retained for compatibility with existing Lite installations and Claude Code marketplace references; it is not the recommended ChatGPT package.
+
 An optional four-skill companion to [agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup). **v1.12.0 source candidate.** Original portable source merged in PR #47; this rename is not yet a real ChatGPT host-accepted release.
 
 | Skill | Purpose |
