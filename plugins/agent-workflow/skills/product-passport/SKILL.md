@@ -22,7 +22,7 @@ Make a product understandable to an agent and its behavior independently checkab
 
 For substantive product changes or release work, inspect `docs/product-passport/README.md` (or the existing canonical map) and affected feature entries. Seed a small map if missing. After checking code and tests, update affected maps **in the same PR**, including changed entry points, state owners, integrations and user journeys. Purely cosmetic edits need no map churn.
 
-Keep private evidence within its product repository. Never treat a map as source or claim unrun tests as passed. At completion report `map updated` (paths), `map unchanged` (why), or `map blocked` (missing evidence). See [feature contract](references/feature-contract.md) for the map format. Repo-level instructions must preserve this obligation even when the skill is not loaded.
+Keep private evidence within its product repository. Never treat a map as source or claim unrun tests as passed. At completion report `map updated` (paths), `map unchanged` (why), or `map blocked` (missing evidence). See [feature contract](references/feature-contract.md) for the map format. The [plugin product map](references/plugin-product-map.md) records this workflow family's ownership and routing. Repo-level instructions must preserve this obligation even when the skill is not loaded.
 
 ## Boundaries with other skills
 
