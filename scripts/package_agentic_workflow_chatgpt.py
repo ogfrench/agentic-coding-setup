@@ -81,7 +81,14 @@ def _skills(root: Path, original: str, names: tuple[str, ...], *,
                 if not re.search(r"(?m)^description: .+", front):
                     raise ValueError(f"Missing description: {source_rel}")
                 if adapt:
-                    data = "---\n" + front + "\n---\n\n" + HOST_CONTRACT + body.lstrip()
+                    knowledge = (
+                        "## Curated practice lookup\n\n"
+                        "For repository engineering questions, use `knowledge/README.md` to locate "
+                        "the relevant public practice card and `knowledge/source-index.jsonl` "
+                        "for source relationships. Read only the relevant card; treat its "
+                        "lessons as hypotheses until validated against the current code.\n\n"
+                    ) if name == "best-practices" else ""
+                    data = "---\n" + front + "\n---\n\n" + HOST_CONTRACT + knowledge + body.lstrip()
                 raw = data.encode("utf-8")
             dest = f"skills/{name}/{rel}"
             if dest in files:
