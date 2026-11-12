@@ -13,10 +13,10 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "portable/agentic-workflow"
-VERSION = "1.13.0"
+VERSION = json.loads((ROOT / "plugins/agent-workflow/.claude-plugin/plugin.json").read_text("utf-8"))["version"]
 FULL_SKILLS = (
     "actions-cost", "architecture-gardener", "best-practices",
-    "delivery-loop", "issue-management", "knowledge-base-builder",
+    "delivery-loop", "diagram-craft", "issue-management", "knowledge-base-builder",
     "learning-loop", "model-delegation", "netlify-cost",
     "plugin-experience-design", "product-passport", "session-continuity",
     "token-efficiency", "visual-loop",
@@ -204,6 +204,6 @@ def verify_archive(path: Path, root: Path = ROOT) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build full skills-only Agentic Workflow for ChatGPT")
     parser.add_argument("--output", type=Path,
-                        default=ROOT / "dist/agentic-workflow-chatgpt-v1.13.0.zip")
+                        default=ROOT / f"dist/agentic-workflow-chatgpt-v{VERSION}.zip")
     args = parser.parse_args()
     print(package(args.output))
