@@ -31,6 +31,20 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 The editions share canonical engineering guidance and a coordinated release version, but **not identical runtime capabilities**. The historical four-skill [ChatGPT Workflow Lite](portable/ogfrench-workflow/) is deprecated for new ChatGPT installations and retained for compatibility.
 
+## Plugin ecosystem
+
+The marketplace also includes independent specialist and compatibility plugins:
+
+| Plugin | Purpose |
+| --- | --- |
+| `claude-workflow` | Full Claude Code engineering workflow (15 canonical skills). |
+| `frog-writing` | Specialist writing and copy refinement. |
+| `presentation-craft` | Presentation storytelling, design, and visual restraint. |
+| `chatgpt-workflow-lite` | Deprecated four-skill compatibility package, not the full ChatGPT edition. |
+| `21st` | Pinned, externally maintained UI tooling. |
+
+The full **ChatGPT `agentic-workflow`** edition is packaged separately and does not require these Claude marketplace entries.
+
 ## Core skills
 
 | Area | Skills |
