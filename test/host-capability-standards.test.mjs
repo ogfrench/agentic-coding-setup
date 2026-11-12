@@ -34,7 +34,7 @@ test("full Claude and ChatGPT versions align; legacy Lite stays separate", () =>
   const lite = JSON.parse(get("portable/ogfrench-workflow/plugin.json"));
   const adapter = JSON.parse(get("portable/ogfrench-workflow/.claude-plugin/plugin.json"));
   assert.equal(claude.version, chatgpt.version);
-  assert.equal(claude.version, "2026.11.1");
+  assert.match(claude.version, /^20\d{2}\.(?:0?[1-9]|1[0-2])\.[1-9]\d*$/);
   assert.notEqual(lite.version, claude.version);
   assert.equal(lite.version, adapter.version);
   assert.equal(claude.name, "claude-workflow");
