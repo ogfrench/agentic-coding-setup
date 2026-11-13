@@ -102,10 +102,11 @@ test('CLI refuses a symlinked evidence directory without writing outside the che
   const x = fixture(t);
   const outside = mkdtempSync(join(tmpdir(), 'dune-evidence-outside-'));
   t.after(() => rmSync(outside, { recursive: true, force: true }));
-  symlinkSync(outside, join(x.root, 'redirect'), 'dir');
+  mkdirSync(join(x.root, '.dune'), { recursive: true });
+  symlinkSync(outside, join(x.root, '.dune', 'redirect'), 'dir');
   const script = fileURLToPath(new URL('../scripts/check-product-passport.mjs', import.meta.url));
   const result = spawnSync(process.execPath,
-    [script, '--root', x.root, '--evidence', 'redirect/subfolder/evidence.json'],
+    [script, '--root', x.root, '--evidence', '.dune/redirect/subfolder/evidence.json'],
     { encoding: 'utf8', env: { ...process.env, GITHUB_SHA: '' } });
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /Evidence output directory contains a symlink/);
