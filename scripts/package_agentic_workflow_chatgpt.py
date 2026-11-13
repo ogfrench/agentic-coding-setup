@@ -19,6 +19,7 @@ FULL_SKILLS = (
     "delivery-loop", "diagram-craft", "issue-management", "knowledge-base-builder",
     "learning-loop", "model-delegation", "netlify-cost",
     "plugin-experience-design", "product-passport", "session-continuity",
+    "presentation-story", "presentation-design", "design-system-adapter",
     "token-efficiency", "visual-loop",
 )
 PORTABLE_SKILLS = (
@@ -111,6 +112,9 @@ def build_files(root: Path = ROOT) -> dict[str, bytes]:
         src = "portable/agentic-workflow/" + name
         files[name] = _read(root, src)
         provenance[name] = src
+    icon_source = "plugins/agent-workflow/assets/fpe-mark-white-on-black.svg"
+    files["assets/fpe-mark-white-on-black.svg"] = _read(root, icon_source)
+    provenance["assets/fpe-mark-white-on-black.svg"] = icon_source
     _skills(root, "plugins/agent-workflow/skills", FULL_SKILLS, adapt=True,
             files=files, provenance=provenance)
     _skills(root, "portable/ogfrench-workflow/skills", PORTABLE_SKILLS, adapt=False,

@@ -20,12 +20,6 @@
       "category": "productivity"
     },
     {
-      "name": "presentation-craft",
-      "description": "Brand-neutral presentation storytelling, deck creation, design-system application and visual restraint.",
-      "source": "./plugins/presentation-craft",
-      "category": "design"
-    },
-    {
       "name": "chatgpt-workflow-lite",
       "description": "Portable companion for setup auditing, adversarial review, real UI evidence and release handover.",
       "source": "./portable/ogfrench-workflow",

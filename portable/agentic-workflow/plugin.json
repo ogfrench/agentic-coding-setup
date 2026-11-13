@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agentic-workflow",
-  "version": "2026.11.1",
-  "description": "Full portable product-engineering workflow for ChatGPT with architectural reviews, delivery practices, research methods, skills and a curated knowledge base.",
+  "version": "2026.11.2",
+  "description": "Source-grounded software engineering workflows for architecture, implementation review, research and release delivery. Uses only tools available in the current host.",
   "author": {
     "name": "François Prévot",
     "url": "https://github.com/ogfrench"
@@ -25,13 +25,16 @@
         "capabilities": [
           "Interactive"
         ],
-        "shortDescription": "Engineering workflow and KB",
-        "longDescription": "Full source-linked agentic product engineering guidance with 19 portable skills, reusable practice knowledge, architecture review, diagram craft, visual proof, delivery loops, release discipline and cost awareness. Uses only ChatGPT-host tools actually available; no Claude hooks, autonomous background processes or local MCP implied.",
+        "shortDescription": "Review, build and ship code",
+        "longDescription": "Full source-linked agentic product engineering guidance with 22 portable skills, reusable practice knowledge, architecture review, diagram craft, visual proof, delivery loops, release discipline and cost awareness. Uses only ChatGPT-host tools actually available; no Claude hooks, autonomous background processes or local MCP implied.",
         "defaultPrompt": [
           "Inspect this repository for architectural root causes, then propose the smallest verified repair.",
           "Work through this PR to acceptance, checking actual code, CI and release evidence before merge.",
           "Audit this app's current UI, show implementation-backed improvements, and verify the resulting user journey."
-        ]
+        ],
+        "logo": "./assets/fpe-mark-white-on-black.svg",
+        "composerIcon": "./assets/fpe-mark-white-on-black.svg",
+        "websiteURL": "https://github.com/ogfrench/agentic-coding-setup"
       }
     }
   }

@@ -59,4 +59,3 @@
 - token-efficiency (skill): Fewer turns and tokens for the same work. Batch tool calls, keep context lean, wait in the background, save facts once.
 - typescript-lsp (plugin): TypeScript and JavaScript language server for code intelligence.
 - visual-loop (skill): Show design options on the real thing, read every screenshot first, loop until the user picks.
-- visual-restraint (skill): Review rendered work for repetitive decorative patterns and generic presentation copy.

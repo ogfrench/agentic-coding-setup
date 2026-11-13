@@ -28,7 +28,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
             for p in files if re.fullmatch(r"skills/[^/]+/SKILL\.md", p)
         }
         self.assertEqual(skill_names, set(FULL_SKILLS) | set(PORTABLE_SKILLS))
-        self.assertEqual(len(skill_names), 19)
+        self.assertEqual(len(skill_names), 22)
         for name in FULL_SKILLS:
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertIn("## ChatGPT host capability contract", content)
@@ -53,10 +53,21 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("knowledge/README.md", best)
         self.assertIn("knowledge/source-index.jsonl", best)
         manifest = json.loads(files["assets/provenance.json"])
-        self.assertEqual(manifest["skill_count"], 19)
+        self.assertEqual(manifest["skill_count"], 22)
         self.assertEqual(manifest["practice_count"], len(practices))
         for name, checksum in manifest["sha256"].items():
             self.assertEqual(checksum, hashlib.sha256(files[name]).hexdigest())
+
+    def test_integrated_presentation_skills_and_references(self) -> None:
+        files = build_files()
+        for name in ("presentation-story", "presentation-design", "design-system-adapter"):
+            path = f"skills/{name}/SKILL.md"
+            self.assertIn(path, files)
+            self.assertIn("## ChatGPT host capability contract", files[path].decode())
+        self.assertIn("skills/presentation-story/references/action-titles.md", files)
+        self.assertIn("skills/presentation-design/references/visual-reasoning.md", files)
+        self.assertIn("skills/visual-loop/references/visual-restraint.md", files)
+        self.assertNotIn("skills/visual-restraint/SKILL.md", files)
 
     def test_plugin_product_map_is_included(self) -> None:
         files = build_files()
@@ -77,6 +88,15 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertEqual(manifest["$schema"], "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json")
         self.assertEqual(manifest["extensions"]["com.openai"]["interface"]["displayName"], "Agentic Workflow")
         self.assertLessEqual(len(manifest["extensions"]["com.openai"]["interface"]["shortDescription"]), 30)
+        icon = manifest["extensions"]["com.openai"]["interface"]["logo"]
+        self.assertEqual(icon, "./assets/fpe-mark-white-on-black.svg")
+        self.assertEqual(manifest["extensions"]["com.openai"]["interface"]["composerIcon"], icon)
+        self.assertIn("assets/fpe-mark-white-on-black.svg", files)
+        svg = files["assets/fpe-mark-white-on-black.svg"].decode("utf-8")
+        self.assertIn('fill="#FFFFFF"', svg)
+        self.assertIn('fill="#000000"', svg)
+        self.assertEqual(full["displayName"], "Agentic Workflow")
+        self.assertNotIn("icon", full)  # Claude strict validator rejects this field.
         self.assertNotIn("mcpServers", manifest)
         self.assertNotIn("apps", manifest["extensions"]["com.openai"])
         self.assertNotIn("mcp.json", files)

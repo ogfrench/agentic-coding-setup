@@ -3,3 +3,4 @@
 # is public. scripts/check-public.mjs reads this file.
 ogfrench/agentic-coding-setup
 ogfrench/claude-code-setup
+ogfrench/fpe-design-system

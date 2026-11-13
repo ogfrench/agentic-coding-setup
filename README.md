@@ -23,8 +23,8 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Release | `2026.11.1` | `2026.11.1` |
-| Skills | 15 canonical engineering skills | 19 portable skills (15 shared + 4 review and verification skills) |
+| Release candidate | `2026.11.2` | `2026.11.2` |
+| Skills | 18 canonical engineering, story and design skills | 22 portable skills (18 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
 | Package | [Claude source](plugins/agent-workflow/) | [ChatGPT package](portable/agentic-workflow/) |
@@ -33,13 +33,12 @@ The editions share canonical engineering guidance and a coordinated release vers
 
 ## Plugin ecosystem
 
-The marketplace also includes independent specialist and compatibility plugins:
+The marketplace also includes the writing specialist and compatibility plugins:
 
 | Plugin | Purpose |
 | --- | --- |
-| `claude-workflow` | Full Claude Code engineering workflow (15 canonical skills). |
+| `claude-workflow` | Full Claude Code workflow (18 canonical engineering, story and design skills). |
 | `frog-writing` | Specialist writing and copy refinement. |
-| `presentation-craft` | Presentation storytelling, design, and visual restraint. |
 | `chatgpt-workflow-lite` | Deprecated four-skill compatibility package, not the full ChatGPT edition. |
 | `21st` | Pinned, externally maintained UI tooling. |
 
@@ -55,7 +54,7 @@ The full **ChatGPT `agentic-workflow`** edition is packaged separately and does 
 | Design and experience | [Visual Loop](plugins/agent-workflow/skills/visual-loop/SKILL.md), [Plugin Experience Design](plugins/agent-workflow/skills/plugin-experience-design/SKILL.md) |
 | Orchestration and efficiency | [Model Delegation](plugins/agent-workflow/skills/model-delegation/SKILL.md), [Token Efficiency](plugins/agent-workflow/skills/token-efficiency/SKILL.md), [Actions Cost](plugins/agent-workflow/skills/actions-cost/SKILL.md), [Netlify Cost](plugins/agent-workflow/skills/netlify-cost/SKILL.md) |
 
-The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
+Three shared skills, **Presentation Story**, **Presentation Design** and **Design System Adapter**, support narrative work and independent authoring when appropriate. **Visual Loop** incorporates visual-restraint review. A named specialist such as frogViz owns its real template/build/export pipeline. The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
 
 ## Get started
 
@@ -75,7 +74,7 @@ See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude
 
 ### ChatGPT
 
-Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 19 portable skills, their references, and curated public engineering knowledge.
+Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 22 portable skills, their references, and curated public engineering knowledge.
 
 The plugin is currently **privately installed**; this public repository provides its source and [packaging and host contract](docs/agentic-workflow-chatgpt.md), not a public one-click installation. The package does not include Claude-specific hooks, installers, or local MCP executables.
 
@@ -99,8 +98,8 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Current full-edition version: `2026.11.1`**. [Read the first complete release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1).
+**Next full-edition release candidate: `2026.11.2`** (not published). **Last published: `2026.11.1`**. [Read the first complete release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1).
 
-Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. Independent specialist plugins and the deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
+Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The separate frog-writing specialist and deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
 This repository is public by design. Private client code, research corpora, credentials, and project-specific evidence belong in their owning repositories.
