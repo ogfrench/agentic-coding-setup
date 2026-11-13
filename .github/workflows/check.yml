@@ -43,6 +43,28 @@ jobs:
             node scripts/check-public.mjs "$HEAD"
           fi
       - run: npx -y @anthropic-ai/claude-code@2.1.270 plugin validate . --strict
+      - name: Verify Claude ZIP upload contract
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from tempfile import TemporaryDirectory
+          from zipfile import ZIP_DEFLATED, ZipFile
+          root = Path("plugins/agent-workflow")
+          with TemporaryDirectory() as temp:
+              archive = Path(temp) / "claude-workflow.zip"
+              with ZipFile(archive, "w", compression=ZIP_DEFLATED) as z:
+                  for path in sorted(root.rglob("*")):
+                      assert not path.is_symlink(), f"Symlink in plugin: {path}"
+                      if path.is_file():
+                          z.write(path, path.relative_to(root))
+              with ZipFile(archive) as z:
+                  assert z.testzip() is None
+                  assert ".claude-plugin/plugin.json" in z.namelist()
+                  plugin = json.loads(z.read(".claude-plugin/plugin.json"))
+                  assert plugin["name"] == "claude-workflow"
+                  assert 0 < len(plugin["description"]) <= 500
+          PY
       - name: Validate each local plugin
         run: |
           for p in plugins/*/; do
