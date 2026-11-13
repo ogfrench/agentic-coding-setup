@@ -106,6 +106,11 @@ function main(args) {
   if (output) {
     const target = resolve(root, output);
     if (!inside(root, target)) throw Error('Evidence output escapes repository');
+    // Evidence is generated output. Do not allow a typo to truncate source,
+    // tests or other repository files through --evidence.
+    if (!relative(root, target).split(sep).join('/').startsWith('.dune/')) {
+      throw Error('Evidence output must be under .dune/');
+    }
     // Check each ancestor *before* creating subdirectories. Recursive mkdir could
     // otherwise follow a link and create directories outside the checkout.
     const parent = dirname(target);

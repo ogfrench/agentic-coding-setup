@@ -85,6 +85,19 @@ test('CLI can write evidence but does not claim executed behavior', t => {
   assert.equal(evidence.behavior, 'not_run');
 });
 
+test('CLI refuses evidence output that would overwrite repository source', t => {
+  const x = fixture(t);
+  const existing = join(x.root, 'docs/product-passport/README.md');
+  const original = readFileSync(existing, 'utf8');
+  const script = fileURLToPath(new URL('../scripts/check-product-passport.mjs', import.meta.url));
+  const run = spawnSync(process.execPath,
+    [script, '--root', x.root, '--evidence', 'docs/product-passport/README.md'],
+    { encoding: 'utf8', env: { ...process.env, GITHUB_SHA: '' } });
+  assert.notEqual(run.status, 0);
+  assert.match(run.stderr, /Evidence output must be under \\.dune\\//);
+  assert.equal(readFileSync(existing, 'utf8'), original);
+});
+
 test('CLI refuses a symlinked evidence directory without writing outside the checkout', { skip: process.platform === 'win32' }, t => {
   const x = fixture(t);
   const outside = mkdtempSync(join(tmpdir(), 'dune-evidence-outside-'));

@@ -18,7 +18,7 @@ Do not create a mandatory agent swarm, global React or Python bans, a new DUNE s
 
 ## Optional product navigation validator
 
-A product may adopt `docs/product-passport/index.json` with `schemaVersion: 1` and capability records with `id`, `summary`, `map`, `source` paths and `tests` paths. Run the dependency-free `scripts/check-product-passport.mjs` in an opted-in repository. Use `--base <sha>` for advisory changed-path impact reporting and `--evidence <path>` for machine-readable output.
+A product may adopt `docs/product-passport/index.json` with `schemaVersion: 1` and capability records with `id`, `summary`, `map`, `source` paths and `tests` paths. Run the dependency-free `scripts/check-product-passport.mjs` in an opted-in repository. Use `--base <sha>` for advisory changed-path impact reporting and `--evidence .dune/evidence.json` for machine-readable output. Evidence output is restricted to `.dune/` to prevent accidental overwriting of source files.
 
 The validator checks source/test paths, duplicate IDs, invalid paths and symlink escapes. **It never declares behavior or host acceptance passed.** Impact coverage is advisory; a changed file may legitimately affect multiple capabilities or be unrelated. This tool supplements, not replaces, the repo's own tests. Never invent a test path to satisfy the index.
 
