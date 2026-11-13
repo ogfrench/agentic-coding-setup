@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Release candidate | `2026.11.3` | `2026.11.3` |
+| Release candidate | `2026.11.4` | `2026.11.4` |
 | Skills | 18 canonical engineering, story and design skills | 22 portable skills (18 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -37,7 +37,7 @@ The marketplace also includes the writing specialist and compatibility plugins:
 
 | Plugin | Purpose |
 | --- | --- |
-| `claude-workflow` | Full Claude Code workflow (18 canonical engineering, story and design skills). |
+| `agentic-workflow` | Full Claude Code edition of Agentic Workflow (18 canonical engineering, story and design skills). Published as `claude-workflow` through 2026.11.3. |
 | `frog-writing` | Specialist writing and copy refinement. |
 | `chatgpt-workflow-lite` | Deprecated four-skill compatibility package, not the full ChatGPT edition. |
 | `21st` | Pinned, externally maintained UI tooling. |
@@ -98,7 +98,7 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Next full-edition release candidate: `2026.11.3`** (not published). **Last published: `2026.11.2`**. [Read the last release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.2).
+**Next full-edition release candidate: `2026.11.4`** (not published). **Last published: `2026.11.3`**. [Read the last release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.3).
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The separate frog-writing specialist and deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 

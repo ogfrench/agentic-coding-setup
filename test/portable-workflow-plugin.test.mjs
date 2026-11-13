@@ -118,11 +118,11 @@ test("full Claude and ChatGPT share CalVer, legacy Lite remains independent", ()
   const chatgpt = JSON.parse(readFileSync(resolve(root, "../../portable/agentic-workflow/plugin.json"), "utf8"));
   const lite = JSON.parse(read("plugin.json"));
   const marketplace = JSON.parse(readFileSync(resolve(root, "../../.claude-plugin/marketplace.json"), "utf8"));
-  assert.equal(claude.name, "claude-workflow");
+  assert.equal(claude.name, "agentic-workflow");
   assert.equal(chatgpt.name, "agentic-workflow");
   assert.equal(lite.name, "chatgpt-workflow-lite");
   assert.match(claude.version, /^20\d{2}\.(?:0?[1-9]|1[0-2])\.[1-9]\d*$/);
   assert.equal(claude.version, chatgpt.version);
   assert.notEqual(claude.version, lite.version);
-  assert.deepEqual(marketplace.plugins.filter((p) => ["claude-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name).sort(), ["chatgpt-workflow-lite", "claude-workflow"].sort());
+  assert.deepEqual(marketplace.plugins.filter((p) => ["agentic-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name).sort(), ["agentic-workflow", "chatgpt-workflow-lite"].sort());
 });

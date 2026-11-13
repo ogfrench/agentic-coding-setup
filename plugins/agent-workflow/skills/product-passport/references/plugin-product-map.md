@@ -6,8 +6,8 @@
 
 ```mermaid
 flowchart TB
-  Source["Canonical skills and practices<br/>agentic-coding-setup"] --> Claude["claude-workflow<br/>Claude Code"]
-  Source --> ChatGPT["agentic-workflow<br/>ChatGPT"]
+  Source["Canonical skills and practices<br/>agentic-coding-setup"] --> Claude["agentic-workflow<br/>Claude Code edition"]
+  Source --> ChatGPT["agentic-workflow<br/>ChatGPT edition"]
   Source --> Lite["chatgpt-workflow-lite<br/>legacy compatibility"]
   Source --> Specialist["Writing specialist<br/>frog-writing"]
   Claude --> Sync["Optional user setup and reviewed project sync"]
@@ -21,8 +21,8 @@ flowchart TB
 
 | Package | Purpose and ownership | Source | Host boundary |
 | --- | --- | --- | --- |
-| `claude-workflow` | 18 engineering, presentation, and design skills; optional Claude-specific agent, hooks and sync | `plugins/agent-workflow/` | Claude Code; installation and sync explicit |
-| `agentic-workflow` | The same 18 canonical skills adapted for ChatGPT, plus four portable review skills | `portable/agentic-workflow/`; `scripts/package_agentic_workflow_chatgpt.py` | Private, skills-only ChatGPT edition; tools are host-provided |
+| `agentic-workflow` (Claude Code edition) | 18 engineering, presentation, and design skills; optional Claude-specific agent, hooks and sync | `plugins/agent-workflow/` | Claude Code; installation and sync explicit |
+| `agentic-workflow` (ChatGPT edition) | The same 18 canonical skills adapted for ChatGPT, plus four portable review skills | `portable/agentic-workflow/`; `scripts/package_agentic_workflow_chatgpt.py` | Private, skills-only ChatGPT edition; tools are host-provided |
 | `chatgpt-workflow-lite` | Historical four-skill compatibility package, deprecated for new ChatGPT users | `portable/ogfrench-workflow/` | Legacy version frozen; no coordinated release claim |
 | `frog-writing` | Distinctive writing and copy editing | `plugins/frog-writing/` | Specialist plugin with independent release |
 | `21st` | Pinned external UI tooling | `.claude-plugin/marketplace.json` | External dependency with its own behavior and version |

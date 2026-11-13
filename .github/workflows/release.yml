@@ -74,7 +74,7 @@ jobs:
           for manifest in ("plugins/agent-workflow/.claude-plugin/plugin.json",
                            "portable/agentic-workflow/plugin.json"):
               assert json.loads((root/manifest).read_text())["version"] == v, manifest
-          assert v in (root/"docs/releases/2026-11-13.md").read_text(), "Missing release notes"
+          assert v in (root/"docs/releases/2026-11-13-agentic-workflow-rename.md").read_text(), "Missing release notes"
           PY
           if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$VERSION" --silent 2>/dev/null; then
             echo "::error::Tag v$VERSION already exists; never repoint a release tag"; exit 1
@@ -89,7 +89,7 @@ jobs:
           python3 scripts/package_agentic_workflow_chatgpt.py
       - name: Validate Claude plugin manifests
         run: |
-          npx -y @anthropic-ai/claude-code@2.1.270 plugin validate plugins/agent-workflow --strict
+          npx -y @anthropic-ai/claude-code@2.1.323 plugin validate plugins/agent-workflow --strict
       - name: Package public Claude plugins deterministically
         run: |
           python3 - <<'PY'
@@ -121,15 +121,15 @@ jobs:
           import json
           from pathlib import Path
           from zipfile import ZipFile
-          archive = next(Path("dist").glob("claude-workflow-claude-v*.zip"))
+          archive = next(Path("dist").glob("agentic-workflow-claude-v*.zip"))
           with ZipFile(archive) as z:
               assert z.testzip() is None, "Damaged Claude ZIP"
               assert ".claude-plugin/plugin.json" in z.namelist(), "Root Claude manifest missing"
               manifest = json.loads(z.read(".claude-plugin/plugin.json"))
               assert 0 < len(manifest["description"]) <= 500, "Claude description exceeds 500 characters"
           PY
-          unzip -t dist/claude-workflow-claude-v*.zip
-          (cd dist && sha256sum claude-workflow-claude-v*.zip > SHA256SUMS.txt)
+          unzip -t dist/agentic-workflow-claude-v*.zip
+          (cd dist && sha256sum agentic-workflow-claude-v*.zip > SHA256SUMS.txt)
       - name: Keep ChatGPT package private for explicitly reviewed installation
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -141,6 +141,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "v$VERSION" dist/claude-workflow-claude-v*.zip dist/SHA256SUMS.txt \
+          gh release create "v$VERSION" dist/agentic-workflow-claude-v*.zip dist/SHA256SUMS.txt \
             --target "$GITHUB_SHA" --title "Agentic Workflow $VERSION" \
-            --notes-file docs/releases/2026-11-13.md
+            --notes-file docs/releases/2026-11-13-agentic-workflow-rename.md

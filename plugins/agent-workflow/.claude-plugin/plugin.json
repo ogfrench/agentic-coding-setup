@@ -1,6 +1,6 @@
 {
-  "name": "claude-workflow",
-  "version": "2026.11.3",
+  "name": "agentic-workflow",
+  "version": "2026.11.4",
   "description": "Evidence-based product engineering for Claude Code: architecture, scoped implementation, code review, visual QA, diagrams, presentation storytelling, knowledge management and release delivery. Includes 18 modular skills and optional Claude-specific agents and hooks. Tools and execution depend on host permissions.",
   "author": {
     "name": "François Prévot"

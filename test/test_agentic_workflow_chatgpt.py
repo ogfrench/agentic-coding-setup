@@ -74,7 +74,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         doc = "skills/product-passport/references/plugin-product-map.md"
         self.assertIn(doc, files)
         product_map = files[doc].decode("utf-8")
-        for term in ("diagram-craft", "claude-workflow", "agentic-workflow", "chatgpt-workflow-lite"):
+        for term in ("diagram-craft", "agentic-workflow", "chatgpt-workflow-lite"):
             self.assertIn(term, product_map)
 
     def test_manifest_is_standalone_and_lite_identity_distinct(self) -> None:
