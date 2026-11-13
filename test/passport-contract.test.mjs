@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync, readFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join, dirname, fileURLToPath } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { validatePassport, detectImpact, reportPassport } from '../scripts/check-product-passport.mjs';
 
@@ -82,4 +83,35 @@ test('CLI can write evidence but does not claim executed behavior', t => {
   const evidence = JSON.parse(readFileSync(join(x.root, '.dune/evidence.json'), 'utf8'));
   assert.equal(evidence.navigation, 'passed');
   assert.equal(evidence.behavior, 'not_run');
+});
+
+test('CLI refuses a symlinked evidence directory without writing outside the checkout', { skip: process.platform === 'win32' }, t => {
+  const x = fixture(t);
+  const outside = mkdtempSync(join(tmpdir(), 'dune-evidence-outside-'));
+  t.after(() => rmSync(outside, { recursive: true, force: true }));
+  symlinkSync(outside, join(x.root, 'redirect'), 'dir');
+  const script = fileURLToPath(new URL('../scripts/check-product-passport.mjs', import.meta.url));
+  const result = spawnSync(process.execPath,
+    [script, '--root', x.root, '--evidence', 'redirect/evidence.json'],
+    { encoding: 'utf8', env: { ...process.env, GITHUB_SHA: '' } });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Evidence output directory contains a symlink/);
+  assert.equal(existsSync(join(outside, 'evidence.json')), false);
+});
+
+test('CLI refuses to overwrite a symlinked evidence file', { skip: process.platform === 'win32' }, t => {
+  const x = fixture(t);
+  const outside = mkdtempSync(join(tmpdir(), 'dune-evidence-outside-'));
+  t.after(() => rmSync(outside, { recursive: true, force: true }));
+  const original = join(outside, 'private.txt');
+  writeFileSync(original, 'keep me');
+  mkdirSync(join(x.root, '.dune'), { recursive: true });
+  symlinkSync(original, join(x.root, '.dune', 'evidence.json'));
+  const script = fileURLToPath(new URL('../scripts/check-product-passport.mjs', import.meta.url));
+  const result = spawnSync(process.execPath,
+    [script, '--root', x.root, '--evidence', '.dune/evidence.json'],
+    { encoding: 'utf8', env: { ...process.env, GITHUB_SHA: '' } });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Evidence output must be a regular file/);
+  assert.equal(readFileSync(original, 'utf8'), 'keep me');
 });

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Optional Product Passport validator: navigation integrity is not runtime proof.
-import { readFileSync, realpathSync, statSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, realpathSync, statSync, writeFileSync, mkdirSync, lstatSync, openSync, closeSync, constants } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, isAbsolute, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -107,7 +107,22 @@ function main(args) {
     const target = resolve(root, output);
     if (!inside(root, target)) throw Error('Evidence output escapes repository');
     mkdirSync(dirname(target), { recursive: true });
-    writeFileSync(target, report);
+    // A lexical path check alone does not detect links in an existing directory.
+    if (realpathSync(dirname(target)) !== dirname(target)) {
+      throw Error('Evidence output directory contains a symlink');
+    }
+    try {
+      const stat = lstatSync(target);
+      if (stat.isSymbolicLink() || !stat.isFile()) {
+        throw Error('Evidence output must be a regular file, not a symlink');
+      }
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+    // O_NOFOLLOW closes the final-component symlink race on supporting platforms.
+    const fd = openSync(target, constants.O_WRONLY | constants.O_CREAT |
+      constants.O_TRUNC | (constants.O_NOFOLLOW ?? 0), 0o600);
+    try { writeFileSync(fd, report); } finally { closeSync(fd); }
   }
   process.stdout.write(report);
 }
