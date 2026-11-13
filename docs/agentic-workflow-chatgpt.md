@@ -1,6 +1,6 @@
 # Agentic Workflow for ChatGPT | Full portable edition
 
-**Release candidate (2026-11-13):** `agentic-workflow` v2026.11.3 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code plugin `claude-workflow` v2026.11.3, its user-level setup scripts, subagents, project sync and hooks are maintained separately.
+**Release candidate (2026-11-13):** `agentic-workflow` v2026.11.4 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.11.4 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
 
 ## What is included
 
@@ -28,8 +28,8 @@ Run from the exact reviewed source checkout:
 ```sh
 python3 -m unittest discover -s test -p 'test_agentic_workflow_chatgpt.py' -v
 python3 scripts/package_agentic_workflow_chatgpt.py
-unzip -t dist/agentic-workflow-chatgpt-v2026.11.3.zip
-sha256sum dist/agentic-workflow-chatgpt-v2026.11.3.zip
+unzip -t dist/agentic-workflow-chatgpt-v2026.11.4.zip
+sha256sum dist/agentic-workflow-chatgpt-v2026.11.4.zip
 ```
 
 The normal PR CI also packages the ZIP as a short-lived private Actions artifact `agentic-workflow-chatgpt-candidate`. The archive is deterministic given identical source files. Inspect the root manifest, all 22 skills, references, knowledge count, provenance checksums and absence of executables before installing. Do not publish a public plugin without a separate scope and security review.
@@ -42,4 +42,4 @@ A skills-only package provides methods, not tool permissions. Each ChatGPT conve
 
 ## Rollback
 
-Uninstall or disable only the new private `agentic-workflow` plugin. Keep `claude-workflow` and downstream repository setups unchanged. Restore Lite for any ChatGPT user who explicitly needs a tested older workflow, rather than pretending the full package shares identical host capabilities.
+Uninstall or disable only the new private `agentic-workflow` plugin. Keep the Claude Code edition and downstream repository setups unchanged. Restore Lite for any ChatGPT user who explicitly needs a tested older workflow, rather than pretending the full package shares identical host capabilities.

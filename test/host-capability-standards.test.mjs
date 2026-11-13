@@ -37,7 +37,7 @@ test("full Claude and ChatGPT versions align; legacy Lite stays separate", () =>
   assert.match(claude.version, /^20\d{2}\.(?:0?[1-9]|1[0-2])\.[1-9]\d*$/);
   assert.notEqual(lite.version, claude.version);
   assert.equal(lite.version, adapter.version);
-  assert.equal(claude.name, "claude-workflow");
+  assert.equal(claude.name, "agentic-workflow");
   assert.equal(chatgpt.name, "agentic-workflow");
   assert.equal(lite.name, "chatgpt-workflow-lite");
   assert.match(get("docs/releases/2026-11-10-cross-host-standards.md"), /not until exact-source review/i);
