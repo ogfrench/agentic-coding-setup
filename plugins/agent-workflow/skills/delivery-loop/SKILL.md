@@ -12,6 +12,10 @@ just a plan or a status report. Default to one main agent using existing project
 specialist skills. Autonomy means progressing without needless questions **within granted
 permissions**, not inventing access, bypassing controls or declaring an unfinished task done.
 
+## DUNE delivery invariant
+
+For a product-facing change, enter through the product-owned capability map, verify real source and test ownership, follow the existing paved path, implement a focused regression, and exit through observed behavior plus reconciled passport evidence. The PR is the only authoritative live tracker. Do not create another DUNE board, duplicate agent, or infer functional success from static path checks. Enforce architecture constraints only when relevant to the target stack and a demonstrated failure mode.
+
 ## Run the loop
 
 1. **Orient.** Read the user's objective and permissions, current source, tests,

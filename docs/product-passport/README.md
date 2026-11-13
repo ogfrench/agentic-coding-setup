@@ -4,6 +4,8 @@ This repository is the source and distribution layer for a Claude Code developme
 
 **Map evidence:** source paths `setup-user.sh`, `sync-to-repos.sh`, `lib/apply.mjs`, `scripts/check-sync.mjs` were inspected on 2026-11-09. Referenced plugin and knowledge paths were located from the source README and manifests. No commands or real AI-host journeys were run as part of creating this map.
 
+The source-linked [capability index](index.json) is checked by `node scripts/check-product-passport.mjs`. This verifies path and test references only; it cannot establish actual user behavior. The [DUNE engineering contract](../dune.md) describes paved paths and evidence reconciliation without replacing source or this map.
+
 ## Product surfaces and journeys
 
 | User journey | Entry point and owning implementation | Intended outcome | Verification route |

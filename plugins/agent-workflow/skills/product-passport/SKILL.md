@@ -9,6 +9,10 @@ description: >-
 
 Make a product understandable to an agent and its behavior independently checkable. **Executable source code is the source of truth.** Tests exercise its behavior; runtime artifacts provide proof. Feature maps and docs are navigational indexes, never independent specifications. If docs and code disagree, investigate whether the code is defective or the index is stale before changing either. Do not equate successful compilation, a screenshot, an HTTP 200, or a self-authored checklist with verified behavior.
 
+## DUNE entry and exit
+
+For substantive coding work, start with the affected capability record as a **navigation hint**, then verify its pointers against real code, dependencies and tests. Choose the canonical implementation path, avoiding duplicate state or parallel APIs. End with task-level execution evidence and an updated capability record in the same PR, or explicitly state `map unchanged` with a reason. Navigation path validation alone does not establish behavior. The engineering method is described in the source repository's `docs/dune.md`; never require that directory layout in another product.
+
 ## Work with the product's existing architecture
 
 1. Inspect the executable source, tests, build configuration, and actual feature entry points first. Consult repository instructions and feature maps to navigate, but verify every material claim against code and observed behavior. Identify state owners, transport, persistence, runtime processes, and dependencies. Reuse existing product CLI, browser, integration, and artifact tools. Do not introduce a universal runtime or rearrange a codebase into another application's architecture.

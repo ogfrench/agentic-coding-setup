@@ -45,7 +45,7 @@ For the coordinated workflow editions only, the release identifier is `YYYY.MM.N
 | Cost reduction | `actions-cost` / `netlify-cost` | `token-efficiency` | Optimizing away required verification |
 | Communications, decks, brand writing | `presentation-story` / `presentation-design` / `frog-writing` | `diagram-craft` for diagram assets | Implying generic workflow owns specialist product content |
 
-The three presentation and design skills are canonical in both full workflow editions. `visual-loop` also owns visual restraint. Named presentation products such as frogViz keep authority over actual generation and export. The remaining portable ChatGPT skills are `adversarial-review`, `implementation-proof`, `release-handover` and `setup-audit`. They are not part of the Claude workflow's canonical 15-skill set. `model-delegation` chooses how much agent/tool assistance is warranted, not a mandatory dispatcher.
+The three presentation and design skills are canonical in both full workflow editions. `visual-loop` also owns visual restraint. Named presentation products such as frogViz keep authority over actual generation and export. The remaining portable ChatGPT skills are `adversarial-review`, `implementation-proof`, `release-handover` and `setup-audit`. They are not part of the Claude workflow's canonical 18-skill set. `model-delegation` chooses how much agent/tool assistance is warranted, not a mandatory dispatcher.
 
 ## 4. Capability and release lifecycle
 

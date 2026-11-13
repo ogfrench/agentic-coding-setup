@@ -74,7 +74,7 @@ jobs:
           for manifest in ("plugins/agent-workflow/.claude-plugin/plugin.json",
                            "portable/agentic-workflow/plugin.json"):
               assert json.loads((root/manifest).read_text())["version"] == v, manifest
-          assert v in (root/"docs/releases/2026-11-13-agentic-workflow-rename.md").read_text(), "Missing release notes"
+          assert v in (root/"docs/releases/2026-11-13-dune.md").read_text(), "Missing release notes"
           PY
           if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$VERSION" --silent 2>/dev/null; then
             echo "::error::Tag v$VERSION already exists; never repoint a release tag"; exit 1

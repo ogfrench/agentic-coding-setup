@@ -95,6 +95,10 @@ The `session-continuity` skill owns the detailed workflow and checklist format;
 the PR template offers its starting structure. Product maps and verification
 stay updated within the same PR.
 
+## DUNE paved-path contract
+
+For substantive work, use the Product Passport to navigate, then inspect actual source, dependencies and tests. Change the canonical owning implementation, add a regression and verify meaningful behavior. Reconcile the map only after evidence; record `map unchanged` with a reason when appropriate. Prefer types, contracts and focused dependency guards over blanket prohibitions or duplicate state. See `docs/dune.md`. A passing path validator is not proof of a user journey.
+
 ## Product maps and passports
 
 A product map is an index of user capabilities, real entry points, implementation owners,

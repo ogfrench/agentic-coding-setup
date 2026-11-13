@@ -6,3 +6,8 @@ repos.local.txt
 
 # Claude plugin eval reports may contain prompts and model outputs.
 plugins/*/evals/results/
+
+# Generated Python files and untracked local DUNE reports.
+**/__pycache__/
+*.py[cod]
+.dune/

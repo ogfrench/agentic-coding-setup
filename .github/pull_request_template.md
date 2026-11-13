@@ -13,6 +13,12 @@ Keep the boxes updated during implementation, not only before review.
 - [ ] Reconcile product-map and documentation impact, or explain why unchanged
 - [ ] Resolve or explicitly account for review feedback and remaining blockers
 
+## DUNE impact
+
+- **Affected capability and canonical owning implementation:**
+- **Changed behavior, negative path and relevant executable boundary:**
+- **Product Passport impact:** updated paths / unchanged with reason / blocked
+
 ## Evidence and current status
 
 - **Head revision:**
