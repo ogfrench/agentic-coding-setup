@@ -85,7 +85,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn('fill="#FFFFFF"', svg)
         self.assertIn('fill="#000000"', svg)
         self.assertEqual(full["displayName"], "Agentic Workflow")
-        self.assertEqual(full["icon"], icon)
+        self.assertNotIn("icon", full)  # Claude strict validator rejects this field.
         self.assertNotIn("mcpServers", manifest)
         self.assertNotIn("apps", manifest["extensions"]["com.openai"])
         self.assertNotIn("mcp.json", files)
