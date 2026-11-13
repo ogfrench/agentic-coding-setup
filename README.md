@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Release | `2026.11.1` | `2026.11.1` |
+| Release candidate | `2026.11.2` | `2026.11.2` |
 | Skills | 15 canonical engineering skills | 19 portable skills (15 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -39,7 +39,7 @@ The marketplace also includes independent specialist and compatibility plugins:
 | --- | --- |
 | `claude-workflow` | Full Claude Code engineering workflow (15 canonical skills). |
 | `frog-writing` | Specialist writing and copy refinement. |
-| `presentation-craft` | Presentation storytelling, design, and visual restraint. |
+| `presentation-craft` | Presentation storytelling, design, and visual restraint (v0.3.1 candidate). |
 | `chatgpt-workflow-lite` | Deprecated four-skill compatibility package, not the full ChatGPT edition. |
 | `21st` | Pinned, externally maintained UI tooling. |
 
@@ -99,7 +99,7 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Current full-edition version: `2026.11.1`**. [Read the first complete release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1).
+**Next full-edition release candidate: `2026.11.2`** (not published). **Last published: `2026.11.1`**. [Read the first complete release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1).
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. Independent specialist plugins and the deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
