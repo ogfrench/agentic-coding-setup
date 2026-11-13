@@ -30,7 +30,7 @@ function fixture(t) {
 }
 test('validates navigation and never asserts runtime or host success', t => {
   const x = fixture(t);
-  const report = reportPassport(x.root);
+  const report = reportPassport(x.root, [], null);
   assert.equal(report.navigation, 'passed');
   assert.equal(report.behavior, 'not_run');
   assert.equal(report.hostAcceptance, 'not_run');
@@ -92,11 +92,11 @@ test('CLI refuses a symlinked evidence directory without writing outside the che
   symlinkSync(outside, join(x.root, 'redirect'), 'dir');
   const script = fileURLToPath(new URL('../scripts/check-product-passport.mjs', import.meta.url));
   const result = spawnSync(process.execPath,
-    [script, '--root', x.root, '--evidence', 'redirect/evidence.json'],
+    [script, '--root', x.root, '--evidence', 'redirect/subfolder/evidence.json'],
     { encoding: 'utf8', env: { ...process.env, GITHUB_SHA: '' } });
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /Evidence output directory contains a symlink/);
-  assert.equal(existsSync(join(outside, 'evidence.json')), false);
+  assert.equal(existsSync(join(outside, 'subfolder')), false);
 });
 
 test('CLI refuses to overwrite a symlinked evidence file', { skip: process.platform === 'win32' }, t => {
@@ -114,4 +114,10 @@ test('CLI refuses to overwrite a symlinked evidence file', { skip: process.platf
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /Evidence output must be a regular file/);
   assert.equal(readFileSync(original, 'utf8'), 'keep me');
+});
+
+test('requires a matching revision when an expected SHA is supplied', t => {
+  const x = fixture(t);
+  assert.throws(() => reportPassport(x.root, [], '0000000000000000000000000000000000000000'),
+    /Checkout revision differs from GITHUB_SHA/);
 });

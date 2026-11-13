@@ -2,7 +2,7 @@
 // Optional Product Passport validator: navigation integrity is not runtime proof.
 import { readFileSync, realpathSync, statSync, writeFileSync, mkdirSync, lstatSync, openSync, closeSync, constants } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { dirname, isAbsolute, resolve, sep } from 'node:path';
+import { dirname, isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const INDEX = 'docs/product-passport/index.json';
@@ -71,12 +71,12 @@ export function detectImpact(capabilities, paths) {
   };
 }
 
-export function reportPassport(repositoryRoot, changedPaths = []) {
+export function reportPassport(repositoryRoot, changedPaths = [], expectedRevision = process.env.GITHUB_SHA) {
   const { root, capabilities } = validatePassport(repositoryRoot);
   let sha = null;
   try { sha = execFileSync('git', ['-C', root, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); }
   catch { /* Fixtures can be outside Git. */ }
-  if (process.env.GITHUB_SHA && sha !== process.env.GITHUB_SHA) {
+  if (expectedRevision && sha !== expectedRevision) {
     throw Error('Checkout revision differs from GITHUB_SHA');
   }
   return {
@@ -106,9 +106,23 @@ function main(args) {
   if (output) {
     const target = resolve(root, output);
     if (!inside(root, target)) throw Error('Evidence output escapes repository');
-    mkdirSync(dirname(target), { recursive: true });
-    // A lexical path check alone does not detect links in an existing directory.
-    if (realpathSync(dirname(target)) !== dirname(target)) {
+    // Check each ancestor *before* creating subdirectories. Recursive mkdir could
+    // otherwise follow a link and create directories outside the checkout.
+    const parent = dirname(target);
+    let current = root;
+    for (const part of relative(root, parent).split(sep).filter(Boolean)) {
+      current = resolve(current, part);
+      try {
+        const stat = lstatSync(current);
+        if (stat.isSymbolicLink() || !stat.isDirectory()) {
+          throw Error('Evidence output directory contains a symlink or non-directory');
+        }
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+        mkdirSync(current);
+      }
+    }
+    if (realpathSync(parent) !== parent) {
       throw Error('Evidence output directory contains a symlink');
     }
     try {
