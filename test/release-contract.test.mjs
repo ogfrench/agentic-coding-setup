@@ -16,6 +16,7 @@ test("CalVer release publishes only the integrated Claude workflow", () => {
   assert.ok(wf.includes(".claude-plugin/plugin.json"), "Claude ZIP must contain root manifest");
   assert.ok(wf.includes("zipfile"), "release must verify the built archive");
   assert.ok(read("docs/releases/2026-11-13-dune.md").includes(claude.version), "Release notes must identify the candidate version");
+  assert.ok(wf.includes("--notes-file docs/releases/2026-11-13-dune.md"), "Published notes must describe the accepted candidate, not an earlier version");
 });
 
 test("no plugin name is reserved for Anthropic's own plugins", () => {

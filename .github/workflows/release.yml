@@ -143,4 +143,4 @@ jobs:
         run: |
           gh release create "v$VERSION" dist/agentic-workflow-claude-v*.zip dist/SHA256SUMS.txt \
             --target "$GITHUB_SHA" --title "Agentic Workflow $VERSION" \
-            --notes-file docs/releases/2026-11-13-agentic-workflow-rename.md
+            --notes-file docs/releases/2026-11-13-dune.md
