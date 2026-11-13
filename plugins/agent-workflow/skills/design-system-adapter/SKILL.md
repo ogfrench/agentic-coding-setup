@@ -13,6 +13,8 @@ When the brief names a dedicated authoring engine (for example frogViz), adaptin
 
 Start with what already exists and the user's requested scope. Reuse meaningful type, color, layout, spacing, component and chart roles. Map those roles to the artifact rather than requiring an exhaustive token inventory for a small edit. Prefer local overrides to changing a canonical shared system.
 
+For icons paired with labels, derive visual size, gap and weight from the surrounding typography and component tokens instead of unrelated pixel guesses. Verify optical alignment in the actual render. Do not confuse the icon's visual size with the minimum accessible target size, and respect deliberate exceptions in the existing design system.
+
 Honor distinctive brand choices, including gradients, marks, typefaces and unusual geometry. A signature is not visual clutter just because it resembles a fashionable treatment. Where a source guide and existing product disagree, resolve conflicts by relevance and authority, explaining only consequential uncertainty.
 
 Inspect the result at relevant sizes when rendered output is available. Check contrast, wrapping, legibility, visual consistency and correct use of marks. Remove unnecessary decoration when it obstructs the content, but do not run a mandatory anti-pattern audit or redesign unaffected components.
