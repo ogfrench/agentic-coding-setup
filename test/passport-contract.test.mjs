@@ -94,7 +94,7 @@ test('CLI refuses evidence output that would overwrite repository source', t => 
     [script, '--root', x.root, '--evidence', 'docs/product-passport/README.md'],
     { encoding: 'utf8', env: { ...process.env, GITHUB_SHA: '' } });
   assert.notEqual(run.status, 0);
-  assert.match(run.stderr, /Evidence output must be under \\.dune\\//);
+  assert.ok(run.stderr.includes('Evidence output must be under .dune/'));
   assert.equal(readFileSync(existing, 'utf8'), original);
 });
 
