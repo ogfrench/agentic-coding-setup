@@ -29,7 +29,7 @@ A green test is evidence for *what that test asserts*, not for every outcome. Do
 
 ## 2. The DUNE change loop
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     Passport["Product Passport: capability, owner and risks"]
     Inspect["Inspect executable source, tests and dependencies"]
@@ -45,26 +45,26 @@ flowchart TD
     Passport --> Inspect --> Plan --> Implement --> Guard --> Proof --> Gate
     Gate -->|No| Implement
     Gate -->|Yes| Review --> Delivery --> Evidence --> Reconcile --> Passport
-\`\`\`
+```
 
 **At entry:** locate the intended user outcome in the product-owned passport; verify its paths before trusting them. If none exists, create a *minimal* map grounded in source, clearly marking unverified journeys.
 
 **During work:** trace caller → API/service → state/persistence → user-visible effect as applicable. Identify one canonical owner for each state and policy; reuse the product's existing stack, abstractions, CI, and test tools. Challenge a requirement or a stale map when the implementation contradicts it.
 
-**At exit:** update only affected capability paths, contracts, risks, and evidence. No churn for unrelated cosmetic edits: record \`map unchanged\` and the reason. The PR must state the exact commit, checks actually executed, skipped or blocked checks, reviewer decision, and next action.
+**At exit:** update only affected capability paths, contracts, risks, and evidence. No churn for unrelated cosmetic edits: record `map unchanged` and the reason. The PR must state the exact commit, checks actually executed, skipped or blocked checks, reviewer decision, and next action.
 
 Do not automatically tag, deploy, publish, merge, change credentials, or authorize irreversible operations because the passport says to do so.
 
 ## 3. What a product-owned passport contains
 
-Minimum \`docs/product-passport/README.md\` (or the already established canonical equivalent):
+Minimum `docs/product-passport/README.md` (or the already established canonical equivalent):
 
 - **Product outcome:** who needs the capability, and what they can actually do.
 - **Entrypoints and implementation owners:** executable files/modules, call paths and state ownership, not duplicated design prose.
 - **Interfaces and dependencies:** stable boundaries, persistence, secrets, external services, generated assets and callers where applicable.
 - **Positive and negative behavior:** happy path, failure cases, permissions/authorization, recovery and accessibility where relevant.
 - **Verification:** names of real test commands, tests, full user journeys, environments and evidence links.
-- **Limitations and uncertainty:** \`passed\`, \`failed\`, \`blocked\`, \`not_run\`; never silently upgrade a claim.
+- **Limitations and uncertainty:** `passed`, `failed`, `blocked`, `not_run`; never silently upgrade a claim.
 - **Release state:** implemented vs tested vs built vs deployed vs released vs accepted, each attached to an exact revision.
 
 Keep features in separate records only when ownership/journey complexity warrants it. An index should link *real files*. Avoid maintaining a second copy of executable configuration, schema, or dependency versions.
@@ -73,7 +73,7 @@ Keep features in separate records only when ownership/journey complexity warrant
 
 In repositories opting into the portable index convention:
 
-\`\`\`json
+```json
 {
   "schemaVersion": 1,
   "capabilities": [
@@ -86,19 +86,19 @@ In repositories opting into the portable index convention:
     }
   ]
 }
-\`\`\`
+```
 
 This is a **schema example**, not a claim that these paths exist. Never create dummy tests to satisfy a validator. The validator can check that paths exist and remain inside the checkout; it cannot infer whether a test is meaningful or whether the user journey works.
 
 The optional [Product Passport validator](https://github.com/ogfrench/agentic-coding-setup/blob/main/scripts/check-product-passport.mjs) is a **local repository file**, not an automatically installed global CLI. In the central repo it can be run with:
 
-\`\`\`sh
+```sh
 node scripts/check-product-passport.mjs
 node scripts/check-product-passport.mjs --base <reviewed-base-sha>
 node scripts/check-product-passport.mjs --evidence .dune/evidence.json
-\`\`\`
+```
 
-Opt-in per-product integration must bring and maintain its own authorized copy or invoke a pinned reusable validator. \`--base\` provides advisory impact reporting only. \`--evidence\` is restricted to \`.dune/\`, with symlink checks to protect source files. The generated JSON marks \`behavior: not_run\` and \`hostAcceptance: not_run\`; do not change those fields to passed without separate evidence.
+Opt-in per-product integration must bring and maintain its own authorized copy or invoke a pinned reusable validator. `--base` provides advisory impact reporting only. `--evidence` is restricted to `.dune/`, with symlink checks to protect source files. The generated JSON marks `behavior: not_run` and `hostAcceptance: not_run`; do not change those fields to passed without separate evidence.
 
 ## 4. The paved path: make the correct change the easy change
 
@@ -161,9 +161,9 @@ Prefer one main assistant plus on-demand skills. Do not create a parallel DUNE o
 
 A minimal adoption PR should:
 
-1. Inspect its code, current Product Passport, \`AGENTS.md\` / \`CLAUDE.md\`, tests, existing CI and release safeguards.
+1. Inspect its code, current Product Passport, `AGENTS.md` / `CLAUDE.md`, tests, existing CI and release safeguards.
 2. Add a short agent-facing **DUNE entrypoint** that links this handbook and the Agentic Workflow plugin. Prefer updating existing instructions over introducing another conflicting document.
-3. Identify the *real* source/test/release commands and a native paved path. If unknown, say \`not_run\` or \`unverified\`, never guess.
+3. Identify the *real* source/test/release commands and a native paved path. If unknown, say `not_run` or `unverified`, never guess.
 4. Preserve product-owned evidence and privacy. Public generic guidance must not disclose information from private product repositories.
 5. Make the PR auditable: change scope, exact head SHA, test status, passport impact and known release/host limitations.
 6. Leave downstream CI gates unchanged unless a separately justified, stack-specific constraint is implemented and tested.
@@ -172,7 +172,7 @@ Never treat syncing an agent skill as permission to rewrite a product architectu
 
 ### Example local entrypoint
 
-\`\`\`md
+```md
 # Agent navigation
 
 Read docs/product-passport/README.md first, then verify its paths against code.
@@ -181,7 +181,7 @@ Follow this repository's own test, security and release instructions.
 On every substantive PR: owning code, negative regression, actual proof,
 passport reconciliation (or "map unchanged"), exact SHA and remaining risks.
 Do not claim host acceptance, deployment or release without evidence.
-\`\`\`
+```
 
 ## 9. Scale without 5,000-person bureaucracy at 5 people
 
@@ -210,7 +210,7 @@ For every substantive PR, report:
 - **Implementation:** changed canonical owners and affected boundaries.
 - **Evidence:** exact head SHA, commands and outcomes, actual test/journey assertions, artifacts and environment.
 - **Known gaps:** failed, blocked, skipped or unavailable checks; user-facing uncertainties.
-- **Passport reconciliation:** affected capabilities and links or \`map unchanged\` with reason.
+- **Passport reconciliation:** affected capabilities and links or `map unchanged` with reason.
 - **Review:** unresolved comments, required approval, rollback.
 - **Release state:** separately identify implemented, tested, merged, deployed, installed, released and host accepted.
 
