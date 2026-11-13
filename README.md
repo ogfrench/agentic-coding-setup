@@ -74,7 +74,7 @@ See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude
 
 ### ChatGPT
 
-Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 19 portable skills, their references, and curated public engineering knowledge.
+Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 22 portable skills, their references, and curated public engineering knowledge.
 
 The plugin is currently **privately installed**; this public repository provides its source and [packaging and host contract](docs/agentic-workflow-chatgpt.md), not a public one-click installation. The package does not include Claude-specific hooks, installers, or local MCP executables.
 
@@ -100,6 +100,6 @@ The plugin is currently **privately installed**; this public repository provides
 
 **Next full-edition release candidate: `2026.11.2`** (not published). **Last published: `2026.11.1`**. [Read the first complete release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1).
 
-Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. Independent specialist plugins and the deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
+Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The separate frog-writing specialist and deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
 This repository is public by design. Private client code, research corpora, credentials, and project-specific evidence belong in their owning repositories.
