@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "capabilities": [
+    {
+      "id": "product-navigation",
+      "summary": "Navigate product capabilities and independently check implemented user behavior",
+      "map": "docs/product-passport/README.md",
+      "source": [
+        "plugins/agent-workflow/skills/product-passport",
+        "scripts/check-product-passport.mjs"
+      ],
+      "tests": [
+        "test/passport-contract.test.mjs",
+        "test/evals.test.mjs"
+      ]
+    },
+    {
+      "id": "delivery-handover",
+      "summary": "Implement approved work with verified regression checks and durable PR handovers",
+      "map": "docs/product-passport/README.md",
+      "source": [
+        "plugins/agent-workflow/skills/delivery-loop",
+        "plugins/agent-workflow/skills/session-continuity"
+      ],
+      "tests": [
+        "test/evals.test.mjs",
+        "test/pr-progress-install.test.mjs"
+      ]
+    },
+    {
+      "id": "architecture-constraints",
+      "summary": "Identify architecture drift and select the canonical ownership path before coding",
+      "map": "docs/product-passport/README.md",
+      "source": [
+        "plugins/agent-workflow/skills/architecture-gardener"
+      ],
+      "tests": [
+        "test/evals.test.mjs"
+      ]
+    },
+    {
+      "id": "plugin-packaging",
+      "summary": "Package the verified canonical skills for Claude and ChatGPT with synchronized metadata",
+      "map": "docs/product-passport/README.md",
+      "source": [
+        "scripts/package_agentic_workflow_chatgpt.py",
+        "plugins/agent-workflow/.claude-plugin/plugin.json",
+        "portable/agentic-workflow/plugin.json"
+      ],
+      "tests": [
+        "test/test_agentic_workflow_chatgpt.py",
+        "test/release-contract.test.mjs"
+      ]
+    },
+    {
+      "id": "downstream-sync",
+      "summary": "Synchronize approved capabilities without overwriting project-owned configurations",
+      "map": "docs/product-passport/README.md",
+      "source": [
+        "sync-to-repos.sh",
+        "lib/apply.mjs",
+        "scripts/check-sync.mjs"
+      ],
+      "tests": [
+        "test/apply.test.mjs",
+        "test/sync-quiet.test.mjs"
+      ]
+    }
+  ]
+}

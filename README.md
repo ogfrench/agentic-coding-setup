@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Release candidate | `2026.11.4` | `2026.11.4` |
+| Release candidate | `2026.11.5` | `2026.11.5` |
 | Skills | 18 canonical engineering, story and design skills | 22 portable skills (18 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -55,6 +55,8 @@ The full **ChatGPT `agentic-workflow`** edition is packaged separately and does 
 | Orchestration and efficiency | [Model Delegation](plugins/agent-workflow/skills/model-delegation/SKILL.md), [Token Efficiency](plugins/agent-workflow/skills/token-efficiency/SKILL.md), [Actions Cost](plugins/agent-workflow/skills/actions-cost/SKILL.md), [Netlify Cost](plugins/agent-workflow/skills/netlify-cost/SKILL.md) |
 
 Three shared skills, **Presentation Story**, **Presentation Design** and **Design System Adapter**, support narrative work and independent authoring when appropriate. **Visual Loop** incorporates visual-restraint review. A named specialist such as frogViz owns its real template/build/export pipeline. The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
+
+See [DUNE: code-first engineering](docs/dune.md) for the canonical paved path, Product Passport reconciliation, and optional source-path validator. DUNE strengthens existing skills; it is not a new plugin or mandatory agent.
 
 ## Get started
 
@@ -98,7 +100,7 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Next full-edition release candidate: `2026.11.4`** (not published). **Last published: `2026.11.3`**. [Read the last release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.3).
+**Next full-edition release candidate: `2026.11.5`** (not published). **Last published: `2026.11.4`**. [Read the last release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.4).
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The separate frog-writing specialist and deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 

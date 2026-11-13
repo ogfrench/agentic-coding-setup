@@ -9,6 +9,10 @@ description: >-
 
 Keep existing products maintainable by identifying structural causes of recurring defects. Code and observed behavior establish what exists; requirements determine whether it is correct. An unfamiliar architecture is not a defect. **Inspect first, propose narrowly, verify independently.** Do not transplant a preferred framework, enforce a universal folder layout, or replace a product's existing tools.
 
+## DUNE paved paths and structural constraints
+
+Look for the single supported API and state owner before proposing a new abstraction. When a recurring bug demonstrates a missing boundary, prefer a focused type, schema, dependency or negative-path regression over additional instructions. Verify both a known invalid case and a legitimate exception before making a rule mandatory. Do not copy blanket framework bans between products. Product Passport owns capability navigation; Gardener owns architectural root causes and dependency constraints.
+
 ## Choose the right mode
 
 - **Inspect (default):** Read-only architecture audit. Trace one concrete symptom or boundary, identify plausible failure modes, and report supported findings. Do not modify code, settings, generated outputs, or private data.
