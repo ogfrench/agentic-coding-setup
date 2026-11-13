@@ -4,14 +4,16 @@
 
 ## What is included
 
-The Claude Workflow manifest determines the shared release version, which the ChatGPT manifest must match. The source code is `portable/agentic-workflow/plugin.json` plus the generator `scripts/package_agentic_workflow_chatgpt.py`, which copies the canonical engineering skill source and its linked references from `plugins/agent-workflow/skills/`. Four previously portable skills are taken from `portable/ogfrench-workflow/skills/`. The generated package has **19 skills**:
+The Claude Workflow manifest determines the shared release version, which the ChatGPT manifest must match. The source code is `portable/agentic-workflow/plugin.json` plus the generator `scripts/package_agentic_workflow_chatgpt.py`, which copies the canonical engineering skill source and its linked references from `plugins/agent-workflow/skills/`. Four previously portable skills are taken from `portable/ogfrench-workflow/skills/`. The generated package has **22 skills**:
 
-- Core: actions-cost, architecture-gardener, best-practices, delivery-loop, diagram-craft, issue-management, knowledge-base-builder, learning-loop, model-delegation, netlify-cost, plugin-experience-design, product-passport, session-continuity, token-efficiency and visual-loop.
+- Core: actions-cost, architecture-gardener, best-practices, delivery-loop, design-system-adapter, diagram-craft, issue-management, knowledge-base-builder, learning-loop, model-delegation, netlify-cost, plugin-experience-design, presentation-design, presentation-story, product-passport, session-continuity, token-efficiency and visual-loop.
 - Reviews: adversarial-review, implementation-proof, release-handover and setup-audit.
 
 The bundled knowledge contains all current sanitized `kb/practices/*.md` practice cards plus `kb/INDEX.md`, `kb/index.jsonl`, `kb/graph.json`, and `kb/bundles/any.md`, stored under `skills/best-practices/knowledge/`. This is curated general engineering knowledge, not the user's private files.
 
 The builder injects a **ChatGPT runtime contract** into each Claude-derived skill, making clear that Claude-specific CLI/hook/agent commands are examples only and cannot be invoked without independently available tools. No repository synchronization, local MCP, installers, hooks, subagents, credentials or autonomous background activity are bundled.
+
+The standalone `presentation-craft` marketplace plugin is retired. Its three useful specialist-neutral skills are part of the shared workflow and `visual-loop` owns visual restraint. Legacy installed copies do not auto-uninstall. The workflow must defer to the actual frogViz engine when it is named and available.
 
 ## Why a separate identity
 
@@ -30,7 +32,7 @@ unzip -t dist/agentic-workflow-chatgpt-v2026.11.2.zip
 sha256sum dist/agentic-workflow-chatgpt-v2026.11.2.zip
 ```
 
-The normal PR CI also packages the ZIP as a short-lived private Actions artifact `agentic-workflow-chatgpt-candidate`. The archive is deterministic given identical source files. Inspect the root manifest, all 19 skills, references, knowledge count, provenance checksums and absence of executables before installing. Do not publish a public plugin without a separate scope and security review.
+The normal PR CI also packages the ZIP as a short-lived private Actions artifact `agentic-workflow-chatgpt-candidate`. The archive is deterministic given identical source files. Inspect the root manifest, all 22 skills, references, knowledge count, provenance checksums and absence of executables before installing. Do not publish a public plugin without a separate scope and security review.
 
 After CI and peer review, merge the PR and independently upload the same reviewed package to the private ChatGPT account through Plugin Creator. Verify actual installed metadata, loaded skills and a repository task with available GitHub tools, plus a negative task where source/tools are unavailable. Distinguish plugin registration from installed skill availability. A real-host installation does not prove quality improvements over the four-skill Lite edition; comparative evaluation remains a follow-up.
 

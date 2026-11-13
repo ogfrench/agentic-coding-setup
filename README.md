@@ -24,7 +24,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
 | Release candidate | `2026.11.2` | `2026.11.2` |
-| Skills | 15 canonical engineering skills | 19 portable skills (15 shared + 4 review and verification skills) |
+| Skills | 18 canonical engineering, story and design skills | 22 portable skills (18 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
 | Package | [Claude source](plugins/agent-workflow/) | [ChatGPT package](portable/agentic-workflow/) |
@@ -33,13 +33,12 @@ The editions share canonical engineering guidance and a coordinated release vers
 
 ## Plugin ecosystem
 
-The marketplace also includes independent specialist and compatibility plugins:
+The marketplace also includes the writing specialist and compatibility plugins:
 
 | Plugin | Purpose |
 | --- | --- |
-| `claude-workflow` | Full Claude Code engineering workflow (15 canonical skills). |
+| `claude-workflow` | Full Claude Code workflow (18 canonical engineering, story and design skills). |
 | `frog-writing` | Specialist writing and copy refinement. |
-| `presentation-craft` | Presentation storytelling, design, and visual restraint (v0.3.1 candidate). |
 | `chatgpt-workflow-lite` | Deprecated four-skill compatibility package, not the full ChatGPT edition. |
 | `21st` | Pinned, externally maintained UI tooling. |
 
@@ -55,7 +54,7 @@ The full **ChatGPT `agentic-workflow`** edition is packaged separately and does 
 | Design and experience | [Visual Loop](plugins/agent-workflow/skills/visual-loop/SKILL.md), [Plugin Experience Design](plugins/agent-workflow/skills/plugin-experience-design/SKILL.md) |
 | Orchestration and efficiency | [Model Delegation](plugins/agent-workflow/skills/model-delegation/SKILL.md), [Token Efficiency](plugins/agent-workflow/skills/token-efficiency/SKILL.md), [Actions Cost](plugins/agent-workflow/skills/actions-cost/SKILL.md), [Netlify Cost](plugins/agent-workflow/skills/netlify-cost/SKILL.md) |
 
-The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
+Three shared skills, **Presentation Story**, **Presentation Design** and **Design System Adapter**, support narrative work and independent authoring when appropriate. **Visual Loop** incorporates visual-restraint review. A named specialist such as frogViz owns its real template/build/export pipeline. The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
 
 ## Get started
 

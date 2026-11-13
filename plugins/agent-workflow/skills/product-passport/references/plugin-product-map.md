@@ -9,7 +9,7 @@ flowchart TB
   Source["Canonical skills and practices<br/>agentic-coding-setup"] --> Claude["claude-workflow<br/>Claude Code"]
   Source --> ChatGPT["agentic-workflow<br/>ChatGPT"]
   Source --> Lite["chatgpt-workflow-lite<br/>legacy compatibility"]
-  Source --> Specialist["Specialist plugins<br/>presentation-craft / frog-writing"]
+  Source --> Specialist["Writing specialist<br/>frog-writing"]
   Claude --> Sync["Optional user setup and reviewed project sync"]
   ChatGPT --> Host["Installed private ChatGPT plugin"]
   Specialist --> Use["Scoped specialist skills"]
@@ -21,14 +21,13 @@ flowchart TB
 
 | Package | Purpose and ownership | Source | Host boundary |
 | --- | --- | --- | --- |
-| `claude-workflow` | 15 engineering workflow skills; optional Claude-specific agent, hooks and sync | `plugins/agent-workflow/` | Claude Code; installation and sync explicit |
-| `agentic-workflow` | The same 15 canonical skills adapted for ChatGPT, plus four portable review skills | `portable/agentic-workflow/`; `scripts/package_agentic_workflow_chatgpt.py` | Private, skills-only ChatGPT edition; tools are host-provided |
+| `claude-workflow` | 18 engineering, presentation, and design skills; optional Claude-specific agent, hooks and sync | `plugins/agent-workflow/` | Claude Code; installation and sync explicit |
+| `agentic-workflow` | The same 18 canonical skills adapted for ChatGPT, plus four portable review skills | `portable/agentic-workflow/`; `scripts/package_agentic_workflow_chatgpt.py` | Private, skills-only ChatGPT edition; tools are host-provided |
 | `chatgpt-workflow-lite` | Historical four-skill compatibility package, deprecated for new ChatGPT users | `portable/ogfrench-workflow/` | Legacy version frozen; no coordinated release claim |
-| `presentation-craft` | Presentation story, design, visual restraint and brand adaptation | `plugins/presentation-craft/` | Specialist plugin with independent release |
 | `frog-writing` | Distinctive writing and copy editing | `plugins/frog-writing/` | Specialist plugin with independent release |
 | `21st` | Pinned external UI tooling | `.claude-plugin/marketplace.json` | External dependency with its own behavior and version |
 
-For the coordinated workflow editions only, the release identifier is `YYYY.0M.N` (UTC year/month, monthly sequence starting at 1). This product map does not assert version equality for independent specialist or legacy products.
+For the coordinated workflow editions only, the release identifier is `YYYY.MM.N` (UTC year/month, monthly sequence starting at 1). This product map does not assert version equality for independent specialist or legacy products.
 
 ## 3. Skill routing and overlap
 
@@ -44,9 +43,9 @@ For the coordinated workflow editions only, the release identifier is `YYYY.0M.N
 | Issue triage and actionable backlog | `issue-management` | `delivery-loop` when explicitly executing | Doing issue mutation from an inspection |
 | Learnings and existing practices | `learning-loop` / `best-practices` | `model-delegation` only when needed | Loading the entire knowledge base |
 | Cost reduction | `actions-cost` / `netlify-cost` | `token-efficiency` | Optimizing away required verification |
-| Communications, decks, brand writing | `presentation-craft` / `frog-writing` | `diagram-craft` for diagram assets | Implying generic workflow owns specialist product content |
+| Communications, decks, brand writing | `presentation-story` / `presentation-design` / `frog-writing` | `diagram-craft` for diagram assets | Implying generic workflow owns specialist product content |
 
-The remaining portable ChatGPT skills are `adversarial-review`, `implementation-proof`, `release-handover` and `setup-audit`. They are not part of the Claude workflow's canonical 15-skill set. `model-delegation` chooses how much agent/tool assistance is warranted, not a mandatory dispatcher.
+The three presentation and design skills are canonical in both full workflow editions. `visual-loop` also owns visual restraint. Named presentation products such as frogViz keep authority over actual generation and export. The remaining portable ChatGPT skills are `adversarial-review`, `implementation-proof`, `release-handover` and `setup-audit`. They are not part of the Claude workflow's canonical 15-skill set. `model-delegation` chooses how much agent/tool assistance is warranted, not a mandatory dispatcher.
 
 ## 4. Capability and release lifecycle
 

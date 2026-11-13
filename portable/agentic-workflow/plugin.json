@@ -26,7 +26,7 @@
           "Interactive"
         ],
         "shortDescription": "Review, build and ship code",
-        "longDescription": "Full source-linked agentic product engineering guidance with 19 portable skills, reusable practice knowledge, architecture review, diagram craft, visual proof, delivery loops, release discipline and cost awareness. Uses only ChatGPT-host tools actually available; no Claude hooks, autonomous background processes or local MCP implied.",
+        "longDescription": "Full source-linked agentic product engineering guidance with 22 portable skills, reusable practice knowledge, architecture review, diagram craft, visual proof, delivery loops, release discipline and cost awareness. Uses only ChatGPT-host tools actually available; no Claude hooks, autonomous background processes or local MCP implied.",
         "defaultPrompt": [
           "Inspect this repository for architectural root causes, then propose the smallest verified repair.",
           "Work through this PR to acceptance, checking actual code, CI and release evidence before merge.",

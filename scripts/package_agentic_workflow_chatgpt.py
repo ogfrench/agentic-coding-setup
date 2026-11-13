@@ -19,6 +19,7 @@ FULL_SKILLS = (
     "delivery-loop", "diagram-craft", "issue-management", "knowledge-base-builder",
     "learning-loop", "model-delegation", "netlify-cost",
     "plugin-experience-design", "product-passport", "session-continuity",
+    "presentation-story", "presentation-design", "design-system-adapter",
     "token-efficiency", "visual-loop",
 )
 PORTABLE_SKILLS = (

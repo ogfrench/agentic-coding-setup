@@ -4,7 +4,7 @@ type: tool
 kind: skill
 summary: Create and inspect real slide files with purposeful visuals and honest export claims.
 use_when: When building or revising HTML or PowerPoint presentations from briefs and sources.
-where: plugins/presentation-craft/skills/presentation-design
+where: plugins/agent-workflow/skills/presentation-design
 state: installed
-last_reviewed: 2026-11-04
+last_reviewed: 2026-11-13
 ---
