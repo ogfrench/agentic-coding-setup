@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Release candidate | `2026.11.2` | `2026.11.2` |
+| Release candidate | `2026.11.3` | `2026.11.3` |
 | Skills | 18 canonical engineering, story and design skills | 22 portable skills (18 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -98,7 +98,7 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Next full-edition release candidate: `2026.11.2`** (not published). **Last published: `2026.11.1`**. [Read the first complete release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1).
+**Next full-edition release candidate: `2026.11.3`** (not published). **Last published: `2026.11.2`**. [Read the last release](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.2).
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The separate frog-writing specialist and deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 

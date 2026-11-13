@@ -117,6 +117,18 @@ jobs:
                       z.writestr(info, path.read_bytes(), compress_type=ZIP_DEFLATED, compresslevel=6)
                   assert ".claude-plugin/plugin.json" in z.namelist()
           PY
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from zipfile import ZipFile
+          archive = next(Path("dist").glob("claude-workflow-claude-v*.zip"))
+          with ZipFile(archive) as z:
+              assert z.testzip() is None, "Damaged Claude ZIP"
+              assert ".claude-plugin/plugin.json" in z.namelist(), "Root Claude manifest missing"
+              manifest = json.loads(z.read(".claude-plugin/plugin.json"))
+              assert 0 < len(manifest["description"]) <= 500, "Claude description exceeds 500 characters"
+          PY
+          unzip -t dist/claude-workflow-claude-v*.zip
           (cd dist && sha256sum claude-workflow-claude-v*.zip > SHA256SUMS.txt)
       - name: Keep ChatGPT package private for explicitly reviewed installation
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
