@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "frog-writing",
-      "description": "Writing skills: frogify (frog voice), deslopify (copy audit), humanizer (remove AI tells).",
+      "description": "Deprecated compatibility: frogify, deslopify and humanizer now ship with Agentic Workflow.",
       "source": "./plugins/frog-writing",
       "category": "productivity"
     },
