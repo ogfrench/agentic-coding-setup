@@ -108,8 +108,8 @@ test("CI verifies the portable plugin, isolated install and removal", () => {
   const workflow = readFileSync(resolve(root, "../../.github/workflows/check.yml"), "utf8");
   assert.ok(workflow.includes("plugin validate portable/ogfrench-workflow --strict"));
   assert.ok(workflow.includes('CLAUDE_CONFIG_DIR="$(mktemp -d)"'));
-  assert.ok(workflow.includes("plugin install chatgpt-workflow-lite@ogfrench --scope user"));
-  assert.ok(workflow.includes("plugin uninstall chatgpt-workflow-lite@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin install agentic-workflow@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin uninstall agentic-workflow@ogfrench --scope user"));
 });
 
 
