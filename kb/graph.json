@@ -1098,7 +1098,7 @@
       "use_when": "When reviewing marketing, deck or UI copy for AI vibe, or as the pass after frogify.",
       "where": "plugins/agent-workflow/skills/deslopify",
       "state": "installed",
-      "tokens": 74,
+      "tokens": 75,
       "last_reviewed": "2026-10-11"
     },
     {
@@ -1153,7 +1153,7 @@
       "use_when": "When a long text reads as machine-written and needs a full rewrite rather than an audit.",
       "where": "plugins/agent-workflow/skills/humanizer",
       "state": "installed",
-      "tokens": 78,
+      "tokens": 79,
       "last_reviewed": "2026-10-11"
     },
     {

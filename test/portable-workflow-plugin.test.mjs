@@ -124,5 +124,5 @@ test("full Claude and ChatGPT share CalVer, legacy Lite remains independent", ()
   assert.match(claude.version, /^20\d{2}\.(?:0?[1-9]|1[0-2])\.[1-9]\d*$/);
   assert.equal(claude.version, chatgpt.version);
   assert.notEqual(claude.version, lite.version);
-  assert.deepEqual(marketplace.plugins.filter((p) => ["agentic-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name).sort(), ["agentic-workflow", "chatgpt-workflow-lite"].sort());
+  assert.deepEqual(marketplace.plugins.filter((p) => ["agentic-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name), ["agentic-workflow"]);
 });

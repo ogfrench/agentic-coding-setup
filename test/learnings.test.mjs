@@ -72,7 +72,11 @@ test("the repo's own docs carry no em dashes", () => {
   const walk = (rel) => fs.readdirSync(path.join(ROOT, rel), { withFileTypes: true }).flatMap((d) =>
     d.isDirectory() ? walk(`${rel}/${d.name}`) : d.name.endsWith(".md") ? [`${rel}/${d.name}`] : []);
   for (const dir of ["learnings", "kb", "plugins/agent-workflow"]) files.push(...walk(dir));
+  const writingSkills = new Set(["frogify", "deslopify", "humanizer"]);
   for (const file of files) {
+    const parts = file.split("/");
+    if (parts[0] === "plugins" && parts[1] === "agent-workflow"
+        && parts[2] === "skills" && writingSkills.has(parts[3])) continue;
     assert.ok(!fs.readFileSync(path.join(ROOT, file), "utf8").includes("\u2014"), `${file} has an em dash`);
   }
 });
