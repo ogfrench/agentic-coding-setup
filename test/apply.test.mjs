@@ -374,6 +374,41 @@ test("a copy up to SYNC_BUFFER central commits behind counts as current; one mor
   assert.equal(checkSync(t, root).status, "modified");
 });
 
+test("short sync buffer rejects canonical skill changes but ignores unrelated documentation", () => {
+  const root = tmp();
+  const git = (...args) => execFileSync("git", ["-C", root, ...args], { encoding: "utf8" }).trim();
+  const commit = (message) => {
+    git("add", "-A");
+    git("-c", "user.name=t", "-c", "user.email=t@example.com", "commit", "-q", "-m", message);
+  };
+  write(path.join(root, "plugins/p/skills/example/SKILL.md"), "original skill");
+  write(path.join(root, "project/settings.json"), {});
+  git("init", "-q", "-b", "main");
+  commit("initial managed source");
+
+  const target = tmp();
+  apply(target, root);
+  assert.equal(checkSync(target, root).status, "current");
+
+  write(path.join(root, "README.md"), "human-facing prose only");
+  commit("documentation only");
+  assert.equal(checkSync(target, root).status, "current", "unrelated docs do not force a resync");
+
+  write(path.join(root, "plugins/p/skills/example/SKILL.md"), "new skill behavior");
+  commit("change shared skill");
+  const drift = checkSync(target, root);
+  assert.equal(drift.status, "outdated", "changed shared skill must invalidate the short commit buffer");
+  assert.match(drift.reason, /Managed source inputs changed/);
+  assert.equal(drift.behind, 2);
+
+  apply(target, root);
+  assert.equal(checkSync(target, root).status, "current", "reapply restores exact parity");
+
+  write(path.join(root, "project/settings.json"), { enabledPlugins: { example: true } });
+  commit("change project settings");
+  assert.equal(checkSync(target, root).status, "outdated", "project settings also require a sync");
+});
+
 test("the buffer counts merged PRs, not the commits inside them", () => {
   const root = tmp();
   const git = (...a) => execFileSync("git", ["-C", root, "-c", "user.name=t", "-c", "user.email=t@example.com", ...a], { encoding: "utf8" }).trim();
