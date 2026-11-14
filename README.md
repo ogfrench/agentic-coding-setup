@@ -69,7 +69,7 @@ cd agentic-coding-setup
 bash setup-user.sh
 ```
 
-This installs supported user-level Claude Code skills and plugin configuration. Project setup is separate: `sync-to-repos.sh` copies managed skills into selected repositories, preserving project-owned settings and content. Installation and synchronization are explicit actions, not automatic consequences of merging a PR.
+This installs supported user-level Claude Code skills and plugin configuration. Project setup is separate: `sync-to-repos.sh` copies managed skills into selected repositories, preserving project-owned settings and content. Installation and synchronization are explicit actions, not automatic consequences of merging a PR. Validate an existing project checkout with `node scripts/check-sync.mjs /path/to/project --json` from this central checkout. The read-only checker verifies the downstream fingerprint and detects canonical skill, knowledge, or settings changes even inside the short commit buffer; an open sync PR is not evidence of merged or current copies.
 
 See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude-code-installation-and-repository-sync) for cloud sessions, local overrides, drift checking, and rollback.
 
