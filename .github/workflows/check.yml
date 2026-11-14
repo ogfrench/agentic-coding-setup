@@ -72,6 +72,45 @@ jobs:
                   assert "skills/humanizer/LICENSE" in z.namelist()
                   assert 0 < len(plugin["description"]) <= 500
           PY
+      - name: Build deterministic Claude candidate for private review
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
+          root = Path("plugins/agent-workflow")
+          m = json.loads((root/".claude-plugin/plugin.json").read_text())
+          assert m["name"] == "agentic-workflow"
+          version = m["version"]
+          dest = Path("dist") / f"agentic-workflow-claude-v{version}.zip"
+          dest.parent.mkdir(exist_ok=True)
+          with ZipFile(dest, "w", ZIP_DEFLATED, compresslevel=6) as z:
+              for path in sorted(root.rglob("*")):
+                  assert not path.is_symlink(), f"Symlinked plugin source: {path}"
+                  if path.is_file():
+                      rel = path.relative_to(root).as_posix()
+                      info = ZipInfo(rel, date_time=(2026, 1, 1, 0, 0, 0))
+                      info.create_system = 3
+                      info.external_attr = 0o644 << 16
+                      z.writestr(info, path.read_bytes(), compress_type=ZIP_DEFLATED, compresslevel=6)
+          with ZipFile(dest) as z:
+              assert z.testzip() is None
+              names = z.namelist()
+              assert len([x for x in names if x.startswith("skills/") and x.endswith("/SKILL.md")]) == 23
+              assert "skills/humanizer/LICENSE" in names
+              assert json.loads(z.read(".claude-plugin/plugin.json"))["version"] == version
+          PY
+          (cd dist && sha256sum agentic-workflow-claude-v*.zip > SHA256SUMS-claude.txt)
+          (cd dist && sha256sum -c SHA256SUMS-claude.txt)
+      - name: Retain reviewed Claude candidate until release
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentic-workflow-claude-v2026.11.8-candidate
+          path: |
+            dist/agentic-workflow-claude-v*.zip
+            dist/SHA256SUMS-claude.txt
+          if-no-files-found: error
+          retention-days: 7
       - name: Validate each local plugin
         run: |
           for p in plugins/*/; do
