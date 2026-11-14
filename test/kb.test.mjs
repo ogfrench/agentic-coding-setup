@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { ROOT, loadKb, render, validate } from "../lib/kb.mjs";
+import { ROOT, loadKb, render, validate, knowledgeFor } from "../lib/kb.mjs";
 
 const kb = loadKb();
 
@@ -64,4 +64,14 @@ test("a marketplace plugin of ours is listed in the README table", () => {
   const readme = fs.readFileSync(path.join(ROOT, "README.md"), "utf8");
   const market = JSON.parse(fs.readFileSync(path.join(ROOT, ".claude-plugin/marketplace.json"), "utf8"));
   for (const p of market.plugins) assert.ok(readme.includes(`| \`${p.name}\` |`), `README Plugins table is missing ${p.name}`);
+});
+
+
+test("distributed best-practices pointers and synced must rules name their canonical owner", () => {
+  const skill = fs.readFileSync(path.join(ROOT, "plugins/agent-workflow/skills/best-practices/SKILL.md"), "utf8");
+  const must = knowledgeFor(kb).get("must.md");
+  assert.match(skill, /ogfrench\/agentic-coding-setup\/learnings\//);
+  assert.doesNotMatch(skill, /ogfrench\/claude-code-setup\/learnings\//);
+  assert.match(must, /Must rules from agentic-coding-setup/);
+  assert.doesNotMatch(must, /Must rules from claude-code-setup/);
 });

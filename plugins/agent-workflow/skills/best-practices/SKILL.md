@@ -8,7 +8,7 @@ description: >-
 # Best practices
 
 Practices that held up in real work, curated from dated learnings in
-`ogfrench/claude-code-setup/learnings/`. Each one cites the learning it came from, by file
+`ogfrench/agentic-coding-setup/learnings/`. Each one cites the learning it came from, by file
 name. The topic files are generated; the source is `kb/practices/` in that repo. Read only
 the topic you need:
 
