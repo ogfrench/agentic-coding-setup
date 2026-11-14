@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agentic-workflow",
-  "version": "2026.11.7",
+  "version": "2026.11.8",
   "description": "Source-grounded software engineering workflows for architecture, implementation review, research and release delivery. Uses only tools available in the current host.",
   "author": {
     "name": "François Prévot",
@@ -26,7 +26,7 @@
           "Interactive"
         ],
         "shortDescription": "Review, build and ship code",
-        "longDescription": "Full source-linked agentic product engineering guidance with 25 portable skills including frogify, deslopify and humanizer, reusable practice knowledge, architecture review, diagram craft, visual proof, delivery loops, release discipline and cost awareness. Uses only ChatGPT-host tools actually available; no Claude hooks, autonomous background processes or local MCP implied.",
+        "longDescription": "Full source-linked agentic product engineering guidance with 27 portable skills including frogify, deslopify and humanizer, reusable practice knowledge, architecture review, diagram craft, visual proof, delivery loops, release discipline and cost awareness. Uses only ChatGPT-host tools actually available; no Claude hooks, autonomous background processes or local MCP implied.",
         "defaultPrompt": [
           "Inspect this repository for architectural root causes, then propose the smallest verified repair.",
           "Work through this PR to acceptance, checking actual code, CI and release evidence before merge.",

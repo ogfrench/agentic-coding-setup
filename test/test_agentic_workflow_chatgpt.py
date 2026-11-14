@@ -28,7 +28,15 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
             for p in files if re.fullmatch(r"skills/[^/]+/SKILL\.md", p)
         }
         self.assertEqual(skill_names, set(FULL_SKILLS) | set(PORTABLE_SKILLS))
-        self.assertEqual(len(skill_names), 25)
+        source_skills = {p.name for p in (ROOT / "plugins/agent-workflow/skills").iterdir()
+                         if (p / "SKILL.md").is_file()}
+        self.assertEqual(set(FULL_SKILLS), source_skills,
+                         "Canonical skill omitted from ChatGPT distribution")
+        for name in ("test-strategy", "security-review"):
+            self.assertIn(f"skills/{name}/SKILL.md", files)
+            self.assertTrue(any(p.startswith(f"skills/{name}/references/") for p in files))
+
+        self.assertEqual(len(skill_names), 27)
         for name in FULL_SKILLS:
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertIn("## ChatGPT host capability contract", content)
@@ -65,7 +73,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("knowledge/README.md", best)
         self.assertIn("knowledge/source-index.jsonl", best)
         manifest = json.loads(files["assets/provenance.json"])
-        self.assertEqual(manifest["skill_count"], 25)
+        self.assertEqual(manifest["skill_count"], 27)
         self.assertEqual(manifest["practice_count"], len(practices))
         for name, checksum in manifest["sha256"].items():
             self.assertEqual(checksum, hashlib.sha256(files[name]).hexdigest())

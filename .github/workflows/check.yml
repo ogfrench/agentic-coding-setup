@@ -65,6 +65,11 @@ jobs:
                   assert ".claude-plugin/plugin.json" in z.namelist()
                   plugin = json.loads(z.read(".claude-plugin/plugin.json"))
                   assert plugin["name"] == "agentic-workflow"
+                  packed = [n for n in z.namelist() if n.startswith("skills/") and n.endswith("/SKILL.md")]
+                  assert len(packed) == 23, f"Claude skill inventory mismatch: {len(packed)}"
+                  for name in ("test-strategy", "security-review"):
+                      assert f"skills/{name}/SKILL.md" in z.namelist()
+                  assert "skills/humanizer/LICENSE" in z.namelist()
                   assert 0 < len(plugin["description"]) <= 500
           PY
       - name: Validate each local plugin
