@@ -21,6 +21,7 @@ FULL_SKILLS = (
     "plugin-experience-design", "product-passport", "session-continuity",
     "presentation-story", "presentation-design", "design-system-adapter",
     "token-efficiency", "visual-loop", "frogify", "deslopify", "humanizer",
+    "test-strategy", "security-review",
 )
 PORTABLE_SKILLS = (
     "adversarial-review", "implementation-proof",

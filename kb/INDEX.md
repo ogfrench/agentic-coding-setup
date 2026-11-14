@@ -53,9 +53,11 @@
 - presentation-design (skill): Create and inspect real slide files with purposeful visuals and honest export claims.
 - presentation-story (skill): Build evidence-backed presentation arguments, storylines and action titles.
 - product-passport (skill): Map product features, exercise real user journeys, collect proof, and maintain architecture and verification boundaries.
+- security-review (skill): Review auth, secrets, filesystem and AI tool trust boundaries using evidence and negative-path tests.
 - serena (plugin): Semantic code analysis MCP server: symbol-level navigation and refactoring via language servers.
 - session-continuity (skill): Keep long work alive across compactions: durable state, standalone check-ins, work checked against the plan, open points raised.
 - superpowers (plugin): Brainstorming, subagent-driven development with built-in review, systematic debugging, red/green TDD, and skill authoring.
+- test-strategy (skill): Select proportionate regression, integration, E2E and host tests; document required proof and safe test skips.
 - token-efficiency (skill): Fewer turns and tokens for the same work. Batch tool calls, keep context lean, wait in the background, save facts once.
 - typescript-lsp (plugin): TypeScript and JavaScript language server for code intelligence.
 - visual-loop (skill): Show design options on the real thing, read every screenshot first, loop until the user picks.

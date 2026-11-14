@@ -46,6 +46,10 @@ as steps finish, fail, or change; do not defer updates until the end of a sessio
 5. Before review or merge, reconcile every required gate; defer only explicitly
    to a linked owning issue, never silently discard an open release blocker.
 
+Use [before/after proof](references/before-after-proof.md) to preserve the
+baseline, working scratchpad, comparable results and exact revision across
+interruptions.
+
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
 

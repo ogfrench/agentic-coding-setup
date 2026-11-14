@@ -15,6 +15,17 @@ For the same user task, distinguish (1) source/brief accessible, (2) required ru
 - A clean machine or clean folder can install without private repo access when "no clone" is promised.
 - A static snapshot identifies what content and update date it includes. Local lexical lookup must not be called live vector or comprehensive semantic retrieval.
 
+## Package integrity contract
+
+- Declare distributable skills, linked references and licenses; explicitly list
+  source-only developer tools. Do not infer shipping from the source tree.
+- Inspect the actual built ZIP and require all expected source-identical files,
+  trustworthy provenance and no unexpected executables or symlinks.
+- Verify the downloadable release asset's hash, URI and version against the
+  recorded immutable release, not just a locally built candidate.
+- Separately test skill routing, clean host loading, permission refusals and
+  representative tasks. Missing or stale proof is a release blocker, not green.
+
 ## Cross-host acceptance
 
 For **each advertised host**, record: product edition, host/version, OS/architecture where relevant, install action, permissions, tool connection, first successful user task, second follow-up task, failure behavior and evidence location. Test separately; a Claude Code MCP smoke does not prove Claude chat, Cowork, ChatGPT or Copilot works.

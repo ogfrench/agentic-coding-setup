@@ -1278,6 +1278,17 @@
       "last_reviewed": "2026-11-09"
     },
     {
+      "id": "security-review",
+      "type": "tool",
+      "kind": "skill",
+      "summary": "Review auth, secrets, filesystem and AI tool trust boundaries using evidence and negative-path tests.",
+      "use_when": "For security-sensitive code, permission changes, cross-account access, file or archive tools, prompt injection, and security review requests.",
+      "where": "plugins/agent-workflow/skills/security-review",
+      "state": "installed",
+      "tokens": 103,
+      "last_reviewed": "2026-11-14"
+    },
+    {
       "id": "serena",
       "type": "tool",
       "kind": "plugin",
@@ -1309,6 +1320,17 @@
       "state": "installed",
       "tokens": 84,
       "last_reviewed": "2026-10-11"
+    },
+    {
+      "id": "test-strategy",
+      "type": "tool",
+      "kind": "skill",
+      "summary": "Select proportionate regression, integration, E2E and host tests; document required proof and safe test skips.",
+      "use_when": "When deciding what tests to write or run, whether browser E2E is needed, how to isolate tests, or whether a final PR has sufficient proof.",
+      "where": "plugins/agent-workflow/skills/test-strategy",
+      "state": "installed",
+      "tokens": 103,
+      "last_reviewed": "2026-11-14"
     },
     {
       "id": "token-efficiency",

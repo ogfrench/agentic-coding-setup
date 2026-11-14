@@ -47,6 +47,12 @@ Use platform switching only for real supported experiences. If a package is stil
 
 ## Evidence and release gates
 
+Match canonical distributable skills against the *actual generated archive*,
+including references, licenses, byte identity, version, source SHA and checksums.
+A source directory or a passing unit test does not certify the published ZIP.
+Enforce positive, negative and ambiguous routing tests, while keeping clean-host
+installation and actual first-task acceptance as distinct evidence.
+
 See [acceptance checklist](references/acceptance.md) when publishing, changing supported clients or claiming a ready-to-install download. Link actual evidence in the PR.
 
 Check official host capabilities close to release. Claude Code plugins, Claude chat/Cowork uploads, ChatGPT local/remote integrations and Microsoft Copilot agents have different packaging and authorization models. Never infer portability from a shared name or `SKILL.md` file.

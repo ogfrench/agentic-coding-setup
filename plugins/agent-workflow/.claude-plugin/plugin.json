@@ -1,7 +1,7 @@
 {
   "name": "agentic-workflow",
-  "version": "2026.11.7",
-  "description": "Evidence-based product engineering for Claude Code: architecture, scoped implementation, code review, visual QA, diagrams, presentation storytelling, knowledge management and release delivery. Includes 21 modular skills including frogify, deslopify and humanizer and optional Claude-specific agents and hooks. Tools and execution depend on host permissions.",
+  "version": "2026.11.8",
+  "description": "Evidence-based product engineering for Claude Code: architecture, scoped implementation, code review, visual QA, diagrams, presentation storytelling, knowledge management and release delivery. Includes 23 modular skills including frogify, deslopify and humanizer and optional Claude-specific agents and hooks. Tools and execution depend on host permissions.",
   "author": {
     "name": "François Prévot"
   },

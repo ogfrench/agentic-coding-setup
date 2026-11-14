@@ -6,7 +6,7 @@ const read = (path) => readFileSync(new URL("../" + path, import.meta.url), "utf
 test("CalVer release publishes only the integrated Claude workflow", () => {
   const claude = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json"));
   const chatgpt = JSON.parse(read("portable/agentic-workflow/plugin.json"));
-  assert.equal(claude.version, "2026.11.7");
+  assert.equal(claude.version, "2026.11.8");
   assert.equal(chatgpt.version, claude.version);
   assert.ok(claude.description.length > 0 && claude.description.length <= 500, "Claude upload description must be at most 500 characters");
   const wf = read(".github/workflows/release.yml");
@@ -15,8 +15,8 @@ test("CalVer release publishes only the integrated Claude workflow", () => {
   assert.doesNotMatch(wf, /presentation-craft/);
   assert.ok(wf.includes(".claude-plugin/plugin.json"), "Claude ZIP must contain root manifest");
   assert.ok(wf.includes("zipfile"), "release must verify the built archive");
-  assert.ok(read("docs/releases/2026-11-14-writing-skills.md").includes(claude.version), "Release notes must identify the candidate version");
-  assert.ok(wf.includes("--notes-file docs/releases/2026-11-14-writing-skills.md"), "Published notes must describe the accepted candidate, not an earlier version");
+  assert.ok(read("docs/releases/2026-11-14-assured-delivery.md").includes(claude.version), "Release notes must identify the candidate version");
+  assert.ok(wf.includes("--notes-file docs/releases/2026-11-14-assured-delivery.md"), "Published notes must describe the accepted candidate, not an earlier version");
 });
 
 test("no plugin name is reserved for Anthropic's own plugins", () => {

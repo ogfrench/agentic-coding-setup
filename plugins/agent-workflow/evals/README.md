@@ -13,6 +13,10 @@ claude plugin eval . --runs 3 --no-publish --max-cost-usd 30
 
 For Architecture Gardener routing, start with `claude plugin eval . --case 'architecture-gardener-root-cause' --runs 1 --no-publish --max-cost-usd 5`, then run the negative and ambiguous cases. Compare against the skill-disabled baseline before claiming improvement.
 
+For Test Strategy and Security Review, run their positive, ambiguous and negative
+cases and compare to a skill-disabled baseline. Static fixture validation cannot
+prove that the model routes or performs better.
+
 For Delivery Loop, run `claude plugin eval . --case 'delivery-loop-positive' --runs 1 --no-publish --max-cost-usd 5`, plus negative and ambiguous cases. Compare actual outcomes against a skill-disabled baseline before claiming behavior improvement.
 
 The first is a cheap smoke test. Repeat the full suite only when the account
