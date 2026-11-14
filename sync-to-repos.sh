@@ -177,7 +177,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - \`.claude/claude-code-setup.json\`: lists the synced copies, so a skill removed upstream is removed here too. Records the source commit and a fingerprint, so drift can be detected read-only.${renamed:+
 - $renamed}
 
-Edit these in claude-code-setup, not here: the next sync overwrites the copies.${edited:+
+Edit managed copies in agentic-coding-setup, not downstream: the next sync overwrites them.${edited:+
 
 $edited}
 
