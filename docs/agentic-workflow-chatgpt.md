@@ -1,12 +1,12 @@
 # Agentic Workflow for ChatGPT | Full portable edition
 
-**Release candidate (2026-11-13):** `agentic-workflow` v2026.11.6 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.11.6 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
+**Release candidate (2026-11-13):** `agentic-workflow` v2026.11.7 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.11.7 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
 
 ## What is included
 
-The Claude Workflow manifest determines the shared CalVer release version, which the ChatGPT manifest must match. The standalone presentation plugin is no longer distributed. The source code is `portable/agentic-workflow/plugin.json` plus the generator `scripts/package_agentic_workflow_chatgpt.py`, which copies the canonical engineering skill source and its linked references from `plugins/agent-workflow/skills/`. Four previously portable skills are taken from `portable/ogfrench-workflow/skills/`. The generated package has **22 skills**:
+The Claude Workflow manifest determines the shared CalVer release version, which the ChatGPT manifest must match. The standalone writing and presentation plugins are no longer distributed. The source code is `portable/agentic-workflow/plugin.json` plus the generator `scripts/package_agentic_workflow_chatgpt.py`, which copies the canonical engineering skill source and its linked references from `plugins/agent-workflow/skills/`. Four previously portable skills are taken from `portable/ogfrench-workflow/skills/`. The generated package has **25 skills**:
 
-- Core: actions-cost, architecture-gardener, best-practices, delivery-loop, design-system-adapter, diagram-craft, issue-management, knowledge-base-builder, learning-loop, model-delegation, netlify-cost, plugin-experience-design, presentation-design, presentation-story, product-passport, session-continuity, token-efficiency and visual-loop.
+- Core: actions-cost, architecture-gardener, best-practices, delivery-loop, design-system-adapter, diagram-craft, issue-management, knowledge-base-builder, learning-loop, model-delegation, netlify-cost, plugin-experience-design, presentation-design, presentation-story, product-passport, session-continuity, token-efficiency, visual-loop, frogify, deslopify and humanizer.
 - Reviews: adversarial-review, implementation-proof, release-handover and setup-audit.
 
 The bundled knowledge contains all current sanitized `kb/practices/*.md` practice cards plus `kb/INDEX.md`, `kb/index.jsonl`, `kb/graph.json`, and `kb/bundles/any.md`, stored under `skills/best-practices/knowledge/`. This is curated general engineering knowledge, not the user's private files.
@@ -28,11 +28,11 @@ Run from the exact reviewed source checkout:
 ```sh
 python3 -m unittest discover -s test -p 'test_agentic_workflow_chatgpt.py' -v
 python3 scripts/package_agentic_workflow_chatgpt.py
-unzip -t dist/agentic-workflow-chatgpt-v2026.11.6.zip
-sha256sum dist/agentic-workflow-chatgpt-v2026.11.6.zip
+unzip -t dist/agentic-workflow-chatgpt-v2026.11.7.zip
+sha256sum dist/agentic-workflow-chatgpt-v2026.11.7.zip
 ```
 
-The normal PR CI also packages the ZIP as a short-lived private Actions artifact `agentic-workflow-chatgpt-candidate`. The archive is deterministic given identical source files. Inspect the root manifest, all 22 skills, references, knowledge count, provenance checksums and absence of executables before installing. Do not publish a public plugin without a separate scope and security review.
+The normal PR CI also packages the ZIP as a short-lived private Actions artifact `agentic-workflow-chatgpt-candidate`. The archive is deterministic given identical source files. Inspect the root manifest, all 25 skills, references, knowledge count, provenance checksums and absence of executables before installing. Do not publish a public plugin without a separate scope and security review.
 
 After CI and peer review, merge the PR and independently upload the same reviewed package to the private ChatGPT account through Plugin Creator. Verify actual installed metadata, loaded skills and a repository task with available GitHub tools, plus a negative task where source/tools are unavailable. Distinguish plugin registration from installed skill availability. A real-host installation does not prove quality improvements over the four-skill Lite edition; comparative evaluation remains a follow-up.
 

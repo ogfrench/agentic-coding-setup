@@ -1096,9 +1096,9 @@
       "kind": "skill",
       "summary": "Audit copy for AI-writing tells and fix them line by line.",
       "use_when": "When reviewing marketing, deck or UI copy for AI vibe, or as the pass after frogify.",
-      "where": "plugins/frog-writing/skills/deslopify",
+      "where": "plugins/agent-workflow/skills/deslopify",
       "state": "installed",
-      "tokens": 74,
+      "tokens": 75,
       "last_reviewed": "2026-10-11"
     },
     {
@@ -1118,7 +1118,7 @@
       "kind": "skill",
       "summary": "Rewrite copy in frog's voice, marketing or editorial register.",
       "use_when": "When copy needs frog's tone. Follow it with deslopify.",
-      "where": "plugins/frog-writing/skills/frogify",
+      "where": "plugins/agent-workflow/skills/frogify",
       "state": "installed",
       "tokens": 67,
       "last_reviewed": "2026-10-11"
@@ -1151,9 +1151,9 @@
       "kind": "skill",
       "summary": "Rewrite prose at length to remove signs of AI writing. Vendored, MIT.",
       "use_when": "When a long text reads as machine-written and needs a full rewrite rather than an audit.",
-      "where": "plugins/frog-writing/skills/humanizer",
+      "where": "plugins/agent-workflow/skills/humanizer",
       "state": "installed",
-      "tokens": 78,
+      "tokens": 79,
       "last_reviewed": "2026-10-11"
     },
     {

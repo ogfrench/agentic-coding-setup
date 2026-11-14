@@ -108,8 +108,8 @@ test("CI verifies the portable plugin, isolated install and removal", () => {
   const workflow = readFileSync(resolve(root, "../../.github/workflows/check.yml"), "utf8");
   assert.ok(workflow.includes("plugin validate portable/ogfrench-workflow --strict"));
   assert.ok(workflow.includes('CLAUDE_CONFIG_DIR="$(mktemp -d)"'));
-  assert.ok(workflow.includes("plugin install chatgpt-workflow-lite@ogfrench --scope user"));
-  assert.ok(workflow.includes("plugin uninstall chatgpt-workflow-lite@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin install agentic-workflow@ogfrench --scope user"));
+  assert.ok(workflow.includes("plugin uninstall agentic-workflow@ogfrench --scope user"));
 });
 
 
@@ -124,5 +124,5 @@ test("full Claude and ChatGPT share CalVer, legacy Lite remains independent", ()
   assert.match(claude.version, /^20\d{2}\.(?:0?[1-9]|1[0-2])\.[1-9]\d*$/);
   assert.equal(claude.version, chatgpt.version);
   assert.notEqual(claude.version, lite.version);
-  assert.deepEqual(marketplace.plugins.filter((p) => ["agentic-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name).sort(), ["agentic-workflow", "chatgpt-workflow-lite"].sort());
+  assert.deepEqual(marketplace.plugins.filter((p) => ["agentic-workflow", "chatgpt-workflow-lite"].includes(p.name)).map((p) => p.name), ["agentic-workflow"]);
 });

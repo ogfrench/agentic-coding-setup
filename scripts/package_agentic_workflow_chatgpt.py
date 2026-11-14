@@ -20,7 +20,7 @@ FULL_SKILLS = (
     "learning-loop", "model-delegation", "netlify-cost",
     "plugin-experience-design", "product-passport", "session-continuity",
     "presentation-story", "presentation-design", "design-system-adapter",
-    "token-efficiency", "visual-loop",
+    "token-efficiency", "visual-loop", "frogify", "deslopify", "humanizer",
 )
 PORTABLE_SKILLS = (
     "adversarial-review", "implementation-proof",
@@ -68,7 +68,7 @@ def _skills(root: Path, original: str, names: tuple[str, ...], *,
             if path.is_dir():
                 continue
             rel = path.relative_to(source).as_posix()
-            if path.suffix != ".md" or path.stat().st_size > 1024 * 1024:
+            if (path.suffix != ".md" and not (name == "humanizer" and rel == "LICENSE")) or path.stat().st_size > 1024 * 1024:
                 raise ValueError(f"Unsupported skill component: {path}")
             source_rel = path.relative_to(root).as_posix()
             raw = _read(root, source_rel)

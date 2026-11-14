@@ -2,7 +2,7 @@
 
 This guide preserves the detailed setup, knowledge-base, synchronization, and maintenance documentation from the original root README. Start with the [Agentic Workflow product overview](../README.md). Source-level and host-level acceptance remain distinct.
 
-My shared agentic coding workflow: reusable skills, engineering practices, agent instructions, plugins and integrations, with explicit installation paths for different AI coding environments. The full **`agentic-workflow`** Claude Code edition (published as `claude-workflow` through 2026.11.3) targets Claude Code; the **`agentic-workflow`** ChatGPT edition targets ChatGPT with all 22 engineering, presentation and review skills and the curated practice knowledge. The previous four-skill `chatgpt-workflow-lite` package is **deprecated for ChatGPT**, retained only for existing installations and compatibility. These integrations are not interchangeable or equally verified.
+My shared agentic coding workflow: reusable skills, engineering practices, agent instructions, plugins and integrations, with explicit installation paths for different AI coding environments. The full **`agentic-workflow`** Claude Code edition (published as `claude-workflow` through 2026.11.3) targets Claude Code; the **`agentic-workflow`** ChatGPT edition targets ChatGPT with all 25 engineering, writing, presentation and review skills and the curated practice knowledge. The previous four-skill `chatgpt-workflow-lite` package is **deprecated for ChatGPT**, retained only for existing installations and compatibility. These integrations are not interchangeable or equally verified.
 
 This is also a living record of lessons from building software with coding agents. Learnings become reviewed practices, then skills, subagents, hooks, commands or plugins where that improves real work. The knowledge base and [Product Passport](#current-architecture-review) provide reusable methods, while each repository's code, tests and observed behavior remain the source of truth. See [Learnings and practices](#learnings-and-practices). Public content never includes client information or private-repository material; see [Public by design](#public-by-design).
 
@@ -25,7 +25,7 @@ The standalone `presentation-craft` marketplace plugin is retired for new instal
 
 ## Optional cross-platform companion
 
-The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages the existing 18 Claude-derived engineering, presentation and design methods, the four portable review methods, and curated practice knowledge, with explicit ChatGPT capability boundaries. Its new private installation is independent of the Claude Code user setup and the legacy Lite package. See the [ChatGPT edition contract](../docs/agentic-workflow-chatgpt.md). The older [four-skill Lite source](../portable/ogfrench-workflow/) is deprecated for ChatGPT but preserved for compatibility.
+The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages the existing 21 Claude-derived engineering, writing, presentation and design methods, the four portable review methods, and curated practice knowledge, with explicit ChatGPT capability boundaries. Its new private installation is independent of the Claude Code user setup and the legacy Lite package. See the [ChatGPT edition contract](../docs/agentic-workflow-chatgpt.md). The older [four-skill Lite source](../portable/ogfrench-workflow/) is deprecated for ChatGPT but preserved for compatibility.
 
 ## Historical source snapshot | 12 November 2026
 
@@ -37,7 +37,7 @@ The [cross-host capability standard](../docs/host-capability-standards.md) keeps
 
 ## Product map and maintenance
 
-The [plugin product map](../plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) records package ownership, skill routing, overlaps, supported hosts and release boundaries. It is a navigation aid, not another orchestration agent. Both full workflow editions now use one shared CalVer; legacy Lite and the separate frog-writing plugin do not.
+The [plugin product map](../plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) records package ownership, skill routing, overlaps, supported hosts and release boundaries. It is a navigation aid, not another orchestration agent. Both full workflow editions now use one shared CalVer; legacy Lite and the former standalone writing plugin are no longer distributed.
 
 
 The [Product Passport map](../docs/product-passport/README.md) describes this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](../plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
@@ -115,7 +115,7 @@ the sync and installation steps remain explicit.
 
 ## Adding things
 
-**A skill.** Create `plugins/frog-writing/skills/<name>/SKILL.md` (or `plugins/agent-workflow/skills/` for how work is run) with `name` and `description` in its frontmatter, and add a node for it in `kb/tools/` (`node --test` fails without one). If it belongs to a different theme, start a new plugin in `plugins/<plugin>/` and add an entry to `.claude-plugin/marketplace.json` with `"source": "./plugins/<plugin>"`.
+**A skill.** Create `plugins/agent-workflow/skills/<name>/SKILL.md` with `name` and `description` in its frontmatter, and add a node for it in `kb/tools/` (`node --test` fails without one). If it belongs to a different theme, start a new plugin in `plugins/<plugin>/` and add an entry to `.claude-plugin/marketplace.json` with `"source": "./plugins/<plugin>"`.
 
 **A hook.** Add it under `hooks` in `project/settings.json`, in the same shape as a normal settings file. Hooks belong here and not inside a plugin, because plugin hooks never run in cloud sessions. A hook runs in every repo, on Linux in the cloud and on Windows locally, so keep the command portable.
 
@@ -305,7 +305,7 @@ can change a running local Claude session.
 
 | Plugin | Source |
 | --- | --- |
-| `frog-writing` | This repo. `frogify` and `deslopify` are mine. `humanizer` is vendored from [blader/humanizer](https://github.com/blader/humanizer) at `9600f2b`, MIT, with its license kept in its folder. |
+| `agentic-workflow` | Includes `frogify` and `deslopify`; `humanizer` is vendored from [blader/humanizer](https://github.com/blader/humanizer) at `9600f2b`, MIT, with its license retained in the integrated skill. |
 | `agentic-workflow` (Claude Code edition) | This repo. Full 18-skill engineering, presentation and design workflow, including `model-delegation` (which model does which work), `best-practices` (the curated practices), `learning-loop` (capture, curate, promote), `visual-loop` (show design options on the real thing, read every shot, loop until one is picked), `diagram-craft` (editable Mermaid and architecture diagrams), `token-efficiency` (fewer turns and tokens for the same work: batching, lean context, background waits, environment facts saved once), `session-continuity` (keep long work alive across compactions: state in durable places, check-ins that stand alone, the work checked against the plan, open points raised), `actions-cost` (estimate GitHub Actions runner-minutes before merging what triggers a workflow), `netlify-cost` (estimate a Netlify site's builds, credits and edge runs before changing its config, and a build-skip script that builds when unsure), `issue-management` (MECE backlog ownership, decision stages, issue writing and consolidation), `knowledge-base-builder` (provenance, retrieval, MCP and evaluation) and the `cheap-reviewer` subagent. |
 | `agentic-workflow` | Full 22-skill ChatGPT edition, built from the canonical shared skills plus four portable review skills. See [ChatGPT edition](../docs/agentic-workflow-chatgpt.md). |
 | `chatgpt-workflow-lite` | Deprecated historical portable companion. Four skills for setup audit, adversarial review, implementation proof and release handover. Dual manifests for Claude Code and ChatGPT/Codex; not part of personal setup or automatic repo sync. See [compatibility and acceptance](../docs/portable-workflow-plugin.md). |

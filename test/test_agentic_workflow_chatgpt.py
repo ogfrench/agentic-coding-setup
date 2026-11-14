@@ -28,7 +28,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
             for p in files if re.fullmatch(r"skills/[^/]+/SKILL\.md", p)
         }
         self.assertEqual(skill_names, set(FULL_SKILLS) | set(PORTABLE_SKILLS))
-        self.assertEqual(len(skill_names), 22)
+        self.assertEqual(len(skill_names), 25)
         for name in FULL_SKILLS:
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertIn("## ChatGPT host capability contract", content)
@@ -38,6 +38,18 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         for name in PORTABLE_SKILLS:
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertNotIn("## ChatGPT host capability contract", content)
+
+    def test_writing_skills_and_license_are_packaged(self) -> None:
+        files = build_files()
+        for name in ("frogify", "deslopify", "humanizer"):
+            source = ROOT / "plugins/agent-workflow/skills" / name / "SKILL.md"
+            self.assertTrue(source.is_file(), name)
+            self.assertIn(f"skills/{name}/SKILL.md", files)
+            self.assertIn(f"name: {name}", files[f"skills/{name}/SKILL.md"].decode())
+        license_path = "skills/humanizer/LICENSE"
+        self.assertIn(license_path, files)
+        self.assertEqual(files[license_path],
+                         (ROOT / "plugins/agent-workflow/skills/humanizer/LICENSE").read_bytes())
 
     def test_knowledge_practices_are_bundled_and_traced(self) -> None:
         files = build_files()
@@ -53,7 +65,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("knowledge/README.md", best)
         self.assertIn("knowledge/source-index.jsonl", best)
         manifest = json.loads(files["assets/provenance.json"])
-        self.assertEqual(manifest["skill_count"], 22)
+        self.assertEqual(manifest["skill_count"], 25)
         self.assertEqual(manifest["practice_count"], len(practices))
         for name, checksum in manifest["sha256"].items():
             self.assertEqual(checksum, hashlib.sha256(files[name]).hexdigest())
