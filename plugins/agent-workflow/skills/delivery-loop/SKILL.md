@@ -33,12 +33,18 @@ For a product-facing change, enter through the product-owned capability map, ver
    for features/maps and task proof, `architecture-gardener` only if actually
    available and structural root causes justify it, and `visual-loop` for
    user-facing visuals. Do not load all specialists by default.
-4. **Prove the result.** Test changed behavior, negative paths and meaningful real
+4. **Prove the result.** Establish a reproducible baseline when feasible, then
+   repeat the same user journey or artifact after editing. Use test-strategy for
+   proportionate test selection and session-continuity for
+   [before/after evidence](../session-continuity/references/before-after-proof.md).
+   Test changed behavior, negative paths and meaningful real
    journeys in an isolated environment. Distinguish static inspection, local tests,
    CI, host acceptance, deployed and production-verified. Investigate failed checks
    from evidence, fix the cause and rerun at the **new exact head**. Never dilute
    a gate, self-approve risk, fabricate screenshots or claim a check ran without proof.
-5. **Reconcile and review.** Update the PR checklist after each meaningful change.
+5. **Reconcile and review.** For risky releases, consult
+   [production readiness](references/production-readiness.md) before deploy.
+   Update the PR checklist after each meaningful change.
    Reopen items invalidated by later commits. Inspect the final diff, changed scope,
    CI and review threads; use an independent reviewer when risk warrants it.
    Update product maps, docs, regressions and the changelog where applicable.
