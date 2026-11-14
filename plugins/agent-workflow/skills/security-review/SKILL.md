@@ -1,8 +1,7 @@
 ---
 name: security-review
 description: >-
-  Audit authorization, secrets, filesystem access, untrusted AI input and
-  cross-account data boundaries using executable code and adversarial tests.
+  Review auth, secrets, filesystem and untrusted AI or MCP inputs.
 ---
 
 # Security review: model and test trust boundaries

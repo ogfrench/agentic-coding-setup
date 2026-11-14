@@ -1,8 +1,7 @@
 ---
 name: test-strategy
 description: >-
-  Choose proportionate unit, integration, browser, E2E and host tests for changed code,
-  including when costly suites are necessary and when skipping them is safe.
+  Choose unit, integration, E2E or host tests based on code change risk.
 ---
 
 # Test strategy: prove the changed behavior
