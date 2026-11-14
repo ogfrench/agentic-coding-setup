@@ -59,7 +59,7 @@ test("apply on the real repo: copies skills, merges settings, is idempotent", ()
   assert.equal(settings.enabledPlugins["superpowers@claude-plugins-official"], true);
   assert.equal(settings.extraKnownMarketplaces.ogfrench.source.repo, "ogfrench/agentic-coding-setup");
 
-  for (const s of fs.readdirSync(path.join(ROOT, "plugins/frog-writing/skills"))) {
+  for (const s of ["frogify", "deslopify", "humanizer"]) {
     assert.ok(fs.existsSync(path.join(t, ".claude/skills", s, "SKILL.md")), `${s} copied`);
     assert.ok(managed.includes(`.claude/skills/${s}`));
   }

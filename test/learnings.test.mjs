@@ -65,7 +65,7 @@ test("every practice cites learnings that exist, and every practice-status learn
   }
 });
 
-// The repo's own prose. frog-writing is left out on purpose: it is writing-voice material that
+// The repo's own prose. Vendored writing skills are left out on purpose: they contain
 // quotes and uses dashes, and humanizer is vendored.
 test("the repo's own docs carry no em dashes", () => {
   const files = ["CLAUDE.md", "README.md", "learnings/README.md"];

@@ -39,18 +39,17 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertNotIn("## ChatGPT host capability contract", content)
 
-    def test_writing_skills_and_licensing_match_compatibility_copy(self) -> None:
+    def test_writing_skills_and_license_are_packaged(self) -> None:
         files = build_files()
         for name in ("frogify", "deslopify", "humanizer"):
             source = ROOT / "plugins/agent-workflow/skills" / name / "SKILL.md"
-            previous = ROOT / "plugins/frog-writing/skills" / name / "SKILL.md"
-            self.assertEqual(source.read_bytes(), previous.read_bytes(), name)
+            self.assertTrue(source.is_file(), name)
             self.assertIn(f"skills/{name}/SKILL.md", files)
             self.assertIn(f"name: {name}", files[f"skills/{name}/SKILL.md"].decode())
         license_path = "skills/humanizer/LICENSE"
         self.assertIn(license_path, files)
         self.assertEqual(files[license_path],
-                         (ROOT / "plugins/frog-writing/skills/humanizer/LICENSE").read_bytes())
+                         (ROOT / "plugins/agent-workflow/skills/humanizer/LICENSE").read_bytes())
 
     def test_knowledge_practices_are_bundled_and_traced(self) -> None:
         files = build_files()

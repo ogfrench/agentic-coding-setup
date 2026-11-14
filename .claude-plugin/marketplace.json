@@ -8,21 +8,9 @@
   },
   "plugins": [
     {
-      "name": "frog-writing",
-      "description": "Deprecated compatibility: frogify, deslopify and humanizer now ship with Agentic Workflow.",
-      "source": "./plugins/frog-writing",
-      "category": "productivity"
-    },
-    {
       "name": "agentic-workflow",
       "description": "How work is run: best-practices, learning-loop, model-delegation, visual-loop, token-efficiency, actions-cost, netlify-cost, session-continuity, delivery-loop, knowledge-base-builder, plugin-experience-design, product-passport, and the cheap-reviewer subagent.",
       "source": "./plugins/agent-workflow",
-      "category": "productivity"
-    },
-    {
-      "name": "chatgpt-workflow-lite",
-      "description": "Portable companion for setup auditing, adversarial review, real UI evidence and release handover.",
-      "source": "./portable/ogfrench-workflow",
       "category": "productivity"
     },
     {

@@ -24,17 +24,17 @@ test("no plugin name is reserved for Anthropic's own plugins", () => {
   const marketplace = JSON.parse(read(".claude-plugin/marketplace.json"));
   const manifests = [
     "plugins/agent-workflow/.claude-plugin/plugin.json",
-    "plugins/frog-writing/.claude-plugin/plugin.json",
     "portable/ogfrench-workflow/.claude-plugin/plugin.json"
   ].map((path) => JSON.parse(read(path)).name);
   for (const name of [...marketplace.plugins.map((p) => p.name), ...manifests])
     assert.doesNotMatch(name, reserved, `${name} is reserved by Claude Code and is refused on upload`);
 });
 
-test("writing sources are identical across Agentic and legacy compatibility packages", () => {
+test("writing is provided by Agentic Workflow without legacy marketplace plugins", () => {
+  const market = JSON.parse(read(".claude-plugin/marketplace.json"));
+  assert.ok(market.plugins.some((p) => p.name === "agentic-workflow"));
+  assert.ok(!market.plugins.some((p) => ["frog-writing", "chatgpt-workflow-lite"].includes(p.name)));
   for (const name of ["frogify", "deslopify", "humanizer"])
-    assert.equal(read(`plugins/agent-workflow/skills/${name}/SKILL.md`),
-                 read(`plugins/frog-writing/skills/${name}/SKILL.md`), name);
-  assert.equal(read("plugins/agent-workflow/skills/humanizer/LICENSE"),
-               read("plugins/frog-writing/skills/humanizer/LICENSE"));
+    assert.ok(read(`plugins/agent-workflow/skills/${name}/SKILL.md`).startsWith(`---\nname: ${name}\n`));
+  assert.match(read("plugins/agent-workflow/skills/humanizer/LICENSE"), /MIT License/);
 });

@@ -14,7 +14,7 @@ This package provides the 21 source-owned engineering, story and design skills f
 
 Select a skill for a relevant task. Ordinary chat should not activate all skills. Read supporting references only if relevant and accessible.
 
-The separate `presentation-craft` plugin is retired; the shared three skills are included here and in Claude Workflow. Use frogViz's actual authoring workflow whenever explicitly requested, rather than a generic imitation. Existing legacy plugin installations are not silently removed.
+The standalone `frog-writing` and `presentation-craft` packages are retired; the writing and presentation skills are included here.  the shared three skills are included here and in Claude Workflow. Use frogViz's actual authoring workflow whenever explicitly requested, rather than a generic imitation. Existing legacy plugin installations are not silently removed.
 
 ### What this does not install
 

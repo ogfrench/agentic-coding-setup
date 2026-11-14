@@ -33,13 +33,11 @@ The editions share canonical engineering guidance and a coordinated release vers
 
 ## Plugin ecosystem
 
-The marketplace also includes the writing specialist and compatibility plugins:
+The marketplace provides the unified workflow and pinned UI tooling:
 
 | Plugin | Purpose |
 | --- | --- |
 | `agentic-workflow` | Full Claude Code edition of Agentic Workflow (21 canonical engineering, story, design and writing skills). Published as `claude-workflow` through 2026.11.3. |
-| `frog-writing` | Transitional compatibility package; the writing skills now ship with Agentic Workflow. Retire after installed-host acceptance. |
-| `chatgpt-workflow-lite` | Deprecated four-skill compatibility package, not the full ChatGPT edition. |
 | `21st` | Pinned, externally maintained UI tooling. |
 
 The full **ChatGPT `agentic-workflow`** edition is packaged separately and does not require these Claude marketplace entries.
@@ -102,6 +100,6 @@ The plugin is currently **privately installed**; this public repository provides
 
 **Next full-edition release candidate: `2026.11.7`** (not published). **Latest existing tag: `v2026.11.5`**. [View that tag](https://github.com/ogfrench/agentic-coding-setup/tree/v2026.11.5).
 
-Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The separate frog-writing specialist and deprecated Lite package retain their own versions. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
+Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The writing skills ship inside Agentic Workflow; the old standalone marketplace entries are retired. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
 This repository is public by design. Private client code, research corpora, credentials, and project-specific evidence belong in their owning repositories.
