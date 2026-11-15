@@ -4,6 +4,10 @@
 - **Push only after the gate's own exit status says green.** Not after `;`, and not after
   `| tail` or `| grep`, whose status is the pipe's last command. Use `set -o pipefail`, or
   run the gate, read it, then push. *(2026-10-18-gate-a-push-on-the-real-exit-status)*
+- **Batch the edits that invalidate a pinned digest; re-pin once, after the proving
+  build.** The cost is per edit, not per release. Commit a pin only after the second build
+  passes, and keep the re-pin as one repo command, not a private script.
+  *(2026-11-15-batch-edits-that-invalidate-a-pinned-digest)*
 - **Compare a change against origin/main after a fetch, never a local main.** Nothing
   fast-forwards a local main in a clone worked through worktrees. Read the sha a review tool
   prints as its baseline. *(2026-10-18-review-baselines-come-from-the-remote)*

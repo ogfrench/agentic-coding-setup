@@ -5,9 +5,11 @@ One line per practice, `must` first. The card with the reason is `kb/practices/<
 Search every node: `grep -i <term> kb/index.jsonl`.
 
 ## Testing
+- [should] built-check-knows-its-staleness: A check on a built artifact must report its age and fail when the sources are newer.
 - [should] force-race-window: Force a race window instead of timing it.
 - [should] one-dev-stack-per-tree: One dev stack per working tree.
 - [should] one-suite-at-a-time: Run one test suite at a time on a shared stack or machine.
+- [should] render-layouts-at-their-limits: Render every layout at its schema limits in each look, not only on its demo copy.
 - [should] test-derived-names-against-reserved: Test every name derived by rule against the reserved names.
 - [should] test-fails-first: Write the failing test first, and run it on the old code.
 - [should] wait-for-state-not-time: Wait for the state you need, never for time.
@@ -34,12 +36,14 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 - [should] configure-widgets-via-config: Configure a third-party widget through its config, not by patching its DOM after creation.
 - [should] find-style-readers-before-restyling: Before restyling a component, find the code that reads its computed style.
 - [should] one-text-field-shape: One shape, one border, one focus ring for every text field, whatever draws it.
+- [should] scope-host-css-from-embedded-content: Scope a host page's element selectors so they never reach the content it embeds.
 - [should] theme-with-tokens: Theme with tokens, never hardcoded black or white.
 - [tip] count-webgl-contexts: Count WebGL contexts on a page of canvases; past about sixteen, the oldest are lost.
 - [tip] few-readers-for-per-frame-properties: A custom property changed per frame restyles every element that reads it.
 
 ## Git and CI
 - [must] gate-push-on-exit-status: Push only after the gate's own exit status says green.
+- [should] batch-edits-then-pin-once: Batch the edits that invalidate a pinned digest; re-pin once, after the proving build.
 - [should] compare-against-origin-main: Compare a change against origin/main after a fetch, never a local main.
 - [should] estimate-runner-minutes: Estimate runner-minutes per trigger; one heavy run per release.
 - [should] kill-by-pid-not-by-pattern: Kill a known PID, not a full-command-line pattern.
