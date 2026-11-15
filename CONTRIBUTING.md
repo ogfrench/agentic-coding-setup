@@ -18,6 +18,10 @@ This repo is public. These rules apply to everyone, including Claude sessions.
 7. **One idea per learning, one change per PR.** Keep PRs small enough to read.
 8. **New skills need behavior cases.** Add a positive invocation case, a quality grader,
    and a negative routing case or reuse an existing negative case. Keep eval results private.
+9. **Code first, no explanatory comments by default.** Clean up redundant comments in code
+   you touch, but retain mandatory notices, directives and essential safety constraints.
+   Internal docs stay minimal and accurate; explicitly requested user-facing docs are allowed.
+   Prefer executable regression protection to another explanatory paragraph.
 
 ## Merging
 

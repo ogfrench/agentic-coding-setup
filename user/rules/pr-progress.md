@@ -13,6 +13,12 @@ failed, blocked and unrun work unchecked. Reopen checks when later changes make
 their evidence stale. A CI pass, code review, host test and production release
 are different states.
 
+Code first: change the owning implementation and test behavior before revising narrative.
+Default to no explanatory code comments; remove redundant nearby comments when
+editing code, except mandatory notices, tool directives or indispensable external
+constraints. Keep internal documentation short and code-verified, not a parallel
+source of truth. Write user-facing documentation when explicitly requested.
+
 When the user authorizes a multi-step task, continue through the next actionable
 steps without asking again for the same decisions. Inspect the actual implementation
 and existing best practices, fix verified root causes, and rerun required checks on

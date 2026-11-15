@@ -20,6 +20,12 @@ jobs:
           node-version: 22
       - name: Validate Product Passport references (not runtime proof)
         run: node scripts/check-product-passport.mjs
+      - name: Reject new explanatory code comments on PRs
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: node scripts/check-added-comments.mjs "$BASE" "$HEAD"
       - run: node --test
       - name: Package full Agentic Workflow for ChatGPT and verify source integrity
         run: |
