@@ -55,7 +55,8 @@ test("only the canonical Dependabot signature is exempted", () => {
     `Signed-off-by: another-user <${address}>`,
     `${trailer} and <${join("other", "@", "private.example.org")}>`,
   ]) {
-    assert.deepEqual(scan(suspicious, rules), ["an email address"], suspicious);
+    const expected = suspicious.includes(" and <") ? ["an email address", "an email address"] : ["an email address"];
+    assert.deepEqual(scan(suspicious, rules), expected, suspicious);
   }
 });
 
