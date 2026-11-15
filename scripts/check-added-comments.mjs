@@ -30,17 +30,20 @@ export function addedCommentViolations(diff) {
   return findings;
 }
 
+export function reportCommentFindings(findings, advisory = false, log = console.error) {
+  if (!findings.length) return 0;
+  const message = `Review added source comments: ${findings.join(', ')}. Keep only comments that carry indispensable constraints or directives.`;
+  log(advisory ? `::warning::${message}` : message);
+  return advisory ? 0 : 1;
+}
+
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const [base, head] = process.argv.slice(2);
-  if (!/^[a-f0-9]{40}$/.test(base || '') || !/^[a-f0-9]{40}$/.test(head || '')) {
-    console.error('Usage: node scripts/check-added-comments.mjs BASE_SHA HEAD_SHA');
+  const [base, head, mode] = process.argv.slice(2);
+  if (!/^[a-f0-9]{40}$/.test(base || '') || !/^[a-f0-9]{40}$/.test(head || '') || (mode && mode !== '--advisory')) {
+    console.error('Usage: node scripts/check-added-comments.mjs BASE_SHA HEAD_SHA [--advisory]');
     process.exitCode = 2;
   } else {
     const diff = execFileSync('git', ['diff', '--no-ext-diff', '--unified=0', base, head, '--'], { encoding: 'utf8', maxBuffer: 16 << 20 });
-    const findings = addedCommentViolations(diff);
-    if (findings.length) {
-      console.error(`New explanatory comments: ${findings.join(', ')}. Put the invariant in code/tests or remove the comment.`);
-      process.exitCode = 1;
-    }
+    process.exitCode = reportCommentFindings(addedCommentViolations(diff), mode === '--advisory');
   }
 }

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { addedCommentViolations } from '../scripts/check-added-comments.mjs';
+import { addedCommentViolations, reportCommentFindings } from '../scripts/check-added-comments.mjs';
 
 test('rejects new standalone explanatory comments in code', () => {
   const diff = [
@@ -52,4 +52,15 @@ test('preserves tool directives, legal notices and non-comment syntax', () => {
     '+// This is prose, not source'
   ].join('\n');
   assert.deepEqual(addedCommentViolations(diff), []);
+});
+
+
+test('comment review warns in CI but retains a strict optional local mode', () => {
+  const messages = [];
+  const collect = (message) => messages.push(message);
+  assert.equal(reportCommentFindings(['app.ts:7'], true, collect), 0);
+  assert.match(messages[0], /^::warning::Review added source comments: app\.ts:7/);
+  assert.equal(reportCommentFindings(['app.ts:7'], false, collect), 1);
+  assert.equal(reportCommentFindings([], false, collect), 0);
+  assert.equal(messages.length, 2);
 });
