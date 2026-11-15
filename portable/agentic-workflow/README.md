@@ -30,6 +30,6 @@ Knowledge consists of source-linked, curated engineering practices and their pub
 
 ### Building and testing
 
-Run `python3 -m unittest discover -s test -p test_agentic_workflow_chatgpt.py`, then `python3 scripts/package_agentic_workflow_chatgpt.py`. The build uses the checked-in canonical source, fails on missing skills or linked support files, keeps an integrity manifest and creates a reproducible ZIP. Upload privately through ChatGPT Plugin Creator, inspect the installed skill list, and verify a task on a real repository.
+Run `python3 -m unittest discover -s test -p test_agentic_workflow_chatgpt.py`, then `python3 scripts/package_agentic_workflow_chatgpt.py`. The build uses the checked-in canonical source, fails on missing skills or linked support files, keeps an integrity manifest and creates a reproducible ZIP. From the next GitHub release after `v2026.11.9`, obtain the versioned ChatGPT ZIP and shared `SHA256SUMS.txt` from GitHub Releases. Verify the digest, then create or update the same-identity plugin privately through ChatGPT Plugin Creator. Inspect installed version, all 27 skills and a real repository task. The public archive does not publish the ChatGPT account plugin. Claude Code installation is separate: use `bash setup-user.sh` from the reviewed repository checkout and inspect `claude plugin list`.
 
 No public directory submission or share permission is implied.

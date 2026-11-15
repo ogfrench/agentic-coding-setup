@@ -32,9 +32,16 @@ unzip -t dist/agentic-workflow-chatgpt-v2026.11.9.zip
 sha256sum dist/agentic-workflow-chatgpt-v2026.11.9.zip
 ```
 
-The normal PR CI also packages the ZIP as a short-lived private Actions artifact `agentic-workflow-chatgpt-candidate`. The archive is deterministic given identical source files. Inspect the root manifest, all 27 skills, references, knowledge count, provenance checksums and absence of executables before installing. Do not publish a public plugin without a separate scope and security review.
+PR CI retains a short-lived candidate artifact for review. The GitHub release workflow (for releases after the already published `v2026.11.9`) verifies the exact source-derived archive, publishes both `agentic-workflow-claude-v<version>.zip` and `agentic-workflow-chatgpt-v<version>.zip` in the same GitHub Release, and includes both SHA-256 digests. The ZIP contains only reviewed source skills, documentation, the icon and curated public knowledge, not private data or executables. The public ZIP does **not** create a public ChatGPT plugin listing.
 
-After CI and peer review, merge the PR and independently upload the same reviewed package to the private ChatGPT account through Plugin Creator. Verify actual installed metadata, loaded skills and a repository task with available GitHub tools, plus a negative task where source/tools are unavailable. Distinguish plugin registration from installed skill availability. A real-host installation does not prove quality improvements over the four-skill Lite edition; comparative evaluation remains a follow-up.
+**Installation/update flow:**
+
+1. Download the versioned ChatGPT ZIP and `SHA256SUMS.txt` from the same GitHub Release. Verify the archive digest. On `v2026.11.9`, the ChatGPT ZIP is not a release asset; use a later release or the reviewed build from that exact source revision.
+2. In ChatGPT, use Plugin Creator to create a **private** `agentic-workflow` entry, or update an existing private plugin with the **same identity** and a higher version. The public ZIP is distribution only and does not control account visibility.
+3. Read back the installed plugin version and loaded skill inventory (27 skills), run a real GitHub-backed engineering task and a negative case without access, and verify tools are not falsely assumed.
+4. Keep the old installation until the new private plugin passes real-host acceptance. Updating a release tag never updates an installed account plugin automatically.
+
+For Claude Code, use the repository's `bash setup-user.sh` on an approved checkout, verify with `claude plugin list`, then update from the reviewed source or marketplace for subsequent releases. The Claude ZIP is the standalone upload distribution, not a command that installs itself. The two host installations are independent. A real-host installation does not prove quality improvements over the four-skill Lite edition; comparative evaluation remains a follow-up.
 
 ## Independent execution and safety boundaries
 

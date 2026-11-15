@@ -16,11 +16,6 @@ on:
         required: false
         default: ""
         type: string
-      acceptance_waiver:
-        description: "Documented limits if real-host acceptance was not possible"
-        required: false
-        default: ""
-        type: string
       confirmation:
         description: "Type RELEASE_<version>"
         required: true
@@ -43,7 +38,6 @@ jobs:
       VERSION: ${{ inputs.version }}
       ACCEPTED_SHA: ${{ inputs.accepted_sha }}
       ACCEPTANCE_URL: ${{ inputs.acceptance_url }}
-      ACCEPTANCE_WAIVER: ${{ inputs.acceptance_waiver }}
       CONFIRMATION: ${{ inputs.confirmation }}
     steps:
       - name: Require accepted main SHA and explicit release authorization
@@ -56,9 +50,6 @@ jobs:
           [ "$CONFIRMATION" = "RELEASE_$VERSION" ] || { echo "::error::Confirmation does not match release"; exit 1; }
           if [ -n "$ACCEPTANCE_URL" ]; then
             [[ "$ACCEPTANCE_URL" =~ ^https://[^[:space:]]+$ ]] || { echo "::error::Acceptance URL must be HTTPS"; exit 1; }
-          else
-            [ "${#ACCEPTANCE_WAIVER}" -ge 20 ] || { echo "::error::Supply acceptance evidence or explicit waiver"; exit 1; }
-            echo "::warning::Source release without real-host acceptance: $ACCEPTANCE_WAIVER"
           fi
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -130,17 +121,33 @@ jobs:
           PY
           unzip -t dist/agentic-workflow-claude-v*.zip
           (cd dist && sha256sum agentic-workflow-claude-v*.zip > SHA256SUMS.txt)
-      - name: Keep ChatGPT package private for explicitly reviewed installation
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: agentic-workflow-v${{ inputs.version }}-${{ github.sha }}
-          path: dist/agentic-workflow-chatgpt-v*.zip
-          if-no-files-found: error
-          retention-days: 7
-      - name: Publish immutable source release and public Claude packages
+      - name: Verify public ChatGPT archive and both SHA-256 digests
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from scripts.package_agentic_workflow_chatgpt import verify_archive
+          path = Path("dist") / f"agentic-workflow-chatgpt-v{__import__('json').loads(Path('portable/agentic-workflow/plugin.json').read_text())['version']}.zip"
+          assert path.is_file(), f"Missing ChatGPT archive: {path}"
+          verify_archive(path)
+          PY
+          unzip -t dist/agentic-workflow-chatgpt-v*.zip
+          (cd dist && sha256sum agentic-workflow-chatgpt-v*.zip >> SHA256SUMS.txt)
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+      - name: Record host acceptance status in release notes
+        run: |
+          cp "docs/releases/$VERSION.md" "$RUNNER_TEMP/release-notes.md"
+          if [ -n "$ACCEPTANCE_URL" ]; then
+            printf '\nHost acceptance evidence: %s\n' "$ACCEPTANCE_URL" >> "$RUNNER_TEMP/release-notes.md"
+          else
+            printf '\nHost acceptance: not recorded. Source/package release only.\n' >> "$RUNNER_TEMP/release-notes.md"
+          fi
+      - name: Publish immutable release with Claude and ChatGPT archives
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "v$VERSION" dist/agentic-workflow-claude-v*.zip dist/SHA256SUMS.txt \
+          gh release create "v$VERSION" \
+            dist/agentic-workflow-claude-v*.zip \
+            dist/agentic-workflow-chatgpt-v*.zip \
+            dist/SHA256SUMS.txt \
             --target "$GITHUB_SHA" --title "Agentic Workflow $VERSION" \
-            --notes-file "docs/releases/$VERSION.md"
+            --notes-file "$RUNNER_TEMP/release-notes.md"
