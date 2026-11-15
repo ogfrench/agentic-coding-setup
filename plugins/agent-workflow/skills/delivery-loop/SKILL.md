@@ -47,7 +47,7 @@ For a product-facing change, enter through the product-owned capability map, ver
    Update the PR checklist after each meaningful change.
    Reopen items invalidated by later commits. Inspect the final diff, changed scope,
    CI and review threads; use an independent reviewer when risk warrants it.
-   Update product maps, docs, regressions and the changelog where applicable.
+   Keep regressions in executable tests. Correct only affected map pointers or operational contracts; otherwise state `map unchanged`. Do not create internal documentation or a changelog entry by habit. User-requested documentation is a separate deliverable.
 6. **Finish or hand off truthfully.** Merge, release, deploy or close issues only if
    authorized and the actual gates pass. Otherwise preserve work in a reviewable
    branch and put a precise next action, owner, blocker and proof gap in the PR.
