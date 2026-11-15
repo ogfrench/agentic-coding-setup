@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Source version | `2026.11.9` (public Claude Code release is separate) | `2026.11.9` (private package; installation is separate) |
+| Source version | `2026.11.9` | `2026.11.9` (account installation stays private) |
 | Skills | 23 canonical engineering, story, design, writing, testing and security skills | 27 portable skills (23 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -77,7 +77,7 @@ See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude
 
 Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 27 portable skills, their references, and curated public engineering knowledge.
 
-The plugin is currently **privately installed**; this public repository provides its source and [packaging and host contract](docs/agentic-workflow-chatgpt.md), not a public one-click installation. The package does not include Claude-specific hooks, installers, or local MCP executables.
+The ChatGPT plugin remains a private account installation, even when its ZIP is published as a GitHub release download. Starting with the next release after `v2026.11.9`, the release workflow attaches both validated Claude and ChatGPT archives with one SHA-256 file. The `v2026.11.9` release itself is immutable and contains only the Claude ZIP. See the [installation and update flow](docs/agentic-workflow-chatgpt.md).
 
 ## How it works
 
@@ -99,7 +99,7 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Public releases:** See [the latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest) for the actual published Claude Code archive and checksums. Both source manifests now target `2026.11.9`; a source bump is not proof of publication or real-host acceptance. The ChatGPT archive remains private and requires separate installation. The previous verified release was [`v2026.11.8`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.8), published November 14, 2026 with an explicit host-acceptance waiver.
+**Public releases:** [Latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest). [`v2026.11.9`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.9) was published on November 15, 2026 with a Claude ZIP and checksums. Subsequent releases will include a separately validated ChatGPT ZIP and a shared checksums file; actual ChatGPT installation remains a separate, private account action. Publication does not prove installed-host acceptance.
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The writing skills ship inside Agentic Workflow; the old standalone marketplace entries are retired. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 

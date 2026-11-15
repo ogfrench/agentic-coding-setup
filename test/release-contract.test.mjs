@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 const read = (path) => readFileSync(new URL("../" + path, import.meta.url), "utf8");
 
-test("CalVer release publishes only the integrated Claude workflow", () => {
+test("CalVer release publishes both validated plugin editions", () => {
   const claude = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json"));
   const chatgpt = JSON.parse(read("portable/agentic-workflow/plugin.json"));
   assert.equal(claude.version, "2026.11.9");
@@ -16,7 +16,13 @@ test("CalVer release publishes only the integrated Claude workflow", () => {
   assert.ok(wf.includes(".claude-plugin/plugin.json"), "Claude ZIP must contain root manifest");
   assert.ok(wf.includes("zipfile"), "release must verify the built archive");
   assert.ok(read(`docs/releases/${claude.version}.md`).includes(claude.version), "Release notes must identify the candidate version");
-  assert.ok(wf.includes('--notes-file "docs/releases/$VERSION.md"'), "Published notes must describe the accepted candidate, not an earlier version");
+  assert.ok(wf.includes('--notes-file "$RUNNER_TEMP/release-notes.md"'), "Published notes must describe the exact candidate and acceptance status");
+  assert.ok(wf.includes('dist/agentic-workflow-claude-v*.zip'), "Release must attach the Claude edition");
+  assert.ok(wf.includes('dist/agentic-workflow-chatgpt-v*.zip'), "Release must attach the ChatGPT edition");
+  assert.ok(wf.includes('sha256sum agentic-workflow-chatgpt-v*.zip >> SHA256SUMS.txt'), "ChatGPT archive must be in published checksums");
+  assert.ok(wf.includes('verify_archive(path)'), "Validate ChatGPT archive against source");
+  assert.doesNotMatch(wf, /acceptance_waiver|ACCEPTANCE_WAIVER/, "Do not require boilerplate host-acceptance waivers");
+  assert.doesNotMatch(wf, /Keep ChatGPT package private for explicitly reviewed installation/, "Release must not hide distributable ZIP in a temporary artifact");
 });
 
 test("no plugin name is reserved for Anthropic's own plugins", () => {
