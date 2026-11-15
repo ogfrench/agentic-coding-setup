@@ -2435,6 +2435,85 @@
         "plugins/agent-workflow/skills/best-practices/agents-and-models.md",
         "plugins/agent-workflow/skills/model-delegation/SKILL.md"
       ]
+    },
+    {
+      "id": "2026-11-15-hand-written-product-maps-drift",
+      "type": "learning",
+      "summary": "Product maps help navigation, but stale claims erode trust",
+      "tags": [
+        "docs",
+        "process"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 329,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-notes-from-default-branch",
+      "type": "learning",
+      "summary": "Release notes read from the default branch can describe a different commit than the tagged one",
+      "tags": [
+        "release",
+        "process"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 238,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-passport-upkeep-needs-pr-evidence",
+      "type": "learning",
+      "summary": "A passport upkeep rule needs an observable PR decision",
+      "tags": [
+        "docs",
+        "process",
+        "verification"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 286,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-plant-defects-to-check-test-strength",
+      "type": "learning",
+      "summary": "Planted defects expose gaps hidden by green feature tests",
+      "tags": [
+        "testing",
+        "verification"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 309,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-running-state-not-the-pin",
+      "type": "learning",
+      "summary": "A repository pin is not a deployment fact: read the running container",
+      "tags": [
+        "deploy",
+        "verification"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 234,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-shallow-clone-needs-branch-refspec",
+      "type": "learning",
+      "summary": "A shallow single-branch clone makes tooling report that a pushed branch has no remote",
+      "tags": [
+        "git",
+        "tooling"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 226,
+      "promoted_to": []
     }
   ],
   "edges": [
