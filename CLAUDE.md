@@ -99,6 +99,12 @@ stay updated within the same PR.
 
 For substantive work, use the Product Passport to navigate, then inspect actual source, dependencies and tests. Change the canonical owning implementation, add a regression and verify meaningful behavior. Reconcile the map only after evidence; record `map unchanged` with a reason when appropriate. Prefer types, contracts and focused dependency guards over blanket prohibitions or duplicate state. See `docs/dune.md`. A passing path validator is not proof of a user journey.
 
+## Code-first, comment-free default
+
+Working code, focused tests, and observed product behavior come before plans, comments, or documentation. Do not add explanatory code comments; remove obsolete or redundant comments from code you are already editing. Keep required legal notices, compiler/linter directives, and rare explanations of external constraints that cannot be expressed in code or tests. Never delete an important warning just to satisfy style.
+
+Internal documentation is an index, not an alternative implementation. Update only changed entrypoints, real contracts, or operational instructions; avoid duplicated status, speculative diagrams, churn, and new documents unless necessary. Explicitly requested user-facing documentation is different: write it to serve its reader. Prefer deterministic checks and regressions over new policy prose.
+
 ## Product maps and passports
 
 A product map is an index of user capabilities, real entry points, implementation owners,
