@@ -44,6 +44,22 @@ test("the check lets through what is meant to be here", () => {
   }
 });
 
+test("only the canonical Dependabot signature is exempted", () => {
+  const rules = rulesFor();
+  const address = join("support", "@", "github.com");
+  const trailer = `Signed-off-by: dependabot[bot] <${address}>`;
+  assert.deepEqual(scan(trailer, rules), []);
+  for (const suspicious of [
+    `Contact <${address}>`,
+    `Co-Authored-By: dependabot[bot] <${address}>`,
+    `Signed-off-by: another-user <${address}>`,
+    `${trailer} and <${join("other", "@", "private.example.org")}>`,
+  ]) {
+    const expected = suspicious.includes(" and <") ? ["an email address", "an email address"] : ["an email address"];
+    assert.deepEqual(scan(suspicious, rules), expected, suspicious);
+  }
+});
+
 test("a UTF-16 file is read, not skipped", () => {
   const utf16 = Buffer.concat([Buffer.from([0xff, 0xfe]), Buffer.from("hello\r\n", "utf16le")]);
   assert.equal(decode(utf16).text.trim(), "hello");
