@@ -28,7 +28,7 @@ jobs:
           unzip -t dist/agentic-workflow-chatgpt-v*.zip
           sha256sum dist/agentic-workflow-chatgpt-v*.zip
       - name: Retain private ChatGPT plugin candidate for host installation
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: agentic-workflow-chatgpt-candidate
           path: dist/agentic-workflow-chatgpt-v*.zip
@@ -103,7 +103,7 @@ jobs:
           (cd dist && sha256sum agentic-workflow-claude-v*.zip > SHA256SUMS-claude.txt)
           (cd dist && sha256sum -c SHA256SUMS-claude.txt)
       - name: Retain reviewed Claude candidate until release
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: agentic-workflow-claude-v2026.11.9-candidate
           path: |
