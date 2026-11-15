@@ -316,6 +316,26 @@
       "supersedes": []
     },
     {
+      "id": "kill-by-pid-not-by-pattern",
+      "type": "practice",
+      "summary": "Kill a known PID, not a full-command-line pattern.",
+      "concern": "ci",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 126,
+      "last_verified": "2026-11-15",
+      "derived_from": [
+        "2026-10-18-pkill-f-matches-its-own-shell"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "merge-commits-on-shared-branches",
       "type": "practice",
       "summary": "Merge commits on shared branches; never rewrite someone else's history.",
@@ -794,10 +814,12 @@
       ],
       "severity": "tip",
       "status": "active",
-      "seen": 0,
-      "tokens": 75,
-      "last_verified": "2026-10-11",
-      "derived_from": [],
+      "seen": 1,
+      "tokens": 129,
+      "last_verified": "2026-11-15",
+      "derived_from": [
+        "2026-10-18-restart-servers-that-do-not-reload"
+      ],
       "implemented_by": [],
       "related": [],
       "supersedes": []
@@ -1012,6 +1034,17 @@
       "state": "installed",
       "tokens": 85,
       "last_reviewed": "2026-10-11"
+    },
+    {
+      "id": "chrome-devtools-mcp",
+      "type": "tool",
+      "kind": "mcp",
+      "summary": "Candidate Chrome DevTools MCP for performance traces and browser diagnosis.",
+      "use_when": "Evaluate performance traces on a non-sensitive Chrome test target when Playwright is insufficient.",
+      "where": "chrome-devtools-mcp@upstream",
+      "state": "candidate",
+      "tokens": 189,
+      "last_reviewed": "2026-11-15"
     },
     {
       "id": "claude-md-management",
@@ -1972,10 +2005,12 @@
         "shell",
         "tooling"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 202,
-      "promoted_to": []
+      "tokens": 218,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
     },
     {
       "id": "2026-10-18-restart-servers-that-do-not-reload",
@@ -1984,10 +2019,12 @@
       "tags": [
         "testing"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 236,
-      "promoted_to": []
+      "tokens": 251,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-18-restyling-breaks-programs-that-read-styles",
@@ -2717,6 +2754,21 @@
       "type": "implemented_by"
     },
     {
+      "from": "kill-by-pid-not-by-pattern",
+      "to": "ci",
+      "type": "concern"
+    },
+    {
+      "from": "kill-by-pid-not-by-pattern",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "kill-by-pid-not-by-pattern",
+      "to": "2026-10-18-pkill-f-matches-its-own-shell",
+      "type": "derived_from"
+    },
+    {
       "from": "merge-commits-on-shared-branches",
       "to": "ci",
       "type": "concern"
@@ -3102,6 +3154,11 @@
       "type": "stack"
     },
     {
+      "from": "check-what-is-on-the-port",
+      "to": "2026-10-18-restart-servers-that-do-not-reload",
+      "type": "derived_from"
+    },
+    {
       "from": "headless-matches-hover-none",
       "to": "testing",
       "type": "concern"
@@ -3393,6 +3450,16 @@
     },
     {
       "from": "2026-10-18-one-suite-at-a-time-on-a-shared-stack",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-18-pkill-f-matches-its-own-shell",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-18-restart-servers-that-do-not-reload",
       "to": "plugins/agent-workflow/skills/best-practices/testing.md",
       "type": "promoted_to"
     },

@@ -2,8 +2,8 @@
 date: 2026-10-18
 source: a private project
 tags: [testing]
-status: raw
-promoted_to: []
+status: practice
+promoted_to: [plugins/agent-workflow/skills/best-practices/testing.md]
 ---
 
 # After a server change, restart a dev server that does not reload before trusting an end-to-end run
