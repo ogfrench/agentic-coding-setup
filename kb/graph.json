@@ -2463,6 +2463,33 @@
       "promoted_to": []
     },
     {
+      "id": "2026-11-15-passport-upkeep-needs-pr-evidence",
+      "type": "learning",
+      "summary": "A passport upkeep rule needs an observable PR decision",
+      "tags": [
+        "docs",
+        "process",
+        "verification"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 286,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-plant-defects-to-check-test-strength",
+      "type": "learning",
+      "summary": "Planted defects expose gaps hidden by green feature tests",
+      "tags": [
+        "testing",
+        "verification"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 309,
+      "promoted_to": []
+    },
+    {
       "id": "2026-11-15-running-state-not-the-pin",
       "type": "learning",
       "summary": "A repository pin is not a deployment fact: read the running container",
@@ -2486,33 +2513,6 @@
       "status": "raw",
       "source": "a private project",
       "tokens": 226,
-      "promoted_to": []
-    },
-    {
-      "id": "2026-11-15-plant-defects-to-check-test-strength",
-      "type": "learning",
-      "summary": "Planted defects expose gaps hidden by green feature tests",
-      "tags": [
-        "testing",
-        "verification"
-      ],
-      "status": "raw",
-      "source": "a private project",
-      "tokens": 309,
-      "promoted_to": []
-    },
-    {
-      "id": "2026-11-15-passport-upkeep-needs-pr-evidence",
-      "type": "learning",
-      "summary": "A passport upkeep rule needs an observable PR decision",
-      "tags": [
-        "docs",
-        "process",
-        "verification"
-      ],
-      "status": "raw",
-      "source": "a private project",
-      "tokens": 286,
       "promoted_to": []
     }
   ],
