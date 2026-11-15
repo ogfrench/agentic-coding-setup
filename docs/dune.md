@@ -116,7 +116,9 @@ Before inventing an abstraction, determine whether the product already provides 
 
 Only promote a rule into a **mandatory CI check** if it detects a demonstrated failure with acceptable false positives, covers a legitimate counterexample, and does not make existing engineering disproportionately costly.
 
-Do not enforce a universal folder layout or general bans on comments, framework primitives, hooks or architectural styles. Different stacks require different boundaries.
+**Code-first editing rule:** implement and test the canonical code before editing narrative. Default to **no explanatory code comments**; when touching code, remove obsolete or redundant nearby comments. Preserve license notices, compiler/linter/tool directives, and a rare comment needed to explain a non-obvious external constraint that cannot be represented by a name, type, contract, or test. Do not replace an important safety warning with silence. Do not add comments to excuse shortcuts or technical debt.
+
+**Documentation budget:** maintain only concise entrypoints, materially affected ownership/contract maps, and necessary operator guidance. Do not create redundant design descriptions, rolling status ledgers, or documentation-only churn. Explicitly requested user-facing documentation is exempt. Prefer an executable regression or low-noise guard to another paragraph; calibrate any mandatory check on both violations and legitimate counterexamples. Do not impose a universal folder layout or rewrite a stack for policy conformity.
 
 ## 5. Testing and independent proof
 
