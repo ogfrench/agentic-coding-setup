@@ -42,34 +42,3 @@ Changed product --> Product Passport --> product-owned capability map + tests + 
 When code or task journeys change, read affected implementation and tests first, then update this map in the same PR. For each downstream product, maintain `docs/product-passport/README.md` (or its established canonical equivalent) and optional `features/<stable-id>.md` entries. A repository-level Claude rule must require map impact assessment even when Product Passport is not selected. Detailed format: [feature contract](../../plugins/agent-workflow/skills/product-passport/references/feature-contract.md).
 
 A change with no capability or ownership impact does not need artificial Markdown churn; explicitly report `map unchanged`. If a capability is only described by documentation, label it `documentation-derived, not source-verified`. Record real tests and user journeys separately with revision and environment, never infer passes from paths.
-
-## State and next verification
-
-- **Source navigation:** inspected the above implementation paths, without execution.
-- **Task-level behavior:** not run in this map creation.
-- **Host installations and downstream synchronization:** not verified in this map creation.
-- **Further evidence:** [source release record](../releases/2026-11-09.md), [Product Passport scratchpad](SCRATCHPAD.md), and individual CI runs.
-
----
-
-## Risk-based engineering workflows across managed repositories (reviewed 14 November 2026)
-
-The managed skill source includes `plugins/agent-workflow/skills/test-strategy/SKILL.md`, `product-passport/SKILL.md`, `delivery-loop/SKILL.md`, `session-continuity/SKILL.md` and `actions-cost/SKILL.md`. These capabilities are complementary; avoid expanding every agent prompt into the entire library.
-
-| Changed boundary | Minimum useful proof | Different evidence required for acceptance |
-| --- | --- | --- |
-| Pure logic or knowledge content | Targeted existing tests; inspect a meaningful failing case when the rule changes | Public/redistributable material review if output is published |
-| Project-owned feature | Product Passport → source owner → focused negative regression | Real browser/API/DB/host journey if the change crosses those boundaries |
-| Shared managed skill/rule | `node --test` and the source's native sync, path and packaging checks | Disposable downstream project sync, conflict/ownership preservation and drift evidence |
-| Claude/ChatGPT portable plugin packaging | Exact manifests, versions, archive inventory and integrity checks | Install, activate and exercise in the named *real* host; publication alone is not proof |
-| GitHub Actions triggers, permissions or release gates | Workflow event/branch/path matrix, required status and branch-protection review | Exact-head status plus observed release/deploy only when explicitly authorized |
-
-### Reliable delivery contract
-
-1. Before editing, inspect the implementation, dependencies and tests, classify the trust boundary, and choose the **cheapest reliable test that actually fails on the old defect**. Add broader tests only to catch another failure class. E2E is for cross-process behavior, auth/ownership, stateful writes, real browser or plugin host behavior, not every documentation adjustment.
-2. For managed repository sync, always distinguish **central source → packaged/distributed plugin → installed local host → downstream project copy**. A green `check-product-passport.mjs` proves path references exist, not that a user journey works. In downstream repos, do not change managed `.claude/` copies by hand when the central sync owns them.
-3. Keep session continuity in PR progress and the repository scratchpad. Preserve baseline/head SHA, before/after behavior, checks actually executed, negative case, remaining blockers, and final merge/release decision. Never infer acceptance from previous-head CI.
-4. Optimize Actions using measured run history and existing branch protection. Preserve post-merge publish, security, backup and manual deployment workflows; avoid duplicating E2E or running full browser/host validation for cheap local edits.
-5. For each changed product, reconcile its owned passport, or explicitly say `map unchanged` with a reason. Mark **implemented / tested / verified / merged / deployed / released** separately, including `passed / failed / blocked / not_run` for individual checks.
-
-**Current audit:** inspected central skill, validator, repo/test paths, CI and release configuration; no skill host activation, downstream sync, tests, deployment or release was executed in this session. This public repo must not contain private product evidence.
