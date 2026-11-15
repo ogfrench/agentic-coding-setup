@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Version | `2026.11.8`, published as a GitHub release (Claude Code package) | `2026.11.8`, private package (not publicly released) |
+| Source version | `2026.11.9` (public Claude Code release is separate) | `2026.11.9` (private package; installation is separate) |
 | Skills | 23 canonical engineering, story, design, writing, testing and security skills | 27 portable skills (23 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -99,7 +99,7 @@ The plugin is currently **privately installed**; this public repository provides
 
 ## Releases
 
-**Latest release: `v2026.11.8`** (14 November 2026; Claude Code package). Real-host acceptance was not run; the release workflow recorded that as a waiver in its log. The ChatGPT package remains private. Previous release: [`v2026.11.6`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.6).
+**Public releases:** See [the latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest) for the actual published Claude Code archive and checksums. Both source manifests now target `2026.11.9`; a source bump is not proof of publication or real-host acceptance. The ChatGPT archive remains private and requires separate installation. The previous verified release was [`v2026.11.8`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.8), published November 14, 2026 with an explicit host-acceptance waiver.
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The writing skills ship inside Agentic Workflow; the old standalone marketplace entries are retired. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
