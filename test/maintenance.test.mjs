@@ -51,7 +51,7 @@ test("the audit finds stale nodes, old raw learnings and promotion candidates, a
   assert.ok(clean.judgmentOnly.includes("test-fails-first"));
   assert.ok(Object.values(clean.headroom).every((n) => n > 0), "inside every budget");
 
-  const later = audit(kb0, "2027-03-15");
+  const later = audit(kb0, "2027-04-15");
   assert.equal(later.stalePractices.length, kb0.practices.length, "all original practices become stale by this date");
   assert.equal(later.staleTools.length, kb0.tools.filter((t) => t.state === "installed").length);
 
@@ -63,7 +63,7 @@ test("the audit finds stale nodes, old raw learnings and promotion candidates, a
   assert.ok(audit(loadKb(t), "2026-10-12").rawLearnings.includes("2026-09-01-waiting"));
 
   const text = formatAudit(later);
-  assert.match(text, /Knowledge audit, 2027-03-15/);
+  assert.match(text, /Knowledge audit, 2027-04-15/);
   assert.match(text, /Token headroom/);
 });
 

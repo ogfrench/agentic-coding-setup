@@ -2,8 +2,8 @@
 date: 2026-10-18
 source: a private project
 tags: [shell, tooling]
-status: raw
-promoted_to: []
+status: practice
+promoted_to: [plugins/agent-workflow/skills/best-practices/git-and-ci.md]
 ---
 
 # `pkill -f name` kills the shell that runs it
