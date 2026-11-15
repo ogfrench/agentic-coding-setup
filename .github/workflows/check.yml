@@ -105,7 +105,7 @@ jobs:
       - name: Retain reviewed Claude candidate until release
         uses: actions/upload-artifact@v7
         with:
-          name: agentic-workflow-claude-v2026.11.9-candidate
+          name: agentic-workflow-claude-v2026.11.10-candidate
           path: |
             dist/agentic-workflow-claude-v*.zip
             dist/SHA256SUMS-claude.txt
