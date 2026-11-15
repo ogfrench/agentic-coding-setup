@@ -6,12 +6,12 @@ status: raw
 promoted_to: []
 ---
 
-# A hand-written product map goes stale within a day and costs more than it returns
+# Product maps help navigation, but stale claims erode trust
 
-**What happened.** Product maps were added to several repositories in one day. Verification then found a commit reference that did not match the PR head, a version count that did not match the code, and claims that needed correcting. The maps added roughly 200 lines of prose, and no comparison run measured whether they helped.
+**What happened.** Source-linked product maps and verification pilots helped locate real test gaps. A later review also found obsolete revision or merge-status claims and map entries needing correction. No with-versus-without task comparison measured the net benefit of maintaining the maps.
 
-**Why.** Prose restates the code, so every code change is also a documentation change, and nothing checks it. Status claims age faster than paths.
+**Why.** Maps are derived navigation aids, not implementation truth. Stable owner paths can help agents, while copied release status, version counts and task progress age quickly. A successful pilot does not establish that upkeep happens during later PRs.
 
-**Do instead.** Keep one short map per repository: the owners of each journey, the commands that prove them, and no status. Delete scratchpads. Check the map's paths in CI, or do not keep the map.
+**Do instead.** Keep each map focused on user journeys, canonical code owners, interfaces and native verification routes. Preserve dated evidence as history and read live CI or deployed state for current status. Reconcile changed features in the same PR; make the outcome explicit. Compare task success, time and errors with versus without the map before adding mandatory upkeep or deleting useful records.
 
-**Evidence.** The stale references found while verifying the maps, and the diffs that removed them.
+**Evidence.** Pilot regressions exposed missed assertions, while follow-up review found stale map claims and no controlled comparison. The benefit and maintenance cost have not been quantified.
