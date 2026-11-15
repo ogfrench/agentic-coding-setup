@@ -61,7 +61,7 @@ function lineRules(line, publicRepos) {
   // The bot's exact signature is public metadata, not a private contact.
   const dependabotTrailer = /^Signed-off-by: dependabot\[bot\] <support@github\.com>$/.test(line);
   for (const [email] of line.matchAll(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g)) {
-    if (dependabotTrailer && email === "support@github.com") continue;
+    if (dependabotTrailer && /^support@github\.com$/i.test(email)) continue;
     if (!ALLOWED_EMAILS.some((re) => re.test(email)) && !FILE_SUFFIX.test(email)) found.push("an email address");
   }
   for (const [ip] of line.matchAll(/(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?!\d|\.\d)/g)) {
