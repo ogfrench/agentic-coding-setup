@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const source = /\.(?:js|mjs|cjs|jsx|ts|tsx|css|py)$/;
-const exception = /^(?:\/\/\s*(?:@ts-|eslint-|prettier-ignore|biome-ignore|# sourceMappingURL)|\/\*\s*(?:!|@license)|#(?:!|\s*(?:type:|noqa|pragma:|coding[:=])))/;
+const exception = /^(?:\/\/\s*(?:@ts-|eslint-|prettier-ignore|biome-ignore|# sourceMappingURL|SPDX-|Copyright\b)|\/\*\s*(?:!|@license|SPDX-|Copyright\b)|\*\s*(?:SPDX-|Copyright\b)|#(?:!|\s*(?:type:|noqa|pragma:|coding[:=]|SPDX-|Copyright\b)))/;
 
 export function addedCommentViolations(diff) {
   const findings = [];
