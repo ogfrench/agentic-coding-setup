@@ -27,6 +27,11 @@
 - **Every worktree gets its own install.** A shared node_modules carries workspace links
   into the checkout that installed it, so tests run another branch's code. Check with
   require.resolve. *(2026-10-18-each-worktree-gets-its-own-install)*
+- **Pin a bundle's digest from a clean install of the exact commit on the Node CI uses;
+  make the pin command refuse anything else.** The ZIP's bytes depend on the Node's zlib
+  and, when it bundles packages, on the installed tree. A worktree drifts from its lockfile;
+  a fresh `npm ci` cannot. A second build in the clean tree proves the pin.
+  *(2026-11-16-pin-from-a-clean-install-on-cis-node)*
 - **Reproduce a CI failure with the exact version CI runs.** Pin scanners and linters in
   CI, download that version locally, and scan what you are about to push with it.
   *(2026-10-11-pin-ci-tool-versions-locally)*

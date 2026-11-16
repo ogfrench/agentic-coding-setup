@@ -8,6 +8,10 @@
 - **Force a race window instead of timing it.** Find a call that sits between the read and
   the write, monkeypatch it to land the competing write, assert the result. Say in the test
   that the window is forced on purpose. *(2026-10-11-deterministic-race-tests)*
+- **Measure in a custom unit by reading it from the running page, never by recomputing its
+  definition.** A probe element sized in the unit gives pixels per unit. A recomputed
+  definition is wrong where the definition has a second branch, such as a height limit on a
+  short, wide screen. *(2026-11-16-measure-with-the-unit-the-system-defines)*
 - **One dev stack per working tree.** A second stack from the same tree, even on other
   ports, rewrites shared generated files and reloads the first one's pages. No edits under a
   watched tree while browser tests run. *(2026-10-11-second-stack-reloads-pages)*

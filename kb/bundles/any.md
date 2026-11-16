@@ -7,6 +7,7 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 ## Testing
 - [should] built-check-knows-its-staleness: A check on a built artifact must report its age and fail when the sources are newer.
 - [should] force-race-window: Force a race window instead of timing it.
+- [should] measure-in-the-systems-own-unit: Measure in a custom unit by reading it from the running page, never by recomputing its definition.
 - [should] one-dev-stack-per-tree: One dev stack per working tree.
 - [should] one-suite-at-a-time: Run one test suite at a time on a shared stack or machine.
 - [should] render-layouts-at-their-limits: Render every layout at its schema limits in each look, not only on its demo copy.
@@ -50,6 +51,7 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 - [should] merge-commits-on-shared-branches: Merge commits on shared branches; never rewrite someone else's history.
 - [should] missing-checks-mean-conflict: Checks missing from a PR usually mean a merge conflict.
 - [should] own-install-per-worktree: Every worktree gets its own install.
+- [should] pin-from-a-clean-install-on-cis-node: Pin a bundle's digest from a clean install of the exact commit on the Node CI uses; make the pin command refuse anything else.
 - [should] reproduce-ci-with-pinned-versions: Reproduce a CI failure with the exact version CI runs.
 - [tip] changelog-at-merge-time: Stacked PRs that all add a changelog line conflict in turn; write it at merge time.
 - [tip] keep-ci-logs: Keep the logs CI needs to explain itself.
