@@ -24,7 +24,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
 | Source version | `2026.11.10` | `2026.11.10` (account installation stays private) |
-| Skills | 23 canonical engineering, story, design, writing, testing and security skills | 27 portable skills (23 shared + 4 review and verification skills) |
+| Skills | 24 canonical engineering, story, design, writing, testing and security skills | 28 portable skills (24 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
 | Package | [Claude source](plugins/agent-workflow/) | [ChatGPT package](portable/agentic-workflow/) |
@@ -37,7 +37,7 @@ The marketplace provides the unified workflow and pinned UI tooling:
 
 | Plugin | Purpose |
 | --- | --- |
-| `agentic-workflow` | Full Claude Code edition of Agentic Workflow (23 canonical engineering, story, design, writing, testing and security skills). Published as `claude-workflow` through 2026.11.3. |
+| `agentic-workflow` | Full Claude Code edition of Agentic Workflow (24 canonical engineering, story, design, writing, testing and security skills). Published as `claude-workflow` through 2026.11.3. |
 | `21st` | Pinned, externally maintained UI tooling. |
 
 The full **ChatGPT `agentic-workflow`** edition is packaged separately and does not require these Claude marketplace entries.
@@ -53,7 +53,7 @@ The full **ChatGPT `agentic-workflow`** edition is packaged separately and does 
 | Design and experience | [Visual Loop](plugins/agent-workflow/skills/visual-loop/SKILL.md), [Plugin Experience Design](plugins/agent-workflow/skills/plugin-experience-design/SKILL.md) |
 | Orchestration and efficiency | [Model Delegation](plugins/agent-workflow/skills/model-delegation/SKILL.md), [Token Efficiency](plugins/agent-workflow/skills/token-efficiency/SKILL.md), [Actions Cost](plugins/agent-workflow/skills/actions-cost/SKILL.md), [Netlify Cost](plugins/agent-workflow/skills/netlify-cost/SKILL.md) |
 
-Three shared skills, **Presentation Story**, **Presentation Design** and **Design System Adapter**, support narrative work and independent authoring when appropriate. **Visual Loop** incorporates visual-restraint review. A named specialist such as frogViz owns its real template/build/export pipeline. The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
+Three shared skills, **Presentation Story**, **Presentation Design** and **Design System Adapter**, support narrative work and independent authoring when appropriate. **[Slide Deck HTML Pipeline](plugins/agent-workflow/skills/slide-deck-html-pipeline/SKILL.md)** adds canonical PPT-to-HTML beat parity, runtime verification and safe exports. **Visual Loop** incorporates visual-restraint review. A named specialist such as frogViz owns its real template/build/export pipeline. The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
 
 See the [full DUNE Engineering handbook](docs/dune.md) for the Product Passport loop, paved paths, verification, CI, releases, and active-repository adoption. The handbook links the [Claude plugin](plugins/agent-workflow/) and [ChatGPT plugin source](portable/agentic-workflow/). DUNE strengthens existing skills; it is not a new plugin or mandatory agent.
 
@@ -75,7 +75,7 @@ See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude
 
 ### ChatGPT
 
-Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 27 portable skills, their references, and curated public engineering knowledge.
+Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 28 portable skills, their references, and curated public engineering knowledge.
 
 The ChatGPT plugin remains a private account installation, even when its ZIP is published as a GitHub release download. Starting with the next release after `v2026.11.9`, the release workflow attaches both validated Claude and ChatGPT archives with one SHA-256 file. The `v2026.11.9` release itself is immutable and contains only the Claude ZIP. See the [installation and update flow](docs/agentic-workflow-chatgpt.md).
 
