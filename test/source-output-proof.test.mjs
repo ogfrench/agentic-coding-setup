@@ -12,7 +12,7 @@ test("source-derived outputs have traceability, parity and preservation", () => 
   assert.match(delivery, /authoritative input, transformation code and output/);
   assert.match(delivery, /last accepted artifact/);
   assert.match(strategy, /both\s+directions/);
-  assert.match(strategy, /unsupported or stale output/);
+  assert.match(strategy, /unsupported or stale\s+output/);
   assert.match(strategy, /real consumer behavior/);
   assert.match(continuity, /Derived artifacts/);
   assert.match(continuity, /last accepted version/);
