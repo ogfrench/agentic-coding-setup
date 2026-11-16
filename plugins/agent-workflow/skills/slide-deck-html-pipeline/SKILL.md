@@ -1,21 +1,21 @@
 ---
 name: slide-deck-html-pipeline
-description: Build and revise PowerPoint-canonical HTML slide decks with two-way text parity, scoped beat edits, browser verification and reliable exports. Use for source-synced beat-based keynotes, not arbitrary decks or trivial copy fixes.
+description: Use for PPT-canonical HTML beats, wording parity and exports.
 ---
 
 # Slide deck HTML pipeline
 
-Work from a canonical PowerPoint into an existing beat-based HTML slide deck. **The PPT governs wording and notes; implementation and observed behavior govern what actually works.** Approved exceptions must be explicit. This skill is a procedure, not a new rendering engine.
+Use the canonical PPT for wording and notes; use code and observed behavior for correctness. Document exceptions. This skill is not a renderer.
 
 ## Routing
 
-Use for slide projects with a canonical PPT and per-slide HTML beats, or when expressly building that workflow. Use `presentation-story` for narrative, `presentation-design` for general deck creation and `visual-loop` for rendered visual judgment. A named specialist authoring system owns its actual templates, fonts, assets, engine and export path. This skill may add source parity and verification, but cannot replace that engine with a generic imitation. Do not trigger for a one-line title change or a deck that does not have a canonical PPT.
+Use for slide projects with a canonical PPT and per-slide HTML beats, or when expressly building that workflow. Use `presentation-story` for narrative, `presentation-design` for general deck creation and `visual-loop` for rendered visual judgment. Named specialists own their templates, assets, engine and exports; add parity checks without replacing them. Do not trigger for a one-line title change or a deck that does not have a canonical PPT.
 
 ## 1. Inspect before execution
 
 Read the actual PPT, existing beat files and order, source/build scripts, active generators, engine, tests, media pipeline and exporters. Follow [the project discovery contract](references/project-contract.md). Source code and observed behavior outrank a handover. Check that the build reads the **current** PPT, not a stale copy. Differentiate PPT slide IDs from route order; appendix slides may live outside main progress. Determine whether each beat is hand-maintained or generated before editing.
 
-Record the allowed exception registry and current deliverables. Report incomplete or contradictory source material as a **source gap**. Do not silently fix it in HTML or retroactively treat a mismatch as approved. Keep confidential PPT content, project identities, proprietary visuals and source excerpts in the owning project, never in a public workflow repository.
+Record the allowed exception registry and current deliverables. Report incomplete or contradictory source material as a **source gap**. Do not silently fix it in HTML or retroactively treat a mismatch as approved. Keep confidential PPT text, identities and assets in the owning project, never a public workflow repo.
 
 ## 2. Make the smallest correct change
 
