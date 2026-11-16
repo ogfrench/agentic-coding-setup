@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "One Node pin, moved as one change: .nvmrc and a Netlify NODE_VERSION stay in step, and workflows read .nvmrc.",
+  "nvm": { "enabled": true },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)netlify\\.toml$/"],
+      "matchStrings": ["NODE_VERSION\\s*=\\s*\"(?<currentValue>[^\"]+)\""],
+      "depNameTemplate": "node",
+      "packageNameTemplate": "node",
+      "datasourceTemplate": "node-version"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": ["node"],
+      "groupName": "node pin",
+      "groupSlug": "node-pin",
+      "automerge": false,
+      "labels": ["node-pin"]
+    }
+  ]
+}
