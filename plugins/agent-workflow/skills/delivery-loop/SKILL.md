@@ -32,7 +32,11 @@ For a product-facing change, enter through the product-owned capability map, ver
    framework changes. Use `best-practices` for relevant topic rules, `product-passport`
    for features/maps and task proof, `architecture-gardener` only if actually
    available and structural root causes justify it, and `visual-loop` for
-   user-facing visuals. Do not load all specialists by default.
+   user-facing visuals. Do not load all specialists by default. For derived
+   outputs, identify authoritative input, transformation code and output
+   contract. Treat incomplete or conflicting source as a gap, not permission
+   to invent a fix. Protect the last accepted artifact before destructive
+   builds and leave unrelated outputs untouched.
 4. **Prove the result.** Establish a reproducible baseline when feasible, then
    repeat the same user journey or artifact after editing. Use test-strategy for
    proportionate test selection and session-continuity for

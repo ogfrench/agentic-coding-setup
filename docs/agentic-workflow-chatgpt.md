@@ -4,9 +4,9 @@
 
 ## What is included
 
-The Claude Workflow manifest determines the shared CalVer release version, which the ChatGPT manifest must match. The standalone writing and presentation plugins are no longer distributed. The source code is `portable/agentic-workflow/plugin.json` plus the generator `scripts/package_agentic_workflow_chatgpt.py`, which copies the canonical engineering skill source and its linked references from `plugins/agent-workflow/skills/`. Four previously portable skills are taken from `portable/ogfrench-workflow/skills/`. The generated package has **28 skills**:
+The Claude Workflow manifest determines the shared CalVer release version, which the ChatGPT manifest must match. The standalone writing and presentation plugins are no longer distributed. The source code is `portable/agentic-workflow/plugin.json` plus the generator `scripts/package_agentic_workflow_chatgpt.py`, which copies the canonical engineering skill source and its linked references from `plugins/agent-workflow/skills/`. Four previously portable skills are taken from `portable/ogfrench-workflow/skills/`. The generated package has **27 skills**:
 
-- Core: actions-cost, architecture-gardener, best-practices, delivery-loop, design-system-adapter, diagram-craft, issue-management, knowledge-base-builder, learning-loop, model-delegation, netlify-cost, plugin-experience-design, presentation-design, presentation-story, product-passport, session-continuity, token-efficiency, visual-loop, frogify, deslopify, humanizer, test-strategy, security-review and slide-deck-html-pipeline.
+- Core: actions-cost, architecture-gardener, best-practices, delivery-loop, design-system-adapter, diagram-craft, issue-management, knowledge-base-builder, learning-loop, model-delegation, netlify-cost, plugin-experience-design, presentation-design, presentation-story, product-passport, session-continuity, token-efficiency, visual-loop, frogify, deslopify, humanizer, test-strategy and security-review.
 - Reviews: adversarial-review, implementation-proof, release-handover and setup-audit.
 
 The bundled knowledge contains all current sanitized `kb/practices/*.md` practice cards plus `kb/INDEX.md`, `kb/index.jsonl`, `kb/graph.json`, and `kb/bundles/any.md`, stored under `skills/best-practices/knowledge/`. This is curated general engineering knowledge, not the user's private files.
@@ -38,7 +38,7 @@ PR CI retains a short-lived candidate artifact for review. The GitHub release wo
 
 1. Download the versioned ChatGPT ZIP and `SHA256SUMS.txt` from the same GitHub Release. Verify the archive digest. On `v2026.11.9`, the ChatGPT ZIP is not a release asset; use a later release or the reviewed build from that exact source revision.
 2. In ChatGPT, use Plugin Creator to create a **private** `agentic-workflow` entry, or update an existing private plugin with the **same identity** and a higher version. The public ZIP is distribution only and does not control account visibility.
-3. Read back the installed plugin version and loaded skill inventory (28 skills), run a real GitHub-backed engineering task and a negative case without access, and verify tools are not falsely assumed.
+3. Read back the installed plugin version and loaded skill inventory (27 skills), run a real GitHub-backed engineering task and a negative case without access, and verify tools are not falsely assumed.
 4. Keep the old installation until the new private plugin passes real-host acceptance. Updating a release tag never updates an installed account plugin automatically.
 
 For Claude Code, use the repository's `bash setup-user.sh` on an approved checkout, verify with `claude plugin list`, then update from the reviewed source or marketplace for subsequent releases. The Claude ZIP is the standalone upload distribution, not a command that installs itself. The two host installations are independent. A real-host installation does not prove quality improvements over the four-skill Lite edition; comparative evaluation remains a follow-up.

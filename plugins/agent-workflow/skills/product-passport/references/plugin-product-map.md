@@ -20,8 +20,8 @@ flowchart TB
 
 | Package | Purpose and ownership | Source | Host boundary |
 | --- | --- | --- | --- |
-| `agentic-workflow` (Claude Code edition) | 24 engineering, presentation, design, writing, testing and security skills; optional Claude-specific agent, hooks and sync | `plugins/agent-workflow/` | Claude Code; installation and sync explicit |
-| `agentic-workflow` (ChatGPT edition) | The same 24 canonical skills adapted for ChatGPT, plus four portable review skills | `portable/agentic-workflow/`; `scripts/package_agentic_workflow_chatgpt.py` | Private, skills-only ChatGPT edition; tools are host-provided |
+| `agentic-workflow` (Claude Code edition) | 23 engineering, presentation, design, writing, testing and security skills; optional Claude-specific agent, hooks and sync | `plugins/agent-workflow/` | Claude Code; installation and sync explicit |
+| `agentic-workflow` (ChatGPT edition) | The same 23 canonical skills adapted for ChatGPT, plus four portable review skills | `portable/agentic-workflow/`; `scripts/package_agentic_workflow_chatgpt.py` | Private, skills-only ChatGPT edition; tools are host-provided |
 | `chatgpt-workflow-lite` | Historical four-skill compatibility package, deprecated for new ChatGPT users | `portable/ogfrench-workflow/` | Legacy version frozen; no coordinated release claim |
 | `21st` | Pinned external UI tooling | `.claude-plugin/marketplace.json` | External dependency with its own behavior and version |
 
@@ -44,9 +44,8 @@ For the coordinated workflow editions only, the release identifier is `YYYY.MM.N
 | Learnings and existing practices | `learning-loop` / `best-practices` | `model-delegation` only when needed | Loading the entire knowledge base |
 | Cost reduction | `actions-cost` / `netlify-cost` | `token-efficiency` | Optimizing away required verification |
 | Communications, decks, brand writing | `presentation-story` / `presentation-design` / `frogify` | `diagram-craft` for diagram assets | Implying generic workflow owns specialist product content |
-| PPT-canonical HTML beats, source parity and exports | `slide-deck-html-pipeline` | `presentation-design` and `visual-loop` | Assuming project scripts exist or replacing a named specialist renderer |
 
-The three presentation and design skills are canonical in both full workflow editions. `visual-loop` also owns visual restraint. Named presentation products such as frogViz keep authority over actual generation and export. The remaining portable ChatGPT skills are `adversarial-review`, `implementation-proof`, `release-handover` and `setup-audit`. They are not part of the Claude workflow's canonical 24-skill set. `model-delegation` chooses how much agent/tool assistance is warranted, not a mandatory dispatcher.
+The three presentation and design skills are canonical in both full workflow editions. `visual-loop` also owns visual restraint. Named presentation products such as frogViz keep authority over actual generation and export. The remaining portable ChatGPT skills are `adversarial-review`, `implementation-proof`, `release-handover` and `setup-audit`. They are not part of the Claude workflow's canonical 23-skill set. `model-delegation` chooses how much agent/tool assistance is warranted, not a mandatory dispatcher.
 
 ## 4. Capability and release lifecycle
 

@@ -72,7 +72,7 @@ jobs:
                   plugin = json.loads(z.read(".claude-plugin/plugin.json"))
                   assert plugin["name"] == "agentic-workflow"
                   packed = [n for n in z.namelist() if n.startswith("skills/") and n.endswith("/SKILL.md")]
-                  assert len(packed) == 24, f"Claude skill inventory mismatch: {len(packed)}"
+                  assert len(packed) == 23, f"Claude skill inventory mismatch: {len(packed)}"
                   for name in ("test-strategy", "security-review"):
                       assert f"skills/{name}/SKILL.md" in z.namelist()
                   assert "skills/humanizer/LICENSE" in z.namelist()
@@ -102,7 +102,7 @@ jobs:
           with ZipFile(dest) as z:
               assert z.testzip() is None
               names = z.namelist()
-              assert len([x for x in names if x.startswith("skills/") and x.endswith("/SKILL.md")]) == 24
+              assert len([x for x in names if x.startswith("skills/") and x.endswith("/SKILL.md")]) == 23
               assert "skills/humanizer/LICENSE" in names
               assert json.loads(z.read(".claude-plugin/plugin.json"))["version"] == version
           PY

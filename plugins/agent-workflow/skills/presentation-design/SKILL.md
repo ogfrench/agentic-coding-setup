@@ -1,6 +1,6 @@
 ---
 name: presentation-design
-description: Create or revise real presentations, slides, charts and visuals; story guidance is optional.
+description: Create or revise finished presentation slides, decks, charts and visual explanations in supported formats. Use for slide production; storytelling assistance is optional and proportionate.
 ---
 
 # Presentation design
