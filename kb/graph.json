@@ -272,6 +272,26 @@
       "supersedes": []
     },
     {
+      "id": "batch-edits-then-pin-once",
+      "type": "practice",
+      "summary": "Batch the edits that invalidate a pinned digest; re-pin once, after the proving build.",
+      "concern": "ci",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 114,
+      "last_verified": "2026-11-15",
+      "derived_from": [
+        "2026-11-15-batch-edits-that-invalidate-a-pinned-digest"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "compare-against-origin-main",
       "type": "practice",
       "summary": "Compare a change against origin/main after a fetch, never a local main.",
@@ -388,6 +408,26 @@
       "last_verified": "2026-10-18",
       "derived_from": [
         "2026-10-18-each-worktree-gets-its-own-install"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "pin-from-a-clean-install-on-cis-node",
+      "type": "practice",
+      "summary": "Pin a bundle's digest from a clean install of the exact commit on the Node CI uses; make the pin command refuse anything else.",
+      "concern": "ci",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 139,
+      "last_verified": "2026-11-16",
+      "derived_from": [
+        "2026-11-16-pin-from-a-clean-install-on-cis-node"
       ],
       "implemented_by": [],
       "related": [],
@@ -679,6 +719,26 @@
       "supersedes": []
     },
     {
+      "id": "built-check-knows-its-staleness",
+      "type": "practice",
+      "summary": "A check on a built artifact must report its age and fail when the sources are newer.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 121,
+      "last_verified": "2026-11-15",
+      "derived_from": [
+        "2026-11-15-a-check-on-a-built-artifact-must-know-it-is-stale"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "force-race-window",
       "type": "practice",
       "summary": "Force a race window instead of timing it.",
@@ -698,6 +758,26 @@
       "related": [
         "wait-for-state-not-time"
       ],
+      "supersedes": []
+    },
+    {
+      "id": "measure-in-the-systems-own-unit",
+      "type": "practice",
+      "summary": "Measure in a custom unit by reading it from the running page, never by recomputing its definition.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 126,
+      "last_verified": "2026-11-16",
+      "derived_from": [
+        "2026-11-16-measure-with-the-unit-the-system-defines"
+      ],
+      "implemented_by": [],
+      "related": [],
       "supersedes": []
     },
     {
@@ -744,6 +824,26 @@
         "one-dev-stack-per-tree",
         "serial-agents-on-shared-stack"
       ],
+      "supersedes": []
+    },
+    {
+      "id": "render-layouts-at-their-limits",
+      "type": "practice",
+      "summary": "Render every layout at its schema limits in each look, not only on its demo copy.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 119,
+      "last_verified": "2026-11-15",
+      "derived_from": [
+        "2026-11-15-test-layouts-at-their-limits-not-only-their-demo"
+      ],
+      "implemented_by": [],
+      "related": [],
       "supersedes": []
     },
     {
@@ -917,6 +1017,26 @@
       "last_verified": "2026-10-11",
       "derived_from": [
         "2026-10-11-third-party-editor-overrides"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "scope-host-css-from-embedded-content",
+      "type": "practice",
+      "summary": "Scope a host page's element selectors so they never reach the content it embeds.",
+      "concern": "ui",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 125,
+      "last_verified": "2026-11-15",
+      "derived_from": [
+        "2026-11-15-scope-host-page-css-away-from-embedded-content"
       ],
       "implemented_by": [],
       "related": [],
@@ -2437,6 +2557,52 @@
       ]
     },
     {
+      "id": "2026-11-15-a-check-on-a-built-artifact-must-know-it-is-stale",
+      "type": "learning",
+      "summary": "A check that measures a built artifact reads stale output after a source change",
+      "tags": [
+        "testing",
+        "ci",
+        "build"
+      ],
+      "status": "practice",
+      "source": "a private project",
+      "tokens": 288,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
+    },
+    {
+      "id": "2026-11-15-a-feature-is-done-when-every-surface-knows-it",
+      "type": "learning",
+      "summary": "Generate the list of surfaces a feature must reach, and test it, or surfaces drift",
+      "tags": [
+        "docs",
+        "testing",
+        "release"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 293,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-batch-edits-that-invalidate-a-pinned-digest",
+      "type": "learning",
+      "summary": "When an edit invalidates a pinned digest, batch the edits and re-pin once",
+      "tags": [
+        "ci",
+        "release",
+        "build"
+      ],
+      "status": "practice",
+      "source": "a private project",
+      "tokens": 318,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
+    },
+    {
       "id": "2026-11-15-hand-written-product-maps-drift",
       "type": "learning",
       "summary": "Product maps help navigation, but stale claims erode trust",
@@ -2447,6 +2613,20 @@
       "status": "raw",
       "source": "a private project",
       "tokens": 329,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-label-a-graphic-with-aria-not-hidden-text",
+      "type": "learning",
+      "summary": "Name a graphic with an aria-label, not a visually hidden word",
+      "tags": [
+        "ui",
+        "accessibility",
+        "export"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 226,
       "promoted_to": []
     },
     {
@@ -2490,6 +2670,20 @@
       "promoted_to": []
     },
     {
+      "id": "2026-11-15-review-rest-frames-not-mid-animation-frames",
+      "type": "learning",
+      "summary": "Judge rendered pages at rest, with scripts off, never from mid-animation frames",
+      "tags": [
+        "testing",
+        "agents",
+        "visual-review"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 270,
+      "promoted_to": []
+    },
+    {
       "id": "2026-11-15-running-state-not-the-pin",
       "type": "learning",
       "summary": "A repository pin is not a deployment fact: read the running container",
@@ -2503,6 +2697,22 @@
       "promoted_to": []
     },
     {
+      "id": "2026-11-15-scope-host-page-css-away-from-embedded-content",
+      "type": "learning",
+      "summary": "A host page's element selectors reach into the content it embeds",
+      "tags": [
+        "ui",
+        "css",
+        "testing"
+      ],
+      "status": "practice",
+      "source": "a private project",
+      "tokens": 332,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/ui.md"
+      ]
+    },
+    {
       "id": "2026-11-15-shallow-clone-needs-branch-refspec",
       "type": "learning",
       "summary": "A shallow single-branch clone makes tooling report that a pushed branch has no remote",
@@ -2514,6 +2724,82 @@
       "source": "a private project",
       "tokens": 226,
       "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-size-a-drawing-by-the-box-it-is-drawn-in",
+      "type": "learning",
+      "summary": "An SVG overlay must take its coordinate space from the box it is drawn in",
+      "tags": [
+        "ui",
+        "svg",
+        "layout"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 254,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-15-test-layouts-at-their-limits-not-only-their-demo",
+      "type": "learning",
+      "summary": "A layout that is clean on its demo copy can collide at its stated limits",
+      "tags": [
+        "testing",
+        "ui",
+        "layout"
+      ],
+      "status": "practice",
+      "source": "a private project",
+      "tokens": 281,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
+    },
+    {
+      "id": "2026-11-15-verify-a-computed-measure-by-looking",
+      "type": "learning",
+      "summary": "A computed metric can be wrong; look at the render before acting on it",
+      "tags": [
+        "testing",
+        "ui",
+        "visual-review"
+      ],
+      "status": "raw",
+      "source": "a private project",
+      "tokens": 248,
+      "promoted_to": []
+    },
+    {
+      "id": "2026-11-16-measure-with-the-unit-the-system-defines",
+      "type": "learning",
+      "summary": "Measure in the unit the system defines, read from the running page",
+      "tags": [
+        "testing",
+        "ui",
+        "measurement"
+      ],
+      "status": "practice",
+      "source": "a private project",
+      "tokens": 316,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
+    },
+    {
+      "id": "2026-11-16-pin-from-a-clean-install-on-cis-node",
+      "type": "learning",
+      "summary": "Pin a bundle's digest from a clean install on the Node CI uses",
+      "tags": [
+        "ci",
+        "release",
+        "build"
+      ],
+      "status": "practice",
+      "source": "a private project",
+      "tokens": 378,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
     }
   ],
   "edges": [
@@ -2788,6 +3074,21 @@
       "type": "derived_from"
     },
     {
+      "from": "batch-edits-then-pin-once",
+      "to": "ci",
+      "type": "concern"
+    },
+    {
+      "from": "batch-edits-then-pin-once",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "batch-edits-then-pin-once",
+      "to": "2026-11-15-batch-edits-that-invalidate-a-pinned-digest",
+      "type": "derived_from"
+    },
+    {
       "from": "compare-against-origin-main",
       "to": "ci",
       "type": "concern"
@@ -2885,6 +3186,21 @@
     {
       "from": "own-install-per-worktree",
       "to": "2026-10-18-each-worktree-gets-its-own-install",
+      "type": "derived_from"
+    },
+    {
+      "from": "pin-from-a-clean-install-on-cis-node",
+      "to": "ci",
+      "type": "concern"
+    },
+    {
+      "from": "pin-from-a-clean-install-on-cis-node",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "pin-from-a-clean-install-on-cis-node",
+      "to": "2026-11-16-pin-from-a-clean-install-on-cis-node",
       "type": "derived_from"
     },
     {
@@ -3113,6 +3429,21 @@
       "type": "stack"
     },
     {
+      "from": "built-check-knows-its-staleness",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "built-check-knows-its-staleness",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "built-check-knows-its-staleness",
+      "to": "2026-11-15-a-check-on-a-built-artifact-must-know-it-is-stale",
+      "type": "derived_from"
+    },
+    {
       "from": "force-race-window",
       "to": "testing",
       "type": "concern"
@@ -3131,6 +3462,21 @@
       "from": "force-race-window",
       "to": "wait-for-state-not-time",
       "type": "related"
+    },
+    {
+      "from": "measure-in-the-systems-own-unit",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "measure-in-the-systems-own-unit",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "measure-in-the-systems-own-unit",
+      "to": "2026-11-16-measure-with-the-unit-the-system-defines",
+      "type": "derived_from"
     },
     {
       "from": "one-dev-stack-per-tree",
@@ -3181,6 +3527,21 @@
       "from": "one-suite-at-a-time",
       "to": "serial-agents-on-shared-stack",
       "type": "related"
+    },
+    {
+      "from": "render-layouts-at-their-limits",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "render-layouts-at-their-limits",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "render-layouts-at-their-limits",
+      "to": "2026-11-15-test-layouts-at-their-limits-not-only-their-demo",
+      "type": "derived_from"
     },
     {
       "from": "test-derived-names-against-reserved",
@@ -3305,6 +3666,21 @@
     {
       "from": "one-text-field-shape",
       "to": "2026-10-11-third-party-editor-overrides",
+      "type": "derived_from"
+    },
+    {
+      "from": "scope-host-css-from-embedded-content",
+      "to": "ui",
+      "type": "concern"
+    },
+    {
+      "from": "scope-host-css-from-embedded-content",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "scope-host-css-from-embedded-content",
+      "to": "2026-11-15-scope-host-page-css-away-from-embedded-content",
       "type": "derived_from"
     },
     {
@@ -3620,6 +3996,36 @@
     {
       "from": "2026-10-28-test-single-loop-before-agents",
       "to": "plugins/agent-workflow/skills/model-delegation/SKILL.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-11-15-a-check-on-a-built-artifact-must-know-it-is-stale",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-11-15-batch-edits-that-invalidate-a-pinned-digest",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-11-15-scope-host-page-css-away-from-embedded-content",
+      "to": "plugins/agent-workflow/skills/best-practices/ui.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-11-15-test-layouts-at-their-limits-not-only-their-demo",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-11-16-measure-with-the-unit-the-system-defines",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-11-16-pin-from-a-clean-install-on-cis-node",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
       "type": "promoted_to"
     }
   ]
