@@ -38,9 +38,9 @@ Do not treat a passing test as proof that the product meets requirements by defa
 ## Source-derived output checks
 
 For migrations, generated documents, exports and reports, trace outputs to
-an authoritative source revision. Where fidelity matters, check **both
- directions**: required source facts survive and unsupported or stale output
-is absent. Document scoped approved exceptions and source gaps rather than
+an authoritative source revision. Where fidelity matters, check
+**both directions**: required source facts survive and unsupported or stale
+output is absent. Document scoped approved exceptions and source gaps rather than
 silently changing the input or weakening the gate. A successful build,
 screenshot or integrity check alone does not prove real consumer behavior;
 exercise representative import, playback, rendering or user interaction.

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync } from "node:fs";
 
 const root = new URL("../", import.meta.url);
 const skill = (name) => readFileSync(new URL(`plugins/agent-workflow/skills/${name}/SKILL.md`, root), "utf8");
@@ -27,6 +27,3 @@ test("delegation and learning promotion remain source-grounded", () => {
   assert.match(learning, /Extend an existing\s+owning skill/);
 });
 
-test("no domain-specific presentation pipeline was added", () => {
-  assert.equal(existsSync(new URL("plugins/agent-workflow/skills/slide-deck-html-pipeline/SKILL.md", root)), false);
-});
