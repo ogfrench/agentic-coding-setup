@@ -8,7 +8,7 @@ const base = "plugins/agent-workflow/skills/slide-deck-html-pipeline/";
 test("PPT HTML pipeline preserves specialist authority and evidence gates", () => {
   const skill = read(base + "SKILL.md");
   assert.match(skill, /^---\nname: slide-deck-html-pipeline\n/);
-  for (const term of ["canonical PowerPoint", "both", "previous accepted final", "real browser", "specialist", "workers"]) {
+  for (const term of ["canonical PPT", "both", "previous accepted final", "real browser", "specialist", "workers"]) {
     assert.ok(skill.toLowerCase().includes(term.toLowerCase()), term);
   }
   assert.match(read(base + "references/project-contract.md"), /Exception record/);
