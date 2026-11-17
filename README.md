@@ -23,7 +23,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Source version | `2026.11.10` | `2026.11.10` (account installation stays private) |
+| Source version | `2026.11.11` | `2026.11.11` (account installation stays private) |
 | Skills | 23 canonical engineering, story, design, writing, testing and security skills | 27 portable skills (23 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
