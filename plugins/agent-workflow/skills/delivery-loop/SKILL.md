@@ -16,6 +16,21 @@ permissions**, not inventing access, bypassing controls or declaring an unfinish
 
 For a product-facing change, enter through the product-owned capability map, verify real source and test ownership, follow the existing paved path, implement a focused regression, and exit through observed behavior plus reconciled passport evidence. The PR is the only authoritative live tracker. Do not create another DUNE board, duplicate agent, or infer functional success from static path checks. Enforce architecture constraints only when relevant to the target stack and a demonstrated failure mode.
 
+## Frame–Propose–Evaluate inside delivery
+
+Use **FPE as a reasoning loop**, not three agents, documents or approval gates:
+
+- **Frame:** inspect source and behavior, define the user outcome, constraints
+  and acceptance evidence; treat a proposed fix as a hypothesis.
+- **Propose:** select the smallest sound approach. Compare distinct alternatives
+  only when meaningful uncertainty could change the choice.
+- **Evaluate:** test the approach against requirements, code and real behavior.
+  When evidence contradicts the premise, reframe instead of layering patches.
+
+A routine fix may take one short loop. For costly ambiguity or significant risk,
+use the conditional independent review in `model-delegation`, before commitment
+and before merge where justified. Keep one owner.
+
 ## Run the loop
 
 1. **Orient.** Read the user's objective and permissions, current source, tests,
