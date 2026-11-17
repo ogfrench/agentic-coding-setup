@@ -7,8 +7,10 @@ description: >-
 
 # Session continuity
 
-Conversation summaries lose detail, especially recent turns. Preserve work in
-readable, durable records and verify live state on resumption.
+A compaction swaps the conversation for a summary. Anything that lived only in the
+conversation is now a paraphrase, and the summary is written without seeing the last few
+turns. Long work survives that when its state lives outside the conversation, where the
+next context can read it, and when the next context checks the world before acting.
 
 ## Where state lives
 
@@ -22,7 +24,7 @@ Put each kind of state in the one place built for it, at the moment it changes:
 | A rule that keeps holding | the project's `CLAUDE.md` |
 | What changed | the changelog and the commit messages |
 | Work in progress | a commit on a pushed branch, not a dirty tree |
-| Where things are | worktree paths, branches and checks: `CLAUDE.md` or tracker |
+| Where things are | worktree paths, branches, how to run the checks: `CLAUDE.md` or the tracker |
 | Derived artifacts | source revision, approved exceptions, output checks; preserve the last accepted version |
 
 When a PR exists, keep its description authoritative for the current work. An issue tracks
