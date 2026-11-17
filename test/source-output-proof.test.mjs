@@ -24,7 +24,7 @@ test("delegation and learning promotion remain source-grounded", () => {
   assert.match(delegation, /partition writable outputs, not source access/);
   assert.match(delegation, /share read-only canonical inputs/);
   assert.match(delegation, /main\s+agent runs shared\s+generation and acceptance checks/);
-  assert.match(delegation, /source\s+omissions or conflicts/);
+  assert.match(delegation, /source\s+omissions or\s+conflicts/);
   assert.match(learning, /Abstract before promoting/);
   assert.match(learning, /Extend an existing\s+owning skill/);
 });
