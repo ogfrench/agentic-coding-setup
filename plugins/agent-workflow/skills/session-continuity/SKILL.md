@@ -7,10 +7,7 @@ description: >-
 
 # Session continuity
 
-A compaction swaps the conversation for a summary. Anything that lived only in the
-conversation is now a paraphrase, and the summary is written without seeing the last few
-turns. Long work survives that when its state lives outside the conversation, where the
-next context can read it, and when the next context checks the world before acting.
+Conversation summaries can lose detail. Keep decisions and progress in durable records and verify live state before resuming.
 
 ## Where state lives
 
