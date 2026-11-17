@@ -57,9 +57,10 @@ a tool and inspect its result, rather than handing over the conversation.
   proves the same findings emerge without it.
 - Parallel writes need separate worktrees, ports and state. Shared databases,
   rate limits and watched browser stacks run serially.
-- For source-derived work, assign disjoint inputs and outputs; the main
-  agent runs shared generation and acceptance checks. Workers flag source
-  omissions or conflicts rather than silently repairing them.
+- For source-derived work, partition writable outputs, not source access;
+  workers may share read-only canonical inputs. The main agent runs shared
+  generation and acceptance checks. Workers flag source omissions or
+  conflicts rather than silently repairing them.
 - An agent report is a claim. Re-check its findings, diff and test evidence
   in the main loop before merging or reporting success.
 

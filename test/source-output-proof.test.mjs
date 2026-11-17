@@ -21,6 +21,8 @@ test("source-derived outputs have traceability, parity and preservation", () => 
 test("delegation and learning promotion remain source-grounded", () => {
   const delegation = skill("model-delegation");
   const learning = skill("learning-loop");
+  assert.match(delegation, /partition writable outputs, not source access/);
+  assert.match(delegation, /share read-only canonical inputs/);
   assert.match(delegation, /main\s+agent runs shared generation and acceptance checks/);
   assert.match(delegation, /source\s+omissions or conflicts/);
   assert.match(learning, /Abstract before promoting/);
