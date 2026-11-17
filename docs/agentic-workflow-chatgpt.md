@@ -1,6 +1,6 @@
 # Agentic Workflow for ChatGPT | Full portable edition
 
-**Source edition (2026-11-15):** `agentic-workflow` v2026.11.11 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.11.11 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
+**Published source edition (2026-11-17):** `agentic-workflow` v2026.11.11 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.11.11 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
 
 ## What is included
 
@@ -32,7 +32,7 @@ unzip -t dist/agentic-workflow-chatgpt-v2026.11.11.zip
 sha256sum dist/agentic-workflow-chatgpt-v2026.11.11.zip
 ```
 
-PR CI retains a short-lived candidate artifact for review. The GitHub release workflow (for releases after the already published `v2026.11.9`) verifies the exact source-derived archive, publishes both `agentic-workflow-claude-v<version>.zip` and `agentic-workflow-chatgpt-v<version>.zip` in the same GitHub Release, and includes both SHA-256 digests. The ZIP contains only reviewed source skills, documentation, the icon and curated public knowledge, not private data or executables. The public ZIP does **not** create a public ChatGPT plugin listing.
+PR CI retains a short-lived candidate artifact for review. The GitHub release workflow (active since `v2026.11.10`) verifies the exact source-derived archive and publishes both `agentic-workflow-claude-v<version>.zip` and `agentic-workflow-chatgpt-v<version>.zip` in the same GitHub Release, and includes both SHA-256 digests. The ZIP contains only reviewed source skills, documentation, the icon and curated public knowledge, not private data or executables. The public ZIP does **not** create a public ChatGPT plugin listing.
 
 **Installation/update flow:**
 
@@ -42,6 +42,15 @@ PR CI retains a short-lived candidate artifact for review. The GitHub release wo
 4. Keep the old installation until the new private plugin passes real-host acceptance. Updating a release tag never updates an installed account plugin automatically.
 
 For Claude Code, use the repository's `bash setup-user.sh` on an approved checkout, verify with `claude plugin list`, then update from the reviewed source or marketplace for subsequent releases. The Claude ZIP is the standalone upload distribution, not a command that installs itself. The two host installations are independent. A real-host installation does not prove quality improvements over the four-skill Lite edition; comparative evaluation remains a follow-up.
+
+## FPE and independent review
+
+The full edition carries FPE in Delivery Loop and a risk-gated critic/judge
+protocol in Model Delegation. Ordinary tasks use the single-executive loop;
+consequential tasks may use additional reviewers **only when the host
+actually exposes that capability**. Packaging this guidance does not create
+a judge process, agent permissions or automatic orchestration. Model-routing
+and outcome improvements over an unassisted baseline remain unmeasured.
 
 ## Independent execution and safety boundaries
 
