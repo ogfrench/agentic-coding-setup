@@ -29,3 +29,16 @@ test("delegation and learning promotion remain source-grounded", () => {
   assert.match(learning, /Extend an existing\s+owning skill/);
 });
 
+
+test("FPE routing and adversarial review preserve executive ownership", () => {
+  const delivery = skill("delivery-loop");
+  const delegation = skill("model-delegation");
+  const protocol = readFileSync(new URL("plugins/agent-workflow/skills/model-delegation/references/risk-gated-review.md", root), "utf8");
+  assert.match(delivery, /Frame–Propose–Evaluate/);
+  assert.match(delivery, /Routine fixes need one/);
+  assert.match(delegation, /Risk-gated adversarial review/);
+  assert.match(delegation, /judge.*optional/i);
+  assert.match(delegation, /one main agent loop/);
+  assert.match(protocol, /majority vote never invalidates a reproducible defect/i);
+  assert.match(protocol, /independent pre-merge review/);
+});
