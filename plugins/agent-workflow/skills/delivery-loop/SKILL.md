@@ -34,8 +34,9 @@ For a product-facing change, enter through the product-owned capability map, ver
    available and structural root causes justify it, and `visual-loop` for
    user-facing visuals. Do not load all specialists by default. For derived
    outputs, trace authoritative input, transformation code and output
-   contract. Flag missing source; never invent it. Protect the last accepted
-   artifact before destructive builds; avoid unrelated changes.
+   contract. Flag missing source; never invent it.
+   Protect the last accepted artifact before destructive builds; avoid
+   unrelated changes.
 4. **Prove the result.** Establish a reproducible baseline when feasible, then
    repeat the same user journey or artifact after editing. Use test-strategy for
    proportionate test selection and session-continuity for
