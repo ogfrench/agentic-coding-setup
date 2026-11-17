@@ -6,6 +6,8 @@ Agentic Workflow is a modular product-engineering toolkit for **Claude Code and 
 
 It favors one capable assistant using the right skill for the job over rigid processes or unnecessary multi-agent orchestration. **Code and observed behavior take precedence over documentation; tests and real user journeys determine correctness.**
 
+For everyday implementation, [Delivery Loop](plugins/agent-workflow/skills/delivery-loop/SKILL.md) uses **Frame–Propose–Evaluate (FPE)** as lightweight, iterative reasoning. High-risk or ambiguous decisions can trigger independent read-only critics under [Model Delegation](plugins/agent-workflow/skills/model-delegation/SKILL.md), with an optional judge to reconcile findings. One executive retains responsibility, and agent agreement never substitutes for observed evidence. These are instructions, not an always-running multi-agent service.
+
 ## What it helps you do
 
 | Capability | What it covers |
@@ -77,7 +79,7 @@ See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude
 
 Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 27 portable skills, their references, and curated public engineering knowledge.
 
-The ChatGPT plugin remains a private account installation, even when its ZIP is published as a GitHub release download. Starting with the next release after `v2026.11.9`, the release workflow attaches both validated Claude and ChatGPT archives with one SHA-256 file. The `v2026.11.9` release itself is immutable and contains only the Claude ZIP. See the [installation and update flow](docs/agentic-workflow-chatgpt.md).
+The ChatGPT plugin remains a private account installation, even when its ZIP is published as a GitHub release download. Since `v2026.11.10`, the release workflow attaches validated Claude and ChatGPT archives with a shared SHA-256 file. The older `v2026.11.9` release is immutable and contains only the Claude ZIP. See the [installation and update flow](docs/agentic-workflow-chatgpt.md).
 
 ## How it works
 
@@ -99,7 +101,12 @@ The ChatGPT plugin remains a private account installation, even when its ZIP is 
 
 ## Releases
 
-**Public releases:** [Latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest). [`v2026.11.9`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.9) was published on November 15, 2026 with a Claude ZIP and checksums. Subsequent releases will include a separately validated ChatGPT ZIP and a shared checksums file; actual ChatGPT installation remains a separate, private account action. Publication does not prove installed-host acceptance.
+**Public releases:** [Latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest).
+At this review, [v2026.11.11](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.11)
+(17 November 2026) contains the merged FPE, risk-gated review and source-output
+fidelity guidance, with both Claude and ChatGPT ZIPs and checksums.
+The release notes explicitly record **no installed-host acceptance**.
+Published archives do not update an existing ChatGPT plugin or Claude install.
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The writing skills ship inside Agentic Workflow; the old standalone marketplace entries are retired. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
