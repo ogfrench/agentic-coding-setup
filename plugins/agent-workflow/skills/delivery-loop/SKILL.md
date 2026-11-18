@@ -58,7 +58,10 @@ independent critique before commitment or merge. One executive owns delivery.
    CI, host acceptance, deployed and production-verified. Investigate failed checks
    from evidence, fix the cause and rerun at the **new exact head**. Never dilute
    a gate, self-approve risk, fabricate screenshots or claim a check ran without proof.
-5. **Reconcile and review.** For risky releases, consult
+5. **Reconcile and review.** Before an authorized merge or release, invoke
+   `release-readiness` to inspect the exact head, downstream workflow steps,
+   skipped gates, generated routes, packaged downloads and host acceptance.
+   For risky releases, also consult
    [production readiness](references/production-readiness.md) before deploy.
    Update the PR checklist after each meaningful change.
    Reopen items invalidated by later commits. Inspect the final diff, changed scope,
