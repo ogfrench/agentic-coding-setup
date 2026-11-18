@@ -17,7 +17,7 @@ VERSION = json.loads((ROOT / "plugins/agent-workflow/.claude-plugin/plugin.json"
 FULL_SKILLS = (
     "actions-cost", "architecture-gardener", "best-practices",
     "delivery-loop", "diagram-craft", "issue-management", "knowledge-base-builder",
-    "learning-loop", "model-delegation", "netlify-cost",
+    "learning-loop", "model-delegation", "netlify-cost", "release-readiness",
     "plugin-experience-design", "product-passport", "session-continuity",
     "presentation-story", "presentation-design", "design-system-adapter",
     "token-efficiency", "visual-loop", "frogify", "deslopify", "humanizer",
