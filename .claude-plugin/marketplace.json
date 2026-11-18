@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "agentic-workflow",
-      "description": "How work is run: best-practices, learning-loop, model-delegation, visual-loop, token-efficiency, actions-cost, netlify-cost, session-continuity, delivery-loop, knowledge-base-builder, plugin-experience-design, product-passport, and the cheap-reviewer subagent.",
+      "description": "Agentic Workflow v2026.11.13: 24 Claude skills for source-grounded architecture, implementation, design, security, testing, release readiness and delivery.",
       "source": "./plugins/agent-workflow",
       "category": "productivity"
     },
