@@ -1,8 +1,7 @@
 ---
 name: release-readiness
 description: >-
-  Verify a specific PR or commit can safely merge, build, publish and deploy.
-  Use before releases, after repeated CI failures, or when asked to get a PR release-ready.
+  Audit final-SHA merge, packaging and release readiness.
 ---
 
 # Release Readiness
