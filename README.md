@@ -25,7 +25,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Source version | `2026.11.11` | `2026.11.11` (account installation stays private) |
+| Source version | `2026.11.12` | `2026.11.12` (account installation stays private) |
 | Skills | 23 canonical engineering, story, design, writing, testing and security skills | 27 portable skills (23 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -102,11 +102,7 @@ The ChatGPT plugin remains a private account installation, even when its ZIP is 
 ## Releases
 
 **Public releases:** [Latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest).
-At this review, [v2026.11.11](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v2026.11.11)
-(17 November 2026) contains the merged FPE, risk-gated review and source-output
-fidelity guidance, with both Claude and ChatGPT ZIPs and checksums.
-The release notes explicitly record **no installed-host acceptance**.
-Published archives do not update an existing ChatGPT plugin or Claude install.
+Each published dual-host release includes separately validated Claude and ChatGPT ZIPs and their checksums. See [versioned release notes](docs/releases/) for changes and explicit acceptance limits. Source, package, published release and installed-host acceptance are different states; published archives do not update existing account installations.
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The writing skills ship inside Agentic Workflow; the old standalone marketplace entries are retired. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).
 
