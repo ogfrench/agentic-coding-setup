@@ -6,7 +6,7 @@ const read = (path) => readFileSync(new URL("../" + path, import.meta.url), "utf
 test("CalVer release publishes both validated plugin editions", () => {
   const claude = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json"));
   const chatgpt = JSON.parse(read("portable/agentic-workflow/plugin.json"));
-  assert.equal(claude.version, "2026.11.11");
+  assert.equal(claude.version, "2026.11.12");
   assert.equal(chatgpt.version, claude.version);
   assert.ok(claude.description.length > 0 && claude.description.length <= 500, "Claude upload description must be at most 500 characters");
   const wf = read(".github/workflows/release.yml");
