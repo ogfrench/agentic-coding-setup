@@ -3,9 +3,7 @@
 
 53 active practices, 86 learnings. Load the least that answers the question:
 
-1. `kb/bundles/<stack>.md`: one line per practice for a stack (`any` always applies).
-2. `grep -i <term> kb/index.jsonl`: one JSON line per node, with edges.
-3. `kb/practices/<id>.md`: the card, with the reason. Its `derived_from` names the evidence.
+Use `kb/bundles/<stack>.md` for stack rules, `kb/index.jsonl` to search nodes, and `kb/practices/<id>.md` for evidence.
 
 | Concern | Practices | Read before |
 | --- | --- | --- |
