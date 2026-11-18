@@ -63,7 +63,7 @@ independent critique before commitment or merge. One executive owns delivery.
    For risky deployments, consult [production readiness](references/production-readiness.md).
    Update the PR checklist; reopen items invalidated by later commits. Inspect the final diff, changed scope,
    CI and review threads; use an independent reviewer when risk warrants it.
-   Keep regressions in executable tests. Correct only affected map pointers or operational contracts; otherwise state `map unchanged`. Do not create internal documentation or a changelog entry by habit. User-requested documentation is a separate deliverable.
+   Keep executable regressions. Update affected map pointers or state `map unchanged`. Avoid unsolicited changelogs.
 6. **Finish or hand off truthfully.** Merge, release, deploy or close issues only if
    authorized and the actual gates pass. Otherwise preserve work in a reviewable
    branch and put a precise next action, owner, blocker and proof gap in the PR.
