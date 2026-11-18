@@ -89,6 +89,17 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("skills/visual-loop/references/visual-restraint.md", files)
         self.assertNotIn("skills/visual-restraint/SKILL.md", files)
 
+    def test_product_passport_experience_review_is_packaged(self) -> None:
+        files = build_files()
+        ref = "skills/product-passport/references/experience-journey.md"
+        self.assertIn(ref, files)
+        guide = files[ref].decode("utf-8")
+        for expected in ("Collection/search", "Detail page", "Primary action", "Resulting artifact",
+                         "lightweight still", "recorded source SHA"):
+            self.assertIn(expected, guide)
+        skill = files["skills/product-passport/SKILL.md"].decode("utf-8")
+        self.assertIn("references/experience-journey.md", skill)
+
     def test_plugin_product_map_is_included(self) -> None:
         files = build_files()
         doc = "skills/product-passport/references/plugin-product-map.md"
