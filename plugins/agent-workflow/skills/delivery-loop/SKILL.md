@@ -1,8 +1,7 @@
 ---
 name: delivery-loop
 description: >-
-  Finish authorized repository tasks through code, tests, CI and PR review.
-  Use for end-to-end delivery and release handovers.
+  Deliver authorized coding tasks through tests, PR review and release.
 ---
 
 # Delivery Loop
@@ -58,12 +57,13 @@ independent critique before commitment or merge. One executive owns delivery.
    CI, host acceptance, deployed and production-verified. Investigate failed checks
    from evidence, fix the cause and rerun at the **new exact head**. Never dilute
    a gate, self-approve risk, fabricate screenshots or claim a check ran without proof.
-5. **Reconcile and review.** For risky releases, consult
-   [production readiness](references/production-readiness.md) before deploy.
-   Update the PR checklist after each meaningful change.
-   Reopen items invalidated by later commits. Inspect the final diff, changed scope,
+5. **Reconcile and review.** Before an authorized merge or release, invoke
+   `release-readiness` to inspect the exact head, downstream workflow steps,
+   skipped gates, generated routes, packaged downloads and host acceptance.
+   For risky deployments, consult [production readiness](references/production-readiness.md).
+   Update the PR checklist; reopen items invalidated by later commits. Inspect the final diff, changed scope,
    CI and review threads; use an independent reviewer when risk warrants it.
-   Keep regressions in executable tests. Correct only affected map pointers or operational contracts; otherwise state `map unchanged`. Do not create internal documentation or a changelog entry by habit. User-requested documentation is a separate deliverable.
+   Keep executable regressions. Update affected map pointers or state `map unchanged`. Avoid unsolicited changelogs.
 6. **Finish or hand off truthfully.** Merge, release, deploy or close issues only if
    authorized and the actual gates pass. Otherwise preserve work in a reviewable
    branch and put a precise next action, owner, blocker and proof gap in the PR.

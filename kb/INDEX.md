@@ -3,9 +3,7 @@
 
 53 active practices, 86 learnings. Load the least that answers the question:
 
-1. `kb/bundles/<stack>.md`: one line per practice for a stack (`any` always applies).
-2. `grep -i <term> kb/index.jsonl`: one JSON line per node, with edges.
-3. `kb/practices/<id>.md`: the card, with the reason. Its `derived_from` names the evidence.
+Use `kb/bundles/<stack>.md` for stack rules, `kb/index.jsonl` to search nodes, and `kb/practices/<id>.md` for evidence.
 
 | Concern | Practices | Read before |
 | --- | --- | --- |
@@ -53,6 +51,7 @@
 - presentation-design (skill): Create and inspect real slide files with purposeful visuals and honest export claims.
 - presentation-story (skill): Build evidence-backed presentation arguments, storylines and action titles.
 - product-passport (skill): Map product features, exercise real user journeys, collect proof, and maintain architecture and verification boundaries.
+- release-readiness (skill): Audit exact-SHA release gates, downstream CI failures, packaging integrity and post-release acceptance.
 - security-review (skill): Review auth, secrets, filesystem and AI tool trust boundaries using evidence and negative-path tests.
 - serena (plugin): Semantic code analysis MCP server: symbol-level navigation and refactoring via language servers.
 - session-continuity (skill): Keep long work alive across compactions: durable state, standalone check-ins, work checked against the plan, open points raised.

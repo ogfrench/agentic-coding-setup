@@ -36,7 +36,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
             self.assertIn(f"skills/{name}/SKILL.md", files)
             self.assertTrue(any(p.startswith(f"skills/{name}/references/") for p in files))
 
-        self.assertEqual(len(skill_names), 27)
+        self.assertEqual(len(skill_names), 28)
         for name in FULL_SKILLS:
             content = files[f"skills/{name}/SKILL.md"].decode("utf-8")
             self.assertIn("## ChatGPT host capability contract", content)
@@ -73,7 +73,7 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("knowledge/README.md", best)
         self.assertIn("knowledge/source-index.jsonl", best)
         manifest = json.loads(files["assets/provenance.json"])
-        self.assertEqual(manifest["skill_count"], 27)
+        self.assertEqual(manifest["skill_count"], 28)
         self.assertEqual(manifest["practice_count"], len(practices))
         for name, checksum in manifest["sha256"].items():
             self.assertEqual(checksum, hashlib.sha256(files[name]).hexdigest())
