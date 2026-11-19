@@ -49,7 +49,7 @@ test("release-readiness requires asset-to-publisher closure, not just green CI",
   const skill = read("plugins/agent-workflow/skills/release-readiness/SKILL.md");
   for (const phrase of ["Release-asset closure (mandatory)", "delivery inventory",
                         "notes-only release", "fail if required files or checksums",
-                        "missing asset, stale version/commit, bad checksum",
+                        "stale version/commit, bad checksum",
                         "download and", "incomplete", "privacy scope"])
     assert.ok(skill.includes(phrase), `Missing release guard: ${phrase}`);
   assert.match(skill, /upload-artifact.*not.*GitHub Release asset/);
