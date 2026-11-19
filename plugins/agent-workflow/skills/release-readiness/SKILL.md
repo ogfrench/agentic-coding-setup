@@ -50,6 +50,23 @@ published immutable assets or bypass checksum guards to make CI green.
 For an unreleased candidate, repin only with the repository's authorized
 procedure and verify a subsequent clean production-mode build.
 
+### Release-asset closure (mandatory)
+
+Build a **delivery inventory** from promised downloads and prior release assets:
+filename, version, source commit, generator, workflow trigger, attachment step,
+checksum and privacy scope. An Actions `upload-artifact` preview is **not** a GitHub Release asset.
+A `gh release create` without ZIP paths is a **notes-only release**, even with green CI.
+
+Trace trigger -> build -> validate -> upload; fail if required files or checksums
+are absent. Enforce release-tag/commit parity and regressions for missing asset,
+stale version/commit, bad checksum, and privacy scope. Build all required files
+before publishing, attach together, and never overwrite published immutable ZIPs.
+Keep restricted data and credentials behind their existing authorization gates.
+
+After publication, inspect actual assets, download and verify their checksums.
+Release publication does not update accounts or prove MCP authentication.
+Mark a release **incomplete** if promised assets are missing despite green CI.
+
 ## 4. Prove behavior, not just compilation
 
 Run proportionate unit/integration tests and real user journeys in the target
