@@ -44,3 +44,14 @@ test("writing is provided by Agentic Workflow without legacy marketplace plugins
     assert.ok(read(`plugins/agent-workflow/skills/${name}/SKILL.md`).startsWith(`---\nname: ${name}\n`));
   assert.match(read("plugins/agent-workflow/skills/humanizer/LICENSE"), /MIT License/);
 });
+
+test("release-readiness requires asset-to-publisher closure, not just green CI", () => {
+  const skill = read("plugins/agent-workflow/skills/release-readiness/SKILL.md");
+  for (const phrase of ["Release-asset closure (mandatory)", "delivery inventory",
+                        "notes-only release", "fail if required files or checksums",
+                        "missing asset, stale version/commit, bad checksum",
+                        "download and", "incomplete", "privacy scope"])
+    assert.ok(skill.includes(phrase), `Missing release guard: ${phrase}`);
+  assert.match(skill, /upload-artifact.*not.*GitHub Release asset/);
+  assert.match(skill, /publication does not update accounts/);
+});
