@@ -52,32 +52,20 @@ procedure and verify a subsequent clean production-mode build.
 
 ### Release-asset closure (mandatory)
 
-Before a release is approved, make a **delivery inventory** from the product's download
-links, installer instructions, changelog, supported host editions and previous release
-assets. For every promised distribution, identify the exact versioned filename, generator,
-commit/tag, workflow event, release-upload step, checksum and distribution policy.
-An Actions `upload-artifact` preview is **not** a GitHub Release asset.
+Build a **delivery inventory** from promised downloads and prior release assets:
+filename, version, source commit, generator, workflow trigger, attachment step,
+checksum and privacy scope. An Actions `upload-artifact` preview is **not** a GitHub Release asset.
+A `gh release create` without ZIP paths is a **notes-only release**, even with green CI.
 
-Trace the actual release path from trigger through packaging, validation and attachment:
+Trace trigger -> build -> validate -> upload; fail if required files or checksums
+are absent. Enforce release-tag/commit parity and regressions for missing asset,
+stale version/commit, bad checksum, and privacy scope. Build all required files
+before publishing, attach together, and never overwrite published immutable ZIPs.
+Keep restricted data and credentials behind their existing authorization gates.
 
-- A workflow that runs `gh release create` with notes but no ZIP filenames is a
-  **notes-only release**, even if separate packaging workflows are green.
-- Packaging and manifest versions must come from the same accepted commit and authorized
-  release tag; release publishing must fail if required files or checksums are absent.
-- Prefer preparing and validating all assets before publishing the release. Attach
-  required assets in the release publication step rather than relying on a best-effort
-  later run. On retries, verify immutable assets instead of silently replacing them.
-- Add an automated positive-path check (all expected assets attached) and negative-path
-  regressions (missing asset, stale version/commit, bad checksum, wrong privacy scope).
-- Restricted reports, licensed assets, personal credentials and private plugins need
-  their existing distribution authorization. Never solve an upload gap by making
-  private material public or bundling keys.
-
-**After publication**, inspect the actual GitHub Release asset list and download and
-verify the checksums against the accepted build. Separately verify deploy revision
-and installed ChatGPT/Claude plugin versions; publication does not update accounts
-or prove MCP authentication. Mark a release **incomplete** when an expected
-distribution is missing, regardless of a green Actions run.
+After publication, inspect actual assets, download and verify their checksums.
+Release publication does not update accounts or prove MCP authentication.
+Mark a release **incomplete** if promised assets are missing despite green CI.
 
 ## 4. Prove behavior, not just compilation
 
