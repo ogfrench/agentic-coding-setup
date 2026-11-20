@@ -10,7 +10,7 @@ test("parallel work is classified by contracts and integrated behavior", () => {
   const guide = read("plugins/agent-workflow/skills/model-delegation/references/conflict-aware-parallelism.md");
   const delivery = read("plugins/agent-workflow/skills/delivery-loop/SKILL.md");
   assert.match(skill, /conflict-aware-parallelism\.md/);
-  for (const term of ["Independent", "Contract-dependent", "Conflicting", "final", "different files"])
+  for (const term of ["Independent", "Contract-dependent", "Conflicting", "combined revision", "different files"])
     assert.ok(guide.toLowerCase().includes(term.toLowerCase()), term);
   assert.match(delivery, /Verify shared contracts and behavior after integrating/);
 });
