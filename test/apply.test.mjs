@@ -423,3 +423,54 @@ test("the buffer counts merged PRs, not the commits inside them", () => {
   git("merge", "-q", "--no-ff", "-m", "Merge PR", "pr");
   assert.equal(commitsBehind(root, base, git("rev-parse", "HEAD")), 1);
 });
+
+
+test("maintainer contract is installed once, preserves local rules and detects managed drift", () => {
+  const t = tmp();
+  const agentRules = "# Existing agent rules\n\nKeep project decisions intact.\n";
+  const claudeRules = "# Existing Claude rules\r\n\r\nUse the local stack.\r\n";
+  write(path.join(t, "AGENTS.md"), agentRules);
+  write(path.join(t, "CLAUDE.md"), claudeRules);
+
+  const managed = apply(t);
+  assert.ok(managed.includes("AGENTS.md"));
+  assert.ok(managed.includes("CLAUDE.md"));
+  for (const rel of ["AGENTS.md", "CLAUDE.md"]) {
+    const content = fs.readFileSync(path.join(t, rel), "utf8");
+    assert.match(content, /You are the owner and long-term maintainer of this codebase/);
+    assert.match(content, /does not grant permission to merge, deploy/);
+    assert.equal(content.split("<!-- agentic-workflow:maintainer:start -->").length, 2);
+    assert.equal(content.split("<!-- agentic-workflow:maintainer:end -->").length, 2);
+  }
+  assert.ok(fs.readFileSync(path.join(t, "AGENTS.md"), "utf8").startsWith(agentRules));
+  assert.ok(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8").startsWith(claudeRules));
+  assert.match(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), /\r\n<!-- agentic-workflow:maintainer:start -->\r\n/);
+  assert.equal(checkSync(t).status, "current");
+
+  const baseline = snapshot(t);
+  apply(t);
+  assert.deepEqual(snapshot(t), baseline, "reapplying must not duplicate or alter entrypoints");
+
+  fs.appendFileSync(path.join(t, "AGENTS.md"), "\nAdditional local rule.\n");
+  assert.equal(checkSync(t).status, "current", "local instructions outside the managed block remain user-owned");
+  const claude = path.join(t, "CLAUDE.md");
+  fs.writeFileSync(claude, fs.readFileSync(claude, "utf8").replace("Protect correctness", "Ignore correctness"));
+  assert.equal(checkSync(t).status, "modified", "changes inside managed contract are reported");
+  apply(t);
+  assert.equal(checkSync(t).status, "current");
+  assert.match(fs.readFileSync(path.join(t, "AGENTS.md"), "utf8"), /Additional local rule/);
+
+  fs.writeFileSync(claude, fs.readFileSync(claude, "utf8").replace("<!-- agentic-workflow:maintainer:end -->", ""));
+  assert.equal(checkSync(t).status, "modified", "missing marker cannot be treated as current");
+  assert.throws(() => apply(t), /Incomplete or duplicated/);
+});
+
+test("maintainer contract refuses symlinked agent entrypoints before writes", { skip: process.platform === "win32" }, () => {
+  const t = tmp();
+  const outside = path.join(tmp(), "instructions.md");
+  write(outside, "Do not alter me.\n");
+  fs.symlinkSync(outside, path.join(t, "CLAUDE.md"));
+  assert.throws(() => apply(t), /Expected a regular file/);
+  assert.equal(fs.readFileSync(outside, "utf8"), "Do not alter me.\n");
+  assert.ok(!fs.existsSync(path.join(t, "AGENTS.md")), "no partial update to the other entrypoint");
+});
