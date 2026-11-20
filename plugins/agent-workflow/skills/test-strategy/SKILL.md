@@ -35,6 +35,14 @@ Do not treat a passing test as proof that the product meets requirements by defa
    justified skips and remaining gaps. A skipped, blocked, stale or waived test is
    **not** a pass.
 
+## Shared-state and multi-user correctness
+
+For concurrent writes, live collaboration, tenant-owned data, reconnects or offline
+synchronization, consult [multi-user correctness](references/multi-user-correctness.md).
+Identify the state owner, atomicity and conflict policy before choosing tests or
+algorithms. Test real competing operations and authorization boundaries where relevant.
+Ordinary single-user or read-only changes do not need this protocol.
+
 ## Source-derived output checks
 
 For migrations, generated documents, exports and reports, trace outputs to

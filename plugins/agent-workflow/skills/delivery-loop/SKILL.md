@@ -80,6 +80,7 @@ independent critique before commitment or merge. One executive owns delivery.
   and update them; do not spawn agents, issues or PRs merely to signal activity.
 - One agent owns the authoritative PR checklist. Parallel agents may implement
   isolated work, but their reports require verification before ticking acceptance.
+  Verify shared contracts and behavior after integrating their changes at the final head.
 - This skill does not grant repository access, credentials, production privileges,
   autonomous background execution or permission to override the user's stop request.
 

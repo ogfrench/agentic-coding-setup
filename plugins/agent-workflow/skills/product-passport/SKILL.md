@@ -25,7 +25,7 @@ For substantive coding work, use the capability record as a **navigation hint** 
 
 ## Keep product maps current
 
-For substantive product or release work, inspect the existing canonical map and feature entries; seed a small map if missing. Update impacted entry points, owners, integrations and journeys **in the same PR** after verifying code and tests. Cosmetic edits need no map churn.
+For substantive product or release work, inspect the existing canonical map and feature entries; seed a small map if missing. Update impacted entry points, owners, integrations and journeys **in the same PR** after verifying code and tests. For shared mutable state, record the authoritative owner, critical invariants and conflict policy, not a second copy of implementation logic. Cosmetic edits need no map churn.
 
 Keep private evidence within its product repository. Never treat a map as source or claim unrun tests as passed. At completion report `map updated` (paths), `map unchanged` (why), or `map blocked` (missing evidence). See [feature contract](references/feature-contract.md) for the map format. The [plugin product map](references/plugin-product-map.md) records this workflow family's ownership and routing. Repo-level instructions must preserve this obligation even when the skill is not loaded.
 
