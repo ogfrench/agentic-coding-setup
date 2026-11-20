@@ -25,6 +25,15 @@ test("CalVer release publishes both validated plugin editions", () => {
   assert.doesNotMatch(wf, /Keep ChatGPT package private for explicitly reviewed installation/, "Release must not hide distributable ZIP in a temporary artifact");
 });
 
+test("CI candidate labels do not drift from the versioned archives", () => {
+  const wf = read(".github/workflows/check.yml");
+  const version = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json")).version;
+  assert.match(wf, /name: agentic-workflow-claude-candidate\b/);
+  assert.match(wf, /name: agentic-workflow-chatgpt-candidate\b/);
+  assert.ok(wf.includes('f"agentic-workflow-claude-v{version}.zip"'));
+  assert.doesNotMatch(wf, /name: agentic-workflow-claude-v\d{4}\.\d{1,2}\.\d+-candidate/);
+});
+
 test("no plugin name is reserved for Anthropic's own plugins", () => {
   const reserved = /^(claude|anthropic|anthropics|cc-plugin)(-|$)|^claude-mods$/;
   const marketplace = JSON.parse(read(".claude-plugin/marketplace.json"));
