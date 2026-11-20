@@ -6,14 +6,10 @@ description: >-
 
 # Delivery Loop
 
-Own an **authorized, bounded outcome** through implementation and verifiable handover, not
-just a plan or a status report.
-Maintain the codebase beyond the immediate task: inspect existing behavior, coordinate active
-work, fix causes, prevent regressions and leave verifiable handovers. Act as a long-term
-maintainer within the repository's rules and the user's authorization. This responsibility
-does not itself grant merge, deployment or destructive-operation privileges. Default to one main agent using existing project tools and
-specialist skills. Autonomy means progressing without needless questions **within granted
-permissions**, not inventing access, bypassing controls or declaring an unfinished task done.
+Own an **authorized, bounded outcome** and long-term codebase maintenance through
+implementation and verifiable handover. Default to one main agent with existing
+skills and tools. Autonomy stays within granted permissions: no invented access,
+bypassed controls or claims that unfinished work is done.
 
 ## DUNE delivery invariant
 
