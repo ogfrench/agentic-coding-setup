@@ -62,6 +62,7 @@ flowchart LR
 
 - `plugins/agent-workflow/skills/` is the **canonical shared source**, including the three writing skills. No separately packaged writing plugin is needed. ChatGPT packaging copies approved Markdown and adds host capability guidance. No hooks, MCP servers or local executables are smuggled into that edition.
 - Repo-level `setup-user.sh`, `sync-to-repos.sh`, `project/settings.json` and marketplace configuration are Claude-specific. They do not update an already installed ChatGPT plugin.
+- Optional repository sync also installs the canonical `project/maintainer-contract.md` into the marked sections of `AGENTS.md` and `CLAUDE.md`. `lib/apply.mjs` preserves local instructions; `lib/sync-status.mjs` checks the managed block without treating unrelated local edits as drift. ChatGPT account installation alone cannot modify repository files.
 - The release number is synchronized across `plugins/agent-workflow/.claude-plugin/plugin.json` and `portable/agentic-workflow/plugin.json`. A build/test gate rejects drift; independent plugin families retain independent versions.
 - An actual release requires separate GitHub source acceptance, artifact provenance, installed-host acceptance and rollback record.
 - Session-continuity owns the durable scratchpad and before/after proof. Delivery-loop owns production readiness and PR completion; test-strategy chooses sufficient verification. Skills grant no permissions, account data or background execution.
