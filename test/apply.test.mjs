@@ -56,7 +56,7 @@ test("apply on the real repo: copies skills, merges settings, is idempotent", ()
   assert.deepEqual(settings.permissions, { allow: ["Bash(npm test)"] });
   assert.deepEqual(settings.hooks.Stop, [], "the repo's own hook is kept");
   assert.match(settings.hooks.SessionStart[0].hooks[0].command, /\.claude\/knowledge\/must\.md/);
-  assert.equal(settings.enabledPlugins["superpowers@claude-plugins-official"], true);
+  assert.equal(settings.enabledPlugins?.["superpowers@claude-plugins-official"], undefined, "sync never activates unrequested plugins");
   assert.equal(settings.extraKnownMarketplaces.ogfrench.source.repo, "ogfrench/agentic-coding-setup");
 
   for (const s of ["frogify", "deslopify", "humanizer"]) {
@@ -574,4 +574,92 @@ test("maintainer capability rule remains canonical across agent entrypoints", ()
     const content = fs.readFileSync(path.join(ROOT, rel), "utf8");
     assert.ok(content.includes(block), rel + " must match the canonical managed block");
   }
+});
+
+test("single-entrypoint repository keeps AGENTS.md authoritative without creating CLAUDE.md", () => {
+  const t = tmp();
+  const original = "# Project-specific rules\n\nAGENTS.md is the only instruction source.\n";
+  write(path.join(t, "AGENTS.md"), original);
+  apply(t);
+  const first = snapshot(t);
+  assert.ok(fs.readFileSync(path.join(t, "AGENTS.md"), "utf8").startsWith(original));
+  assert.ok(!fs.existsSync(path.join(t, "CLAUDE.md")), "do not invent a second instruction source");
+  assert.deepEqual(read(path.join(t, ".claude/claude-code-setup.json")).maintainer_entrypoints, ["AGENTS.md"]);
+  assert.equal(checkSync(t).status, "current");
+  apply(t);
+  assert.deepEqual(snapshot(t), first, "repeat sync must be idempotent");
+});
+
+test("CLAUDE.md-only repository never grows AGENTS.md", () => {
+  const t = tmp();
+  write(path.join(t, "CLAUDE.md"), "# Existing Claude workflow\n");
+  apply(t);
+  assert.ok(!fs.existsSync(path.join(t, "AGENTS.md")));
+  assert.deepEqual(read(path.join(t, ".claude/claude-code-setup.json")).maintainer_entrypoints, ["CLAUDE.md"]);
+  assert.equal(checkSync(t).status, "current");
+});
+
+test("CLAUDE.md importing AGENTS.md does not get duplicate maintainer instructions", () => {
+  const t = tmp();
+  write(path.join(t, "AGENTS.md"), "# Authoritative instructions\n");
+  write(path.join(t, "CLAUDE.md"), "# Claude\n\n@AGENTS.md\n");
+  apply(t);
+  assert.deepEqual(read(path.join(t, ".claude/claude-code-setup.json")).maintainer_entrypoints, ["AGENTS.md"]);
+  assert.equal(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), "# Claude\n\n@AGENTS.md\n");
+  assert.equal(checkSync(t).status, "current");
+});
+
+test("repo-owned policy selects one maintained instruction file and detects changes", () => {
+  const t = tmp();
+  write(path.join(t, "AGENTS.md"), "# Existing cross-agent rules\n");
+  write(path.join(t, "CLAUDE.md"), "# Separate Claude instructions\n");
+  const policy = path.join(t, ".claude/agentic-workflow-sync.json");
+  write(policy, { maintainer_entrypoints: ["AGENTS.md"] });
+  apply(t);
+  assert.deepEqual(read(path.join(t, ".claude/claude-code-setup.json")).maintainer_entrypoints, ["AGENTS.md"]);
+  assert.equal(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), "# Separate Claude instructions\n");
+  assert.equal(checkSync(t).status, "current");
+  write(policy, { maintainer_entrypoints: ["AGENTS.md", "CLAUDE.md"] });
+  assert.equal(checkSync(t).status, "outdated", "changing project policy requires an explicit resync");
+  apply(t);
+  assert.match(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), /long-term maintainer/);
+  assert.equal(checkSync(t).status, "current");
+});
+
+test("invalid or symlinked project policy refuses sync before writing", { skip: process.platform === "win32" }, () => {
+  for (const bad of [{ maintainer_entrypoints: ["../../README.md"] },
+                     { maintainer_entrypoints: ["AGENTS.md", "AGENTS.md"] },
+                     { maintainer_entrypoints: [] }]) {
+    const t = tmp();
+    write(path.join(t, "AGENTS.md"), "keep original");
+    write(path.join(t, ".claude/agentic-workflow-sync.json"), bad);
+    assert.throws(() => apply(t), /Invalid maintainer_entrypoints/);
+    assert.equal(fs.readFileSync(path.join(t, "AGENTS.md"), "utf8"), "keep original");
+    assert.ok(!fs.existsSync(path.join(t, ".claude/claude-code-setup.json")));
+  }
+  const t = tmp(), outside = path.join(tmp(), "config.json");
+  write(outside, { maintainer_entrypoints: ["AGENTS.md"] });
+  fs.mkdirSync(path.join(t, ".claude"));
+  fs.symlinkSync(outside, path.join(t, ".claude/agentic-workflow-sync.json"));
+  assert.throws(() => apply(t), /Sync policy must be a regular file/);
+});
+
+test("source defaults never activate plugins, while project opt-ins and legacy choices survive", () => {
+  const t = tmp();
+  apply(t);
+  assert.equal(read(path.join(t, ".claude/settings.json")).enabledPlugins, undefined);
+  const own = tmp();
+  write(path.join(own, ".claude/settings.json"), {
+    enabledPlugins: { "playwright@claude-plugins-official": true, "unused@other": false },
+    permissions: { deny: ["Read(./secrets/**)"] },
+  });
+  apply(own);
+  const settings = read(path.join(own, ".claude/settings.json"));
+  assert.deepEqual(settings.enabledPlugins, {
+    "playwright@claude-plugins-official": true, "unused@other": false,
+  });
+  assert.deepEqual(settings.permissions.deny, ["Read(./secrets/**)"]);
+  const first = snapshot(own);
+  apply(own);
+  assert.deepEqual(snapshot(own), first);
 });
