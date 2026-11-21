@@ -75,6 +75,10 @@ a permanent orchestration tier or pretend the host can spawn agents.
   proves the same findings emerge without it.
 - Parallel writes need separate worktrees, ports and state. Shared databases,
   rate limits and watched browser stacks run serially.
+- Before parallel implementation, classify tasks by shared behavior, contracts and
+  invariants, not only file overlap. For independent, dependent and conflicting work,
+  use the [conflict-aware parallelism protocol](references/conflict-aware-parallelism.md).
+  Successful isolated branches are not proof of a compatible integrated product.
 - For source-derived work, partition writable outputs, not source access;
   workers may share read-only canonical inputs. The main agent runs shared
   generation and acceptance checks. Workers flag source omissions or

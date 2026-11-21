@@ -26,3 +26,14 @@ graders are diagnostic in two-arm runs, not evidence that output improved.
 Reports under `evals/results/` stay local and must not enter this public repo.
 
 Documentation: https://code.claude.com/docs/en/plugin-evals
+
+For conflict-aware coordination, run `agent-coordination-semantic-conflict` and evaluate
+whether the model protects shared contracts without defaulting to an orchestration service.
+For shared-state correctness, compare `multi-user-correctness-positive`,
+`multi-user-correctness-ambiguous`, and `multi-user-correctness-negative` against
+skill-disabled baselines. Static validation alone is not a behavioral evaluation.
+
+The `multi-user-correctness-intentional-copies` case tests whether the model separates
+transport retries from deliberately repeated actions and respects product rules that
+allow duplicate display titles. Do not turn a UX naming race into an invented
+uniqueness constraint or global deduplication rule.

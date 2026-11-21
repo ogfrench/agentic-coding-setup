@@ -1,8 +1,8 @@
 # Agentic Workflow for ChatGPT
 
-**Full portable edition, v2026.11.12.** Source: [ogfrench/agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup).
+**Full portable edition, v2026.11.14.** Source: [ogfrench/agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup).
 
-This package provides the 23 source-owned engineering, story and design skills from the Claude Code edition of `agentic-workflow`, 4 previously portable review/setup skills, and the curated public engineering-practice knowledge base. All skills retain their owning source guidance and supporting references. A short ChatGPT host-adapter contract is injected into the Claude-derived skills to prevent claiming unavailable tools or runtime features.
+This package provides the 24 source-owned engineering, story and design skills from the Claude Code edition of `agentic-workflow`, 4 previously portable review/setup skills, and the curated public engineering-practice knowledge base. All skills retain their owning source guidance and supporting references. A short ChatGPT host-adapter contract is injected into the Claude-derived skills to prevent claiming unavailable tools or runtime features.
 
 ### Included workflow domains
 
@@ -26,10 +26,10 @@ Knowledge consists of source-linked, curated engineering practices and their pub
 
 ### Version and deprecation
 
-`agentic-workflow` v2026.11.12 supersedes **ChatGPT Workflow Lite** v1.12.0 and the legacy personal `ogfrench-workflow` v0.1.1 **for ChatGPT**. The Lite archives remain only as historical compatibility packages and are deprecated, not auto-deleted. The Claude Code edition of `agentic-workflow` (named `claude-workflow` through 2026.11.3) shares this release number, but remains independently packaged and host-verified.
+`agentic-workflow` v2026.11.14 supersedes **ChatGPT Workflow Lite** v1.12.0 and the legacy personal `ogfrench-workflow` v0.1.1 **for ChatGPT**. The Lite archives remain only as historical compatibility packages and are deprecated, not auto-deleted. The Claude Code edition of `agentic-workflow` (named `claude-workflow` through 2026.11.3) shares this release number, but remains independently packaged and host-verified.
 
 ### Building and testing
 
-Run `python3 -m unittest discover -s test -p test_agentic_workflow_chatgpt.py`, then `python3 scripts/package_agentic_workflow_chatgpt.py`. The build uses the checked-in canonical source, fails on missing skills or linked support files, keeps an integrity manifest and creates a reproducible ZIP. From the next GitHub release after `v2026.11.9`, obtain the versioned ChatGPT ZIP and shared `SHA256SUMS.txt` from GitHub Releases. Verify the digest, then create or update the same-identity plugin privately through ChatGPT Plugin Creator. Inspect installed version, all 27 skills and a real repository task. The public archive does not publish the ChatGPT account plugin. Claude Code installation is separate: use `bash setup-user.sh` from the reviewed repository checkout and inspect `claude plugin list`.
+Run `python3 -m unittest discover -s test -p test_agentic_workflow_chatgpt.py`, then `python3 scripts/package_agentic_workflow_chatgpt.py`. The build uses the checked-in canonical source, fails on missing skills or linked support files, keeps an integrity manifest and creates a reproducible ZIP. From the next GitHub release after `v2026.11.9`, obtain the versioned ChatGPT ZIP and shared `SHA256SUMS.txt` from GitHub Releases. Verify the digest, then create or update the same-identity plugin privately through ChatGPT Plugin Creator. Inspect installed version, all 28 skills and a real repository task. The public archive does not publish the ChatGPT account plugin. Claude Code installation is separate: use `bash setup-user.sh` from the reviewed repository checkout and inspect `claude plugin list`.
 
 No public directory submission or share permission is implied.

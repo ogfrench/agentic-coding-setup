@@ -6,7 +6,7 @@ const read = (path) => readFileSync(new URL("../" + path, import.meta.url), "utf
 test("CalVer release publishes both validated plugin editions", () => {
   const claude = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json"));
   const chatgpt = JSON.parse(read("portable/agentic-workflow/plugin.json"));
-  assert.equal(claude.version, "2026.11.13");
+  assert.equal(claude.version, "2026.11.14");
   assert.equal(chatgpt.version, claude.version);
   assert.ok(claude.description.length > 0 && claude.description.length <= 500, "Claude upload description must be at most 500 characters");
   const wf = read(".github/workflows/release.yml");
@@ -23,6 +23,38 @@ test("CalVer release publishes both validated plugin editions", () => {
   assert.ok(wf.includes('verify_archive(path)'), "Validate ChatGPT archive against source");
   assert.doesNotMatch(wf, /acceptance_waiver|ACCEPTANCE_WAIVER/, "Do not require boilerplate host-acceptance waivers");
   assert.doesNotMatch(wf, /Keep ChatGPT package private for explicitly reviewed installation/, "Release must not hide distributable ZIP in a temporary artifact");
+});
+
+test("CI candidate labels do not drift from the versioned archives", () => {
+  const wf = read(".github/workflows/check.yml");
+  assert.match(wf, /name: agentic-workflow-claude-candidate\b/);
+  assert.match(wf, /name: agentic-workflow-chatgpt-candidate\b/);
+  assert.ok(wf.includes('f"agentic-workflow-claude-v{version}.zip"'));
+  assert.doesNotMatch(wf, /name: agentic-workflow-claude-v\d{4}\.\d{1,2}\.\d+-candidate/);
+});
+
+test("ChatGPT portable installation guides match the canonical package", () => {
+  const version = JSON.parse(read("portable/agentic-workflow/plugin.json")).version;
+  const readme = read("portable/agentic-workflow/README.md");
+  const guide = read("docs/agentic-workflow-chatgpt.md");
+  assert.ok(readme.includes(`Full portable edition, v${version}`));
+  assert.ok(readme.includes("24 source-owned"));
+  assert.ok(readme.includes("all 28 skills"));
+  assert.ok(guide.includes('`agentic-workflow` v' + version + ' is the'));
+  assert.ok(guide.includes("**28 skills**"));
+  assert.ok(guide.includes("inventory (28 skills)"));
+  assert.ok(guide.includes(`dist/agentic-workflow-chatgpt-v${version}.zip`));
+  assert.ok(guide.includes("release-readiness"));
+});
+
+test("maintainer guide matches the distributed skill inventories and marketplace version", () => {
+  const guide = read("docs/maintainers-guide.md");
+  const marketplace = read(".claude-plugin/marketplace.json");
+  const version = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json")).version;
+  assert.ok(guide.includes("Full 24-skill engineering"));
+  assert.ok(guide.includes("Full 28-skill ChatGPT"));
+  assert.ok(guide.includes("Full 28-skill"));
+  assert.ok(marketplace.includes(`Agentic Workflow v${version}: 24 Claude skills`));
 });
 
 test("no plugin name is reserved for Anthropic's own plugins", () => {

@@ -144,3 +144,13 @@ ordinary coding tasks, whether or not the skill is selected.
 ## Always-shippable default branch
 
 Keep `main` releasable at every merge. This is a delivery requirement, not a claim that every historical revision is already healthy or deployed. Incomplete work stays on a draft PR or isolated branch. Before merging, inspect the final source diff, validate actual user and install/sync paths affected by the change, and require exact-head CI plus relevant negative cases. Track broken or missing host acceptance explicitly rather than implying success from metadata or static tests. Never bypass failing gates, weaken privacy checks, or claim a source merge automatically installed, synchronized, deployed or released a plugin. Reconcile the Product Passport map and PR checklist in the same change; preserve the existing release and permission boundaries.
+
+<!-- agentic-workflow:maintainer:start -->
+## Agentic Workflow: maintainer responsibility
+
+You are the owner and long-term maintainer of this codebase for engineering purposes. Its ongoing maintenance is your responsibility, beyond the current task.
+
+Before changing code, inspect the implementation, tests, dependencies, repo rules and active work. Protect correctness, security, privacy, maintainability and actual user behavior. Fix root causes, prevent regressions, and check shared state and account boundaries when multiple users can interact. Coordinate overlapping work and verify combined changes at the final revision. Preserve decisions, evidence and remaining work so the next session can continue.
+
+Act on problems within the scope you have been authorized to handle. This responsibility does not grant permission to merge, deploy, change credentials, destroy data or bypass approvals. Report what was implemented, what was tested and what remains unverified.
+<!-- agentic-workflow:maintainer:end -->
