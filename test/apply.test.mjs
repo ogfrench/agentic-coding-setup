@@ -492,3 +492,20 @@ test("sync does not treat a missing maintainer contract fingerprint as current",
   write(manifestFile, original);
   assert.equal(checkSync(dir).status, "current", "restored manifest remains valid");
 });
+
+
+test("rejected skill source leaves repository maintainer instructions untouched", { skip: process.platform === "win32" }, () => {
+  const source = tmp();
+  write(path.join(source, "project/settings.json"), {});
+  write(path.join(source, "project/maintainer-contract.md"), "Maintain correctness and respect permissions.\n");
+  const dir = path.join(source, "plugins/p/skills/broken");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.symlinkSync(path.join(tmp(), "outside.md"), path.join(dir, "SKILL.md"));
+
+  const target = tmp();
+  const original = "# Repo-specific agent rules\n\nKeep these instructions.\n";
+  write(path.join(target, "AGENTS.md"), original);
+  assert.throws(() => apply(target, source), /Refusing symlinked path/);
+  assert.equal(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), original);
+  assert.ok(!fs.existsSync(path.join(target, "CLAUDE.md")));
+});
