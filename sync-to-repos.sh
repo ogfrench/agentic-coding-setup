@@ -2,7 +2,7 @@
 # Push this repo's shared setup into every repo in repos.local.txt, one PR per repo.
 # That list stays out of git: this repo is public, and a repo's name can name a client.
 #
-# Repository AGENTS.md and CLAUDE.md also gain a bounded maintainer contract;
+# Selected existing root instruction files receive a bounded maintainer contract;
 # existing repo instructions remain intact and only the marked block is updated.
 # Why copies at all: cloud sessions (claude.ai/code) never install plugins from
 # a repo's settings, but they do load its committed .claude/skills/, its hooks
@@ -174,10 +174,10 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
   local body="Synced from [ogfrench/agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup) by \`sync-to-repos.sh\`.
 
 - \`.claude/skills/\`: committed copies of the shared skills. Cloud sessions load these, but they never install plugins from project settings.
-- \`.claude/settings.json\`: registers the \`ogfrench\` marketplace and enables the plugins, for local sessions. Keys the repo already had are kept as they were.
+- \`.claude/settings.json\`: registers the \`ogfrench\` marketplace and merges shared hooks/settings. Existing project-owned plugin activations and permissions are retained; sync does not enable third-party plugins by default.
 - \`.claude/knowledge/\`: the practices for this repo's stacks (\`bundle.md\`, one card per practice, a search index). A SessionStart hook prints \`must.md\` from it, a few lines.
 - \`.claude/claude-code-setup.json\`: lists the synced copies, so a skill removed upstream is removed here too. Records the source commit and a fingerprint, so drift can be detected read-only.
-- Root \`AGENTS.md\` and \`CLAUDE.md\`: canonical long-term maintainer contract in a marked block. Existing instructions remain intact; only the managed block is updated.${renamed:+
+- Selected root instruction files (\`AGENTS.md\` and/or \`CLAUDE.md\`): canonical long-term maintainer contract in a marked block. Existing instructions remain intact; the target decides which entrypoints are managed.${renamed:+
 - $renamed}
 
 Edit managed copies in agentic-coding-setup, not downstream: the next sync overwrites them.${edited:+

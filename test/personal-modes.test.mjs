@@ -34,7 +34,7 @@ test("new personal modes are user-only Markdown skills with manual activation", 
   assert.ok(setup.includes('"$SRC"/user/skills/*/'));
   const project = JSON.parse(read("project/settings.json"));
   for (const name of ["caveman", "ponytail"]) {
-    assert.ok(!Object.keys(project.enabledPlugins).some((p) => p.startsWith(name + "@")));
+    assert.ok(!Object.keys(project.enabledPlugins ?? {}).some((p) => p.startsWith(name + "@")));
   }
 });
 
