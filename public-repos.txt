@@ -4,3 +4,4 @@
 ogfrench/agentic-coding-setup
 ogfrench/claude-code-setup
 ogfrench/fpe-design-system
+ogfrench/frogConvert
