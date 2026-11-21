@@ -133,6 +133,48 @@ jobs:
           npx -y @anthropic-ai/claude-code@2.1.323 plugin list | grep -F 'agentic-workflow@ogfrench'
           npx -y @anthropic-ai/claude-code@2.1.323 plugin uninstall agentic-workflow@ogfrench --scope user
           ! npx -y @anthropic-ai/claude-code@2.1.323 plugin list | grep -F 'agentic-workflow@ogfrench'
+      - name: Real existing-repository sync acceptance (public consumer; no push)
+        if: github.event_name == 'pull_request' && github.event.pull_request.number == 112
+        shell: bash
+        run: |
+          set -euo pipefail
+          t="$(mktemp -d)"
+          trap 'rm -rf "$t"' EXIT
+          git clone --quiet --depth=1 --branch master https://github.com/ogfrench/frogConvert.git "$t/consumer"
+          cp -a "$t/consumer" "$t/migrated"
+          cp "$t/consumer/AGENTS.md" "$t/agents.before"
+          cp "$t/consumer/.claude/settings.json" "$t/settings.before"
+          echo "Existing public consumer commit: $(git -C "$t/consumer" rev-parse HEAD)"
+          test ! -e "$t/consumer/CLAUDE.md"
+          node lib/apply.mjs "$t/migrated"
+          test ! -e "$t/migrated/CLAUDE.md"
+          node - "$t/settings.before" "$t/migrated/.claude/settings.json" "$t/agents.before" "$t/migrated/AGENTS.md" "$t/migrated/.claude/claude-code-setup.json" <<'NODE'
+          const fs = require('node:fs');
+          const assert = require('node:assert/strict');
+          const [oldSettings, newSettings, oldAgents, newAgents, newManifest] = process.argv.slice(2);
+          const before = JSON.parse(fs.readFileSync(oldSettings));
+          const after = JSON.parse(fs.readFileSync(newSettings));
+          assert.deepEqual(after.enabledPlugins, before.enabledPlugins, 'retain all existing plugin decisions');
+          assert.deepEqual(after.permissions, before.permissions, 'retain project permissions');
+          for (const [name, hooks] of Object.entries(before.hooks ?? {})) {
+            for (const hook of hooks) {
+              assert.ok((after.hooks?.[name] ?? []).some(x => JSON.stringify(x) === JSON.stringify(hook)), 'retain original hook');
+            }
+          }
+          const instructions = fs.readFileSync(newAgents, 'utf8');
+          assert.ok(instructions.startsWith(fs.readFileSync(oldAgents, 'utf8')), 'retain project instructions verbatim');
+          assert.equal(instructions.split('<!-- agentic-workflow:maintainer:start -->').length, 2);
+          const manifest = JSON.parse(fs.readFileSync(newManifest));
+          assert.deepEqual(manifest.maintainer_entrypoints, ['AGENTS.md']);
+          NODE
+          node scripts/check-sync.mjs "$t/migrated" --json
+          ( cd "$t/migrated" && find . -path './.git' -prune -o -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum ) > "$t/first.sha"
+          node lib/apply.mjs "$t/migrated"
+          ( cd "$t/migrated" && find . -path './.git' -prune -o -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum ) > "$t/second.sha"
+          cmp "$t/first.sha" "$t/second.sha"
+          node scripts/check-sync.mjs "$t/migrated" --json
+          git -C "$t/migrated" diff --check
+          echo "Existing-repo migration and repeat apply: verified without pushing target files"
       - name: Dry-run the apply step into an empty repo
         run: |
           t="$(mktemp -d)"
