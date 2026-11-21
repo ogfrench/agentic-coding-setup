@@ -677,3 +677,15 @@ test("a narrowed policy refuses to orphan an already managed Claude block", () =
   assert.equal(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), oldClaude);
   assert.equal(fs.readFileSync(path.join(t, ".claude/claude-code-setup.json"), "utf8"), oldManifest);
 });
+
+test("Markdown examples of imports do not silently change maintainer ownership", () => {
+  const t = tmp();
+  write(path.join(t, "AGENTS.md"), "# Agent instructions\n");
+  const claude = "# Claude\n\n~~~markdown\n@AGENTS.md\n~~~\n";
+  write(path.join(t, "CLAUDE.md"), claude);
+  apply(t);
+  assert.deepEqual(read(path.join(t, ".claude/claude-code-setup.json")).maintainer_entrypoints,
+    ["AGENTS.md", "CLAUDE.md"], "without an explicit policy, both existing files remain managed");
+  assert.ok(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8").startsWith(claude));
+  assert.equal(checkSync(t).status, "current");
+});
