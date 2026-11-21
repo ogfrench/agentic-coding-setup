@@ -33,6 +33,20 @@ test("CI candidate labels do not drift from the versioned archives", () => {
   assert.doesNotMatch(wf, /name: agentic-workflow-claude-v\d{4}\.\d{1,2}\.\d+-candidate/);
 });
 
+test("ChatGPT portable installation guides match the canonical package", () => {
+  const version = JSON.parse(read("portable/agentic-workflow/plugin.json")).version;
+  const readme = read("portable/agentic-workflow/README.md");
+  const guide = read("docs/agentic-workflow-chatgpt.md");
+  assert.ok(readme.includes(`Full portable edition, v${version}`));
+  assert.ok(readme.includes("24 source-owned"));
+  assert.ok(readme.includes("all 28 skills"));
+  assert.ok(guide.includes(`agentic-workflow\` v${version} is the`));
+  assert.ok(guide.includes("**28 skills**"));
+  assert.ok(guide.includes("inventory (28 skills)"));
+  assert.ok(guide.includes(`dist/agentic-workflow-chatgpt-v${version}.zip`));
+  assert.ok(guide.includes("release-readiness"));
+});
+
 test("no plugin name is reserved for Anthropic's own plugins", () => {
   const reserved = /^(claude|anthropic|anthropics|cc-plugin)(-|$)|^claude-mods$/;
   const marketplace = JSON.parse(read(".claude-plugin/marketplace.json"));
