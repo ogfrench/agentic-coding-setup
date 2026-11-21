@@ -689,3 +689,15 @@ test("Markdown examples of imports do not silently change maintainer ownership",
   assert.ok(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8").startsWith(claude));
   assert.equal(checkSync(t).status, "current");
 });
+
+test("generated sync PR descriptions respect target plugin and instruction ownership", () => {
+  const script = fs.readFileSync(path.join(ROOT, "sync-to-repos.sh"), "utf8");
+  const start = script.indexOf('  local body="');
+  const end = script.indexOf("\n  local ready=", start);
+  assert.ok(start !== -1 && end > start, "find the generated downstream PR description");
+  const body = script.slice(start, end);
+  assert.match(body, /Selected root instruction files/);
+  assert.match(body, /does not enable third-party plugins by default/);
+  assert.doesNotMatch(body, /enables the plugins/);
+  assert.doesNotMatch(body, /Root .*AGENTS\.md.* and .*CLAUDE\.md/);
+});
