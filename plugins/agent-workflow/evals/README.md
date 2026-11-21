@@ -32,3 +32,8 @@ whether the model protects shared contracts without defaulting to an orchestrati
 For shared-state correctness, compare `multi-user-correctness-positive`,
 `multi-user-correctness-ambiguous`, and `multi-user-correctness-negative` against
 skill-disabled baselines. Static validation alone is not a behavioral evaluation.
+
+The `multi-user-correctness-intentional-copies` case tests whether the model separates
+transport retries from deliberately repeated actions and respects product rules that
+allow duplicate display titles. Do not turn a UX naming race into an invented
+uniqueness constraint or global deduplication rule.
