@@ -47,7 +47,7 @@ test("every installed plugin, local skill and agent has a tool node, and no node
     .split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("#"));
   plugins.forEach((p) => need.add(p));
   const settings = JSON.parse(fs.readFileSync(path.join(ROOT, "project/settings.json"), "utf8"));
-  Object.keys(settings.enabledPlugins).forEach((p) => need.add(p));
+  Object.keys(settings.enabledPlugins ?? {}).forEach((p) => need.add(p));
   for (const plugin of fs.readdirSync(path.join(ROOT, "plugins"))) {
     for (const kind of ["skills", "agents"]) {
       const dir = path.join(ROOT, "plugins", plugin, kind);
