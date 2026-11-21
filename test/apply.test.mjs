@@ -509,3 +509,69 @@ test("rejected skill source leaves repository maintainer instructions untouched"
   assert.equal(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), original);
   assert.ok(!fs.existsSync(path.join(target, "CLAUDE.md")));
 });
+
+test("fenced maintainer marker examples are preserved and rejected before sync writes", () => {
+  const target = tmp();
+  const original = [
+    "# Project instructions",
+    "",
+    "The following is documentation, not a managed contract:",
+    "",
+    "~~~markdown",
+    "<!-- agentic-workflow:maintainer:start -->",
+    "EXAMPLE: never replace this text.",
+    "<!-- agentic-workflow:maintainer:end -->",
+    "~~~",
+    "",
+  ].join("\n");
+  write(path.join(target, "AGENTS.md"), original);
+  assert.throws(() => apply(target), /Refusing unowned Agentic Workflow maintainer markers in AGENTS\.md/);
+  assert.equal(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), original);
+  assert.ok(!fs.existsSync(path.join(target, "CLAUDE.md")));
+  assert.ok(!fs.existsSync(path.join(target, ".claude")), "preflight must reject before copying");
+});
+
+test("inline marker examples remain untouched during install and repeat sync", () => {
+  const target = tmp();
+  const tick = String.fromCharCode(96);
+  const original = "# Agent instructions\n\nIn prose, " + tick + "<!-- agentic-workflow:maintainer:start -->" + tick + " is an example, not a marker.\n";
+  write(path.join(target, "AGENTS.md"), original);
+  apply(target);
+  const installed = fs.readFileSync(path.join(target, "AGENTS.md"), "utf8");
+  assert.ok(installed.startsWith(original), "project prose must survive unchanged");
+  assert.equal(installed.split("<!-- agentic-workflow:maintainer:start -->").length, 3);
+  assert.equal(checkSync(target).status, "current");
+  apply(target);
+  assert.equal(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), installed);
+});
+
+test("orphaned maintainer markers stop sync before any target modification", () => {
+  const target = tmp();
+  const original = "# Rules\n\n<!-- agentic-workflow:maintainer:start -->\nDo not overwrite this.\n";
+  write(path.join(target, "CLAUDE.md"), original);
+  assert.throws(() => apply(target), /Incomplete or duplicated Agentic Workflow maintainer markers/);
+  assert.equal(fs.readFileSync(path.join(target, "CLAUDE.md"), "utf8"), original);
+  assert.ok(!fs.existsSync(path.join(target, "AGENTS.md")));
+  assert.ok(!fs.existsSync(path.join(target, ".claude")));
+});
+
+test("managed contracts require recorded provenance before replacing existing text", () => {
+  const target = tmp();
+  const original = "# Rules\n\n<!-- agentic-workflow:maintainer:start -->\nExisting local example.\n<!-- agentic-workflow:maintainer:end -->\n";
+  write(path.join(target, "CLAUDE.md"), original);
+  assert.throws(() => apply(target), /Refusing unowned Agentic Workflow maintainer markers in CLAUDE\.md/);
+  assert.equal(fs.readFileSync(path.join(target, "CLAUDE.md"), "utf8"), original);
+  assert.ok(!fs.existsSync(path.join(target, "AGENTS.md")));
+  assert.ok(!fs.existsSync(path.join(target, ".claude")));
+});
+
+test("maintainer capability rule remains canonical across agent entrypoints", () => {
+  const contract = fs.readFileSync(path.join(ROOT, "project/maintainer-contract.md"), "utf8").trimEnd();
+  const block = "<!-- agentic-workflow:maintainer:start -->\n" + contract + "\n<!-- agentic-workflow:maintainer:end -->";
+  assert.match(contract, /Before every task, check the available skills, plugins, MCP tools, and project utilities/);
+  assert.match(contract, /Use the best-fitting existing capability/);
+  for (const rel of ["AGENTS.md", "CLAUDE.md"]) {
+    const content = fs.readFileSync(path.join(ROOT, rel), "utf8");
+    assert.ok(content.includes(block), rel + " must match the canonical managed block");
+  }
+});
