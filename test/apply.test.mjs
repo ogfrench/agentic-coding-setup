@@ -603,6 +603,7 @@ test("CLAUDE.md importing AGENTS.md does not get duplicate maintainer instructio
   const t = tmp();
   write(path.join(t, "AGENTS.md"), "# Authoritative instructions\n");
   write(path.join(t, "CLAUDE.md"), "# Claude\n\n@AGENTS.md\n");
+  write(path.join(t, ".claude/agentic-workflow-sync.json"), { maintainer_entrypoints: ["AGENTS.md"] });
   apply(t);
   assert.deepEqual(read(path.join(t, ".claude/claude-code-setup.json")).maintainer_entrypoints, ["AGENTS.md"]);
   assert.equal(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), "# Claude\n\n@AGENTS.md\n");
