@@ -6,7 +6,7 @@ const read = (path) => readFileSync(new URL("../" + path, import.meta.url), "utf
 test("CalVer release publishes both validated plugin editions", () => {
   const claude = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json"));
   const chatgpt = JSON.parse(read("portable/agentic-workflow/plugin.json"));
-  assert.equal(claude.version, "2026.11.13");
+  assert.equal(claude.version, "2026.11.14");
   assert.equal(chatgpt.version, claude.version);
   assert.ok(claude.description.length > 0 && claude.description.length <= 500, "Claude upload description must be at most 500 characters");
   const wf = read(".github/workflows/release.yml");
@@ -45,6 +45,16 @@ test("ChatGPT portable installation guides match the canonical package", () => {
   assert.ok(guide.includes("inventory (28 skills)"));
   assert.ok(guide.includes(`dist/agentic-workflow-chatgpt-v${version}.zip`));
   assert.ok(guide.includes("release-readiness"));
+});
+
+test("maintainer guide matches the distributed skill inventories and marketplace version", () => {
+  const guide = read("docs/maintainers-guide.md");
+  const marketplace = read(".claude-plugin/marketplace.json");
+  const version = JSON.parse(read("plugins/agent-workflow/.claude-plugin/plugin.json")).version;
+  assert.ok(guide.includes("Full 24-skill engineering"));
+  assert.ok(guide.includes("Full 28-skill ChatGPT"));
+  assert.ok(guide.includes("Full 28-skill"));
+  assert.ok(marketplace.includes(`Agentic Workflow v${version}: 24 Claude skills`));
 });
 
 test("no plugin name is reserved for Anthropic's own plugins", () => {
