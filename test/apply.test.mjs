@@ -663,3 +663,16 @@ test("source defaults never activate plugins, while project opt-ins and legacy c
   apply(own);
   assert.deepEqual(snapshot(own), first);
 });
+
+test("a narrowed policy refuses to orphan an already managed Claude block", () => {
+  const t = tmp();
+  write(path.join(t, "AGENTS.md"), "# Existing instructions\n");
+  write(path.join(t, "CLAUDE.md"), "# Separate Claude instructions\n");
+  apply(t);
+  const oldClaude = fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8");
+  const oldManifest = fs.readFileSync(path.join(t, ".claude/claude-code-setup.json"), "utf8");
+  write(path.join(t, ".claude/agentic-workflow-sync.json"), { maintainer_entrypoints: ["AGENTS.md"] });
+  assert.throws(() => apply(t), /Refusing to abandon a previously managed maintainer contract in CLAUDE.md/);
+  assert.equal(fs.readFileSync(path.join(t, "CLAUDE.md"), "utf8"), oldClaude);
+  assert.equal(fs.readFileSync(path.join(t, ".claude/claude-code-setup.json"), "utf8"), oldManifest);
+});
