@@ -40,7 +40,7 @@ test("ChatGPT portable installation guides match the canonical package", () => {
   assert.ok(readme.includes(`Full portable edition, v${version}`));
   assert.ok(readme.includes("24 source-owned"));
   assert.ok(readme.includes("all 28 skills"));
-  assert.ok(guide.includes(`agentic-workflow\` v${version} is the`));
+  assert.ok(guide.includes('`agentic-workflow` v' + version + ' is the'));
   assert.ok(guide.includes("**28 skills**"));
   assert.ok(guide.includes("inventory (28 skills)"));
   assert.ok(guide.includes(`dist/agentic-workflow-chatgpt-v${version}.zip`));
