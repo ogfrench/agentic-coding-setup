@@ -474,3 +474,21 @@ test("maintainer contract refuses symlinked agent entrypoints before writes", { 
   assert.equal(fs.readFileSync(outside, "utf8"), "Do not alter me.\n");
   assert.ok(!fs.existsSync(path.join(t, "AGENTS.md")), "no partial update to the other entrypoint");
 });
+
+
+test("sync does not treat a missing maintainer contract fingerprint as current", () => {
+  const dir = tmp();
+  apply(dir);
+  const manifestFile = path.join(dir, ".claude/claude-code-setup.json");
+  const original = read(manifestFile);
+  const missing = { ...original };
+  delete missing.maintainer_contract_sha256;
+  write(manifestFile, missing);
+  assert.equal(checkSync(dir).status, "legacy", "missing managed hash requires resync");
+
+  write(manifestFile, { ...original, maintainer_contract_sha256: "not-a-digest" });
+  assert.equal(checkSync(dir).status, "invalid", "malformed fingerprint must not pass");
+
+  write(manifestFile, original);
+  assert.equal(checkSync(dir).status, "current", "restored manifest remains valid");
+});
