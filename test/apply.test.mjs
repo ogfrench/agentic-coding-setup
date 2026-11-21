@@ -568,7 +568,7 @@ test("managed contracts require recorded provenance before replacing existing te
 test("maintainer capability rule remains canonical across agent entrypoints", () => {
   const contract = fs.readFileSync(path.join(ROOT, "project/maintainer-contract.md"), "utf8").trimEnd();
   const block = "<!-- agentic-workflow:maintainer:start -->\n" + contract + "\n<!-- agentic-workflow:maintainer:end -->";
-  assert.match(contract, /Before every substantive task, check the available skills, plugins, MCP tools, and project utilities/);
+  assert.match(contract, /Before every task, check the available skills, plugins, MCP tools, and project utilities/);
   assert.match(contract, /Use the best-fitting existing capability/);
   for (const rel of ["AGENTS.md", "CLAUDE.md"]) {
     const content = fs.readFileSync(path.join(ROOT, rel), "utf8");
