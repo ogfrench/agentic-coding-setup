@@ -58,7 +58,7 @@ The setup script remains the explicit path for this repository's pinned plugins.
 Check the current [skill loading rules](https://code.claude.com/docs/en/skills) before assuming
 that repository, plugin and account skills are equivalent.
 
-**Project scope: `sync-to-repos.sh`.** It commits the skills into each repo's `.claude/skills/` and merges `project/settings.json`, so teammates' local sessions and non-project cloud sessions that load repository skills get them. Cloud project threads use account-synced skills instead. Repos only enable team-useful plugins. Personal response modes live as opt-in Markdown skills under `user/skills/`; they are not pushed to teammates or installed as third-party plugins.
+**Project scope: `sync-to-repos.sh`.** It commits the skills into each repo's `.claude/skills/` and merges `project/settings.json`, so teammates' local sessions and non-project cloud sessions that load repository skills get them. Cloud project threads use account-synced skills instead. Project sync registers the marketplace without enabling third-party plugins. Each repository owns its own `.claude/settings.json` `enabledPlugins` selections. Existing selections are preserved, including settings previously introduced by older syncs; they require a deliberate per-repo review to retire. Personal response modes live as opt-in Markdown skills under `user/skills/`; they are not pushed to teammates or installed as third-party plugins.
 
 For centrally managed agent instructions and practices, this repo is the upstream source. Project code, tests and actual behavior remain authoritative for each product. The managed copies in each project are overwritten on the next Claude Code sync, so edit shared content here.
 
