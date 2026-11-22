@@ -2,7 +2,7 @@
 date: 2026-10-18
 source: a private project
 tags: [testing, tooling, browser]
-status: raw
+status: retired
 promoted_to: []
 ---
 
@@ -19,3 +19,5 @@ in the page the function is serialized into.
 `.js`, or compile without keep-names.
 
 **Evidence.** Seen once; the error names the helper, which is the clue.
+
+**Retired 2026-11-22 from the shared base.** One compiler option's side effect in one toolchain. The note stays for anyone running page functions through tsx.

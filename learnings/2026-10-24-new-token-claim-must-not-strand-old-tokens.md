@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [auth, deploy]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/security.md
 ---
 
 # A new required claim in session tokens signs everyone out at deploy unless old tokens can renew

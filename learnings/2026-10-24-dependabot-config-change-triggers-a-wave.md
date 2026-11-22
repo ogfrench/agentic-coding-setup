@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [ci, cost]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/git-and-ci.md
 ---
 
 # Editing dependabot.yml makes Dependabot scan at once: expect a wave of PRs and their CI

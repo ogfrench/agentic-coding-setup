@@ -2,7 +2,7 @@
 date: 2026-10-24
 source: a private project
 tags: [database, deploy]
-status: raw
+status: retired
 promoted_to: []
 ---
 
@@ -28,3 +28,5 @@ real connection string's shape before the first deploy.
 **Evidence.** The health endpoint said `database: down` with Redis, search and the worker
 all ok. With the same environment and the same URL, the psycopg 3 build deployed healthy
 on the first try.
+
+**Retired 2026-11-22 from the shared base.** The rule for this stack lives in the owning project's own instructions, where it applies. This note keeps the evidence.

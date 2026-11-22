@@ -2,7 +2,7 @@
 date: 2026-10-26
 source: a private project
 tags: [testing, browser, tls, sandbox]
-status: raw
+status: retired
 promoted_to: []
 ---
 
@@ -39,3 +39,5 @@ them.
 same Playwright run loaded production and passed. That run covered two emulated phones on a
 throttled network: a light iPhone profile and a dark Pixel profile. The phone check that had
 waited was closed the same hour.
+
+**Retired 2026-11-22 from the shared base.** It describes one sandbox image and its proxy. The owning project's instructions carry the steps; this note keeps the evidence.

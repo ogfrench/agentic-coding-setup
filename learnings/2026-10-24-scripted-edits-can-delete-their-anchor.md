@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [workflow, editing]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/git-and-ci.md
 ---
 
 # A scripted find-and-replace edit can silently delete the line it anchored on

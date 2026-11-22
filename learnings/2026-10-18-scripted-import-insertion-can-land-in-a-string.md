@@ -2,8 +2,9 @@
 date: 2026-10-18
 source: a private project
 tags: [tooling, refactoring]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/git-and-ci.md
 ---
 
 # A script that inserts an import after the last match can land inside a string

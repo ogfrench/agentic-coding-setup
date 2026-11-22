@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [security, auth]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/security.md
 ---
 
 # A sign-in link in an email must not sign in on load: mail scanners open links and run pages

@@ -272,6 +272,26 @@
       "supersedes": []
     },
     {
+      "id": "api-advertises-capabilities",
+      "type": "practice",
+      "summary": "Let the API advertise what it supports so deploys can run in either order.",
+      "concern": "ci",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 113,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-24-advertise-new-capabilities-from-the-api"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "batch-edits-then-pin-once",
       "type": "practice",
       "summary": "Batch the edits that invalidate a pinned digest; re-pin once, after the proving build.",
@@ -309,6 +329,28 @@
       ],
       "implemented_by": [],
       "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "dependabot-config-starts-a-scan",
+      "type": "practice",
+      "summary": "Editing dependabot.yml starts a scan; each ready PR can start the expensive suite.",
+      "concern": "ci",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 136,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-24-dependabot-config-change-triggers-a-wave"
+      ],
+      "implemented_by": [],
+      "related": [
+        "estimate-runner-minutes"
+      ],
       "supersedes": []
     },
     {
@@ -454,6 +496,27 @@
       "supersedes": []
     },
     {
+      "id": "scripted-edits-verify-the-diff",
+      "type": "practice",
+      "summary": "After a scripted edit, insert at a fixed anchor and read the diff.",
+      "concern": "ci",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 2,
+      "tokens": 128,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-18-scripted-import-insertion-can-land-in-a-string",
+        "2026-10-24-scripted-edits-can-delete-their-anchor"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "changelog-at-merge-time",
       "type": "practice",
       "summary": "Stacked PRs that all add a changelog line conflict in turn; write it at merge time.",
@@ -538,6 +601,28 @@
       "supersedes": []
     },
     {
+      "id": "claim-one-shot-before-side-effects",
+      "type": "practice",
+      "summary": "Claim a one-shot action before its side effects; answer a retry with the first result.",
+      "concern": "data",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 142,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-26-claim-a-one-shot-action-before-its-side-effects"
+      ],
+      "implemented_by": [],
+      "related": [
+        "claim-shared-work-atomically"
+      ],
+      "supersedes": []
+    },
+    {
       "id": "conditional-update-is-the-check",
       "type": "practice",
       "summary": "A conditional update is the check.",
@@ -572,6 +657,26 @@
       "last_verified": "2026-10-11",
       "derived_from": [
         "2026-10-11-sweeps-must-know-about-holds"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "keys-share-one-ttl",
+      "type": "practice",
+      "summary": "Give each session key one TTL constant; test TTLs by reading them back.",
+      "concern": "data",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 125,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-26-session-keys-share-one-ttl"
       ],
       "implemented_by": [],
       "related": [],
@@ -643,6 +748,26 @@
       "supersedes": []
     },
     {
+      "id": "hash-credentials-before-keying",
+      "type": "practice",
+      "summary": "Before keying a record by an id, check whether that id proves anything; if so, hash it.",
+      "concern": "security",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 118,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-26-never-key-records-by-a-credential"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "identity-limits-need-costly-identities",
       "type": "practice",
       "summary": "A limit per identity only binds an attacker when a new identity costs them something.",
@@ -663,6 +788,46 @@
       "supersedes": []
     },
     {
+      "id": "labels-use-the-vocabularys-words",
+      "type": "practice",
+      "summary": "A fixed vocabulary label uses that vocabulary's own words.",
+      "concern": "security",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 112,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-16-fixed-vocabulary-labels-use-its-words"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "new-claim-keeps-old-tokens",
+      "type": "practice",
+      "summary": "A new required token claim must renew old tokens that lack it; test that case.",
+      "concern": "security",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 116,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-24-new-token-claim-must-not-strand-old-tokens"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "pasted-secret-gets-a-home",
       "type": "practice",
       "summary": "A secret pasted in chat gets a home outside every repo and a rotation issue at once.",
@@ -677,6 +842,26 @@
       "last_verified": "2026-10-18",
       "derived_from": [
         "2026-10-18-a-pasted-secret-needs-a-home-and-a-rotation"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "sign-in-link-needs-a-press",
+      "type": "practice",
+      "summary": "A sign-in link must not sign in on load; mail scanners open links and run pages.",
+      "concern": "security",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 111,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-24-email-sign-in-links-wait-for-a-press"
       ],
       "implemented_by": [],
       "related": [],
@@ -739,6 +924,46 @@
       "supersedes": []
     },
     {
+      "id": "cut-one-suspect-per-round",
+      "type": "practice",
+      "summary": "Run the baseline, then cut one suspect per round, never every suspect an overflow names.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 118,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-18-an-optimizer-that-cuts-every-suspect"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "dedupe-generated-samples",
+      "type": "practice",
+      "summary": "Dedupe generated samples by what the viewer sees; append the structural close last.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 111,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-18-generated-samples-repeat-repeated-slots"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "force-race-window",
       "type": "practice",
       "summary": "Force a race window instead of timing it.",
@@ -758,6 +983,26 @@
       "related": [
         "wait-for-state-not-time"
       ],
+      "supersedes": []
+    },
+    {
+      "id": "magnitude-is-not-a-switch",
+      "type": "practice",
+      "summary": "Switch on presence, not on a magnitude that can be small; test the smallest real value.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 108,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-11-a-magnitude-is-not-a-switch"
+      ],
+      "implemented_by": [],
+      "related": [],
       "supersedes": []
     },
     {
@@ -827,6 +1072,26 @@
       "supersedes": []
     },
     {
+      "id": "pass-the-whole-object-through",
+      "type": "practice",
+      "summary": "A loader that picks fields drops new ones silently; pass the object through.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 118,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-24-a-picked-passthrough-drops-new-fields"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "render-layouts-at-their-limits",
       "type": "practice",
       "summary": "Render every layout at its schema limits in each look, not only on its demo copy.",
@@ -880,6 +1145,46 @@
       "tokens": 83,
       "last_verified": "2026-10-11",
       "derived_from": [],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "test-the-zero-case",
+      "type": "practice",
+      "summary": "Test each summary screen where nobody acted: all zero, a tie, one empty participant.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 116,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-18-test-the-zero-case-of-summary-screens"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "third-party-fixtures-come-from-the-tool",
+      "type": "practice",
+      "summary": "Build a third-party fixture from the tool's own export and assert no pageerror.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 126,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-18-fixtures-for-third-party-formats-come-from-the-tool"
+      ],
       "implemented_by": [],
       "related": [],
       "supersedes": []
@@ -945,6 +1250,26 @@
       "supersedes": []
     },
     {
+      "id": "text-guards-skip-comments",
+      "type": "practice",
+      "summary": "A text guard reads comments too; reword the comment, never weaken the guard.",
+      "concern": "testing",
+      "stack": [
+        "any"
+      ],
+      "severity": "tip",
+      "status": "active",
+      "seen": 1,
+      "tokens": 99,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-18-text-guards-read-comments"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "check-accessible-names-after-edit",
       "type": "practice",
       "summary": "Check accessible names after an edit, not only on load.",
@@ -1003,6 +1328,26 @@
       "supersedes": []
     },
     {
+      "id": "name-inputs-for-no-js-submit",
+      "type": "practice",
+      "summary": "Name every input in a JavaScript form; before hydration the browser submits it as GET.",
+      "concern": "ui",
+      "stack": [
+        "any"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 1,
+      "tokens": 122,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-24-name-inputs-for-pre-hydration-submit"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
       "id": "one-text-field-shape",
       "type": "practice",
       "summary": "One shape, one border, one focus ring for every text field, whatever draws it.",
@@ -1017,6 +1362,27 @@
       "last_verified": "2026-10-11",
       "derived_from": [
         "2026-10-11-third-party-editor-overrides"
+      ],
+      "implemented_by": [],
+      "related": [],
+      "supersedes": []
+    },
+    {
+      "id": "one-type-scale",
+      "type": "practice",
+      "summary": "Keep sizes on a small scale; a highlight is a span at the sentence size.",
+      "concern": "ui",
+      "stack": [
+        "html-css-ts"
+      ],
+      "severity": "should",
+      "status": "active",
+      "seen": 2,
+      "tokens": 134,
+      "last_verified": "2026-11-22",
+      "derived_from": [
+        "2026-10-16-a-type-scale-pulls-drifting-sizes-back",
+        "2026-10-18-one-sentence-one-type-size"
       ],
       "implemented_by": [],
       "related": [],
@@ -1548,10 +1914,12 @@
         "correctness",
         "flags"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 178,
-      "promoted_to": []
+      "tokens": 193,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-11-api-key-is-not-authorization",
@@ -1857,10 +2225,12 @@
         "design",
         "typography"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 246,
-      "promoted_to": []
+      "tokens": 261,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/ui.md"
+      ]
     },
     {
       "id": "2026-10-16-fixed-vocabulary-labels-use-its-words",
@@ -1870,10 +2240,12 @@
         "content",
         "security"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 196,
-      "promoted_to": []
+      "tokens": 212,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/security.md"
+      ]
     },
     {
       "id": "2026-10-16-headless-chrome-matches-hover-none",
@@ -1961,10 +2333,12 @@
         "testing",
         "algorithms"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 324,
-      "promoted_to": []
+      "tokens": 340,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-18-check-and-write-in-one-transaction",
@@ -2053,10 +2427,12 @@
         "testing",
         "e2e"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 366,
-      "promoted_to": []
+      "tokens": 382,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-18-gate-a-push-on-the-real-exit-status",
@@ -2082,10 +2458,12 @@
         "content",
         "codegen"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 245,
-      "promoted_to": []
+      "tokens": 260,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-18-one-sentence-one-type-size",
@@ -2096,10 +2474,12 @@
         "typography",
         "ui"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 305,
-      "promoted_to": []
+      "tokens": 319,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/ui.md"
+      ]
     },
     {
       "id": "2026-10-18-one-suite-at-a-time-on-a-shared-stack",
@@ -2123,9 +2503,9 @@
         "tooling",
         "testing"
       ],
-      "status": "raw",
+      "status": "retired",
       "source": "a private project",
-      "tokens": 184,
+      "tokens": 224,
       "promoted_to": []
     },
     {
@@ -2212,10 +2592,12 @@
         "tooling",
         "refactoring"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 224,
-      "promoted_to": []
+      "tokens": 241,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
     },
     {
       "id": "2026-10-18-simulate-the-users-sandbox-before-shipping-a-skill",
@@ -2291,10 +2673,12 @@
         "testing",
         "ui"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 298,
-      "promoted_to": []
+      "tokens": 313,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-18-text-guards-read-comments",
@@ -2304,10 +2688,12 @@
         "testing",
         "ci"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 232,
-      "promoted_to": []
+      "tokens": 248,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-18-tsx-keep-names-breaks-page-functions",
@@ -2318,9 +2704,9 @@
         "tooling",
         "browser"
       ],
-      "status": "raw",
+      "status": "retired",
       "source": "a private project",
-      "tokens": 187,
+      "tokens": 228,
       "promoted_to": []
     },
     {
@@ -2363,10 +2749,12 @@
         "frontend",
         "testing"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 297,
-      "promoted_to": []
+      "tokens": 313,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/testing.md"
+      ]
     },
     {
       "id": "2026-10-24-advertise-new-capabilities-from-the-api",
@@ -2376,10 +2764,12 @@
         "deploy",
         "api"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 282,
-      "promoted_to": []
+      "tokens": 298,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
     },
     {
       "id": "2026-10-24-dependabot-config-change-triggers-a-wave",
@@ -2389,10 +2779,12 @@
         "ci",
         "cost"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 288,
-      "promoted_to": []
+      "tokens": 304,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
     },
     {
       "id": "2026-10-24-email-sign-in-links-wait-for-a-press",
@@ -2402,10 +2794,12 @@
         "security",
         "auth"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 359,
-      "promoted_to": []
+      "tokens": 375,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/security.md"
+      ]
     },
     {
       "id": "2026-10-24-libpq-url-params-break-asyncpg",
@@ -2415,9 +2809,9 @@
         "database",
         "deploy"
       ],
-      "status": "raw",
+      "status": "retired",
       "source": "a private project",
-      "tokens": 379,
+      "tokens": 422,
       "promoted_to": []
     },
     {
@@ -2428,10 +2822,12 @@
         "frontend",
         "testing"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 290,
-      "promoted_to": []
+      "tokens": 304,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/ui.md"
+      ]
     },
     {
       "id": "2026-10-24-new-token-claim-must-not-strand-old-tokens",
@@ -2441,10 +2837,12 @@
         "auth",
         "deploy"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 326,
-      "promoted_to": []
+      "tokens": 342,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/security.md"
+      ]
     },
     {
       "id": "2026-10-24-scripted-edits-can-delete-their-anchor",
@@ -2454,10 +2852,12 @@
         "workflow",
         "editing"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 287,
-      "promoted_to": []
+      "tokens": 304,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/git-and-ci.md"
+      ]
     },
     {
       "id": "2026-10-25-one-release-pr-one-e2e-run",
@@ -2484,10 +2884,12 @@
         "api",
         "idempotency"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 326,
-      "promoted_to": []
+      "tokens": 345,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/data-and-concurrency.md"
+      ]
     },
     {
       "id": "2026-10-26-never-key-records-by-a-credential",
@@ -2498,10 +2900,12 @@
         "analytics",
         "privacy"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 342,
-      "promoted_to": []
+      "tokens": 358,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/security.md"
+      ]
     },
     {
       "id": "2026-10-26-sandbox-chromium-trusts-only-nss",
@@ -2513,9 +2917,9 @@
         "tls",
         "sandbox"
       ],
-      "status": "raw",
+      "status": "retired",
       "source": "a private project",
-      "tokens": 486,
+      "tokens": 530,
       "promoted_to": []
     },
     {
@@ -2527,10 +2931,12 @@
         "state",
         "testing"
       ],
-      "status": "raw",
+      "status": "practice",
       "source": "a private project",
-      "tokens": 386,
-      "promoted_to": []
+      "tokens": 405,
+      "promoted_to": [
+        "plugins/agent-workflow/skills/best-practices/data-and-concurrency.md"
+      ]
     },
     {
       "id": "2026-10-28-evaluate-skill-routing",
@@ -3085,6 +3491,21 @@
       "type": "derived_from"
     },
     {
+      "from": "api-advertises-capabilities",
+      "to": "ci",
+      "type": "concern"
+    },
+    {
+      "from": "api-advertises-capabilities",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "api-advertises-capabilities",
+      "to": "2026-10-24-advertise-new-capabilities-from-the-api",
+      "type": "derived_from"
+    },
+    {
       "from": "batch-edits-then-pin-once",
       "to": "ci",
       "type": "concern"
@@ -3113,6 +3534,26 @@
       "from": "compare-against-origin-main",
       "to": "2026-10-18-review-baselines-come-from-the-remote",
       "type": "derived_from"
+    },
+    {
+      "from": "dependabot-config-starts-a-scan",
+      "to": "ci",
+      "type": "concern"
+    },
+    {
+      "from": "dependabot-config-starts-a-scan",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "dependabot-config-starts-a-scan",
+      "to": "2026-10-24-dependabot-config-change-triggers-a-wave",
+      "type": "derived_from"
+    },
+    {
+      "from": "dependabot-config-starts-a-scan",
+      "to": "estimate-runner-minutes",
+      "type": "related"
     },
     {
       "from": "estimate-runner-minutes",
@@ -3230,6 +3671,26 @@
       "type": "derived_from"
     },
     {
+      "from": "scripted-edits-verify-the-diff",
+      "to": "ci",
+      "type": "concern"
+    },
+    {
+      "from": "scripted-edits-verify-the-diff",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "scripted-edits-verify-the-diff",
+      "to": "2026-10-18-scripted-import-insertion-can-land-in-a-string",
+      "type": "derived_from"
+    },
+    {
+      "from": "scripted-edits-verify-the-diff",
+      "to": "2026-10-24-scripted-edits-can-delete-their-anchor",
+      "type": "derived_from"
+    },
+    {
       "from": "changelog-at-merge-time",
       "to": "ci",
       "type": "concern"
@@ -3300,6 +3761,26 @@
       "type": "related"
     },
     {
+      "from": "claim-one-shot-before-side-effects",
+      "to": "data",
+      "type": "concern"
+    },
+    {
+      "from": "claim-one-shot-before-side-effects",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "claim-one-shot-before-side-effects",
+      "to": "2026-10-26-claim-a-one-shot-action-before-its-side-effects",
+      "type": "derived_from"
+    },
+    {
+      "from": "claim-one-shot-before-side-effects",
+      "to": "claim-shared-work-atomically",
+      "type": "related"
+    },
+    {
       "from": "conditional-update-is-the-check",
       "to": "data",
       "type": "concern"
@@ -3327,6 +3808,21 @@
     {
       "from": "holds-known-to-every-deleter",
       "to": "2026-10-11-sweeps-must-know-about-holds",
+      "type": "derived_from"
+    },
+    {
+      "from": "keys-share-one-ttl",
+      "to": "data",
+      "type": "concern"
+    },
+    {
+      "from": "keys-share-one-ttl",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "keys-share-one-ttl",
+      "to": "2026-10-26-session-keys-share-one-ttl",
       "type": "derived_from"
     },
     {
@@ -3390,6 +3886,21 @@
       "type": "derived_from"
     },
     {
+      "from": "hash-credentials-before-keying",
+      "to": "security",
+      "type": "concern"
+    },
+    {
+      "from": "hash-credentials-before-keying",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "hash-credentials-before-keying",
+      "to": "2026-10-26-never-key-records-by-a-credential",
+      "type": "derived_from"
+    },
+    {
       "from": "identity-limits-need-costly-identities",
       "to": "security",
       "type": "concern"
@@ -3405,6 +3916,36 @@
       "type": "derived_from"
     },
     {
+      "from": "labels-use-the-vocabularys-words",
+      "to": "security",
+      "type": "concern"
+    },
+    {
+      "from": "labels-use-the-vocabularys-words",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "labels-use-the-vocabularys-words",
+      "to": "2026-10-16-fixed-vocabulary-labels-use-its-words",
+      "type": "derived_from"
+    },
+    {
+      "from": "new-claim-keeps-old-tokens",
+      "to": "security",
+      "type": "concern"
+    },
+    {
+      "from": "new-claim-keeps-old-tokens",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "new-claim-keeps-old-tokens",
+      "to": "2026-10-24-new-token-claim-must-not-strand-old-tokens",
+      "type": "derived_from"
+    },
+    {
       "from": "pasted-secret-gets-a-home",
       "to": "security",
       "type": "concern"
@@ -3417,6 +3958,21 @@
     {
       "from": "pasted-secret-gets-a-home",
       "to": "2026-10-18-a-pasted-secret-needs-a-home-and-a-rotation",
+      "type": "derived_from"
+    },
+    {
+      "from": "sign-in-link-needs-a-press",
+      "to": "security",
+      "type": "concern"
+    },
+    {
+      "from": "sign-in-link-needs-a-press",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "sign-in-link-needs-a-press",
+      "to": "2026-10-24-email-sign-in-links-wait-for-a-press",
       "type": "derived_from"
     },
     {
@@ -3455,6 +4011,36 @@
       "type": "derived_from"
     },
     {
+      "from": "cut-one-suspect-per-round",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "cut-one-suspect-per-round",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "cut-one-suspect-per-round",
+      "to": "2026-10-18-an-optimizer-that-cuts-every-suspect",
+      "type": "derived_from"
+    },
+    {
+      "from": "dedupe-generated-samples",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "dedupe-generated-samples",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "dedupe-generated-samples",
+      "to": "2026-10-18-generated-samples-repeat-repeated-slots",
+      "type": "derived_from"
+    },
+    {
       "from": "force-race-window",
       "to": "testing",
       "type": "concern"
@@ -3473,6 +4059,21 @@
       "from": "force-race-window",
       "to": "wait-for-state-not-time",
       "type": "related"
+    },
+    {
+      "from": "magnitude-is-not-a-switch",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "magnitude-is-not-a-switch",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "magnitude-is-not-a-switch",
+      "to": "2026-10-11-a-magnitude-is-not-a-switch",
+      "type": "derived_from"
     },
     {
       "from": "measure-in-the-systems-own-unit",
@@ -3540,6 +4141,21 @@
       "type": "related"
     },
     {
+      "from": "pass-the-whole-object-through",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "pass-the-whole-object-through",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "pass-the-whole-object-through",
+      "to": "2026-10-24-a-picked-passthrough-drops-new-fields",
+      "type": "derived_from"
+    },
+    {
       "from": "render-layouts-at-their-limits",
       "to": "testing",
       "type": "concern"
@@ -3578,6 +4194,36 @@
       "from": "test-fails-first",
       "to": "any",
       "type": "stack"
+    },
+    {
+      "from": "test-the-zero-case",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "test-the-zero-case",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "test-the-zero-case",
+      "to": "2026-10-18-test-the-zero-case-of-summary-screens",
+      "type": "derived_from"
+    },
+    {
+      "from": "third-party-fixtures-come-from-the-tool",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "third-party-fixtures-come-from-the-tool",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "third-party-fixtures-come-from-the-tool",
+      "to": "2026-10-18-fixtures-for-third-party-formats-come-from-the-tool",
+      "type": "derived_from"
     },
     {
       "from": "wait-for-state-not-time",
@@ -3625,6 +4271,21 @@
       "type": "derived_from"
     },
     {
+      "from": "text-guards-skip-comments",
+      "to": "testing",
+      "type": "concern"
+    },
+    {
+      "from": "text-guards-skip-comments",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "text-guards-skip-comments",
+      "to": "2026-10-18-text-guards-read-comments",
+      "type": "derived_from"
+    },
+    {
       "from": "check-accessible-names-after-edit",
       "to": "ui",
       "type": "concern"
@@ -3665,6 +4326,21 @@
       "type": "derived_from"
     },
     {
+      "from": "name-inputs-for-no-js-submit",
+      "to": "ui",
+      "type": "concern"
+    },
+    {
+      "from": "name-inputs-for-no-js-submit",
+      "to": "any",
+      "type": "stack"
+    },
+    {
+      "from": "name-inputs-for-no-js-submit",
+      "to": "2026-10-24-name-inputs-for-pre-hydration-submit",
+      "type": "derived_from"
+    },
+    {
       "from": "one-text-field-shape",
       "to": "ui",
       "type": "concern"
@@ -3677,6 +4353,26 @@
     {
       "from": "one-text-field-shape",
       "to": "2026-10-11-third-party-editor-overrides",
+      "type": "derived_from"
+    },
+    {
+      "from": "one-type-scale",
+      "to": "ui",
+      "type": "concern"
+    },
+    {
+      "from": "one-type-scale",
+      "to": "html-css-ts",
+      "type": "stack"
+    },
+    {
+      "from": "one-type-scale",
+      "to": "2026-10-16-a-type-scale-pulls-drifting-sizes-back",
+      "type": "derived_from"
+    },
+    {
+      "from": "one-type-scale",
+      "to": "2026-10-18-one-sentence-one-type-size",
       "type": "derived_from"
     },
     {
@@ -3733,6 +4429,11 @@
       "from": "few-readers-for-per-frame-properties",
       "to": "2026-10-16-per-frame-custom-properties-restyle-every-reader",
       "type": "derived_from"
+    },
+    {
+      "from": "2026-10-11-a-magnitude-is-not-a-switch",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
     },
     {
       "from": "2026-10-11-api-key-is-not-authorization",
@@ -3855,6 +4556,16 @@
       "type": "promoted_to"
     },
     {
+      "from": "2026-10-16-a-type-scale-pulls-drifting-sizes-back",
+      "to": "plugins/agent-workflow/skills/best-practices/ui.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-16-fixed-vocabulary-labels-use-its-words",
+      "to": "plugins/agent-workflow/skills/best-practices/security.md",
+      "type": "promoted_to"
+    },
+    {
       "from": "2026-10-16-headless-chrome-matches-hover-none",
       "to": "plugins/agent-workflow/skills/best-practices/testing.md",
       "type": "promoted_to"
@@ -3885,6 +4596,11 @@
       "type": "promoted_to"
     },
     {
+      "from": "2026-10-18-an-optimizer-that-cuts-every-suspect",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
       "from": "2026-10-18-check-and-write-in-one-transaction",
       "to": "plugins/agent-workflow/skills/best-practices/data-and-concurrency.md",
       "type": "promoted_to"
@@ -3910,8 +4626,23 @@
       "type": "promoted_to"
     },
     {
+      "from": "2026-10-18-fixtures-for-third-party-formats-come-from-the-tool",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
       "from": "2026-10-18-gate-a-push-on-the-real-exit-status",
       "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-18-generated-samples-repeat-repeated-slots",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-18-one-sentence-one-type-size",
+      "to": "plugins/agent-workflow/skills/best-practices/ui.md",
       "type": "promoted_to"
     },
     {
@@ -3945,6 +4676,11 @@
       "type": "promoted_to"
     },
     {
+      "from": "2026-10-18-scripted-import-insertion-can-land-in-a-string",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
       "from": "2026-10-18-simulate-the-users-sandbox-before-shipping-a-skill",
       "to": "plugins/agent-workflow/skills/best-practices/agents-and-models.md",
       "type": "promoted_to"
@@ -3965,6 +4701,16 @@
       "type": "promoted_to"
     },
     {
+      "from": "2026-10-18-test-the-zero-case-of-summary-screens",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-18-text-guards-read-comments",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
       "from": "2026-10-19-run-the-slow-ci-job-once-per-pr",
       "to": "plugins/agent-workflow/skills/actions-cost/SKILL.md",
       "type": "promoted_to"
@@ -3980,6 +4726,41 @@
       "type": "promoted_to"
     },
     {
+      "from": "2026-10-24-a-picked-passthrough-drops-new-fields",
+      "to": "plugins/agent-workflow/skills/best-practices/testing.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-24-advertise-new-capabilities-from-the-api",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-24-dependabot-config-change-triggers-a-wave",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-24-email-sign-in-links-wait-for-a-press",
+      "to": "plugins/agent-workflow/skills/best-practices/security.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-24-name-inputs-for-pre-hydration-submit",
+      "to": "plugins/agent-workflow/skills/best-practices/ui.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-24-new-token-claim-must-not-strand-old-tokens",
+      "to": "plugins/agent-workflow/skills/best-practices/security.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-24-scripted-edits-can-delete-their-anchor",
+      "to": "plugins/agent-workflow/skills/best-practices/git-and-ci.md",
+      "type": "promoted_to"
+    },
+    {
       "from": "2026-10-25-one-release-pr-one-e2e-run",
       "to": "plugins/agent-workflow/skills/actions-cost/SKILL.md",
       "type": "promoted_to"
@@ -3987,6 +4768,21 @@
     {
       "from": "2026-10-25-one-release-pr-one-e2e-run",
       "to": "kb/practices/estimate-runner-minutes.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-26-claim-a-one-shot-action-before-its-side-effects",
+      "to": "plugins/agent-workflow/skills/best-practices/data-and-concurrency.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-26-never-key-records-by-a-credential",
+      "to": "plugins/agent-workflow/skills/best-practices/security.md",
+      "type": "promoted_to"
+    },
+    {
+      "from": "2026-10-26-session-keys-share-one-ttl",
+      "to": "plugins/agent-workflow/skills/best-practices/data-and-concurrency.md",
       "type": "promoted_to"
     },
     {

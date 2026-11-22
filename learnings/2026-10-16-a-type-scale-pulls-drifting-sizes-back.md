@@ -2,8 +2,9 @@
 date: 2026-10-16
 source: a private project
 tags: [design, typography]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/ui.md
 ---
 
 # Per-slide font sizes drift into dozens; a type scale and a before/after sheet pull them back

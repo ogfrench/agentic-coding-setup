@@ -5,9 +5,21 @@
   A check that reads build output cannot see a source fix until the build runs. When a
   finding survives a fix, rebuild first; make the check say how old its input is.
   *(2026-11-15-a-check-on-a-built-artifact-must-know-it-is-stale)*
+- **Run the baseline, then cut one suspect per round, never every suspect an overflow
+  names.** Blame shared across every slot an overflow touched drove innocent limits to one
+  word. Report what breaks at the shipped content as a layout bug, outside the search.
+  *(2026-10-18-an-optimizer-that-cuts-every-suspect)*
+- **Dedupe generated samples by what the viewer sees; append the structural close last.**
+  Repeated slots filled with the same placeholder make identical slides. Dedupe by layout
+  plus variant, not by slot, and append the close last.
+  *(2026-10-18-generated-samples-repeat-repeated-slots)*
 - **Force a race window instead of timing it.** Find a call that sits between the read and
   the write, monkeypatch it to land the competing write, assert the result. Say in the test
   that the window is forced on purpose. *(2026-10-11-deterministic-race-tests)*
+- **Switch on presence, not on a magnitude that can be small; test the smallest real
+  value.** One value that carries two meanings breaks when the magnitude is small. Switch on
+  `> 0` or pass a flag, then pin the threshold in a test.
+  *(2026-10-11-a-magnitude-is-not-a-switch)*
 - **Measure in a custom unit by reading it from the running page, never by recomputing its
   definition.** A probe element sized in the unit gives pixels per unit. A recomputed
   definition is wrong where the definition has a second branch, such as a height limit on a
@@ -18,6 +30,10 @@
 - **Run one test suite at a time on a shared stack or machine.** Overlapped suites fail
   each other's loads. A red run made of load failures, not findings, is rerun alone before
   anyone debugs it. *(2026-10-18-one-suite-at-a-time-on-a-shared-stack)*
+- **A loader that picks fields drops new ones silently; pass the object through.** An
+  explicit pick is an allow-list, and a missing field reads as off. Trace each hop of a new
+  field, and cover it with one end-to-end test that asserts the feature appears.
+  *(2026-10-24-a-picked-passthrough-drops-new-fields)*
 - **Render every layout at its schema limits in each look, not only on its demo copy.**
   Overflow and overlap appear at the maximum, in the widest face. When the worst case does
   not fit, lower the limit or give it room; never shrink type to hide it.
@@ -27,6 +43,14 @@
   read from its source, not copied. *(2026-10-11-test-derived-names-against-reserved-ones)*
 - **Write the failing test first, and run it on the old code.** A test that never failed
   proves nothing. When the fix is already written, swap the old file back in for one run.
+- **Test each summary screen where nobody acted: all zero, a tie, one empty participant.**
+  Derive who took part from membership, not from activity, and design the empty state on
+  purpose. Tests that only played games with scoring never reached the empty floor.
+  *(2026-10-18-test-the-zero-case-of-summary-screens)*
+- **Build a third-party fixture from the tool's own export and assert no pageerror.** A
+  hand-written object lacks fields real exports carry, and the page then fails at random. To
+  credit a fix for a flaky failure, revert it and reproduce over several repeats first.
+  *(2026-10-18-fixtures-for-third-party-formats-come-from-the-tool)*
 - **Wait for the state you need, never for time.** Wait for focus, visibility or a polled
   value. A flaky test is a race in the test or the app until shown otherwise.
   *(2026-10-11-wait-for-state-not-time)*
@@ -38,3 +62,6 @@
 - **Headless Chrome matches hover: none; key touch fallbacks on pointer: coarse.** It also
   matches pointer: none and never pointer: coarse. Check matchMedia in the test browser
   before trusting a capture. *(2026-10-16-headless-chrome-matches-hover-none)*
+- **A text guard reads comments too; reword the comment, never weaken the guard.** After
+  editing comments in a file a guard scans, run that guard locally. Reword the comment;
+  never weaken the guard. *(2026-10-18-text-guards-read-comments)*

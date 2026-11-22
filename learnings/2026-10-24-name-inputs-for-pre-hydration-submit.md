@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [frontend, testing]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/ui.md
 ---
 
 # A form handled in JavaScript still needs named inputs: before hydration the browser submits it

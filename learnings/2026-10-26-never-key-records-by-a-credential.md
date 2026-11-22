@@ -2,8 +2,9 @@
 date: 2026-10-26
 source: a private project
 tags: [security, analytics, privacy]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/security.md
 ---
 
 # Do not key a stored record by a value that is also a credential: hash it first

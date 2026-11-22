@@ -56,8 +56,10 @@ test("the audit finds stale nodes, old raw learnings and promotion candidates, a
   assert.equal(later.staleTools.length, kb0.tools.filter((t) => t.state === "installed").length);
 
   const card = path.join(t, "kb/practices/keep-ci-logs.md");
+  const before = audit(loadKb(t), "2026-10-12").promotionCandidates;
   fs.writeFileSync(card, fs.readFileSync(card, "utf8").replace("source: judgment", "derived_from: [2026-10-11-pin-ci-tool-versions-locally, 2026-10-11-conflicted-pr-runs-no-workflows]"));
-  assert.deepEqual(audit(loadKb(t), "2026-10-12").promotionCandidates, ["keep-ci-logs"]);
+  const after = audit(loadKb(t), "2026-10-12").promotionCandidates;
+  assert.deepEqual(after.filter((id) => !before.includes(id)), ["keep-ci-logs"], "editing one card adds only that card as a candidate");
 
   newLearning(t, "waiting", { date: "2026-09-01" });
   assert.ok(audit(loadKb(t), "2026-10-12").rawLearnings.includes("2026-09-01-waiting"));

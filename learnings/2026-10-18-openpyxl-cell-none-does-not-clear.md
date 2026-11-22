@@ -2,7 +2,7 @@
 date: 2026-10-18
 source: a private project
 tags: [tooling, testing]
-status: raw
+status: retired
 promoted_to: []
 ---
 
@@ -15,3 +15,5 @@ promoted_to: []
 **Do instead.** Assign `sheet.cell(r, c).value = None` to clear a cell, and write values the same way in tests.
 
 **Evidence.** A quiz app's Excel type tests: two failures disappeared with the helper rewritten to assign `.value`.
+
+**Retired 2026-11-22 from the shared base.** A single library's API detail, not a practice across stacks. The note stays for anyone writing Excel tests.

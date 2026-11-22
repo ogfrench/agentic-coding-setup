@@ -2,8 +2,9 @@
 date: 2026-10-16
 source: a private project
 tags: [content, security]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/security.md
 ---
 
 # A label from a fixed vocabulary must use the vocabulary's words

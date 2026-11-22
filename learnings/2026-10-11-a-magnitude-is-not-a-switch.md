@@ -2,8 +2,9 @@
 date: 2026-10-11
 source: a private project
 tags: [correctness, flags]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/testing.md
 ---
 
 # A magnitude used as an on/off switch breaks when the magnitude is legitimately small
