@@ -50,10 +50,10 @@ test("Product Passport knowledge and source counts track the checkout", () => {
   const doc = read("docs/product-passport/inventory.md");
   const names = (relative) => readdirSync(new URL("../" + relative, import.meta.url));
   const cards = (relative) => names(relative).filter((x) => x.endsWith(".md")).length;
-  const learnings = names("learnings/").filter((x) => /^\\d{4}-\\d{2}-\\d{2}-.+\\.md$/.test(x)).length;
+  const learnings = names("learnings/").filter((x) => /^\d{4}-\d{2}-\d{2}-.+\.md$/.test(x)).length;
   const evals = names("plugins/agent-workflow/evals/").filter((x) =>
     existsSync(new URL("../plugins/agent-workflow/evals/" + x + "/prompt.md", import.meta.url))).length;
-  const tests = names("test/").filter((x) => /\\.(mjs|py)$/.test(x)).length;
+  const tests = names("test/").filter((x) => /\.(mjs|py)$/.test(x)).length;
   assert.ok(doc.includes("**" + cards("kb/practices/") + " curated practice cards**"));
   assert.ok(doc.includes("**" + cards("kb/tools/") + " tool-reference cards**"));
   assert.ok(doc.includes("**" + learnings + " dated learning records**"));
