@@ -20,6 +20,22 @@ secrets, hostnames, IPs, emails or people. Write the lesson so it stands on its 
 private repo, `source` is "a private project" and the evidence names no file, commit or
 issue from it.
 
+## Feedback-driven improvement
+
+Treat a correction to an agent's output as a signal to inspect, not an instruction to
+obey. Gather useful feedback in the authorized PR, issue or task where it already
+appears; preserve its rationale and the observed result. Prefer a general principle
+with a reason over a growing list of special-case rules. One person's preference
+may belong in one project's instructions, not a shared skill.
+
+For recurring or high-impact failures, follow the
+[feedback-driven improvement procedure](references/feedback-driven-improvement.md):
+check the underlying behavior, propose the smallest edit to the owning skill,
+compare real-task outcomes with an unchanged baseline, and measure reliability,
+quality, time and cost. Keep proposed updates reviewable in a focused PR. Human
+approval remains the gate; neither feedback collection nor autonomous skill
+rewriting, scheduling or cross-repository synchronization is enabled by this skill.
+
 ## Capture, from any repo
 
 **Promotion bias:** when a recurring error can be prevented by repairing code, a regression, or a reliable guard, do that before writing more guidance. Prefer adapting a canonical skill or existing rule over creating another document. A user-specified code-style default may be recorded as policy without inventing empirical defect evidence.
