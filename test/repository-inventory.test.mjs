@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
@@ -44,4 +44,19 @@ test("Product Passport inventories the current repository and plugins without im
   assert.ok(doc.includes("53 curated practice cards"));
   assert.ok(doc.includes("40 tool-reference cards"));
   assert.ok(doc.includes("57 behavioral evaluation prompts"));
+});
+
+test("Product Passport knowledge and source counts track the checkout", () => {
+  const doc = read("docs/product-passport/inventory.md");
+  const names = (relative) => readdirSync(new URL("../" + relative, import.meta.url));
+  const cards = (relative) => names(relative).filter((x) => x.endsWith(".md")).length;
+  const learnings = names("learnings/").filter((x) => /^\\d{4}-\\d{2}-\\d{2}-.+\\.md$/.test(x)).length;
+  const evals = names("plugins/agent-workflow/evals/").filter((x) =>
+    existsSync(new URL("../plugins/agent-workflow/evals/" + x + "/prompt.md", import.meta.url))).length;
+  const tests = names("test/").filter((x) => /\\.(mjs|py)$/.test(x)).length;
+  assert.ok(doc.includes("**" + cards("kb/practices/") + " curated practice cards**"));
+  assert.ok(doc.includes("**" + cards("kb/tools/") + " tool-reference cards**"));
+  assert.ok(doc.includes("**" + learnings + " dated learning records**"));
+  assert.ok(doc.includes("**" + evals + " behavioral evaluation prompts**"));
+  assert.ok(doc.includes("**" + tests + " test source files**"));
 });
