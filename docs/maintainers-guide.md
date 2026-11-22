@@ -29,7 +29,7 @@ The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages 
 
 ## Historical source snapshot | 12 November 2026
 
-**claude-workflow v2026.11.1** is the full Claude Code source package, including Architecture Gardener and Delivery Loop. **agentic-workflow v2026.11.1** is the full ChatGPT edition, aligned with the Claude Code CalVer release while retaining host-specific capabilities. **chatgpt-workflow-lite v1.12.0** remains in the repository for compatibility but is deprecated for ChatGPT. Full Claude/ChatGPT version-parity checks now apply to the coordinated pair; legacy Lite stays independently versioned. Host verification remains independent. The existing privately uploaded `ogfrench-workflow v0.1.1` is a **legacy personal plugin** and will not be renamed or updated by this source change. See the [release inventory](../docs/releases/2026-11-09.md). Source merge alone does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects. **Current release status:** the first complete source release was [published as 2026.11.1](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1), and the private ChatGPT plugin was subsequently installed. Claude host and downstream sync remain independent.
+**claude-workflow v2026.11.1** is the full Claude Code source package, including Architecture Gardener and Delivery Loop. **agentic-workflow v2026.11.1** is the full ChatGPT edition, aligned with the Claude Code CalVer release while retaining host-specific capabilities. **chatgpt-workflow-lite v1.12.0** remains in the repository for compatibility but is deprecated for ChatGPT. Full Claude/ChatGPT version-parity checks now apply to the coordinated pair; legacy Lite stays independently versioned. Host verification remains independent. The existing privately uploaded `ogfrench-workflow v0.1.1` is a **legacy personal plugin** and will not be renamed or updated by this source change. See the [release inventory](../docs/releases/2026-11-09.md). Source merge alone does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects. **Current release status:** the first complete source release was [published as 2026.11.1](https://github.com/ogfrench/fpe-agentic-workflow/releases/tag/v.2026.11.1), and the private ChatGPT plugin was subsequently installed. Claude host and downstream sync remain independent.
 
 ## Cross-host capability standards
 
@@ -49,7 +49,7 @@ The following two layers are **Claude Code-specific**, not universal setup comma
 **User scope: `setup-user.sh`.** It installs every plugin in `user/plugins.txt` and copies the skills into `~/.claude/skills` and the subagents into `~/.claude/agents`, at user scope. Run it once on a laptop. For cloud sessions, paste this as the setup script of the environment on claude.ai/code. It runs before Claude starts, in every repo that uses the environment:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ogfrench/agentic-coding-setup/main/setup-user.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ogfrench/fpe-agentic-workflow/main/setup-user.sh | bash
 ```
 
 Cloud sessions do not install plugins solely because a repository's settings enable them.
@@ -181,7 +181,7 @@ Nothing here fixes itself, so a weekly look is the habit. `node scripts/kb-audit
 The upkeep can run unattended as a weekly scheduled task (a fresh session in this repo, with the prompt below). It opens a PR, never pushes `main`, and merges only a PR that is nothing but date bumps with no privacy findings:
 
 ```
-Weekly upkeep of the public repo ogfrench/agentic-coding-setup. Clone it if it is not in the working
+Weekly upkeep of the public repo ogfrench/fpe-agentic-workflow. Clone it if it is not in the working
 directory. Pull requests only, never push to main (CONTRIBUTING.md). Write no names of clients,
 people or private repos anywhere, including PR text and your final message; refer to a finding by
 file and line, never by quoting it.
@@ -317,6 +317,6 @@ The official plugins (superpowers, context7, playwright and the rest) come from 
 
 The two **full** workflow editions, the Claude Code and ChatGPT editions of `agentic-workflow`, share a `YYYY.MM.N` CalVer. Verify parity in both plugin manifests and the generated package before each source release. Specialist packages and the deprecated Lite edition maintain independent version histories.
 
-Use Git tags of the form **`vYYYY.MM.N`** for future releases. The first published release is an explicit historical exception: [`v.2026.11.1`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1). Preserve that existing tag and working links; do not silently delete and recreate a published release. Do not create a second tag for the same version.
+Use Git tags of the form **`vYYYY.MM.N`** for future releases. The first published release is an explicit historical exception: [`v.2026.11.1`](https://github.com/ogfrench/fpe-agentic-workflow/releases/tag/v.2026.11.1). Preserve that existing tag and working links; do not silently delete and recreate a published release. Do not create a second tag for the same version.
 
 Each release should record the reviewed source commit, post-merge CI result, package integrity, installed-host verification (when performed), and remaining acceptance gaps. Source archive publication and a private ChatGPT package upload are separate actions. Do not attach the private ChatGPT plugin package publicly without an explicit distribution review.

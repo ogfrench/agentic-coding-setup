@@ -5,7 +5,7 @@
 # Laptop:  bash setup-user.sh
 # Cloud:   paste this as the environment's setup script on claude.ai/code,
 #          which runs before Claude starts, in every repo using that environment:
-#            curl -fsSL https://raw.githubusercontent.com/ogfrench/agentic-coding-setup/main/setup-user.sh | bash
+#            curl -fsSL https://raw.githubusercontent.com/ogfrench/fpe-agentic-workflow/main/setup-user.sh | bash
 #
 # Safe to re-run. Skills are copied as personal skills, not loaded through a
 # plugin: a personal and a project skill with the same name resolve to one,
@@ -18,7 +18,7 @@ SRC="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd)"
 if [[ ! -f "$SRC/user/plugins.txt" ]]; then
   # Piped through curl: fetch the repo first.
   SRC="$(mktemp -d)"
-  git clone -q --depth 1 https://github.com/ogfrench/agentic-coding-setup.git "$SRC"
+  git clone -q --depth 1 https://github.com/ogfrench/fpe-agentic-workflow.git "$SRC"
 fi
 
 failed=()
@@ -32,7 +32,7 @@ for p in caveman@ogfrench ponytail@ogfrench; do
 done
 
 # A fresh machine (every cloud session) knows no marketplace, not even the official one.
-for m in ogfrench=ogfrench/agentic-coding-setup claude-plugins-official=anthropics/claude-plugins-official; do
+for m in ogfrench=ogfrench/fpe-agentic-workflow claude-plugins-official=anthropics/claude-plugins-official; do
   claude plugin marketplace add "${m#*=}" >/dev/null 2>&1 \
     || claude plugin marketplace update "${m%%=*}" >/dev/null 2>&1 \
     || failed+=("marketplace ${m%%=*}")
@@ -68,7 +68,7 @@ elif [[ -f "$source_rule" ]]; then
     failed+=("cannot create rules folder $CONFIG/rules")
   elif [[ -L "$rule" ]]; then
     failed+=("rule $rule is a symlink; refusing to overwrite")
-  elif [[ ! -e "$rule" ]] || grep -Fxq "<!-- managed: agentic-coding-setup/pr-progress -->" "$rule"; then
+  elif [[ ! -e "$rule" ]] || grep -Fxq "<!-- managed: fpe-agentic-workflow/pr-progress -->" "$rule"; then
     cp "$source_rule" "$rule" || failed+=("could not install $rule")
   else
     failed+=("rule $rule exists and is not managed by this setup")

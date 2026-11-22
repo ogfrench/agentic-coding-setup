@@ -1,4 +1,4 @@
-# Product Passport | agentic-coding-setup
+# Product Passport | fpe-agentic-workflow
 
 This repository is the source and distribution layer for Claude Code and ChatGPT Agentic Workflow. Claude Code has user setup, agents and downstream sync; the ChatGPT edition is a generated skills-only package with independent installation and host capabilities. It is not a universal orchestrator or a hosted service. Product maps are navigation aids; implementation and observed behavior take precedence.
 

@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SCRIPT = fs.readFileSync(path.join(ROOT, "setup-user.sh"), "utf8");
 const RULE = fs.readFileSync(path.join(ROOT, "user/rules/pr-progress.md"), "utf8");
-const OWNED = "<!-- managed: agentic-coding-setup/pr-progress -->";
+const OWNED = "<!-- managed: fpe-agentic-workflow/pr-progress -->";
 
 function fixture(t) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "pr-progress-"));
