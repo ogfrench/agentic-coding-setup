@@ -25,7 +25,7 @@ The standalone `presentation-craft` marketplace plugin is retired for new instal
 
 ## Optional cross-platform companion
 
-The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages the existing 23 Claude-derived engineering, writing, testing, security, presentation and design methods, the four portable review methods, and curated practice knowledge, with explicit ChatGPT capability boundaries. Its new private installation is independent of the Claude Code user setup and the legacy Lite package. See the [ChatGPT edition contract](../docs/agentic-workflow-chatgpt.md). The older [four-skill Lite source](../portable/ogfrench-workflow/) is deprecated for ChatGPT but preserved for compatibility.
+The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages the existing 24 Claude-derived engineering, writing, testing, security, presentation and design methods, the four portable review methods, and curated practice knowledge, with explicit ChatGPT capability boundaries. Its new private installation is independent of the Claude Code user setup and the legacy Lite package. See the [ChatGPT edition contract](../docs/agentic-workflow-chatgpt.md). The older [four-skill Lite source](../portable/ogfrench-workflow/) is deprecated for ChatGPT but preserved for compatibility.
 
 ## Historical source snapshot | 12 November 2026
 
@@ -40,7 +40,7 @@ The [cross-host capability standard](../docs/host-capability-standards.md) keeps
 The [plugin product map](../plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) records package ownership, skill routing, overlaps, supported hosts and release boundaries. It is a navigation aid, not another orchestration agent. Both full workflow editions now use one shared CalVer; legacy Lite and the former standalone writing plugin are no longer distributed.
 
 
-The [Product Passport map](../docs/product-passport/README.md) describes this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](../plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
+The [Product Passport map](../docs/product-passport/README.md) and [complete repository inventory](../docs/product-passport/inventory.md) describe this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](../plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
 
 ## Claude Code installation and repository sync
 

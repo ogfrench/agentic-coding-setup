@@ -19,6 +19,8 @@ For everyday implementation, [Delivery Loop](plugins/agent-workflow/skills/deliv
 | **Agent coordination** | Select useful skills or tools, delegate only when warranted, preserve progress across sessions, and manage context efficiently. |
 | **Cost and operations** | Review GitHub Actions and Netlify costs, audit plugin installation, and maintain disciplined release workflows. |
 
+The [Product Passport](docs/product-passport/README.md) includes an editable [Mermaid architecture map](docs/product-passport/README.md#architecture-and-responsibility-boundaries) and a [complete source inventory](docs/product-passport/inventory.md) of skills, plugins, agents, scripts, knowledge, CI, sync and release boundaries.
+
 Skills are invoked selectively. Installing the package does **not** grant repository access, credentials, browser capabilities, MCP connections, or background execution.
 
 ## Choose an edition

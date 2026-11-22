@@ -2,7 +2,7 @@
 
 This repository is the source and distribution layer for Claude Code and ChatGPT Agentic Workflow. Claude Code has user setup, agents and downstream sync; the ChatGPT edition is a generated skills-only package with independent installation and host capabilities. It is not a universal orchestrator or a hosted service. Product maps are navigation aids; implementation and observed behavior take precedence.
 
-**Map evidence:** source paths `setup-user.sh`, `sync-to-repos.sh`, `lib/apply.mjs`, `scripts/check-sync.mjs` were inspected on 2026-11-09. Referenced plugin and knowledge paths were located from the source README and manifests. No commands or real AI-host journeys were run as part of creating this map.
+**Map evidence:** capability routes and source paths are checked by the Product Passport validator; the detailed [repository inventory](inventory.md) records the current manifests and tracked source counts. Tests and host acceptance must be recorded separately for the exact revision.
 
 The source-linked [capability index](index.json) is checked by `node scripts/check-product-passport.mjs`. This verifies path and test references only; it cannot establish actual user behavior. The [DUNE engineering contract](../dune.md) describes paved paths and evidence reconciliation without replacing source or this map.
 
@@ -11,7 +11,7 @@ The source-linked [capability index](index.json) is checked by `node scripts/che
 | User journey | Entry point and owning implementation | Intended outcome | Verification route |
 | --- | --- | --- | --- |
 | Install personal skills, agents and pinned plugins | `setup-user.sh`, `user/plugins.txt`, `.claude-plugin/marketplace.json` | User-scope install on a laptop or cloud environment | Isolated install and plugin list; **not run for this map** |
-| Package the full portable ChatGPT edition | `scripts/package_agentic_workflow_chatgpt.py`, `portable/agentic-workflow/plugin.json`, canonical source in `plugins/agent-workflow/skills/` | `test/test_agentic_workflow_chatgpt.py`, package/manifest checks and artifact integrity; private account installation and real routing are distinct and **not run for this map** |
+| Package the full portable ChatGPT edition (24 shared + 4 portable skills) | `scripts/package_agentic_workflow_chatgpt.py`, `portable/agentic-workflow/plugin.json`, canonical source in `plugins/agent-workflow/skills/` | `test/test_agentic_workflow_chatgpt.py`, package/manifest checks and artifact integrity; private account installation and real routing are distinct and **not run for this map** |
 | Sync shared capabilities into a project | `sync-to-repos.sh`, `lib/apply.mjs`, `project/settings.json` | Reviewable downstream PR with managed skills, settings and filtered knowledge | `DRY_RUN=1 bash sync-to-repos.sh` against a disposable project; **not run for this map** |
 | Inspect copy drift | `scripts/check-sync.mjs`, `lib/sync-status.mjs` | Detect out-of-date or modified managed copies | `node scripts/check-sync.mjs <project-dir> --json`; **not run for this map** |
 | Capture and promote practices | `learnings/`, `kb/practices/`, `scripts/build-kb.mjs`, `plugins/agent-workflow/skills/learning-loop/` | Move evidence into on-demand reusable guidance | `node --test`; **not run for this map** |
@@ -23,22 +23,42 @@ The source-linked [capability index](index.json) is checked by `node scripts/che
 | Visual QA and other working practices | `plugins/agent-workflow/skills/` | Select specialized workflows only when task-relevant | Task-level evaluation; **not run** |
 | Cross-host review companion | `portable/ogfrench-workflow/` | Optional skill-only review workflows | Per-host acceptance; see source release record |
 
-## System and ownership map
+## Architecture and responsibility boundaries
 
-```text
-User / cloud setup -- setup-user.sh --> Claude user skills, agents, marketplace plugins
-Central source ----- sync-to-repos.sh --> project PR --> .claude/skills + agents + commands
-                                                  \--> .claude/knowledge + settings + provenance
-Canonical skills --> ChatGPT packager --> portable 27-skill ZIP --> separate private installation
-Source learnings --> curated kb/practices --> generated skill topics and per-stack bundles
-Changed product --> Product Passport --> product-owned capability map + tests + real execution evidence
+```mermaid
+flowchart TB
+  subgraph Source["Public FPE source repository"]
+    Skills["24 canonical skill sources"]
+    Learning["Dated learnings and curated practices"]
+    Packager["ChatGPT package builder"]
+    ClaudeRepo["Claude plugin source and marketplace"]
+    Sync["Sync script and project configuration"]
+  end
+  subgraph Hosts["Explicit host installations"]
+    Claude["Claude Code: skills, optional agent, hooks"]
+    ChatGPT["ChatGPT: 28 portable skills and public knowledge"]
+    Projects["Downstream project PRs and managed copies"]
+  end
+  subgraph CI["GitHub Actions (separate stages)"]
+    Check["Source CI and candidate archives"]
+    Bot["GitHub App sync workflow"]
+    Release["Manual versioned release"]
+  end
+  Learning --> Skills
+  Learning --> Packager
+  Skills --> ClaudeRepo
+  Skills --> Packager
+  ClaudeRepo --> Claude
+  Packager --> ChatGPT
+  Skills --> Sync
+  Sync --> Projects
+  Check -. "validates source" .-> Skills
+  Bot --> Sync
+  Release -. "publishes archives only" .-> Claude
+  Release -. "publishes archives only" .-> ChatGPT
 ```
 
-- **Canonical central source:** `plugins/`, `kb/practices/`, `project/`, and install/sync scripts.
-- **Managed copies:** `.claude/claude-code-setup.json` in each downstream project records provenance. Sync deliberately preserves project-owned settings and skills.
-- **Boundaries:** each host independently grants tool access. A skill does not grant GitHub, filesystem, browser, separate reviewer agents or external app permissions. The full ChatGPT edition and legacy Lite companion are independently installed; a GitHub release cannot update either account installation.
-- **Privacy:** central repository is public. Private product names, feature maps, paths, documents and proof must stay in their owning repository.
-- **Deployment:** source merges, user installation, host acceptance and downstream synchronization are separate states.
+The arrows represent **source and packaging relationships**, not automatic installation or network access. See the [complete, path-linked inventory](inventory.md) for all skills, plugins, scripts, integrations, bot controls and evidence boundaries.
 
 ## Maintained product-map contract
 
