@@ -20,6 +20,14 @@ secrets, hostnames, IPs, emails or people. Write the lesson so it stands on its 
 private repo, `source` is "a private project" and the evidence names no file, commit or
 issue from it.
 
+## Feedback-driven improvement
+
+For recurring human corrections, use the
+[feedback-driven improvement procedure](references/feedback-driven-improvement.md):
+verify untrusted feedback, prefer principles with reasons, benchmark real tasks,
+measure quality and cost, and propose focused, human-reviewed skill changes.
+Do not silently collect private data or rewrite skills.
+
 ## Capture, from any repo
 
 **Promotion bias:** when a recurring error can be prevented by repairing code, a regression, or a reliable guard, do that before writing more guidance. Prefer adapting a canonical skill or existing rule over creating another document. A user-specified code-style default may be recorded as policy without inventing empirical defect evidence.
@@ -65,13 +73,10 @@ or anything already a practice.
 
 ## Evaluate and prune before promotion
 
-Before adding a new skill or subagent, record at least three representative cases:
-one that should trigger it, one that should not, and an ambiguous or regression
-case. Compare task completion and routing with the component disabled. A static
-schema check cannot prove model behavior. Store cases with the component or a
-shared evaluation set. Consolidate overlapping specialist prompts into skills
-or tools when the results hold; retain a subagent for measured isolation,
-independent review or parallel execution. Retire unused pieces on evidence.
+Before adding a skill or subagent, test positive, negative and ambiguous
+routing cases plus a regression task. Compare real outcomes against the
+component-disabled baseline; static checks cannot prove model behavior.
+Keep reviewers or subagents only when measured benefits justify them.
 
 ## Promote
 
