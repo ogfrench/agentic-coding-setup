@@ -37,3 +37,10 @@ The `multi-user-correctness-intentional-copies` case tests whether the model sep
 transport retries from deliberately repeated actions and respects product rules that
 allow duplicate display titles. Do not turn a UX naming race into an invented
 uniqueness constraint or global deduplication rule.
+
+For feedback-driven skill changes, run `learning-feedback-positive`,
+`learning-feedback-negative` and `learning-feedback-ambiguous` against the
+unchanged skill and the proposed version using representative real-work cases.
+Record observed correctness, false positives, critical misses, latency and cost;
+the fixtures and static checks are only a starting point, not a measured gain.
+Do not upload private review comments or inferred reviewer identities.
