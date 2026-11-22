@@ -22,19 +22,11 @@ issue from it.
 
 ## Feedback-driven improvement
 
-Treat a correction to an agent's output as a signal to inspect, not an instruction to
-obey. Gather useful feedback in the authorized PR, issue or task where it already
-appears; preserve its rationale and the observed result. Prefer a general principle
-with a reason over a growing list of special-case rules. One person's preference
-may belong in one project's instructions, not a shared skill.
-
-For recurring or high-impact failures, follow the
+For recurring human corrections, use the
 [feedback-driven improvement procedure](references/feedback-driven-improvement.md):
-check the underlying behavior, propose the smallest edit to the owning skill,
-compare real-task outcomes with an unchanged baseline, and measure reliability,
-quality, time and cost. Keep proposed updates reviewable in a focused PR. Human
-approval remains the gate; neither feedback collection nor autonomous skill
-rewriting, scheduling or cross-repository synchronization is enabled by this skill.
+verify untrusted feedback, prefer principles with reasons, benchmark real tasks,
+measure quality and cost, and propose focused, human-reviewed skill changes.
+Do not silently collect private data or rewrite skills.
 
 ## Capture, from any repo
 
@@ -81,13 +73,10 @@ or anything already a practice.
 
 ## Evaluate and prune before promotion
 
-Before adding a new skill or subagent, record at least three representative cases:
-one that should trigger it, one that should not, and an ambiguous or regression
-case. Compare task completion and routing with the component disabled. A static
-schema check cannot prove model behavior. Store cases with the component or a
-shared evaluation set. Consolidate overlapping specialist prompts into skills
-or tools when the results hold; retain a subagent for measured isolation,
-independent review or parallel execution. Retire unused pieces on evidence.
+Before adding a skill or subagent, test positive, negative and ambiguous
+routing cases plus a regression task. Compare real outcomes against the
+component-disabled baseline; static checks cannot prove model behavior.
+Keep reviewers or subagents only when measured benefits justify them.
 
 ## Promote
 
