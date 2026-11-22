@@ -1,4 +1,4 @@
-<!-- managed: agentic-coding-setup/pr-progress -->
+<!-- managed: fpe-agentic-workflow/pr-progress -->
 # Checklist-driven repository work
 
 For every coding or repository change, write and follow a short checklist of intended

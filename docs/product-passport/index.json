@@ -65,6 +65,22 @@
         "test/apply.test.mjs",
         "test/sync-quiet.test.mjs"
       ]
+    },
+    {
+      "id": "repository-inventory",
+      "summary": "Inventory all plugin editions, canonical and portable skills, configured integrations, knowledge and automation boundaries",
+      "map": "docs/product-passport/inventory.md",
+      "source": [
+        "plugins/agent-workflow/skills",
+        "portable/ogfrench-workflow/skills",
+        "user/plugins.txt",
+        ".claude-plugin/marketplace.json",
+        ".github/workflows/sync.yml"
+      ],
+      "tests": [
+        "test/repository-inventory.test.mjs",
+        "test/release-contract.test.mjs"
+      ]
     }
   ]
 }

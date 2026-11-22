@@ -27,8 +27,8 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-BRANCH="chore/claude-code-setup"
-SUBJECT="Sync shared Claude Code setup"
+BRANCH="chore/fpe-agentic-workflow-sync"
+SUBJECT="Sync FPE Agentic Workflow"
 
 # A sync PR may still be a draft, and a draft cannot be merged: mark it ready first. Right
 # after a push GitHub is still working out whether the PR can merge, and a repo's rules may
@@ -101,7 +101,7 @@ sync_one() {
     node -e '
       const fs = require("fs"), f = process.argv[1];
       const day = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-      const entry = `### Claude Code setup, ${day}\n\n- Added the shared Claude Code skills under \`.claude/skills/\` and pointed \`.claude/settings.json\` at the ogfrench/agentic-coding-setup plugin marketplace, synced from that repo.\n\n`;
+      const entry = `### Claude Code setup, ${day}\n\n- Added the shared Claude Code skills under \`.claude/skills/\` and pointed \`.claude/settings.json\` at the ogfrench/fpe-agentic-workflow plugin marketplace, synced from that repo.\n\n`;
       fs.writeFileSync(f, fs.readFileSync(f, "utf8").replace(/^## Unreleased\r?\n\r?\n/m, (m) => m + entry));
     ' "$dir/CHANGELOG.md"
     git -C "$dir" add CHANGELOG.md
@@ -126,7 +126,7 @@ sync_one() {
 
   git -C "$dir" commit -q -m "$SUBJECT
 
-From ogfrench/agentic-coding-setup. Skills are committed under .claude/
+From ogfrench/fpe-agentic-workflow. Skills are committed under .claude/
 because cloud sessions load those but never install plugins from
 project settings.${renamed:+
 
@@ -171,7 +171,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
       if grep -qxF -- "$label" <<<"$have"; then flags+=(--label "$label"); fi
     done
   fi
-  local body="Synced from [ogfrench/agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup) by \`sync-to-repos.sh\`.
+  local body="Synced from [ogfrench/fpe-agentic-workflow](https://github.com/ogfrench/fpe-agentic-workflow) by \`sync-to-repos.sh\`.
 
 - \`.claude/skills/\`: committed copies of the shared skills. Cloud sessions load these, but they never install plugins from project settings.
 - \`.claude/settings.json\`: registers the \`ogfrench\` marketplace and merges shared hooks/settings. Existing project-owned plugin activations and permissions are retained; sync does not enable third-party plugins by default.
@@ -180,7 +180,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - Selected root instruction files (\`AGENTS.md\` and/or \`CLAUDE.md\`): canonical long-term maintainer contract in a marked block. Existing instructions remain intact; the target decides which entrypoints are managed.${renamed:+
 - $renamed}
 
-Edit managed copies in agentic-coding-setup, not downstream: the next sync overwrites them.${edited:+
+Edit managed copies in fpe-agentic-workflow, not downstream: the next sync overwrites them.${edited:+
 
 $edited}
 
@@ -227,7 +227,7 @@ if [[ "${DRY_RUN:-0}" != 1 ]]; then
     exit 1
   fi
   # In the workflow, GH_TOKEN can only reach the target repos; this repo's own token reads CI.
-  ci="$(GH_TOKEN="${GATE_GH_TOKEN:-${GH_TOKEN:-}}" gh run list -R ogfrench/agentic-coding-setup --workflow check.yml --commit "$head" --json conclusion -q '.[0].conclusion')"
+  ci="$(GH_TOKEN="${GATE_GH_TOKEN:-${GH_TOKEN:-}}" gh run list -R ogfrench/fpe-agentic-workflow --workflow check.yml --commit "$head" --json conclusion -q '.[0].conclusion')"
   if [[ "$ci" != "success" ]]; then
     echo "Refusing: CI on ${head:0:7} is '${ci:-not run yet}', not success." >&2
     exit 1

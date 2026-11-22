@@ -6,12 +6,12 @@
 
 ## Plugin and reference links
 
-- **Agentic Workflow (source and installation instructions):** [ogfrench/agentic-coding-setup](https://github.com/ogfrench/agentic-coding-setup)
-- **Claude Code plugin:** [plugins/agent-workflow](https://github.com/ogfrench/agentic-coding-setup/tree/main/plugins/agent-workflow)
-- **ChatGPT plugin source:** [portable/agentic-workflow](https://github.com/ogfrench/agentic-coding-setup/tree/main/portable/agentic-workflow)
-- **Product Passport skill:** [canonical skill](https://github.com/ogfrench/agentic-coding-setup/tree/main/plugins/agent-workflow/skills/product-passport)
-- **Delivery Loop skill:** [canonical skill](https://github.com/ogfrench/agentic-coding-setup/tree/main/plugins/agent-workflow/skills/delivery-loop)
-- **Installation and host limits:** [README](https://github.com/ogfrench/agentic-coding-setup#choose-an-edition) and [host capability standards](https://github.com/ogfrench/agentic-coding-setup/blob/main/docs/host-capability-standards.md)
+- **Agentic Workflow (source and installation instructions):** [ogfrench/fpe-agentic-workflow](https://github.com/ogfrench/fpe-agentic-workflow)
+- **Claude Code plugin:** [plugins/agent-workflow](https://github.com/ogfrench/fpe-agentic-workflow/tree/main/plugins/agent-workflow)
+- **ChatGPT plugin source:** [portable/agentic-workflow](https://github.com/ogfrench/fpe-agentic-workflow/tree/main/portable/agentic-workflow)
+- **Product Passport skill:** [canonical skill](https://github.com/ogfrench/fpe-agentic-workflow/tree/main/plugins/agent-workflow/skills/product-passport)
+- **Delivery Loop skill:** [canonical skill](https://github.com/ogfrench/fpe-agentic-workflow/tree/main/plugins/agent-workflow/skills/delivery-loop)
+- **Installation and host limits:** [README](https://github.com/ogfrench/fpe-agentic-workflow#choose-an-edition) and [host capability standards](https://github.com/ogfrench/fpe-agentic-workflow/blob/main/docs/host-capability-standards.md)
 
 The plugin **provides guidance**, not implicit GitHub access, CI permissions, Claude hooks in ChatGPT, an automatic repo sync, or an installed runtime. To adopt DUNE, copy/adapt the local entrypoint and explicitly enable checks in each product repository. The published release and installed plugin version must be verified separately from the main branch.
 
@@ -90,7 +90,7 @@ In repositories opting into the portable index convention:
 
 This is a **schema example**, not a claim that these paths exist. Never create dummy tests to satisfy a validator. The validator can check that paths exist and remain inside the checkout; it cannot infer whether a test is meaningful or whether the user journey works.
 
-The optional [Product Passport validator](https://github.com/ogfrench/agentic-coding-setup/blob/main/scripts/check-product-passport.mjs) is a **local repository file**, not an automatically installed global CLI. In the central repo it can be run with:
+The optional [Product Passport validator](https://github.com/ogfrench/fpe-agentic-workflow/blob/main/scripts/check-product-passport.mjs) is a **local repository file**, not an automatically installed global CLI. In the central repo it can be run with:
 
 ```sh
 node scripts/check-product-passport.mjs
@@ -220,4 +220,4 @@ For every substantive PR, report:
 
 This handbook and the Agentic Workflow plugin provide a navigational and behavioral method. They do **not** automatically enforce DUNE across other repositories. Enforcement requires opting into product-owned, executable checks and observing them on the exact proposed revision.
 
-The canonical source is maintained through reviewed PRs in [Agentic Workflow](https://github.com/ogfrench/agentic-coding-setup); private product-specific examples, code, operations and evidence stay in their owning repositories.
+The canonical source is maintained through reviewed PRs in [Agentic Workflow](https://github.com/ogfrench/fpe-agentic-workflow); private product-specific examples, code, operations and evidence stay in their owning repositories.

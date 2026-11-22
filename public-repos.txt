@@ -2,6 +2,7 @@
 # unnamed: a private repo's name can itself name a client. Add one here only once it
 # is public. scripts/check-public.mjs reads this file.
 ogfrench/agentic-coding-setup
+ogfrench/fpe-agentic-workflow
 ogfrench/claude-code-setup
 ogfrench/fpe-design-system
 ogfrench/frogConvert

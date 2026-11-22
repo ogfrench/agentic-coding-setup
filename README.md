@@ -19,6 +19,8 @@ For everyday implementation, [Delivery Loop](plugins/agent-workflow/skills/deliv
 | **Agent coordination** | Select useful skills or tools, delegate only when warranted, preserve progress across sessions, and manage context efficiently. |
 | **Cost and operations** | Review GitHub Actions and Netlify costs, audit plugin installation, and maintain disciplined release workflows. |
 
+The [Product Passport](docs/product-passport/README.md) includes an editable [Mermaid architecture map](docs/product-passport/README.md#architecture-and-responsibility-boundaries) and a [complete source inventory](docs/product-passport/inventory.md) of skills, plugins, agents, scripts, knowledge, CI, sync and release boundaries.
+
 Skills are invoked selectively. Installing the package does **not** grant repository access, credentials, browser capabilities, MCP connections, or background execution.
 
 ## Choose an edition
@@ -41,6 +43,8 @@ The marketplace provides the unified workflow and pinned UI tooling:
 | --- | --- |
 | `agentic-workflow` | Full Claude Code edition of Agentic Workflow (24 canonical engineering, story, design, writing, testing and security skills). Published as `claude-workflow` through 2026.11.3. |
 | `21st` | Pinned, externally maintained UI tooling. |
+
+**Names:** the repository is `ogfrench/fpe-agentic-workflow`; the Claude and ChatGPT plugin IDs remain `agentic-workflow`, with the existing FPE logo. A repository rename does not rename or republish installed plugins.
 
 The full **ChatGPT `agentic-workflow`** edition is packaged separately and does not require these Claude marketplace entries.
 
@@ -66,8 +70,8 @@ See the [full DUNE Engineering handbook](docs/dune.md) for the Product Passport 
 From a reviewed checkout:
 
 ```bash
-git clone https://github.com/ogfrench/agentic-coding-setup.git
-cd agentic-coding-setup
+git clone https://github.com/ogfrench/fpe-agentic-workflow.git
+cd fpe-agentic-workflow
 bash setup-user.sh
 ```
 
@@ -101,7 +105,7 @@ The ChatGPT plugin remains a private account installation, even when its ZIP is 
 
 ## Releases
 
-**Public releases:** [Latest GitHub release](https://github.com/ogfrench/agentic-coding-setup/releases/latest).
+**Public releases:** [Latest GitHub release](https://github.com/ogfrench/fpe-agentic-workflow/releases/latest).
 Each published dual-host release includes separately validated Claude and ChatGPT ZIPs and their checksums. See [versioned release notes](docs/releases/) for changes and explicit acceptance limits. Source, package, published release and installed-host acceptance are different states; published archives do not update existing account installations.
 
 Both full editions follow `YYYY.MM.N` CalVer and are checked for version parity. The standalone presentation-craft plugin is retired; its content is part of Agentic Workflow. The writing skills ship inside Agentic Workflow; the old standalone marketplace entries are retired. The published first release uses the historical tag `v.2026.11.1`; future Git tags use the convention `vYYYY.MM.N` (no dot after `v`). See [release conventions](docs/maintainers-guide.md#release-versioning-and-publication).

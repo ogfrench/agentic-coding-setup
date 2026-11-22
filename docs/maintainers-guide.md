@@ -19,17 +19,19 @@ Platform support is intentionally capability-specific. A source package, success
 
 ## Reviewed marketplace updates
 
-The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: false`. A reviewed upstream change is deployed through separate downstream sync PRs, not automatic marketplace refresh. The sync migrates only the managed `ogfrench` marketplace entry from earlier installations (including the repository's old name), leaving unrelated marketplace settings and project-owned overrides intact. A deliberate `setup-user.sh` invocation remains a user-triggered installation/update, not a background policy. Verify the effective setting on each actual Claude Code host; user-level and managed settings may have higher precedence.
+The shared `ogfrench` Claude Code marketplace is configured with `autoUpdate: false`. A reviewed upstream change is deployed through separate downstream sync PRs, not automatic marketplace refresh. The sync normalizes the managed `ogfrench` marketplace setting when its source is already the current `ogfrench/fpe-agentic-workflow` repository. It does not silently migrate obsolete source URLs or overwrite unrelated, project-owned marketplaces. A deliberate `setup-user.sh` invocation remains a user-triggered installation/update, not a background policy. Verify the effective setting on each actual Claude Code host; user-level and managed settings may have higher precedence.
 
 The standalone `presentation-craft` marketplace plugin is retired for new installations. `presentation-story`, `presentation-design`, and `design-system-adapter` now live in `plugins/agent-workflow/skills/`; visual restraint is part of `visual-loop`. Do not silently remove already installed plugin caches or project-owned settings. Both full workflow editions share `YYYY.MM.N` CalVer.
 
 ## Optional cross-platform companion
 
-The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages the existing 23 Claude-derived engineering, writing, testing, security, presentation and design methods, the four portable review methods, and curated practice knowledge, with explicit ChatGPT capability boundaries. Its new private installation is independent of the Claude Code user setup and the legacy Lite package. See the [ChatGPT edition contract](../docs/agentic-workflow-chatgpt.md). The older [four-skill Lite source](../portable/ogfrench-workflow/) is deprecated for ChatGPT but preserved for compatibility.
+The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages the existing 24 Claude-derived engineering, writing, testing, security, presentation and design methods, the four portable review methods, and curated practice knowledge, with explicit ChatGPT capability boundaries. Its new private installation is independent of the Claude Code user setup and the legacy Lite package. See the [ChatGPT edition contract](../docs/agentic-workflow-chatgpt.md). The older [four-skill Lite source](../portable/ogfrench-workflow/) is deprecated for ChatGPT but preserved for compatibility.
 
-## Historical source snapshot | 12 November 2026
+## Current source editions
 
-**claude-workflow v2026.11.1** is the full Claude Code source package, including Architecture Gardener and Delivery Loop. **agentic-workflow v2026.11.1** is the full ChatGPT edition, aligned with the Claude Code CalVer release while retaining host-specific capabilities. **chatgpt-workflow-lite v1.12.0** remains in the repository for compatibility but is deprecated for ChatGPT. Full Claude/ChatGPT version-parity checks now apply to the coordinated pair; legacy Lite stays independently versioned. Host verification remains independent. The existing privately uploaded `ogfrench-workflow v0.1.1` is a **legacy personal plugin** and will not be renamed or updated by this source change. See the [release inventory](../docs/releases/2026-11-09.md). Source merge alone does not install plugins, publish the private ChatGPT plugin, tag a GitHub release or sync downstream projects. **Current release status:** the first complete source release was [published as 2026.11.1](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1), and the private ChatGPT plugin was subsequently installed. Claude host and downstream sync remain independent.
+The [Claude Code manifest](../plugins/agent-workflow/.claude-plugin/plugin.json) and [ChatGPT manifest](../portable/agentic-workflow/plugin.json) both identify **`agentic-workflow` v2026.12.2**. The canonical Claude Code source has 24 skills; the portable ChatGPT build adds four review/setup skills for 28. The Lite package is an archived, separately versioned source edition, not an additional full plugin. See the [current Product Passport inventory](product-passport/inventory.md) for an exhaustive, source-checked list, and [dated release records](releases/) for historical snapshots.
+
+A source commit is not a published version, an installed-host update, a downstream project sync or verified behavior. Changing repository links and documentation does not trigger a new package release.
 
 ## Cross-host capability standards
 
@@ -40,7 +42,7 @@ The [cross-host capability standard](../docs/host-capability-standards.md) keeps
 The [plugin product map](../plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) records package ownership, skill routing, overlaps, supported hosts and release boundaries. It is a navigation aid, not another orchestration agent. Both full workflow editions now use one shared CalVer; legacy Lite and the former standalone writing plugin are no longer distributed.
 
 
-The [Product Passport map](../docs/product-passport/README.md) describes this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](../plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
+The [Product Passport map](../docs/product-passport/README.md) and [complete repository inventory](../docs/product-passport/inventory.md) describe this setup's actual installation, sync, knowledge, and verification surfaces. The [Product Passport skill](../plugins/agent-workflow/skills/product-passport/SKILL.md) requires each product repository to maintain its own feature map alongside consequential product changes, with code and runtime evidence taking priority over documentation. For a map-free product, create a small, clearly labeled initial inventory, then verify features incrementally. Private product maps and evidence must remain in their owning private repositories. Source changes do not automatically sync the skill or create product maps elsewhere.
 
 ## Claude Code installation and repository sync
 
@@ -49,7 +51,7 @@ The following two layers are **Claude Code-specific**, not universal setup comma
 **User scope: `setup-user.sh`.** It installs every plugin in `user/plugins.txt` and copies the skills into `~/.claude/skills` and the subagents into `~/.claude/agents`, at user scope. Run it once on a laptop. For cloud sessions, paste this as the setup script of the environment on claude.ai/code. It runs before Claude starts, in every repo that uses the environment:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ogfrench/agentic-coding-setup/main/setup-user.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ogfrench/fpe-agentic-workflow/main/setup-user.sh | bash
 ```
 
 Cloud sessions do not install plugins solely because a repository's settings enable them.
@@ -63,6 +65,8 @@ that repository, plugin and account skills are equivalent.
 For centrally managed agent instructions and practices, this repo is the upstream source. Project code, tests and actual behavior remain authoritative for each product. The managed copies in each project are overwritten on the next Claude Code sync, so edit shared content here.
 
 **Provenance and drift detection.** Each synced project records the central source commit and a SHA-256 fingerprint of its managed skill/agent/command copies in `.claude/claude-code-setup.json`. From a checkout of this repo, run `node scripts/check-sync.mjs /path/to/project` (or add `--json`) to distinguish current, outdated, locally modified, legacy and unverifiable copies. It reads only; it does not update a project. The next deliberate sync overwrites managed copies, while project-owned skills remain untouched. Existing projects acquire these stamps on their next sync. CI in a project can run the checker after checking out this source, but a standard project is not blocked automatically until its manifest is upgraded.
+
+**Sync bot.** The GitHub App `fpe-agentic-workflow-sync` runs [the sync workflow](../.github/workflows/sync.yml); it is distinct from the `agentic-workflow` plugin. Configure `vars.SYNC_APP_ID`, `secrets.SYNC_APP_PRIVATE_KEY`, and `secrets.SYNC_REPOS` in the repository's `sync` Actions environment. The App must be installed on the intended target repositories with Contents and Pull requests write access. Limit the `sync` environment to `main`. The workflow resolves commit author identity from the App's actual slug, so a GitHub App rename does not require a hardcoded bot username or a new App ID. The job deliberately runs only on the renamed repository's `main`; review the first post-merge run before enabling any automatic PR merges. A scheduled run creates draft sync PRs and does not merge them.
 
 ## Layout
 
@@ -181,7 +185,7 @@ Nothing here fixes itself, so a weekly look is the habit. `node scripts/kb-audit
 The upkeep can run unattended as a weekly scheduled task (a fresh session in this repo, with the prompt below). It opens a PR, never pushes `main`, and merges only a PR that is nothing but date bumps with no privacy findings:
 
 ```
-Weekly upkeep of the public repo ogfrench/agentic-coding-setup. Clone it if it is not in the working
+Weekly upkeep of the public repo ogfrench/fpe-agentic-workflow. Clone it if it is not in the working
 directory. Pull requests only, never push to main (CONTRIBUTING.md). Write no names of clients,
 people or private repos anywhere, including PR text and your final message; refer to a finding by
 file and line, never by quoting it.
@@ -317,6 +321,6 @@ The official plugins (superpowers, context7, playwright and the rest) come from 
 
 The two **full** workflow editions, the Claude Code and ChatGPT editions of `agentic-workflow`, share a `YYYY.MM.N` CalVer. Verify parity in both plugin manifests and the generated package before each source release. Specialist packages and the deprecated Lite edition maintain independent version histories.
 
-Use Git tags of the form **`vYYYY.MM.N`** for future releases. The first published release is an explicit historical exception: [`v.2026.11.1`](https://github.com/ogfrench/agentic-coding-setup/releases/tag/v.2026.11.1). Preserve that existing tag and working links; do not silently delete and recreate a published release. Do not create a second tag for the same version.
+Use Git tags of the form **`vYYYY.MM.N`** for future releases. The first published release is an explicit historical exception: [`v.2026.11.1`](https://github.com/ogfrench/fpe-agentic-workflow/releases/tag/v.2026.11.1). Preserve that existing tag and working links; do not silently delete and recreate a published release. Do not create a second tag for the same version.
 
 Each release should record the reviewed source commit, post-merge CI result, package integrity, installed-host verification (when performed), and remaining acceptance gaps. Source archive publication and a private ChatGPT package upload are separate actions. Do not attach the private ChatGPT plugin package publicly without an explicit distribution review.
