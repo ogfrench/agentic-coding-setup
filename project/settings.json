@@ -3,7 +3,7 @@
     "ogfrench": {
       "source": {
         "source": "github",
-        "repo": "ogfrench/agentic-coding-setup"
+        "repo": "ogfrench/fpe-agentic-workflow"
       },
       "autoUpdate": false
     }

@@ -57,7 +57,7 @@ test("apply on the real repo: copies skills, merges settings, is idempotent", ()
   assert.deepEqual(settings.hooks.Stop, [], "the repo's own hook is kept");
   assert.match(settings.hooks.SessionStart[0].hooks[0].command, /\.claude\/knowledge\/must\.md/);
   assert.equal(settings.enabledPlugins?.["superpowers@claude-plugins-official"], undefined, "sync never activates unrequested plugins");
-  assert.equal(settings.extraKnownMarketplaces.ogfrench.source.repo, "ogfrench/agentic-coding-setup");
+  assert.equal(settings.extraKnownMarketplaces.ogfrench.source.repo, "ogfrench/fpe-agentic-workflow");
 
   for (const s of ["frogify", "deslopify", "humanizer"]) {
     assert.ok(fs.existsSync(path.join(t, ".claude/skills", s, "SKILL.md")), `${s} copied`);
@@ -72,27 +72,25 @@ test("apply on the real repo: copies skills, merges settings, is idempotent", ()
   assert.deepEqual(snapshot(t), before, "second apply changes nothing");
 });
 
-test("sync replaces legacy marketplace auto-update only for the managed source", () => {
-  for (const previousRepo of ["ogfrench/claude-code-setup", "ogfrench/agentic-coding-setup"]) {
-    const t = tmp();
-    write(path.join(t, ".claude/settings.json"), {
-      extraKnownMarketplaces: {
-        ogfrench: { source: { source: "github", repo: previousRepo }, autoUpdate: true, pinned: "preserved" },
-        personal: { source: { source: "github", repo: "another-owner/another-marketplace" }, autoUpdate: true },
-      },
-      enabledPlugins: { "superpowers@claude-plugins-official": false },
-    });
-    apply(t);
-    const settings = read(path.join(t, ".claude/settings.json"));
-    assert.equal(settings.extraKnownMarketplaces.ogfrench.source.repo, "ogfrench/agentic-coding-setup");
-    assert.equal(settings.extraKnownMarketplaces.ogfrench.autoUpdate, false);
-    assert.equal(settings.extraKnownMarketplaces.ogfrench.pinned, "preserved");
-    assert.equal(settings.extraKnownMarketplaces.personal.autoUpdate, true);
-    assert.equal(settings.enabledPlugins["superpowers@claude-plugins-official"], false);
-    const before = snapshot(t);
-    apply(t);
-    assert.deepEqual(snapshot(t), before);
-  }
+test("sync preserves unrelated settings and pins its own marketplace", () => {
+  const t = tmp();
+  write(path.join(t, ".claude/settings.json"), {
+    extraKnownMarketplaces: {
+      ogfrench: { source: { source: "github", repo: "ogfrench/fpe-agentic-workflow" }, autoUpdate: true, pinned: "preserved" },
+      personal: { source: { source: "github", repo: "another-owner/another-marketplace" }, autoUpdate: true },
+    },
+    enabledPlugins: { "superpowers@claude-plugins-official": false },
+  });
+  apply(t);
+  const settings = read(path.join(t, ".claude/settings.json"));
+  assert.equal(settings.extraKnownMarketplaces.ogfrench.source.repo, "ogfrench/fpe-agentic-workflow");
+  assert.equal(settings.extraKnownMarketplaces.ogfrench.autoUpdate, false);
+  assert.equal(settings.extraKnownMarketplaces.ogfrench.pinned, "preserved");
+  assert.equal(settings.extraKnownMarketplaces.personal.autoUpdate, true);
+  assert.equal(settings.enabledPlugins["superpowers@claude-plugins-official"], false);
+  const before = snapshot(t);
+  apply(t);
+  assert.deepEqual(snapshot(t), before);
 });
 
 test("sync preserves explicitly project-owned marketplace sources", () => {

@@ -64,6 +64,8 @@ For centrally managed agent instructions and practices, this repo is the upstrea
 
 **Provenance and drift detection.** Each synced project records the central source commit and a SHA-256 fingerprint of its managed skill/agent/command copies in `.claude/claude-code-setup.json`. From a checkout of this repo, run `node scripts/check-sync.mjs /path/to/project` (or add `--json`) to distinguish current, outdated, locally modified, legacy and unverifiable copies. It reads only; it does not update a project. The next deliberate sync overwrites managed copies, while project-owned skills remain untouched. Existing projects acquire these stamps on their next sync. CI in a project can run the checker after checking out this source, but a standard project is not blocked automatically until its manifest is upgraded.
 
+**Sync bot.** The GitHub App `fpe-agentic-workflow-sync` runs [the sync workflow](../.github/workflows/sync.yml); it is distinct from the `agentic-workflow` plugin. Configure `vars.SYNC_APP_ID`, `secrets.SYNC_APP_PRIVATE_KEY`, and `secrets.SYNC_REPOS` in the repository's `sync` Actions environment. The App must be installed on the intended target repositories with Contents and Pull requests write access. Limit the `sync` environment to `main`. The workflow resolves commit author identity from the App's actual slug, so a GitHub App rename does not require a hardcoded bot username or a new App ID. The job deliberately runs only on the renamed repository's `main`; review the first post-merge run before enabling any automatic PR merges. A scheduled run creates draft sync PRs and does not merge them.
+
 ## Layout
 
 | Path | What it is | Lands in each repo as |
