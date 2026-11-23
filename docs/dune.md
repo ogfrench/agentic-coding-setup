@@ -131,6 +131,8 @@ For each changed capability, choose the smallest meaningful native test set and 
 5. **Clean up:** reset test state and avoid leaving credentials or test data in production.
 6. **Compare:** independent review of sensitive, security, irreversible, or release-impacting changes.
 
+**Optional mobile exploratory testing reference:** [mobile-agent-testers](https://github.com/pierridotite/mobile-agent-testers) demonstrates parallel, persona-driven testing on Android emulators and iOS simulators, including varied languages, screen sizes, text scaling and accessibility settings. Consider it for mobile release discovery and evidence gathering, not as a mandatory check. Agent exploration is nondeterministic: inspect screenshot-backed reports, reproduce actionable findings, and convert confirmed defects into deterministic regression tests. Budget device/model/runner use; review permissions, data handling and third-party workflow code before running against private products. This is an external reference, not a bundled or installed dependency.
+
 A coding agent's own narrative is **not** independent verification. Static skill/evaluation fixtures are not real model runs. Record uncertainty explicitly and do not call packaging, installation, deployment and release the same milestone.
 
 ## 6. CI and release boundaries

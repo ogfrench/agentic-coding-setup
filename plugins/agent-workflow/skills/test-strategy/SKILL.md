@@ -53,6 +53,18 @@ silently changing the input or weakening the gate. A successful build,
 screenshot or integrity check alone does not prove real consumer behavior;
 exercise representative import, playback, rendering or user interaction.
 
+## Optional mobile agent exploration
+
+For native or hybrid mobile release discovery, consider
+[mobile-agent-testers](https://github.com/pierridotite/mobile-agent-testers) as
+an external example of parallel iOS/Android persona testing across devices,
+languages, display scaling and accessibility settings. It can expose unanticipated
+user-journey failures, but exploratory AI findings are nondeterministic. Inspect
+screenshots, reproduce the defect, and add a deterministic regression where
+appropriate. Review upstream code, secrets/test data exposure, model spend and
+runner costs before adopting it. This is not bundled, installed, or a required
+CI gate, and does not replace the product's own tests.
+
 ## Boundaries
 
 This skill owns choosing sufficient tests. Delivery-loop owns execution and PR
