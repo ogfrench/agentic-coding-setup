@@ -61,6 +61,8 @@ The full **ChatGPT `agentic-workflow`** edition is packaged separately and does 
 
 Three shared skills, **Presentation Story**, **Presentation Design** and **Design System Adapter**, support narrative work and independent authoring when appropriate. **Visual Loop** incorporates visual-restraint review. A named specialist such as frogViz owns its real template/build/export pipeline. The ChatGPT edition additionally includes **Adversarial Review, Implementation Proof, Release Handover, and Setup Audit**. Read the [plugin product map](plugins/agent-workflow/skills/product-passport/references/plugin-product-map.md) for ownership, boundaries, and routing.
 
+**Optional testing reference:** [mobile-agent-testers](https://github.com/pierridotite/mobile-agent-testers) illustrates parallel mobile persona testing. Its exploratory findings complement, rather than replace, repeatable regression tests. It is not part of this plugin or required CI; see [DUNE testing guidance](docs/dune.md#5-testing-and-independent-proof).
+
 See the [full DUNE Engineering handbook](docs/dune.md) for the Product Passport loop, paved paths, verification, CI, releases, and active-repository adoption. The handbook links the [Claude plugin](plugins/agent-workflow/) and [ChatGPT plugin source](portable/agentic-workflow/). DUNE strengthens existing skills; it is not a new plugin or mandatory agent.
 
 ## Get started
