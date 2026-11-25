@@ -23,9 +23,9 @@ For product changes, use the product-owned capability map, verify source and tes
 - **Evaluate:** verify requirements and observed behavior; reframe if
   evidence disproves the diagnosis.
 
-FPE is iterative reasoning, not gates or agents. Routine fixes need one
-short pass. For costly ambiguity or high risk, use `model-delegation` for
-independent critique before commitment or merge. One executive owns delivery.
+FPE is reasoning, not gates or agents. Routine fixes need one pass. Use
+`model-delegation` for costly ambiguity or high-risk independent critique before
+commitment or merge. One executive owns delivery.
 
 ## Run the loop
 
@@ -52,9 +52,7 @@ independent critique before commitment or merge. One executive owns delivery.
    repeat the same user journey or artifact after editing. Use test-strategy for
    proportionate test selection and session-continuity for
    [before/after evidence](../session-continuity/references/before-after-proof.md).
-   For changed UI or documentation copy, complete the test-strategy
-   [copy-change preflight](../test-strategy/SKILL.md#copy-change-preflight)
-   before expensive builds, repinning or full acceptance.
+   Complete test-strategy's copy-change preflight before expensive acceptance.
    Test changed behavior, negative paths and meaningful real
    journeys in an isolated environment. Distinguish static inspection, local tests,
    CI, host acceptance, deployed and production-verified. Investigate failed checks

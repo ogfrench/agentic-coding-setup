@@ -32,10 +32,7 @@ actually returned; check navigation, redirects, generated assets, paths and casi
 Identify missing files, stale URLs, contradictory workflow conditions, unbounded
 build work, missing artifacts and tests that cannot fail when behavior regresses.
 Distinguish application defects, test defects and environment failures.
-For changed user-facing text, require the test-strategy
-[copy-change preflight](../test-strategy/SKILL.md#copy-change-preflight), including
-masked assertions and focused tests on fresh output, before expensive acceptance.
-A static audit without execution remains unverified.
+Run test-strategy's copy-change preflight before expensive acceptance.
 
 For generated artifacts, trace source -> generator -> output -> publisher.
 Do not repair a test by removing a legitimate assertion or treating 404 as success.
