@@ -14,7 +14,7 @@ Check the actual host command inventory, permissions, branch policy, review
 status and pending writers. Do not invoke slash commands via an invented API.
 If a native path may merge, deploy or change settings beyond the granted scope,
 do not use it until the scope is safely constrained. Never turn on auto-merge
-for convenience. A PR verdict is not release acceptance.
+for convenience. A PR verdict is not release acceptance. Run native shipping before the final review and release-readiness gate, not afterward. Managed Code Review reads REVIEW.md from the base or default branch, not the PR's proposed version; do not assume a newly added review policy governs its own PR.
 
 ## One writer, one tracker
 

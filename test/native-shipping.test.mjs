@@ -11,6 +11,7 @@ const read = (p) => fs.readFileSync(new URL(p, root), "utf8");
 test("shipping guidance is packaged through the canonical delivery skill", () => {
   const skill = read("plugins/agent-workflow/skills/delivery-loop/SKILL.md");
   assert.match(skill, /references\/native-shipping\.md/);
+  assert.ok(skill.indexOf('references/native-shipping.md') < skill.indexOf('5. **Reconcile and review.**'), 'native delivery precedes final review');
   const contract = read("plugins/agent-workflow/skills/delivery-loop/references/native-shipping.md");
   for (const phrase of ["observed capability", "one tracker", "two repair/review rounds", "read-only", "explicit human authorization"]) {
     assert.ok(contract.toLowerCase().includes(phrase.toLowerCase()), phrase);
