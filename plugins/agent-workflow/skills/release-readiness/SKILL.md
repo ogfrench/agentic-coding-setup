@@ -7,9 +7,8 @@ description: >-
 # Release Readiness
 
 Own the release decision for the **exact final commit**, not the appearance of green checks.
-Use with `delivery-loop`: it owns implementation and handover; this specialist audits
-release-specific failure modes. Do not create duplicate release trackers or require
-a particular CI provider.
+Use with `delivery-loop` for implementation and handover; audit release-specific
+risks without duplicate trackers or provider requirements.
 
 ## 1. Establish the release contract
 
@@ -64,8 +63,9 @@ stale version/commit, bad checksum, and privacy scope. Build all required files
 before publishing, attach together, and never overwrite published immutable ZIPs.
 Keep restricted data and credentials behind their existing authorization gates.
 
-After publication, inspect actual assets, download and verify their checksums.
-Release publication does not update accounts or prove MCP authentication.
+After publication, verify actual assets and digests. For overlay installs,
+diff old/new file inventories, explicitly delete obsolete files and verify the
+resulting manifest and inventory. Host behavior requires separate proof.
 Mark a release **incomplete** if promised assets are missing despite green CI.
 
 ## 4. Prove behavior, not just compilation
