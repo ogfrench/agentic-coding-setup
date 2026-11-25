@@ -58,6 +58,10 @@ Use for CI bills, budgets, slow jobs, duplicate runs, matrices or caching. Start
   merge related branches into it, and push review fixes to it: a "ready" or
   label gate lets them ride along. Run touched specs locally, say so; re-run
   only for a risky fix. Old green E2E proves nothing new.
+- Before expensive package repinning or full acceptance for copy-heavy changes,
+  complete the [copy-change preflight](../test-strategy/SKILL.md#copy-change-preflight).
+  Run focused tests first and batch fixes; do not repeatedly discover stale
+  copy assertions in full CI. Preserve final-SHA required gates.
 - Add `timeout-minutes`. Measure retries, sleeps, repeat installs, duplicate
   builds and big matrices before removing a test; never truncate suites.
 - Use lockfile-keyed dependency caches, verify cache hit times, and do not

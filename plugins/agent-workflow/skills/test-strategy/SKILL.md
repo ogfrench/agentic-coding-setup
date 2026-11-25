@@ -35,6 +35,27 @@ Do not treat a passing test as proof that the product meets requirements by defa
    justified skips and remaining gaps. A skipped, blocked, stale or waived test is
    **not** a pass.
 
+## Copy-change preflight
+
+Before expensive builds, package repinning or full acceptance, reconcile the
+complete UI/documentation copy diff with its dependent tests. Include removed
+and changed labels, accessible names, translated strings, prompts, error text,
+step order, selectors, fixtures and snapshots. Search for old strings and
+normalized fragments across the affected test and proof suites; inspect each
+matching assertion, including later assertions masked by an earlier failure.
+Read the actual generated markup or rendering code and check affected journeys.
+
+Use stable semantic selectors, identifiers and download destinations for behavior
+tests. Keep exact wording and accessible-name assertions where those are the
+approved contract; update them to the new requirement, not to whatever happens
+to render. Preserve negative paths, accessibility and user-facing instructions.
+Do not delete or loosen valid assertions to obtain green CI.
+
+Run the smallest relevant generated-site and browser tests on fresh output
+first. Batch corrections, then run required full acceptance on the final SHA.
+If focused execution is unavailable, report that proof gap explicitly; static
+search is not a substitute for a passing test.
+
 ## Shared-state and multi-user correctness
 
 For concurrent writes, live collaboration, tenant-owned data, reconnects or offline

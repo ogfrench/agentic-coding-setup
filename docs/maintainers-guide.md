@@ -29,7 +29,7 @@ The [full Agentic Workflow for ChatGPT](../portable/agentic-workflow/) packages 
 
 ## Current source editions
 
-The [Claude Code manifest](../plugins/agent-workflow/.claude-plugin/plugin.json) and [ChatGPT manifest](../portable/agentic-workflow/plugin.json) both identify **`agentic-workflow` v2026.12.4**. The canonical Claude Code source has 24 skills; the portable ChatGPT build adds four review/setup skills for 28. The Lite package is an archived, separately versioned source edition, not an additional full plugin. See the [current Product Passport inventory](product-passport/inventory.md) for an exhaustive, source-checked list, and [dated release records](releases/) for historical snapshots.
+The [Claude Code manifest](../plugins/agent-workflow/.claude-plugin/plugin.json) and [ChatGPT manifest](../portable/agentic-workflow/plugin.json) both identify **`agentic-workflow` v2026.12.5**. The canonical Claude Code source has 24 skills; the portable ChatGPT build adds four review/setup skills for 28. The Lite package is an archived, separately versioned source edition, not an additional full plugin. See the [current Product Passport inventory](product-passport/inventory.md) for an exhaustive, source-checked list, and [dated release records](releases/) for historical snapshots.
 
 A source commit is not a published version, an installed-host update, a downstream project sync or verified behavior. Changing repository links and documentation does not trigger a new package release.
 

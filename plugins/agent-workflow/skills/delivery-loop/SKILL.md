@@ -52,6 +52,9 @@ independent critique before commitment or merge. One executive owns delivery.
    repeat the same user journey or artifact after editing. Use test-strategy for
    proportionate test selection and session-continuity for
    [before/after evidence](../session-continuity/references/before-after-proof.md).
+   For changed UI or documentation copy, complete the test-strategy
+   [copy-change preflight](../test-strategy/SKILL.md#copy-change-preflight)
+   before expensive builds, repinning or full acceptance.
    Test changed behavior, negative paths and meaningful real
    journeys in an isolated environment. Distinguish static inspection, local tests,
    CI, host acceptance, deployed and production-verified. Investigate failed checks
