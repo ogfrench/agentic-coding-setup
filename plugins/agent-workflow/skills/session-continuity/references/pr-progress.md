@@ -77,3 +77,13 @@ is current, risks are explicit, and all actual repository gates are met. Checkbo
 are agent-maintained notes, not an enforcement mechanism. Required CI, protected
 branches, independent review and human authorization remain separate controls.
 No automatic merge, deploy, or issue closure is implied by a filled checklist.
+
+## PR writer handoff
+
+Record the current writer, authorized scope, head SHA, next action, stop condition,
+and review/evidence owner in the PR. Before switching writers, finish or cancel
+the previous writer's pending work and verify the remote head. If a managed PR
+agent is watching, stop it and confirm it has ceased writing before editing.
+Never push from a stale head, force-push over another writer, or assume a
+comment is an atomic lock. If exclusive ownership cannot be established,
+remain read-only. Reconcile approvals, checks and user evidence after a new push.

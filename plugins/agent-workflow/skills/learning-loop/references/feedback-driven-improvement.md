@@ -77,3 +77,15 @@ their own permission, cost, evaluation and rollback design.
 **Source pattern:** [How Warp builds self-improving agents on Claude](https://claude.com/resources/articles/how-warp-builds-self-improving-agents-on-claude),
 published August 26, 2026. Its case study motivates feedback collection and
 skill PRs, but is not proof that this repository's agents have improved.
+
+## Replay consequential incidents
+
+For a repeated or expensive defect, preserve a sanitized faulty fixture, expected
+finding, corrected fixture, executable regression and known-good counterexample.
+Use the existing evaluation format for reviewer or skill behavior. Compare the
+same inputs and test environment with baseline guidance, native capability alone
+(where actually available), and the combined workflow. Record model/version,
+tool trace, final outcome, missed defects, false positives, rounds, usage and CI
+cost; distinguish measured values from unavailable data. Static fixture validation
+does not execute a model. Retire overlapping guidance only when paired real tasks
+show no material regression. Never transfer private source or PR traces here.

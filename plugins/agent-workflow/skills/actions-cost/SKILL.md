@@ -6,10 +6,7 @@ description: >-
 
 # Optimize GitHub Actions cost without weakening CI
 
-Use for requests about CI bills, too many runs, budgets, slow jobs, merge-trigger
-duplication, matrices, caching, or workflow optimization. Always start with the real
-workflows and recent run history, not a generic YAML recipe. Read
-[the implementation reference](references/ci-audit.md) when changing workflow files.
+Use for CI bills, budgets, slow jobs, duplicate runs, matrices or caching. Start with actual workflows and run history. Read [the audit reference](references/ci-audit.md) when editing workflows.
 
 ## 1. Inventory and measure before editing
 
@@ -74,12 +71,7 @@ workflows and recent run history, not a generic YAML recipe. Read
 
 ## 4. Budgets and operational guardrails
 
-For native PR agents, include model usage, reviewer rounds, additional CI runs,
-human intervention and recovery in the cost of an accepted PR. Managed review
-and remediation may have separate usage budgets; verify the actual organization
-settings, set explicit limits before activation, and stop the agent when limits
-or scope are exceeded. Observe mode is not necessarily free. Do not enable
-billable repository services or change a budget without authorization.
+See [managed PR agent costs](references/ci-audit.md).
 
 - GitHub Settings > Billing and licensing > Budgets and alerts: inspect Actions
   usage, included-minute alerts, and product-level or account-level budgets.

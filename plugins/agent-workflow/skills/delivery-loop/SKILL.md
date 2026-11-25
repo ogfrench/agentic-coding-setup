@@ -13,7 +13,7 @@ bypassed controls or claims that unfinished work is done.
 
 ## DUNE delivery invariant
 
-For a product-facing change, enter through the product-owned capability map, verify real source and test ownership, follow the existing paved path, implement a focused regression, and exit through observed behavior plus reconciled passport evidence. The PR is the only authoritative live tracker. Do not create another DUNE board, duplicate agent, or infer functional success from static path checks. Enforce architecture constraints only when relevant to the target stack and a demonstrated failure mode.
+For product changes, use the product-owned capability map, verify source and tests, follow paved paths, add a focused regression and reconcile passport evidence against observed behavior. The PR is the only live tracker. Never infer functionality from path checks. Enforce architecture constraints only for demonstrated failure modes in the target stack.
 
 ## Frame–Propose–Evaluate (FPE)
 
@@ -26,14 +26,6 @@ For a product-facing change, enter through the product-owned capability map, ver
 FPE is iterative reasoning, not gates or agents. Routine fixes need one
 short pass. For costly ambiguity or high risk, use `model-delegation` for
 independent critique before commitment or merge. One executive owns delivery.
-
-## Choose the native delivery mechanism
-
-After implementation and local proof, use the [shipping contract](references/native-shipping.md).
-Prefer the host's supported native PR delivery path when it fits the authorized
-scope; otherwise use the existing PR loop. A command name in documentation is
-not evidence of runtime availability. Do not activate paid services, change
-branch rules or enable automatic merging as part of a delivery task.
 
 ## Run the loop
 
@@ -72,7 +64,7 @@ branch rules or enable automatic merging as part of a delivery task.
    Update the PR checklist; reopen items invalidated by later commits. Inspect the final diff, changed scope,
    CI and review threads; use an independent reviewer when risk warrants it.
    Keep executable regressions. Update affected map pointers or state `map unchanged`. Avoid unsolicited changelogs.
-6. **Finish or hand off truthfully.** Merge, release, deploy or close issues only if
+6. **Finish or hand off truthfully.** Use the [native shipping contract](references/native-shipping.md) when an observed host capability fits the authorization. Merge, release, deploy or close issues only if
    authorized and the actual gates pass. Otherwise preserve work in a reviewable
    branch and put a precise next action, owner, blocker and proof gap in the PR.
    Recheck live state before reporting completion. Use `learning-loop` to capture

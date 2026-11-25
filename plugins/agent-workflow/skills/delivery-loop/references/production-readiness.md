@@ -22,3 +22,13 @@ During and after:
   safely, then reconcile production state, outstanding data and customer effects.
 - Record exact revisions, timestamps, checks, rollback state and remaining risks.
   Never say production is verified when no authorized host probe ran.
+
+## Recovery and automated delivery
+
+For consequential changes, record the known-good revision or artifact, recovery
+owner, trigger and tested recovery procedure where feasible. A code revert does
+not reverse a database migration or external side effect; require a compatible
+recovery path and explicit authorization for destructive actions.
+A native shipping agent's verdict is review evidence, not release approval.
+Reconcile its commits, required checks, human decisions and user-journey proof
+at the final revision; never enable auto-merge as a workaround.

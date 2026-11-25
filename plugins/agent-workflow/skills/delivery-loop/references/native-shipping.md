@@ -52,7 +52,7 @@ policy matching and GitHub required checks before enforcement. Observe mode
 can generate billed reviews. A policy on the default branch can activate
 Approvals and change automatic review coverage; do not install or sync a live
 `.claude/approvals.yml`. Keep project policies local and opt-in. CI remains
-independently required; Claude approval cannot stand in for human authorization.
+independently required; Claude approval cannot stand in for explicit human authorization.
 
 Sources verified 2026-11-25: [Claude Ship](https://code.claude.com/docs/en/claude-ship),
 [PR Steward](https://code.claude.com/docs/en/pr-steward),

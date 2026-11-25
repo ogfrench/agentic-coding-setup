@@ -78,17 +78,7 @@ routing cases plus a regression task. Compare real outcomes against the
 component-disabled baseline; static checks cannot prove model behavior.
 Keep reviewers or subagents only when measured benefits justify them.
 
-## Replay consequential incidents
-
-For a repeated or expensive defect, preserve a sanitized faulty fixture, expected
-finding, corrected fixture, executable regression and known-good counterexample.
-Use the existing evaluation format for reviewer or skill behavior. Compare the
-same inputs and test environment with baseline guidance, native capability alone
-(where actually available), and the combined workflow. Record model/version,
-tool trace, final outcome, missed defects, false positives, rounds, usage and CI
-cost; distinguish measured values from unavailable data. Static fixture validation
-does not execute a model. Retire overlapping guidance only when paired real tasks
-show no material regression. Never transfer private source or PR traces here.
+Replay consequential incidents using the [feedback-driven improvement procedure](references/feedback-driven-improvement.md).
 
 ## Promote
 

@@ -95,7 +95,7 @@ The [marketplace manifest](../../.claude-plugin/marketplace.json) pins the third
 
 ## Knowledge, evaluations and tests
 
-The repository contains **53 curated practice cards** in [`kb/practices/`](../../kb/practices/), **40 tool-reference cards** in [`kb/tools/`](../../kb/tools/), **86 dated learning records** in [`learnings/`](../../learnings/), **57 behavioral evaluation prompts** under [`plugins/agent-workflow/evals/`](../../plugins/agent-workflow/evals/) and **22 test source files** under [`test/`](../../test/). Counts describe tracked sources, not runtime evaluation scores.
+The repository contains **53 curated practice cards** in [`kb/practices/`](../../kb/practices/), **40 tool-reference cards** in [`kb/tools/`](../../kb/tools/), **86 dated learning records** in [`learnings/`](../../learnings/), **60 behavioral evaluation prompts** under [`plugins/agent-workflow/evals/`](../../plugins/agent-workflow/evals/) and **23 test source files** under [`test/`](../../test/). Counts describe tracked sources, not runtime evaluation scores.
 
 The knowledge flow is **dated learning → reviewed practice → generated KB index/bundles → on-demand skill or project context**. `kb/tools/` is an index of *documented tools, plugins and skills*, **not an installed-tools manifest**. Its 40 entries are:
 

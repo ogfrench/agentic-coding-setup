@@ -43,7 +43,7 @@ test("Product Passport inventories the current repository and plugins without im
   assert.ok(doc.includes("mcpServers"));
   assert.ok(doc.includes("53 curated practice cards"));
   assert.ok(doc.includes("40 tool-reference cards"));
-  assert.ok(doc.includes("57 behavioral evaluation prompts"));
+  assert.match(doc, /\*\*\d+ behavioral evaluation prompts\*\*/);
 });
 
 test("Product Passport knowledge and source counts track the checkout", () => {
