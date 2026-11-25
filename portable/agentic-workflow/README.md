@@ -1,6 +1,6 @@
 # Agentic Workflow for ChatGPT
 
-**Full portable edition, v2026.12.4.** Source: [ogfrench/fpe-agentic-workflow](https://github.com/ogfrench/fpe-agentic-workflow).
+**Full portable edition, v2026.12.5.** Source: [ogfrench/fpe-agentic-workflow](https://github.com/ogfrench/fpe-agentic-workflow).
 
 This package provides the 24 source-owned engineering, story and design skills from the Claude Code edition of `agentic-workflow`, 4 previously portable review/setup skills, and the curated public engineering-practice knowledge base. All skills retain their owning source guidance and supporting references. A short ChatGPT host-adapter contract is injected into the Claude-derived skills to prevent claiming unavailable tools or runtime features.
 
@@ -26,7 +26,7 @@ Knowledge consists of source-linked, curated engineering practices and their pub
 
 ### Version and deprecation
 
-`agentic-workflow` v2026.12.4 supersedes **ChatGPT Workflow Lite** v1.12.0 and the legacy personal `ogfrench-workflow` v0.1.1 **for ChatGPT**. The Lite archives remain only as historical compatibility packages and are deprecated, not auto-deleted. The Claude Code edition of `agentic-workflow` (named `claude-workflow` through 2026.11.3) shares this release number, but remains independently packaged and host-verified.
+`agentic-workflow` v2026.12.5 supersedes **ChatGPT Workflow Lite** v1.12.0 and the legacy personal `ogfrench-workflow` v0.1.1 **for ChatGPT**. The Lite archives remain only as historical compatibility packages and are deprecated, not auto-deleted. The Claude Code edition of `agentic-workflow` (named `claude-workflow` through 2026.11.3) shares this release number, but remains independently packaged and host-verified.
 
 ### Building and testing
 

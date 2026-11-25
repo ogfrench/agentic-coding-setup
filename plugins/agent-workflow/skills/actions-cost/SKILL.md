@@ -6,7 +6,7 @@ description: >-
 
 # Optimize GitHub Actions cost without weakening CI
 
-Use for CI bills, budgets, slow jobs, duplicate runs, matrices or caching. Start with actual workflows and run history. Read [the audit reference](references/ci-audit.md) when editing workflows.
+Read actual workflows, run history and [the audit reference](references/ci-audit.md) before editing CI.
 
 ## 1. Inventory and measure before editing
 
@@ -58,6 +58,7 @@ Use for CI bills, budgets, slow jobs, duplicate runs, matrices or caching. Start
   merge related branches into it, and push review fixes to it: a "ready" or
   label gate lets them ride along. Run touched specs locally, say so; re-run
   only for a risky fix. Old green E2E proves nothing new.
+- Run test-strategy's copy-change preflight before expensive acceptance.
 - Add `timeout-minutes`. Measure retries, sleeps, repeat installs, duplicate
   builds and big matrices before removing a test; never truncate suites.
 - Use lockfile-keyed dependency caches, verify cache hit times, and do not
