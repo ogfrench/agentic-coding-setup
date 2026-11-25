@@ -87,6 +87,16 @@ Verify the merge SHA, tag/release, deployment, downloads, installed plugin
 versions and rollback availability separately. If host access is missing,
 leave a precise blocked handover rather than claiming completion.
 
+## Recovery and automated delivery
+
+For consequential changes, record the known-good revision or artifact, recovery
+owner, trigger and tested recovery procedure where feasible. A code revert does
+not reverse a database migration or external side effect; require a compatible
+recovery path and explicit authorization for destructive actions.
+A native shipping agent's verdict is review evidence, not release approval.
+Reconcile its commits, required checks, human decisions and user-journey proof
+at the final revision; never enable auto-merge as a workaround.
+
 ## Failure-chain discipline
 
 When any gate fails:

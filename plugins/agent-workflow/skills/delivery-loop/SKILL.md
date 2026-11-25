@@ -27,6 +27,14 @@ FPE is iterative reasoning, not gates or agents. Routine fixes need one
 short pass. For costly ambiguity or high risk, use `model-delegation` for
 independent critique before commitment or merge. One executive owns delivery.
 
+## Choose the native delivery mechanism
+
+After implementation and local proof, use the [shipping contract](references/native-shipping.md).
+Prefer the host's supported native PR delivery path when it fits the authorized
+scope; otherwise use the existing PR loop. A command name in documentation is
+not evidence of runtime availability. Do not activate paid services, change
+branch rules or enable automatic merging as part of a delivery task.
+
 ## Run the loop
 
 1. **Orient.** Read the user's objective and permissions, current source, tests,
@@ -78,7 +86,7 @@ independent critique before commitment or merge. One executive owns delivery.
   decision or environment blocker with the smallest actionable next step.
 - Prioritize a working deliverable over performative planning. Keep checklists concise
   and update them; do not spawn agents, issues or PRs merely to signal activity.
-- One agent owns the authoritative PR checklist. Parallel agents may implement
+- One executive owns the authoritative PR checklist; one writer owns the PR branch at a time. Parallel agents may implement
   isolated work, but their reports require verification before ticking acceptance.
   Verify shared contracts and behavior after integrating their changes at the final head.
 - This skill does not grant repository access, credentials, production privileges,

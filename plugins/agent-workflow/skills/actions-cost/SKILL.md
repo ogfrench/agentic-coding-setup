@@ -74,6 +74,13 @@ workflows and recent run history, not a generic YAML recipe. Read
 
 ## 4. Budgets and operational guardrails
 
+For native PR agents, include model usage, reviewer rounds, additional CI runs,
+human intervention and recovery in the cost of an accepted PR. Managed review
+and remediation may have separate usage budgets; verify the actual organization
+settings, set explicit limits before activation, and stop the agent when limits
+or scope are exceeded. Observe mode is not necessarily free. Do not enable
+billable repository services or change a budget without authorization.
+
 - GitHub Settings > Billing and licensing > Budgets and alerts: inspect Actions
   usage, included-minute alerts, and product-level or account-level budgets.
   Turn on threshold notifications. A budget without **Stop usage** is an alert,

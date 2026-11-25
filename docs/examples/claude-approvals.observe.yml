@@ -1,0 +1,11 @@
+version: 1
+mode: observe
+rules:
+  - purpose: "Preserve review coverage; do not let Claude approve."
+    paths: ["**"]
+    verdict: { claude: comments, seats: 1 }
+    advisory: [claude/code_review]
+  - purpose: "Sensitive workflow and approval configuration needs another person."
+    paths: [".github/workflows/**", ".claude/approvals.yml", "lib/apply.mjs", "sync-to-repos.sh", "setup-user.sh", "scripts/package_agentic_workflow_chatgpt.py"]
+    verdict: { claude: comments, seats: 2 }
+    advisory: [claude/code_review]

@@ -1,13 +1,13 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agentic-workflow",
-  "version": "2026.12.3",
+  "version": "2026.12.4",
   "description": "Source-grounded software engineering workflows for architecture, implementation review, research and release delivery. Uses only tools available in the current host.",
   "author": {
     "name": "François Prévot",
     "url": "https://github.com/ogfrench"
   },
-  "repository": "https://github.com/ogfrench/agentic-coding-setup",
+  "repository": "https://github.com/ogfrench/fpe-agentic-workflow",
   "keywords": [
     "software-engineering",
     "product-design",
@@ -34,7 +34,7 @@
         ],
         "logo": "./assets/fpe-mark-white-on-black.svg",
         "composerIcon": "./assets/fpe-mark-white-on-black.svg",
-        "websiteURL": "https://github.com/ogfrench/agentic-coding-setup"
+        "websiteURL": "https://github.com/ogfrench/fpe-agentic-workflow"
       }
     }
   }

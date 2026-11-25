@@ -52,6 +52,16 @@ interruptions.
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
 
+## PR writer handoff
+
+Record the current writer, authorized scope, head SHA, next action, stop condition,
+and review/evidence owner in the PR. Before switching writers, finish or cancel
+the previous writer's pending work and verify the remote head. If a managed PR
+agent is watching, stop it and confirm it has ceased writing before editing.
+Never push from a stale head, force-push over another writer, or assume a
+comment is an atomic lock. If exclusive ownership cannot be established,
+remain read-only. Reconcile approvals, checks and user evidence after a new push.
+
 ## Coordinate with Delivery Loop
 
 Use `delivery-loop` for active implementation and CI repair. This skill owns
