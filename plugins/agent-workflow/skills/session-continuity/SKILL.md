@@ -52,6 +52,8 @@ interruptions.
 See [PR progress and handover](references/pr-progress.md) for examples and
 multi-agent edits. A checklist never grants merge or deploy authority.
 
+For a single-writer handoff, use [PR progress and handover](references/pr-progress.md).
+
 ## Coordinate with Delivery Loop
 
 Use `delivery-loop` for active implementation and CI repair. This skill owns

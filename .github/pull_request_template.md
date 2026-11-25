@@ -13,6 +13,13 @@ Keep the boxes updated during implementation, not only before review.
 - [ ] Reconcile product-map and documentation impact, or explain why unchanged
 - [ ] Resolve or explicitly account for review feedback and remaining blockers
 
+## Risk and delivery ownership
+
+- **Risk and sensitive paths:**
+- **Current PR writer / handoff and stop condition:**
+- **Required independent review and human authorization:**
+- **Recovery trigger, known-good revision/artifact and recovery owner (if consequential):**
+
 ## DUNE impact
 
 - **Affected capability and canonical owning implementation:**

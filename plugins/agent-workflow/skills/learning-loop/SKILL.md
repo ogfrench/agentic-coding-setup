@@ -12,7 +12,7 @@ description: >-
 learning (raw) -> practice (curated) -> promoted (skill, agent, hook, command, plugin...) -> retired
 ```
 
-The record lives in `ogfrench/agentic-coding-setup`: raw notes in `learnings/`, curated
+The record lives in `ogfrench/fpe-agentic-workflow`: raw notes in `learnings/`, curated
 practices in the `best-practices` skill, and the promotion ladder in that repo's
 `CLAUDE.md`. **That repo is public, and this is a hard rule:** no client names or real
 brands, nothing from a private repo (not even its name), no employer-confidential work, no
@@ -50,8 +50,8 @@ or anything already a practice.
    - If the lesson cannot be told without a client, a private repo or a person, it is
      private. Write it to the user's private notes repo if one is attached to the session
      (same template), else to the current repo's `CLAUDE.md` if it only holds there, else
-     ask the user. It never goes to `agentic-coding-setup` until it is rewritten without names.
-   - If `agentic-coding-setup` is cloned or can be attached to the session, run
+     ask the user. It never goes to `fpe-agentic-workflow` until it is rewritten without names.
+   - If `fpe-agentic-workflow` is cloned or can be attached to the session, run
      `git config core.hooksPath .githooks` in it, add `learnings/YYYY-MM-DD-slug.md`,
      run `node --test` and `node scripts/check-public.mjs`, commit on a branch and open a
      pull request titled "Learning: <the lesson>". Never push to `main`.
@@ -59,7 +59,7 @@ or anything already a practice.
      the current repo, and tell the user it is waiting to be harvested.
 3. Say in one line what was captured, and where.
 
-## Curate, in claude-code-setup
+## Curate, in fpe-agentic-workflow
 
 1. Look for a practice it extends: `grep -i <term> kb/index.jsonl`. Extend that node, add the
    learning to its `derived_from`, and bump `last_verified`. No near-duplicates.
@@ -77,6 +77,8 @@ Before adding a skill or subagent, test positive, negative and ambiguous
 routing cases plus a regression task. Compare real outcomes against the
 component-disabled baseline; static checks cannot prove model behavior.
 Keep reviewers or subagents only when measured benefits justify them.
+
+Replay consequential incidents using the [feedback-driven improvement procedure](references/feedback-driven-improvement.md).
 
 ## Promote
 

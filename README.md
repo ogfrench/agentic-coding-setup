@@ -27,7 +27,7 @@ Skills are invoked selectively. Installing the package does **not** grant reposi
 
 | | **Claude Workflow** | **ChatGPT Agentic Workflow** |
 | --- | --- | --- |
-| Source version | `2026.12.3` | `2026.12.3` (account installation stays private) |
+| Source version | `2026.12.4` | `2026.12.4` (account installation stays private) |
 | Skills | 24 canonical engineering, story, design, writing, testing and security skills | 28 portable skills (24 shared + 4 review and verification skills) |
 | Environment | Claude Code | ChatGPT |
 | Integration | Claude-specific setup, agents, hooks, and optional project sync | Skills and curated knowledge using the tools available in ChatGPT |
@@ -86,6 +86,13 @@ See the [full Claude Code setup and sync guide](docs/maintainers-guide.md#claude
 Use the full [Agentic Workflow ChatGPT edition](portable/agentic-workflow/). It contains 28 portable skills, their references, and curated public engineering knowledge.
 
 The ChatGPT plugin remains a private account installation, even when its ZIP is published as a GitHub release download. Since `v2026.11.10`, the release workflow attaches validated Claude and ChatGPT archives with a shared SHA-256 file. The older `v2026.11.9` release is immutable and contains only the Claude ZIP. See the [installation and update flow](docs/agentic-workflow-chatgpt.md).
+
+## Native PR delivery
+
+Use the existing Delivery Loop with native Claude Code shipping when available
+and authorized. Other hosts retain their own tool-based delivery path. Managed
+review, remediation and approval policies are opt-in, not installed or synced
+by this repository. See the [shipping contract](plugins/agent-workflow/skills/delivery-loop/references/native-shipping.md).
 
 ## How it works
 

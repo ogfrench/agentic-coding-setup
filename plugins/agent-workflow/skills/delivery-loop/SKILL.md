@@ -13,7 +13,7 @@ bypassed controls or claims that unfinished work is done.
 
 ## DUNE delivery invariant
 
-For a product-facing change, enter through the product-owned capability map, verify real source and test ownership, follow the existing paved path, implement a focused regression, and exit through observed behavior plus reconciled passport evidence. The PR is the only authoritative live tracker. Do not create another DUNE board, duplicate agent, or infer functional success from static path checks. Enforce architecture constraints only when relevant to the target stack and a demonstrated failure mode.
+For product changes, use the product-owned capability map, verify source and tests, follow paved paths, add a focused regression and reconcile passport evidence against observed behavior. The PR is the only live tracker. Never infer functionality from path checks. Enforce architecture constraints only for demonstrated failure modes in the target stack.
 
 ## Frame–Propose–Evaluate (FPE)
 
@@ -57,6 +57,7 @@ independent critique before commitment or merge. One executive owns delivery.
    CI, host acceptance, deployed and production-verified. Investigate failed checks
    from evidence, fix the cause and rerun at the **new exact head**. Never dilute
    a gate, self-approve risk, fabricate screenshots or claim a check ran without proof.
+   Use the [native shipping contract](references/native-shipping.md) before final review when observed host capabilities fit the authorization.
 5. **Reconcile and review.** Before an authorized merge or release, invoke
    `release-readiness` to inspect the exact head, downstream workflow steps,
    skipped gates, generated routes, packaged downloads and host acceptance.
@@ -78,7 +79,7 @@ independent critique before commitment or merge. One executive owns delivery.
   decision or environment blocker with the smallest actionable next step.
 - Prioritize a working deliverable over performative planning. Keep checklists concise
   and update them; do not spawn agents, issues or PRs merely to signal activity.
-- One agent owns the authoritative PR checklist. Parallel agents may implement
+- One executive owns the authoritative PR checklist; one writer owns the PR branch at a time. Parallel agents may implement
   isolated work, but their reports require verification before ticking acceptance.
   Verify shared contracts and behavior after integrating their changes at the final head.
 - This skill does not grant repository access, credentials, production privileges,

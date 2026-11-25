@@ -46,3 +46,13 @@ A test plan, mock output, unit pass or installed package must never be reported 
 Run paired trials where the host actually exists, with and without specialist instructions: repository bug fix, design review, release readiness, missing repository, and an unrelated task. Record exact source SHA, installed package source, host permissions, prompts, tool trace, outputs, correctness, negative routing and costs. Acceptance is **no critical invented capability, no material regression and no unnecessary skill invocation**. Do not claim scores until observed.
 
 Release notes should list which states were achieved and what is still blocked; no universal installer, common MCP or automatic propagation is proposed.
+
+## Native PR delivery
+
+Use native delivery tools only when observed in the active host and compatible
+with the authorized scope. Claude Code may expose /ship or /steward; managed
+Claude Ship is separately enabled and billed. ChatGPT and Codex use their own
+available tools, not Claude commands. Preserve one PR writer, required checks,
+independent review and explicit merge/release authorization. Do not sync a live
+approval policy or activate repository agents by default. See the canonical
+[shipping contract](../plugins/agent-workflow/skills/delivery-loop/references/native-shipping.md).

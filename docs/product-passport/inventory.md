@@ -8,8 +8,8 @@ This is the source-backed inventory for [`ogfrench/fpe-agentic-workflow`](https:
 
 | Surface | Source | Actual identity and contents | Installation boundary |
 | --- | --- | --- | --- |
-| Claude Code edition | [`plugins/agent-workflow/`](../../plugins/agent-workflow/) | `agentic-workflow` **v2026.12.3**, 24 canonical skills, one optional `cheap-reviewer` agent and the [FPE mark](../../plugins/agent-workflow/assets/fpe-mark-white-on-black.svg) | `ogfrench` Claude marketplace or reviewed ZIP; explicitly installed |
-| ChatGPT edition | [`portable/agentic-workflow/`](../../portable/agentic-workflow/), [builder](../../scripts/package_agentic_workflow_chatgpt.py) | `agentic-workflow` **v2026.12.3**, 24 shared skills + 4 portable additions = **28** | Generated, deterministic skills-only ZIP; separately installed private ChatGPT plugin |
+| Claude Code edition | [`plugins/agent-workflow/`](../../plugins/agent-workflow/) | `agentic-workflow` **v2026.12.4**, 24 canonical skills, one optional `cheap-reviewer` agent and the [FPE mark](../../plugins/agent-workflow/assets/fpe-mark-white-on-black.svg) | `ogfrench` Claude marketplace or reviewed ZIP; explicitly installed |
+| ChatGPT edition | [`portable/agentic-workflow/`](../../portable/agentic-workflow/), [builder](../../scripts/package_agentic_workflow_chatgpt.py) | `agentic-workflow` **v2026.12.4**, 24 shared skills + 4 portable additions = **28** | Generated, deterministic skills-only ZIP; separately installed private ChatGPT plugin |
 | Legacy portable Lite | [`portable/ogfrench-workflow/`](../../portable/ogfrench-workflow/) | `chatgpt-workflow-lite` **v1.12.0**, 4 review/setup skills | Legacy source and local marketplace entry; not the canonical full edition |
 | Claude marketplace | [`.claude-plugin/marketplace.json`](../../.claude-plugin/marketplace.json) | `agentic-workflow` (local canonical plugin source); `21st` (pinned third-party Git subdirectory) | Marketplace declaration, not proof an account installed either plugin |
 | Local marketplace | [`.agents/plugins/marketplace.json`](../../.agents/plugins/marketplace.json) | `ogfrench-local` exposes the Lite package | Local optional integration, not the primary ChatGPT plugin |
@@ -95,7 +95,7 @@ The [marketplace manifest](../../.claude-plugin/marketplace.json) pins the third
 
 ## Knowledge, evaluations and tests
 
-The repository contains **53 curated practice cards** in [`kb/practices/`](../../kb/practices/), **40 tool-reference cards** in [`kb/tools/`](../../kb/tools/), **86 dated learning records** in [`learnings/`](../../learnings/), **57 behavioral evaluation prompts** under [`plugins/agent-workflow/evals/`](../../plugins/agent-workflow/evals/) and **22 test source files** under [`test/`](../../test/). Counts describe tracked sources, not runtime evaluation scores.
+The repository contains **53 curated practice cards** in [`kb/practices/`](../../kb/practices/), **40 tool-reference cards** in [`kb/tools/`](../../kb/tools/), **86 dated learning records** in [`learnings/`](../../learnings/), **60 behavioral evaluation prompts** under [`plugins/agent-workflow/evals/`](../../plugins/agent-workflow/evals/) and **23 test source files** under [`test/`](../../test/). Counts describe tracked sources, not runtime evaluation scores.
 
 The knowledge flow is **dated learning → reviewed practice → generated KB index/bundles → on-demand skill or project context**. `kb/tools/` is an index of *documented tools, plugins and skills*, **not an installed-tools manifest**. Its 40 entries are:
 

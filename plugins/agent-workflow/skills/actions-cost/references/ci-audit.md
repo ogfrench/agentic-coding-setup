@@ -170,3 +170,10 @@ is required, trigger again on the latest head or use merge-queue verification.
 - https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
 - https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
 - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+
+For native PR agents, include model usage, reviewer rounds, additional CI runs,
+human intervention and recovery in the cost of an accepted PR. Managed review
+and remediation may have separate usage budgets; verify the actual organization
+settings, set explicit limits before activation, and stop the agent when limits
+or scope are exceeded. Observe mode is not necessarily free. Do not enable
+billable repository services or change a budget without authorization.

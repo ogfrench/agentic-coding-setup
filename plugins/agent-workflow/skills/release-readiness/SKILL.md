@@ -87,6 +87,8 @@ Verify the merge SHA, tag/release, deployment, downloads, installed plugin
 versions and rollback availability separately. If host access is missing,
 leave a precise blocked handover rather than claiming completion.
 
+For consequential changes and native agent delivery, use [production readiness](../delivery-loop/references/production-readiness.md) to verify recovery and approvals.
+
 ## Failure-chain discipline
 
 When any gate fails:

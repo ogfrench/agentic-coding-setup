@@ -18,6 +18,20 @@ This guidance is not an agent runtime. If independent reviewers are unavailable,
 use explicit self-review and name it honestly. A plugin does not create model,
 filesystem, deployment or background capabilities.
 
+## Approval floor
+
+Classify the highest-risk changed behavior, not just the size of the diff.
+Routine changes follow existing checks and merge authorization. Material product
+changes need focused independent review; trust boundaries, destructive operations,
+migration, credentials, permissions, CI/release controls and installer/sync
+ownership need explicit human authorization and independent review before merge.
+For these sensitive paths, an AI risk classifier cannot lower the review floor.
+A reviewer cannot approve their own implementation; if independence is missing,
+record it as blocked rather than claim a second review. GitHub rules and required
+checks remain the enforcement layer; neither a model verdict nor a PR checkbox
+satisfies human authorization. Do not introduce a new mandatory check or change
+review counts without repository-owner approval.
+
 ## Protocol
 
 1. **Frame.** Executive records outcome, requirements, actual code/behavior,
@@ -49,7 +63,7 @@ filesystem, deployment or background capabilities.
 Use no more than two repeated review-revise rounds for the same unresolved
 claim before changing strategy: inspect evidence, narrow scope, reframe or
 escalate to an authorized decision-maker. This is not permission to silently
-close blockers. One executive, one PR tracker, no duplicate boards.
+close blockers. One executive, one PR tracker, no duplicate boards. Deduplicate by affected invariant and reproduction, not comment wording; preserve distinct defects. Re-review the changed paths and affected callers after a fix, and repeat full review if the change expands risk or scope. A new head invalidates earlier approval and proof until reconciled with the new revision.
 
 Compare against an executive-only baseline using representative tasks:
 outcome correctness, important bugs caught, false positives, latency,
