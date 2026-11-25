@@ -63,7 +63,8 @@ stale version/commit, bad checksum, and privacy scope. Build all required files
 before publishing, attach together, and never overwrite published immutable ZIPs.
 Keep restricted data and credentials behind their existing authorization gates.
 
-After publication, verify actual assets and digests. For overlay installs,
+After publication, download and verify asset checksums. Release publication does not update accounts.
+For overlay installs,
 diff old/new file inventories, explicitly delete obsolete files and verify the
 resulting manifest and inventory. Host behavior requires separate proof.
 Mark a release **incomplete** if promised assets are missing despite green CI.
