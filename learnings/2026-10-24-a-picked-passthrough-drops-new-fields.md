@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [frontend, testing]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/testing.md
 ---
 
 # A loader that picks fields to pass on drops every field added later, without an error

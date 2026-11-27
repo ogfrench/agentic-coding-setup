@@ -10,9 +10,18 @@
   Exporters, measurers and probes read styles no screenshot shows. Run one on the change,
   and make it handle the empty case.
   *(2026-10-18-restyling-breaks-programs-that-read-styles)*
+- **Name every input in a JavaScript form; before hydration the browser submits it as
+  GET.** Give each input the name its URL parameter uses, so a native submit keeps its
+  query. Fast CI runners hydrate before a click and hide this; run the browser suite once on
+  a slow machine. *(2026-10-24-name-inputs-for-pre-hydration-submit)*
 - **One shape, one border, one focus ring for every text field, whatever draws it.**
   Corners vary by tier (controls tighter than cards), never by library.
   *(2026-10-11-third-party-editor-overrides)*
+- **Keep sizes on a small scale; a highlight is a span at the sentence size.** Fitting
+  each box drifts sizes into dozens. Measure computed sizes, map them to a few steps, and
+  compare every slide before and after. In review, count sizes per slide: two sizes of one
+  voice stacked is a finding. *(2026-10-16-a-type-scale-pulls-drifting-sizes-back)*
+  *(2026-10-18-one-sentence-one-type-size)*
 - **Scope a host page's element selectors so they never reach the content it embeds.** A
   bare `section{padding}` in the host hit an embedded slide's own section and broke it only
   on the host page. Guard with `:where(:not(.root x))` and measure embedded content on the

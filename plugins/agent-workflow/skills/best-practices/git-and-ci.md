@@ -4,6 +4,10 @@
 - **Push only after the gate's own exit status says green.** Not after `;`, and not after
   `| tail` or `| grep`, whose status is the pipe's last command. Use `set -o pipefail`, or
   run the gate, read it, then push. *(2026-10-18-gate-a-push-on-the-real-exit-status)*
+- **Let the API advertise what it supports so deploys can run in either order.** The
+  frontend offers a feature only when the config endpoint says so, and treats a missing flag
+  as off. Test the endpoint's key set, so a new key is a decision.
+  *(2026-10-24-advertise-new-capabilities-from-the-api)*
 - **Batch the edits that invalidate a pinned digest; re-pin once, after the proving
   build.** The cost is per edit, not per release. Commit a pin only after the second build
   passes, and keep the re-pin as one repo command, not a private script.
@@ -11,6 +15,10 @@
 - **Compare a change against origin/main after a fetch, never a local main.** Nothing
   fast-forwards a local main in a clone worked through worktrees. Read the sha a review tool
   prints as its baseline. *(2026-10-18-review-baselines-come-from-the-remote)*
+- **Editing dependabot.yml starts a scan; each ready PR can start the expensive suite.**
+  Dependabot re-runs on any config change, whatever the schedule says. Make the edit in a
+  week the scan is due anyway, or keep the suite off Dependabot PRs until a person marks one
+  ready. Say so in the PR. *(2026-10-24-dependabot-config-change-triggers-a-wave)*
 - **Estimate runner-minutes per trigger; one heavy run per release.** Jobs times minutes
   times triggers. On demand, not a matrix. One release, one PR: fixes pushed to it. Per-push
   job near a minute. Fails fast, no log: billing.
@@ -35,6 +43,11 @@
 - **Reproduce a CI failure with the exact version CI runs.** Pin scanners and linters in
   CI, download that version locally, and scan what you are about to push with it.
   *(2026-10-11-pin-ci-tool-versions-locally)*
+- **After a scripted edit, insert at a fixed anchor and read the diff.** An anchor that
+  ends mid-guard can delete the guard while the assert still passes. Run the formatter's
+  check and the type check on each edited file before committing.
+  *(2026-10-18-scripted-import-insertion-can-land-in-a-string)*
+  *(2026-10-24-scripted-edits-can-delete-their-anchor)*
 - **Stacked PRs that all add a changelog line conflict in turn; write it at merge time.**
   Or keep one file per change and generate the changelog. merge=union helps local merges
   only. *(2026-10-18-stacked-prs-conflict-on-the-changelog)*

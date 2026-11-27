@@ -2,8 +2,9 @@
 date: 2026-10-18
 source: a private project
 tags: [content, codegen]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/testing.md
 ---
 
 # A sample generated from a structure repeats what the structure repeats

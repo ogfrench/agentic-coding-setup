@@ -2,8 +2,9 @@
 date: 2026-10-18
 source: a private project
 tags: [testing, algorithms]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/testing.md
 ---
 
 # An optimizer that cuts every suspect drives them all to the floor

@@ -6,29 +6,42 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 
 ## Testing
 - [should] built-check-knows-its-staleness: A check on a built artifact must report its age and fail when the sources are newer.
+- [should] cut-one-suspect-per-round: Run the baseline, then cut one suspect per round, never every suspect an overflow names.
+- [should] dedupe-generated-samples: Dedupe generated samples by what the viewer sees; append the structural close last.
 - [should] force-race-window: Force a race window instead of timing it.
+- [should] magnitude-is-not-a-switch: Switch on presence, not on a magnitude that can be small; test the smallest real value.
 - [should] measure-in-the-systems-own-unit: Measure in a custom unit by reading it from the running page, never by recomputing its definition.
 - [should] one-dev-stack-per-tree: One dev stack per working tree.
 - [should] one-suite-at-a-time: Run one test suite at a time on a shared stack or machine.
+- [should] pass-the-whole-object-through: A loader that picks fields drops new ones silently; pass the object through.
 - [should] render-layouts-at-their-limits: Render every layout at its schema limits in each look, not only on its demo copy.
 - [should] test-derived-names-against-reserved: Test every name derived by rule against the reserved names.
 - [should] test-fails-first: Write the failing test first, and run it on the old code.
+- [should] test-the-zero-case: Test each summary screen where nobody acted: all zero, a tie, one empty participant.
+- [should] third-party-fixtures-come-from-the-tool: Build a third-party fixture from the tool's own export and assert no pageerror.
 - [should] wait-for-state-not-time: Wait for the state you need, never for time.
 - [tip] check-what-is-on-the-port: Check what is on the port before trusting a run.
 - [tip] headless-matches-hover-none: Headless Chrome matches hover: none; key touch fallbacks on pointer: coarse.
+- [tip] text-guards-skip-comments: A text guard reads comments too; reword the comment, never weaken the guard.
 
 ## Data and concurrency
 - [must] claim-shared-work-atomically: Claim shared work in one step.
 - [must] no-whole-row-writes: No whole-row writes from a stale read.
+- [should] claim-one-shot-before-side-effects: Claim a one-shot action before its side effects; answer a retry with the first result.
 - [should] conditional-update-is-the-check: A conditional update is the check.
 - [should] holds-known-to-every-deleter: A hold must be known to every deleter.
+- [should] keys-share-one-ttl: Give each session key one TTL constant; test TTLs by reading them back.
 
 ## Security
 - [must] credential-is-not-authorization: A valid credential is not authorization.
 - [must] names-are-private-data: In a public repo, names are private data.
 - [must] one-client-payload-builder: One function builds every client payload, and it strips solutions for every type.
+- [should] hash-credentials-before-keying: Before keying a record by an id, check whether that id proves anything; if so, hash it.
 - [should] identity-limits-need-costly-identities: A limit per identity only binds an attacker when a new identity costs them something.
+- [should] labels-use-the-vocabularys-words: A fixed vocabulary label uses that vocabulary's own words.
+- [should] new-claim-keeps-old-tokens: A new required token claim must renew old tokens that lack it; test that case.
 - [should] pasted-secret-gets-a-home: A secret pasted in chat gets a home outside every repo and a rotation issue at once.
+- [should] sign-in-link-needs-a-press: A sign-in link must not sign in on load; mail scanners open links and run pages.
 - [should] test-with-the-wrong-account: Test with the wrong account, not only with none.
 - [tip] docs-are-not-evidence: Docs that claim a check are not evidence of the check.
 
@@ -36,6 +49,7 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 - [should] check-accessible-names-after-edit: Check accessible names after an edit, not only on load.
 - [should] configure-widgets-via-config: Configure a third-party widget through its config, not by patching its DOM after creation.
 - [should] find-style-readers-before-restyling: Before restyling a component, find the code that reads its computed style.
+- [should] name-inputs-for-no-js-submit: Name every input in a JavaScript form; before hydration the browser submits it as GET.
 - [should] one-text-field-shape: One shape, one border, one focus ring for every text field, whatever draws it.
 - [should] scope-host-css-from-embedded-content: Scope a host page's element selectors so they never reach the content it embeds.
 - [should] theme-with-tokens: Theme with tokens, never hardcoded black or white.
@@ -44,8 +58,10 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 
 ## Git and CI
 - [must] gate-push-on-exit-status: Push only after the gate's own exit status says green.
+- [should] api-advertises-capabilities: Let the API advertise what it supports so deploys can run in either order.
 - [should] batch-edits-then-pin-once: Batch the edits that invalidate a pinned digest; re-pin once, after the proving build.
 - [should] compare-against-origin-main: Compare a change against origin/main after a fetch, never a local main.
+- [should] dependabot-config-starts-a-scan: Editing dependabot.yml starts a scan; each ready PR can start the expensive suite.
 - [should] estimate-runner-minutes: Estimate runner-minutes per trigger; one heavy run per release.
 - [should] kill-by-pid-not-by-pattern: Kill a known PID, not a full-command-line pattern.
 - [should] merge-commits-on-shared-branches: Merge commits on shared branches; never rewrite someone else's history.
@@ -53,6 +69,7 @@ Search every node: `grep -i <term> kb/index.jsonl`.
 - [should] own-install-per-worktree: Every worktree gets its own install.
 - [should] pin-from-a-clean-install-on-cis-node: Pin a bundle's digest from a clean install of the exact commit on the Node CI uses; make the pin command refuse anything else.
 - [should] reproduce-ci-with-pinned-versions: Reproduce a CI failure with the exact version CI runs.
+- [should] scripted-edits-verify-the-diff: After a scripted edit, insert at a fixed anchor and read the diff.
 - [tip] changelog-at-merge-time: Stacked PRs that all add a changelog line conflict in turn; write it at merge time.
 - [tip] keep-ci-logs: Keep the logs CI needs to explain itself.
 

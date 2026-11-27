@@ -9,6 +9,11 @@
   Other writers name their columns. A whole-row `update()` is a bug unless the writer really
   sets every field, and even then it puts back counters and ownership changed meanwhile.
   *(2026-10-11-whole-row-orm-writes-revert-saves)*
+- **Claim a one-shot action before its side effects; answer a retry with the first
+  result.** A check that asks whether the action is allowed stays true after its first
+  success. Set a pending claim with set-if-absent, then write the final result over it. A
+  retry that finds a pending claim gets 409.
+  *(2026-10-26-claim-a-one-shot-action-before-its-side-effects)*
 - **A conditional update is the check.** "Check, then write" lets two callers both pass
   the check. Put the condition in the `WHERE` and act only if a row changed. In Redis, check
   inside the transaction, `WATCH` every key the check reads, and put dependent writes in the
@@ -17,3 +22,7 @@
 - **A hold must be known to every deleter.** List every path that deletes the thing, cron
   jobs included, and make each respect the hold. Test the sweep, not only the paths you
   changed. *(2026-10-11-sweeps-must-know-about-holds)*
+- **Give each session key one TTL constant; test TTLs by reading them back.** Literal
+  per-write expiries end before the session they belong to. Drive a short session against a
+  real cache, list every key under its id, and assert each TTL. Name the expected key kinds
+  so a renamed key cannot pass by vanishing. *(2026-10-26-session-keys-share-one-ttl)*

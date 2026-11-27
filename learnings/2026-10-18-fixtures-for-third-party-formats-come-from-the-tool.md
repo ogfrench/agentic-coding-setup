@@ -2,8 +2,9 @@
 date: 2026-10-18
 source: a private project
 tags: [testing, e2e]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/testing.md
 ---
 
 # A fixture in a third-party format comes from that tool, not from memory

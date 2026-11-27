@@ -11,14 +11,30 @@
 - **One function builds every client payload, and it strips solutions for every type.**
   Grep for every sender and route them through it.
   *(2026-10-11-strip-solutions-from-client-payloads)*
+- **Before keying a record by an id, check whether that id proves anything; if so, hash
+  it.** A join key reused from a credential is copied into every backup and dump. Name the
+  column for what it holds, and check the logs and reports that read the table too.
+  *(2026-10-26-never-key-records-by-a-credential)*
 - **A limit per identity only binds an attacker when a new identity costs them
   something.** If addresses or accounts are free to make up, a per-identity budget
   multiplies the attacker's. Keep the global cap, or make the secret too long to guess
   within it. *(2026-10-11-per-identity-limits-need-costly-identities)*
+- **A fixed vocabulary label uses that vocabulary's own words.** A plausible word outside
+  the set spread to every cover, footer and sign-in page. Ask for the set first. Keep client
+  and project names off any page anyone can reach.
+  *(2026-10-16-fixed-vocabulary-labels-use-its-words)*
+- **A new required token claim must renew old tokens that lack it; test that case.** Treat
+  no claim differently from a wrong claim. Test with a hand-signed token in the old format,
+  or the deploy signs every user out and the suite never notices.
+  *(2026-10-24-new-token-claim-must-not-strand-old-tokens)*
 - **A secret pasted in chat gets a home outside every repo and a rotation issue at once.**
   Store it in a mode-600 file or the environment's secrets, never echo it, and open one
   issue naming each credential by its last four characters, with rotation steps.
   *(2026-10-18-a-pasted-secret-needs-a-home-and-a-rotation)*
+- **A sign-in link must not sign in on load; mail scanners open links and run pages.**
+  Show a button and act only when it is pressed, disabled until the page hydrates. After the
+  fix, revoke sessions that scanners created before it.
+  *(2026-10-24-email-sign-in-links-wait-for-a-press)*
 - **Test with the wrong account, not only with none.** Probe as anonymous and as two
   accounts, A against B's things, on a live local stack. A missing credential is the easy
   case.

@@ -2,8 +2,9 @@
 date: 2026-10-18
 source: a private project
 tags: [testing, ui]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/testing.md
 ---
 
 # Give every summary screen a test where nobody did anything

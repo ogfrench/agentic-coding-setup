@@ -2,8 +2,9 @@
 date: 2026-10-24
 source: a private project
 tags: [deploy, api]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/git-and-ci.md
 ---
 
 # When frontend and backend deploy separately, let the API say what it supports

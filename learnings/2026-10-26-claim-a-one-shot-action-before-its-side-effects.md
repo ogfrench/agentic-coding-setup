@@ -2,8 +2,9 @@
 date: 2026-10-26
 source: a private project
 tags: [concurrency, api, idempotency]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/data-and-concurrency.md
 ---
 
 # Claim a one-shot action atomically before its side effects, and answer a retry with the first result

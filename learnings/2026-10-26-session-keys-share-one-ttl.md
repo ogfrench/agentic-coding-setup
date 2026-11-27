@@ -2,8 +2,9 @@
 date: 2026-10-26
 source: a private project
 tags: [redis, state, testing]
-status: raw
-promoted_to: []
+status: practice
+promoted_to:
+  - plugins/agent-workflow/skills/best-practices/data-and-concurrency.md
 ---
 
 # Give every key a session writes one TTL, and test it by reading the TTLs back
