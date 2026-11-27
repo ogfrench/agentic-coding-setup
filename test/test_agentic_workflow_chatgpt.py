@@ -88,6 +88,14 @@ class FullChatGPTWorkflowTest(unittest.TestCase):
         self.assertIn("skills/presentation-design/references/visual-reasoning.md", files)
         self.assertIn("skills/visual-loop/references/visual-restraint.md", files)
         self.assertNotIn("skills/visual-restraint/SKILL.md", files)
+        restraint = files["skills/visual-loop/references/visual-restraint.md"].decode()
+        for pattern in ("Decorative eyebrows", "Decorative colored side borders",
+                        "Random italicized headline words", "Unnecessary uppercase labels",
+                        "Defaulting to Inter", "Excessive cards", "A blurb under every title",
+                        "Blinking status dots"):
+            self.assertIn(pattern, restraint)
+        self.assertIn("visual-restraint.md", files["skills/deslopify/SKILL.md"].decode())
+        self.assertIn("visual-loop restraint catalog", files["skills/implementation-proof/SKILL.md"].decode())
 
     def test_product_passport_experience_review_is_packaged(self) -> None:
         files = build_files()

@@ -1,6 +1,6 @@
 ---
 name: deslopify
-description: Audit marketing, deck and UI copy for AI-style repetition, hype and unsupported claims. Use for deslopify, AI-vibe and copy review requests.
+description: Audit marketing, deck and UI copy and visual composition for AI-style repetition, hype and gratuitous decoration. Use for deslopify, AI-vibe and copy or visual review requests.
 ---
 
 # deslopify — AI copy anti-patterns
@@ -11,6 +11,17 @@ them surgically without flattening the voice.
 
 The work is two passes: **list the relevant patterns**, then **review the copy
 line by line** with a verdict and a fix for each offender.
+
+## Visual deslopification
+
+For requests about the look of a page, interface or deck, use the existing
+`visual-loop` skill and its `references/visual-restraint.md` catalog. Inspect
+the whole rendered composition, including repetitive component patterns,
+rather than treating a visual request as copy-only. Preserve the project's
+design system and any intentional repetition. Findings need observable
+evidence, a purpose-based rationale and a surgical fix; re-render if editing.
+When a request is copy-only, keep the line-by-line method below. If a render
+is unavailable, distinguish source findings from unverified visual judgments.
 
 ## The meta-rule
 

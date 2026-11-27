@@ -26,6 +26,28 @@ questions about **purpose, proportion, accessibility and repetition**.
 19. **Gradient backgrounds:** actual identity or depth, or empty spectacle?
 20. **Periods in titles:** follow context and editorial conventions, not an AI rule.
 
+## Recurring landing-page and product UI defaults
+
+Review these in context, not as a blacklist or evidence of AI authorship:
+
+| Pattern | Prefer | Legitimate exception |
+| --- | --- | --- |
+| Decorative eyebrows | A direct, informative heading | Chapter or category labels that aid orientation |
+| Decorative colored side borders | Whitespace, structure or semantic color | A real warning, selection, comparison key or specified brand treatment |
+| Random italicized headline words | Deliberate typographic emphasis | An earned emphasis or established editorial convention |
+| Unnecessary uppercase labels | Sentence case and readable hierarchy | Acronyms, short technical labels or prescribed brand roles |
+| Defaulting to Inter or any fashionable font | The project's own type system, appropriate fallback and readable scale | Inter when it is the intentional product font |
+| Excessive cards and nested containers | Open grids, lists, tables and grouping by space | Independent objects, actionable items or meaningful comparisons |
+| A blurb under every title | A self-explanatory heading; add detail only if it contributes | Necessary explanation, instructions or context |
+| Blinking status dots | Truthful, labeled, accessible state; static by default | Meaningful transient progress or a state change, with reduced-motion support |
+
+Also question gratuitous badges, arbitrary accent colors, exaggerated radii,
+generic hero formulas, mechanically symmetric sections, ornamental icons,
+unsubstantiated dashboard metrics and ambient microanimations. Choose forms
+that match the actual content and task. Preserve useful repetition, distinctive
+brand expression and component consistency; a list of independent objects
+may legitimately repeat cards.
+
 ## Additional visual signals
 
 - Repeated eyebrow, headline, subtitle, three-card section on every screen
