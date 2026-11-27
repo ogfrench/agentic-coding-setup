@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "agentic-workflow",
-      "description": "Agentic Workflow v2026.12.5: 24 Claude skills for source-grounded architecture, implementation, design, security, testing, release readiness and delivery.",
+      "description": "Agentic Workflow v2026.12.6: 24 Claude skills for source-grounded architecture, implementation, design, security, testing, release readiness and delivery.",
       "source": "./plugins/agent-workflow",
       "category": "productivity"
     },
