@@ -11,6 +11,16 @@ If the user asks for alternatives, implement a small number of meaningfully diff
 
 Inspect the output yourself before presenting it. Check spacing, hierarchy, wrapping, overflow, contrast, states, loading and errors, keyboard use and mobile/desktop layout. For motion changes, screenshots of settled states are insufficient; inspect the transition itself.
 
+For visual anti-pattern review, identify repeated decorative eyebrows, colored
+side borders, isolated italic words, uppercase labels, generic fonts, card
+grids, redundant blurbs, fake metrics, ornamental icons, glow and blinking
+status indicators. Ask what each treatment communicates, whether it matches
+the actual design system, and whether repetition improves comprehension.
+Prefer a direct hierarchy and content-driven composition. Keep useful
+cards, meaningful statuses, intentional typography and brand signatures.
+Use the visual-loop restraint catalog when available; this review remains
+usable independently. Inspect the corrected render after edits.
+
 When a design is rejected, reconsider the shared premise before merely adjusting spacing or color. When the user says to fix the design rather than choose options, implement the requested changes without an artificial approval loop.
 
 State the actual artifact and verification status. If a browser, repository or build is unavailable, show the concrete code or explain the limitation rather than invent visual proof.
