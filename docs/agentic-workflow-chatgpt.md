@@ -1,6 +1,6 @@
 # Agentic Workflow for ChatGPT | Full portable edition
 
-**Current source edition:** `agentic-workflow` v2026.12.5 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.12.5 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
+**Current source edition:** `agentic-workflow` v2026.12.6 is the **canonical ChatGPT edition**; `chatgpt-workflow-lite` v1.12.0 is deprecated for new ChatGPT installations. This affects ChatGPT distribution only. The full Claude Code edition of `agentic-workflow` v2026.12.6 (published as `claude-workflow` through 2026.11.3), its user-level setup scripts, subagents, project sync and hooks are maintained separately.
 
 ## What is included
 
@@ -28,8 +28,8 @@ Run from the exact reviewed source checkout:
 ```sh
 python3 -m unittest discover -s test -p 'test_agentic_workflow_chatgpt.py' -v
 python3 scripts/package_agentic_workflow_chatgpt.py
-unzip -t dist/agentic-workflow-chatgpt-v2026.12.5.zip
-sha256sum dist/agentic-workflow-chatgpt-v2026.12.5.zip
+unzip -t dist/agentic-workflow-chatgpt-v2026.12.6.zip
+sha256sum dist/agentic-workflow-chatgpt-v2026.12.6.zip
 ```
 
 PR CI retains a short-lived candidate artifact for review. The GitHub release workflow (active since `v2026.11.10`) verifies the exact source-derived archive and publishes both `agentic-workflow-claude-v<version>.zip` and `agentic-workflow-chatgpt-v<version>.zip` in the same GitHub Release, and includes both SHA-256 digests. The ZIP contains only reviewed source skills, documentation, the icon and curated public knowledge, not private data or executables. The public ZIP does **not** create a public ChatGPT plugin listing.
